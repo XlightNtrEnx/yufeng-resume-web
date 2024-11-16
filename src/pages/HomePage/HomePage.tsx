@@ -26,7 +26,7 @@ const StyledP = styled(P)`
 export const HomePage = () => {
   return (
     <Container>
-      <StyledH1>About me (I love tia)</StyledH1>
+      <StyledH1>About me</StyledH1>
       <StyledP>An aspiring and passionate software engineer.</StyledP>
     </Container>
   );
