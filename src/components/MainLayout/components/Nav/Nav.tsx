@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
 
-import { HomeLink, EducationLink, ProfileDropdownMenu } from "./components";
+import { FlexBox } from "@src/components";
+import { InternalLink } from "@src/components";
+import { paths } from "@src/router";
+
+import { ProfileDropdownMenu } from "./components";
 
 const NavHeightInPx = 64;
 
 const NavItemMaxHeightInPx = NavHeightInPx * 0.5;
-const NavItemDefaultHeightInPx = NavItemMaxHeightInPx;
-const NavItemMaxWidthInPx = 300;
-const NavItemDefaultWidthInPx = NavItemMaxWidthInPx * 0.5;
+const NavItemMaxWidthInPx = 500;
 
 const StyledNav = styled.nav`
   display: grid;
@@ -25,10 +27,12 @@ const StyledNav = styled.nav`
 
   > * {
     max-width: ${NavItemMaxWidthInPx}px;
-    width: ${NavItemDefaultWidthInPx}px;
     max-height: ${NavItemMaxHeightInPx}px;
-    height: ${NavItemDefaultHeightInPx}px;
     background-color: ${({ theme }) => theme.colors.softerWhite};
+  }
+
+  > *:first-child {
+    justify-self: start;
   }
 
   > *:last-child {
@@ -36,11 +40,11 @@ const StyledNav = styled.nav`
   }
 `;
 
-const NavItem1 = styled.div`
-  display: flex;
+const NavItem1 = styled(FlexBox)`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  width: auto;
   > *:not(:first-child) {
     border-left: 1px solid ${({ theme }) => theme.colors.black};
     border-top-left-radius: 0;
@@ -51,8 +55,9 @@ export const Nav = () => {
   return (
     <StyledNav>
       <NavItem1>
-        <HomeLink />
-        <EducationLink />
+        <InternalLink to={paths.home}>Home</InternalLink>
+        <InternalLink to={paths.education}>Education</InternalLink>
+        <InternalLink to={paths.projects}>Projects</InternalLink>
       </NavItem1>
       <ProfileDropdownMenu />
     </StyledNav>

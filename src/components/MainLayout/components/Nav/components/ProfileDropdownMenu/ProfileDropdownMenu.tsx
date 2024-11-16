@@ -71,6 +71,10 @@ export const ProfileDropdownMenu = () => {
     fetchProfilePic();
   }, [user]);
 
+  useEffect(() => {
+    setShowContent(false);
+  }, [user]);
+
   const onClick = (event: React.MouseEvent<HTMLImageElement, Event>) => {
     setShowContent(!showContent);
   };
