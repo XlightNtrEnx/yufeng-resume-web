@@ -56,7 +56,7 @@ const Content = styled.div`
   }
 `;
 
-export const DropdownImg = () => {
+export const ProfileDropdownMenu = () => {
   const user = useAtomValue(userAtom);
   const [src, setSrc] = useState<string>(NoProfilePictureIcon);
   const [showContent, setShowContent] = useState(false);

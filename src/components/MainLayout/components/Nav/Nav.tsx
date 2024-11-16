@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-import { HomeLink, EducationLink, DropdownImg } from "./components";
+import { HomeLink, EducationLink, ProfileDropdownMenu } from "./components";
 
 const NavHeightInPx = 64;
 
@@ -54,7 +54,7 @@ export const Nav = () => {
         <HomeLink />
         <EducationLink />
       </NavItem1>
-      <DropdownImg />
+      <ProfileDropdownMenu />
     </StyledNav>
   );
 };
