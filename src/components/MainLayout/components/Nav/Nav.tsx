@@ -49,6 +49,7 @@ const NavItem1 = styled(FlexBox)`
     border-left: 1px solid ${({ theme }) => theme.colors.black};
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
 `;
 
 export const Nav = () => {
