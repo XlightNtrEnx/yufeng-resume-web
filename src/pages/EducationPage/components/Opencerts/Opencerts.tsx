@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { Span, A } from "@src/elements";
+import { DownloadLink } from "@src/components";
 
 const Container = styled.div`
   display: flex;
@@ -28,9 +29,9 @@ export const Opencerts = ({
     <Container>
       <StyledSpan>Opencerts</StyledSpan>
       {filenames.map((filename, index) => (
-        <A key={index} href={`${assetsPath}/${filename}`}>
+        <DownloadLink key={index} href={`${assetsPath}/${filename}`}>
           {filename}
-        </A>
+        </DownloadLink>
       ))}
       <A href="https://opencerts.io/">View and verify on Opencerts.io</A>
     </Container>
