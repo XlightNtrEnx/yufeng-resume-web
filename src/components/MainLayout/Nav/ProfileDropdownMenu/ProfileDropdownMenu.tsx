@@ -42,7 +42,7 @@ const Content = styled.div`
   > * {
     display: block;
     height: 2rem;
-    width: 5rem !important;
+    width: 5.5rem !important;
     background-color: ${({ theme }) => theme.colors.softerWhite};
   }
 

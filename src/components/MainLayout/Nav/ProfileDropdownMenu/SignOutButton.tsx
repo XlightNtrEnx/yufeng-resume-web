@@ -4,7 +4,7 @@ import { signOut } from "@src/firebase";
 import { Button } from "@src/elements";
 
 const StyledButton = styled(Button)`
-  width: 5rem !important;
+  width: 5.5rem !important;
 `;
 
 export const SignOutButton = () => {
