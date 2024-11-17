@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { Img } from "@src/elements";
-import NoProfilePictureIcon from "@src/assets/icons/no_profile_picture512.png";
+import NoProfilePictureIcon from "@src/assets/icons/no-profile-picture512.png";
 import { userAtom } from "@src/atoms";
 import { meService as meStorageService } from "@src/firebase/storage/services";
-import { LoginLink, SignOutButton } from "./components";
+import { LoginLink } from "./LoginLink";
+import { SignOutButton } from "./SignOutButton";
 
 const Container = styled.div`
   position: relative;

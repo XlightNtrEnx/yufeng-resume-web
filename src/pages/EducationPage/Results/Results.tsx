@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { FlexBox } from "@src/components";
+import { FlexRow } from "@src/components";
 import { Span } from "@src/elements";
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const SubHeader = styled(Span)`
   font-style: italic;
 `;
 
-const Group = styled(FlexBox)`
+const Group = styled(FlexRow)`
   flex-direction: column;
   margin-bottom: 0.5rem;
 `;

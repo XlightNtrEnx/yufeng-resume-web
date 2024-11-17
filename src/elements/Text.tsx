@@ -1,6 +1,8 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-const Text = styled.span``;
+const Text = styled.span`
+  line-height: 1.2;
+`;
 
 export const H1 = styled(Text).attrs((props) => ({
   as: "h1",

@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
 
-import { FlexBox } from "@src/components";
-import { InternalLink } from "@src/components";
+import { FlexRow, InternalLink } from "@src/components";
 import { paths } from "@src/router";
 
-import { ProfileDropdownMenu } from "./components";
+import { ProfileDropdownMenu } from "./ProfileDropdownMenu";
 
 const NavHeightInPx = 64;
 
@@ -22,8 +21,8 @@ const StyledNav = styled.nav`
   gap: 0.8rem;
   position: sticky;
   top: 0px;
-  background-color: ${({ theme }) =>
-    theme.colors.pallete.complementary.primary};
+  background-color: transparent;
+  z-index: 9999;
 
   > * {
     max-width: ${NavItemMaxWidthInPx}px;
@@ -40,26 +39,31 @@ const StyledNav = styled.nav`
   }
 `;
 
-const NavItem1 = styled(FlexBox)`
+const InternalLinks = styled(FlexRow)`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  width: auto;
+
   > *:not(:first-child) {
-    border-left: 1px solid ${({ theme }) => theme.colors.black};
+    border-left: 1px solid ${({ theme }) => theme.colors.softerBlack};
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  > *:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 `;
 
 export const Nav = () => {
   return (
     <StyledNav>
-      <NavItem1>
+      <InternalLinks>
         <InternalLink to={paths.home}>Home</InternalLink>
         <InternalLink to={paths.education}>Education</InternalLink>
         <InternalLink to={paths.projects}>Projects</InternalLink>
-      </NavItem1>
+      </InternalLinks>
       <ProfileDropdownMenu />
     </StyledNav>
   );

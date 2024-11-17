@@ -1,2 +1,1 @@
-export { EducationPage } from "./EducationPage";
-export * from "./components";
+export * from "./EducationPage";

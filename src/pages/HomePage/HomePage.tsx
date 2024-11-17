@@ -1,33 +1,27 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
+import { useState, useEffect } from "react";
 
-import { H1, P } from "@src/elements";
+import { Grid } from "@src/components";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+import { AboutCard } from "./AboutCard";
+import { ProfileCard } from "./ProfileCard";
+
+const Container = styled(Grid)`
+  grid-template-columns: auto auto auto;
   align-items: center;
-  gap: 20px;
-  margin-top: 40px;
-
-  & > * {
-    width: 100%;
-    max-width: 80%;
-  }
-`;
-
-const StyledH1 = styled(H1)`
-  text-align: center;
-`;
-
-const StyledP = styled(P)`
-  text-align: center;
 `;
 
 export const HomePage = () => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
+
   return (
     <Container>
-      <StyledH1>About me</StyledH1>
-      <StyledP>An aspiring and passionate software engineer.</StyledP>
+      <ProfileCard animate={animate} />
+      <AboutCard animate={animate} />
     </Container>
   );
 };

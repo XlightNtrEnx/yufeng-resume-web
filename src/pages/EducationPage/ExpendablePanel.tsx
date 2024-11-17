@@ -5,9 +5,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   transition: background 0.2s;
-  border: 1px solid ${({ theme }) => theme.colors.black};
-  box-shadow: 10px 5px 5px ${({ theme }) => theme.colors.softerWhite};
-
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.colors.softerWhite};
+  box-shadow: 5px 2px 2px ${({ theme }) => theme.colors.softerBlack};
   &:focus {
     border-color: ${({ theme }) => theme.colors.pallete.complementary.primary};
   }
@@ -24,6 +24,7 @@ const HeaderContainer = styled.div<HeaderContainerProps>`
   align-items: center;
   cursor: pointer;
   transition: background 0.2s;
+  border-radius: 10px;
   &:hover {
     background: ${({ theme, open }) =>
       open ? theme.colors.softerWhite : theme.colors.softerWhite};

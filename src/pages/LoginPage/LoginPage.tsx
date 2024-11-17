@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-import { GoogleSignInButton } from "./components";
+import { GoogleSignInButton } from "./GoogleSignInButton";
 
 const Container = styled.div`
   height: 100%;

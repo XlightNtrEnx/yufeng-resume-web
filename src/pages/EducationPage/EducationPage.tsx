@@ -1,16 +1,10 @@
 import styled from "styled-components";
 
 import { H2 } from "@src/elements";
-import {
-  ALevelResult,
-  ExpendablePanel,
-  OLevelResult,
-  PSLEResult,
-  SUTDResult,
-  PSLEOpencert,
-  OLevelOpencert,
-  ALevelOpencert,
-} from "./components";
+
+import { ExpendablePanel } from "./ExpendablePanel";
+import { PSLEOpencert, OLevelOpencert, ALevelOpencert } from "./Opencerts";
+import { PSLEResult, OLevelResult, ALevelResult, SUTDResult } from "./Results";
 
 const Container = styled.div`
   display: flex;

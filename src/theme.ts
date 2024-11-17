@@ -16,6 +16,8 @@ const colors = {
     },
     complementary: {
       primary: "#453de1",
+      softPrimary: "#665fe6",
+      softerPrimary: "#a09cf0",
       complementary: "#d9e13d",
     },
   },
