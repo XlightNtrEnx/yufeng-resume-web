@@ -1,13 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
+import config from "@src/config";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCHOosE2qdOybzFe854bl9OSzkRWVvP41A",
+  apiKey: config.firebase.apiKey,
   authDomain: "yufeng-resume.firebaseapp.com",
   databaseURL:
     "https://yufeng-resume-default-rtdb.asia-southeast1.firebasedatabase.app",
