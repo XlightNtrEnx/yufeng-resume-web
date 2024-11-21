@@ -1,29 +1,29 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  transition: background 0.2s;
+import { FlexColumn } from "@src/components";
+import { Animation } from "@src/animations";
+
+const Container = styled(FlexColumn)<{ animation?: Animation }>`
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.softerWhite};
+  background-color: ${({ theme }) => theme.softerBackgroundColor};
   box-shadow: 5px 2px 2px ${({ theme }) => theme.colors.softerBlack};
+
   &:focus {
     border-color: ${({ theme }) => theme.colors.pallete.complementary.primary};
   }
+
+  ${({ animation }) => (animation ? animation() : undefined)}
 `;
 
 interface HeaderContainerProps {
   open?: boolean;
 }
 
-const HeaderContainer = styled.div<HeaderContainerProps>`
-  display: flex;
-  flex-direction: column;
+const HeaderContainer = styled(FlexColumn)<HeaderContainerProps>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background 0.2s;
   border-radius: 10px;
   &:hover {
     background: ${({ theme, open }) =>
@@ -47,12 +47,13 @@ const Content = styled.div<ContentProps>`
 interface Props {
   header?: React.ReactNode;
   children?: React.ReactNode;
+  animation?: Animation;
 }
 
-export const ExpendablePanel = ({ header, children }: Props) => {
+export const ExpendablePanel = ({ header, children, animation }: Props) => {
   const [open, setOpen] = useState(false);
   return (
-    <Container tabIndex={0}>
+    <Container tabIndex={0} animation={animation}>
       <HeaderContainer onClick={() => setOpen(!open)} open={open}>
         {header}
       </HeaderContainer>

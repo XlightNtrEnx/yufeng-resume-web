@@ -29,9 +29,11 @@ export const Opencerts = ({
     <Container>
       <StyledSpan>Opencerts</StyledSpan>
       {filenames.map((filename, index) => (
-        <DownloadLink key={index} href={`${assetsPath}/${filename}`}>
-          {filename}
-        </DownloadLink>
+        <DownloadLink
+          text={filename}
+          key={index}
+          href={`${assetsPath}/${filename}`}
+        />
       ))}
       <A href="https://opencerts.io/">View and verify on Opencerts.io</A>
     </Container>

@@ -25,7 +25,9 @@ const colors = {
 
 const theme = {
   colors,
-  backgroundColor: colors.softWhite,
+  backgroundColor: colors.white,
+  softBackgroundColor: colors.softWhite,
+  softerBackgroundColor: colors.softerWhite,
 };
 
 export type Theme = typeof theme;

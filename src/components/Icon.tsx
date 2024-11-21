@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Icon = styled(Img).attrs<Props>((props) => {
-  if (!props.size) props.size = "1rem";
+  if (!props.size) props.size = "100%";
   return props;
 })`
   width: ${({ size }) => size};

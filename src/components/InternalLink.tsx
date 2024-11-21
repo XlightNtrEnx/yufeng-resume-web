@@ -4,13 +4,12 @@ import { styled } from "styled-components";
 
 const StyledLink = styled(Link)<{ isactive: boolean }>`
   text-decoration: none;
-  padding: 0.5rem;
-  line-height: 1;
-  text-align: center;
   border-radius: 10px;
   background-color: ${({ theme, isactive }) =>
     isactive ? theme.colors.softerWhite : theme.colors.softWhite};
   color: ${({ theme, isactive }) =>
+    isactive ? theme.colors.pallete.complementary.primary : theme.colors.black};
+  fill: ${({ theme, isactive }) =>
     isactive ? theme.colors.pallete.complementary.primary : theme.colors.black};
 
   &:hover {

@@ -1,11 +1,10 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-import { fadeInFromRight } from "@src/keyframes";
-import { FlexRow } from "@src/components";
+import { FlexColumn } from "@src/components";
 
 import { AboutMe } from "./AboutMe";
 
-const Container = styled(FlexRow)<{ animate?: boolean }>`
+const Container = styled(FlexColumn)<{ animation?: any }>`
   height: 550px;
   width: 500px;
   padding: 20px;
@@ -13,20 +12,16 @@ const Container = styled(FlexRow)<{ animate?: boolean }>`
   align-items: start;
   background-color: ${({ theme }) => theme.colors.softWhite};
 
-  ${({ animate }) =>
-    animate &&
-    css`
-      animation: ${fadeInFromRight} 0.7s;
-    `}
+  ${({ animation }) => animation()};
 `;
 
 interface Props {
-  animate?: boolean;
+  animation?: any;
 }
 
-export const AboutCard = ({ animate }: Props) => {
+export const AboutCard = ({ animation }: Props) => {
   return (
-    <Container animate={animate}>
+    <Container animation={animation}>
       <AboutMe />
     </Container>
   );

@@ -15,6 +15,7 @@ const Container = styled(Grid)`
 const StyledH2 = styled(H2)`
   grid-column: 1 / -1;
   justify-self: start;
+
   &::first-letter {
     color: ${({ theme }) => theme.colors.pallete.complementary.primary};
   }
@@ -29,7 +30,7 @@ export const AboutMe = () => {
     <Container>
       <StyledH2>About me</StyledH2>
       <StyledP>
-        Hello! I'm Xue Yufeng. As a young engineer, I'm excited to learn more
+        Hello! I am Xue Yufeng. As a young engineer, I am excited to learn more
         about the many different types of software development out there.
       </StyledP>
       <Stats />

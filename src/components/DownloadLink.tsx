@@ -8,7 +8,6 @@ interface Props {
   href: string;
   text?: string;
   iconSize?: string;
-  children?: React.ReactNode;
 }
 
 const StyledA = styled(A)`
@@ -20,7 +19,7 @@ const StyledA = styled(A)`
 /**
  * Link to download a file
  */
-export const DownloadLink = ({ children, href, text, iconSize }: Props) => {
+export const DownloadLink = ({ href, text, iconSize }: Props) => {
   return (
     <StyledA download href={href}>
       <Span>{text}</Span>
@@ -29,7 +28,6 @@ export const DownloadLink = ({ children, href, text, iconSize }: Props) => {
         alt="download-icon"
         size={iconSize || "0.75em"}
       />
-      {children}
     </StyledA>
   );
 };

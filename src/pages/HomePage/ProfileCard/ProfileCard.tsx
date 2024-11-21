@@ -1,10 +1,9 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { Grid, Icon } from "@src/components";
 import Mask from "@src/assets/icons/mask200.png";
 import Me from "@src/assets/icons/me810.png";
 import { H1, Span } from "@src/elements";
-import { fadeInFromLeft } from "@src/keyframes";
 
 import { Footer } from "./Footer";
 import { Socials } from "./Socials";
@@ -13,7 +12,7 @@ const ContainerWidthInPx = 400;
 const BorderThicknessInPx = 16;
 const IconSizeInPx = ContainerWidthInPx - BorderThicknessInPx - 50;
 
-const Container = styled(Grid)<{ animate?: boolean }>`
+const Container = styled(Grid)<{ animation?: any }>`
   height: 620px;
   width: ${ContainerWidthInPx}px;
   gap: 20px;
@@ -26,11 +25,7 @@ const Container = styled(Grid)<{ animate?: boolean }>`
   border-right: transparent;
   z-index: 9998;
 
-  ${({ animate }) =>
-    animate &&
-    css`
-      animation: ${fadeInFromLeft} 0.7s;
-    `}
+  ${({ animation }) => animation()};
 `;
 
 const StyledIcon = styled(Icon)`
@@ -50,12 +45,12 @@ const StyledSpan = styled(Span)`
 `;
 
 interface Props {
-  animate?: boolean;
+  animation?: any;
 }
 
-export const ProfileCard = ({ animate }: Props) => {
+export const ProfileCard = ({ animation }: Props) => {
   return (
-    <Container animate={animate}>
+    <Container animation={animation}>
       <StyledIcon
         size={`${IconSizeInPx}px`}
         src={Me}

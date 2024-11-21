@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Text = styled.span`
   line-height: 1.2;
+  margin: 0;
 `;
 
 export const H1 = styled(Text).attrs((props) => ({

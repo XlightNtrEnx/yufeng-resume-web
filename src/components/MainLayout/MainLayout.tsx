@@ -1,36 +1,42 @@
 import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
 
-import { Nav } from "./Nav";
+import { FlexColumn, FlexRow } from "@src/components";
+import { fadeInFromLeft } from "@src/animations";
 
-const Container = styled.div`
+import { SideBar } from "./SideBar";
+
+const Container = styled(FlexRow)`
+  justify-content: center;
   min-height: 100vh;
-  height: 100%;
+  min-width: 100vw;
   position: relative;
   background: linear-gradient(
     45deg,
     ${({ theme }) => theme.colors.pallete.complementary.softPrimary},
     ${({ theme }) => theme.colors.pallete.complementary.softerPrimary}
   );
-  display: flex;
-  flex-direction: column;
   align-items: center;
+
+  > :first-child {
+    position: relative;
+    left: 8px;
+    z-index: 9999;
+  }
 `;
 
-const OutletContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+const OutletContainer = styled(FlexColumn)`
   align-items: stretch;
   justify-content: center;
   width: 100%;
-  max-width: 1024px;
-  padding: 0 12px;
+  max-width: 900px;
 `;
 
 export function MainLayout() {
   return (
     <Container id="app">
-      <Nav />
+      {/* <Nav /> */}
+      <SideBar animation={fadeInFromLeft} />
       <OutletContainer>
         <Outlet />
       </OutletContainer>
