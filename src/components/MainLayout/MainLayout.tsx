@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
 import { Suspense } from "react";
 
+import { mobileBreakpointInPx } from "@src/atoms";
 import { FlexColumn, FlexRow, LoadingSpinner } from "@src/components";
 import { fadeInFromLeft } from "@src/animations";
 
@@ -19,10 +20,9 @@ const Container = styled(FlexRow)`
   );
   align-items: center;
 
-  > :first-child {
-    position: relative;
-    left: 8px;
-    z-index: 9999;
+  @media (max-width: ${mobileBreakpointInPx}px) {
+    flex-direction: column;
+    justify-content: flex-start;
   }
 `;
 
@@ -30,7 +30,8 @@ const OutletContainer = styled(FlexColumn)`
   align-items: stretch;
   justify-content: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 924px;
+  padding: 12px;
 `;
 
 export function MainLayout() {

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { H2, P } from "@src/elements";
 import { Grid } from "@src/components";
+import { mobileBreakpointInPx } from "@src/atoms";
 
 import { Stats } from "./Stats";
 
@@ -10,6 +11,10 @@ const Container = styled(Grid)`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr
   align-items: start;
+
+  @media (max-width: ${mobileBreakpointInPx}px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const StyledH2 = styled(H2)`

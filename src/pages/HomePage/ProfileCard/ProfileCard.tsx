@@ -15,6 +15,7 @@ const IconSizeInPx = ContainerWidthInPx - BorderThicknessInPx - 50;
 const Container = styled(Grid)<{ animation?: any }>`
   height: 620px;
   width: ${ContainerWidthInPx}px;
+  max-width: 100%;
   gap: 20px;
   grid-template-rows: ${IconSizeInPx}px 5fr 5fr 20fr;
   justify-items: center;
