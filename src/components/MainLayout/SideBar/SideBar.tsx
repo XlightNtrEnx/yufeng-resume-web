@@ -36,6 +36,12 @@ const SideBarElements = styled(FlexColumn)`
     width: 64px;
     height: 64px;
   }
+
+  border: 1px solid ${({ theme }) => theme.colors.softerBlack};
+
+  > *:not(:last-child) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.softerBlack};
+  }
 `;
 
 const ArrowButton = styled(Button)`
@@ -45,6 +51,10 @@ const ArrowButton = styled(Button)`
   @media (min-width: ${mobileBreakpointInPx}px) {
     display: none;
   }
+
+  border-right: 1px solid ${({ theme }) => theme.colors.softerBlack};
+  border-top: 1px solid ${({ theme }) => theme.colors.softerBlack};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.softerBlack};
 `;
 
 interface Props {
@@ -52,7 +62,7 @@ interface Props {
 }
 
 export const SideBar = ({ animation }: Props) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const toggleSidebar = () => {
     setOpen(!open);
