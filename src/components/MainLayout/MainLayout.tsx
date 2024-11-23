@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
+import { Suspense } from "react";
 
-import { FlexColumn, FlexRow } from "@src/components";
+import { FlexColumn, FlexRow, LoadingSpinner } from "@src/components";
 import { fadeInFromLeft } from "@src/animations";
 
 import { SideBar } from "./SideBar";
@@ -37,7 +38,9 @@ export function MainLayout() {
     <Container id="app">
       <SideBar animation={fadeInFromLeft} />
       <OutletContainer>
-        <Outlet />
+        <Suspense fallback={<LoadingSpinner />}>
+          <Outlet />
+        </Suspense>
       </OutletContainer>
     </Container>
   );
