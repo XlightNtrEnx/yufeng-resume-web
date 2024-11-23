@@ -1,4 +1,4 @@
-export { LoginPage } from "./LoginPage";
-export { HomePage } from "./HomePage";
-export { ProjectsPage } from "./ProjectsPage";
-export { EducationPage } from "./EducationPage";
+export * from "./LoginPage";
+export * from "./HomePage";
+export * from "./ProjectsPage";
+export * from "./EducationPage";
