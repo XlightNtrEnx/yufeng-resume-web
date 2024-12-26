@@ -35,8 +35,8 @@ export const Projects = ({ projects }: Props) => {
           {project.gitHubLink && (
             <ExternalLink
               href={project.gitHubLink}
-              text="GitHub"
               src={GitHub}
+              iconSize="1.5em"
             />
           )}
         </ProjectContainer>

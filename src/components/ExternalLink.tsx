@@ -7,16 +7,6 @@ import { Icon } from "@src/components";
 const StyledA = styled(A)`
   text-decoration: none;
   line-height: 1;
-  text-align: center;
-  border-radius: 10px;
-
-  > * {
-    display: inline;
-  }
-
-  > *:last-child {
-    margin-left: 0.5em;
-  }
 `;
 
 interface Props {
@@ -24,16 +14,23 @@ interface Props {
   href: string;
   text?: string;
   src?: string;
+  iconSize?: string;
 }
 
 /**
  * Link to an external website
  */
-export const ExternalLink = ({ children, href, text, src }: Props) => {
+export const ExternalLink = ({
+  children,
+  href,
+  text,
+  src,
+  iconSize,
+}: Props) => {
   return (
     <StyledA target="_blank" rel="noreferrer noopener" href={href}>
-      <Span>{text}</Span>
-      {src && <Icon src={src} size="0.75em" />}
+      {text && <Span>{text}</Span>}
+      {src && <Icon src={src} size={iconSize || "0.75em"} />}
       {children}
     </StyledA>
   );
