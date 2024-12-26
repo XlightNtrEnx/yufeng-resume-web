@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
+import { H2 } from "@src/elements";
 import { FlexColumn } from "@src/components";
 import { Animation } from "@src/animations";
 
@@ -20,7 +21,7 @@ interface HeaderContainerProps {
   open?: boolean;
 }
 
-const HeaderContainer = styled(FlexColumn)<HeaderContainerProps>`
+const HeaderContainer = styled(H2)<HeaderContainerProps>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -29,6 +30,7 @@ const HeaderContainer = styled(FlexColumn)<HeaderContainerProps>`
     background: ${({ theme, open }) =>
       open ? theme.colors.softerWhite : theme.colors.softerWhite};
   }
+  padding: 30px;
 `;
 
 interface ContentProps {
@@ -45,17 +47,21 @@ const Content = styled.div<ContentProps>`
 `;
 
 interface Props {
-  header?: React.ReactNode;
+  headerContent?: React.ReactNode;
   children?: React.ReactNode;
   animation?: Animation;
 }
 
-export const ExpendablePanel = ({ header, children, animation }: Props) => {
+export const ExpendablePanel = ({
+  headerContent,
+  children,
+  animation,
+}: Props) => {
   const [open, setOpen] = useState(false);
   return (
     <Container tabIndex={0} animation={animation}>
       <HeaderContainer onClick={() => setOpen(!open)} open={open}>
-        {header}
+        {headerContent}
       </HeaderContainer>
       <Content open={open}>{children}</Content>
     </Container>

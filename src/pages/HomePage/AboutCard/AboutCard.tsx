@@ -2,22 +2,25 @@ import styled from "styled-components";
 
 import { FlexColumn } from "@src/components";
 
-import { AboutMe } from "./AboutMe";
 import { mobileBreakpointInPx } from "@src/atoms";
+
+import { AboutMe } from "./AboutMe";
+import { Skills } from "./Skills";
 
 const Container = styled(FlexColumn)<{ animation?: any }>`
   height: 550px;
   width: 500px;
   max-width: 100%;
   padding: 20px;
-  flex-direction: column;
+  gap: 1rem;
   align-items: start;
-  background-color: ${({ theme }) => theme.colors.softWhite};
+  background: ${({ theme }) => theme.softerBackgroundColor};
+  overflow-y: auto;
 
   ${({ animation }) => animation()};
 
   @media (max-width: ${mobileBreakpointInPx}px) {
-    height: 100%;
+    margin: 50px 0 100px 0;
   }
 `;
 
@@ -29,6 +32,7 @@ export const AboutCard = ({ animation }: Props) => {
   return (
     <Container animation={animation}>
       <AboutMe />
+      <Skills />
     </Container>
   );
 };

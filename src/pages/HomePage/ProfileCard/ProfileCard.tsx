@@ -19,10 +19,10 @@ const Container = styled(Grid)<{ animation?: any }>`
   gap: 20px;
   grid-template-rows: ${IconSizeInPx}px 5fr 5fr 20fr;
   justify-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 3px 2px 1px ${({ theme }) => theme.colors.softerBlack};
   border: ${BorderThicknessInPx}px solid
     ${({ theme }) => theme.colors.pallete.complementary.primary};
+  background: ${({ theme }) => theme.softBackgroundColor};
   border-right: transparent;
   z-index: 9998;
 

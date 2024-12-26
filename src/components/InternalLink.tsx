@@ -30,7 +30,11 @@ export const InternalLink = ({ children, to }: Props) => {
   const isactive = location.pathname === to;
 
   return (
-    <StyledLink to={to} isactive={isactive}>
+    <StyledLink
+      to={to}
+      isactive={isactive}
+      {...(isactive ? { className: "active" } : {})}
+    >
       {children}
     </StyledLink>
   );

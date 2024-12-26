@@ -3,11 +3,11 @@ import { Results, Subject } from "./Results";
 const categorisedSubjects = [
   {
     category: "Overall",
-    subjects: [new Subject("GPA", "4.00/5.00")],
+    subjects: [new Subject("GPA", "4.50/5.00")],
   },
   {
     category: "Term 2",
-    subjects: [new Subject("GPA", "4.00/5.00")],
+    subjects: [new Subject("GPA", "4.50/5.00")],
   },
   {
     category: "Term 1",

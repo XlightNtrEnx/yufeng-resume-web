@@ -28,6 +28,7 @@ const theme = {
   backgroundColor: colors.white,
   softBackgroundColor: colors.softWhite,
   softerBackgroundColor: colors.softerWhite,
+  textColor: colors.black,
 };
 
 export type Theme = typeof theme;

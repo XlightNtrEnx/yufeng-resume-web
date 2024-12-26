@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { FlexColumn, FlexRow, LoadingSpinner } from "@src/components";
 import { fadeInFromLeft } from "@src/animations";
+import BackgroundImage from "@src/assets/images/starry_sky.jpg";
 
 import { SideBar } from "./SideBar";
 
@@ -15,9 +16,10 @@ const Container = styled(FlexRow)`
   position: relative;
   background: linear-gradient(
     45deg,
-    ${({ theme }) => theme.colors.pallete.complementary.softPrimary},
+    ${({ theme }) => theme.colors.pallete.complementary.primary},
     ${({ theme }) => theme.colors.pallete.complementary.softerPrimary}
   );
+  background-image: url(${BackgroundImage});
   align-items: center;
 
   @media (max-width: ${mobileBreakpointInPx}px) {

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { H2 } from "@src/elements";
 import {
   fadeInFromRight,
   fadeInFromTop,
@@ -20,16 +19,7 @@ const Container = styled(FlexColumn)`
   }
 `;
 
-const StyledH2 = styled(H2)`
-  margin: 30px;
-`;
-
-const headers = [
-  <StyledH2>SUTD</StyledH2>,
-  <StyledH2>A Level</StyledH2>,
-  <StyledH2>O Level</StyledH2>,
-  <StyledH2>PSLE</StyledH2>,
-];
+const headers = ["SUTD", "A Level", "O Level", "PSLE"];
 
 const results = [
   <SUTDResult />,
@@ -65,7 +55,7 @@ export const EducationPage = () => {
       {headers.map((header, index) => (
         <ExpendablePanel
           key={index}
-          header={header}
+          headerContent={header}
           animation={assignAnimation(index)}
         >
           {results[index]}

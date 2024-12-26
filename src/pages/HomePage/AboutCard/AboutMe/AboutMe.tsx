@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-import { H2, P } from "@src/elements";
+import { PartialColorH2 } from "@src/pages/HomePage/AboutCard/components";
+import { P } from "@src/elements";
 import { Grid } from "@src/components";
 import { mobileBreakpointInPx } from "@src/atoms";
 
@@ -17,27 +18,19 @@ const Container = styled(Grid)`
   }
 `;
 
-const StyledH2 = styled(H2)`
+const StyledPartialColorH2 = styled(PartialColorH2)`
   grid-column: 1 / -1;
   justify-self: start;
-
-  &::first-letter {
-    color: ${({ theme }) => theme.colors.pallete.complementary.primary};
-  }
-`;
-
-const StyledP = styled(P)`
-  line-height: 1.5;
 `;
 
 export const AboutMe = () => {
   return (
     <Container>
-      <StyledH2>About me</StyledH2>
-      <StyledP>
-        Hello! I am Xue Yufeng. As a young engineer, I am excited to learn more
-        about the many different types of software development out there.
-      </StyledP>
+      <StyledPartialColorH2>About me</StyledPartialColorH2>
+      <P>
+        Hello! I am Xue Yufeng. As a young engineer, I am excited to broaden and
+        deepen my knowledge in the field of computer science.
+      </P>
       <Stats />
     </Container>
   );

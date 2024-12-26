@@ -4,6 +4,7 @@ import { useState } from "react";
 import { paths } from "@src/router";
 import { ReactComponent as HomeSVG } from "@src/assets/svgs/icons/home.svg";
 import { ReactComponent as GraduationCapSVG } from "@src/assets/svgs/icons/graduation-cap.svg";
+import { ReactComponent as ClipboardSVG } from "@src/assets/svgs/icons/clipboard.svg";
 import { FlexColumn, FlexRowReverse } from "@src/components";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { Button } from "@src/elements";
@@ -73,16 +74,22 @@ export const SideBar = ({ animation }: Props) => {
       <ArrowButton onClick={toggleSidebar}>{open ? "<" : ">"}</ArrowButton>
       <SideBarElements>
         <ChildInternalLink
+          key="Home"
           to={paths.home}
           label="Home"
           SVG={HomeSVG}
-          key="Home"
         />
         <ChildInternalLink
           key="Education"
           to={paths.education}
           label="Education"
           SVG={GraduationCapSVG}
+        />
+        <ChildInternalLink
+          key="Projects"
+          to={paths.projects}
+          label="Projects"
+          SVG={ClipboardSVG}
         />
       </SideBarElements>
     </Container>
