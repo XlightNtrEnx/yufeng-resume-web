@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Grid } from "@src/components";
 import AISrc from "@src/assets/images/ai.jpg";
 import WebSrc from "@src/assets/images/web.jpg";
+import CysecSrc from "@src/assets/images/cybersecurity.png";
 import {
   fadeInFromRight,
   fadeInFromTop,
@@ -13,7 +14,7 @@ import { mobileBreakpointInPx } from "@src/atoms";
 
 import { Category } from "./Category";
 import { Modal } from "./Modal";
-import { AIProjects, WebProjects } from "./Projects";
+import { AIProjects, WebProjects, CysecProjects } from "./Projects";
 
 const Container = styled(Grid)`
   grid-template-columns: repeat(3, 1fr);
@@ -42,6 +43,7 @@ interface ICategory {
 const categories: ICategory[] = [
   ["AI", AISrc, <AIProjects />],
   ["Web", WebSrc, <WebProjects />],
+  ["Cysec", CysecSrc, <CysecProjects />],
 ];
 
 const firstIndex = 0;

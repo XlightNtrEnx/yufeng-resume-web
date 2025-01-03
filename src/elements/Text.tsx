@@ -23,7 +23,9 @@ export const H2 = styled(Text).attrs((props) => ({
 export const Span = styled(Text).attrs((props) => ({
   as: "span",
   ...props,
-}))``;
+}))`
+  white-space: pre-wrap;
+`;
 
 export const P = styled(Text).attrs((props) => ({
   as: "p",
