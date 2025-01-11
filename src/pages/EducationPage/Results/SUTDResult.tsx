@@ -1,4 +1,4 @@
-import { Results, Subject } from "./Results";
+import { Results, Subject } from "./Result";
 
 const categorisedSubjects = [
   {
@@ -19,6 +19,6 @@ const categorisedSubjects = [
   },
 ];
 
-export const SUTDResults = () => {
+export const SUTDResult = () => {
   return <Results categorisedSubjects={categorisedSubjects} />;
 };

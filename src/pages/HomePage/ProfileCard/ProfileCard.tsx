@@ -4,6 +4,7 @@ import { Grid, Icon } from "@src/components";
 import Mask from "@src/assets/icons/mask200.png";
 import Me from "@src/assets/icons/me810.png";
 import { H1, Span } from "@src/elements";
+import { zIndexes } from "@src/zIndex";
 
 import { Footer } from "./Footer";
 import { Socials } from "./Socials";
@@ -24,7 +25,7 @@ const Container = styled(Grid)<{ animation?: any }>`
     ${({ theme }) => theme.colors.pallete.complementary.primary};
   background: ${({ theme }) => theme.softBackgroundColor};
   border-right: transparent;
-  z-index: 9998;
+  z-index: ${zIndexes.pages.home.profileCard};
 
   ${({ animation }) => animation()};
 `;
@@ -52,11 +53,7 @@ interface Props {
 export const ProfileCard = ({ animation }: Props) => {
   return (
     <Container animation={animation}>
-      <StyledIcon
-        size={`${IconSizeInPx}px`}
-        src={Me}
-        alt="Photo of me"
-      ></StyledIcon>
+      <StyledIcon size={`${IconSizeInPx}px`} src={Me} alt="Photo of me" />
       <StyledH1>Xue Yufeng</StyledH1>
       <StyledSpan>Music theory enthusiast</StyledSpan>
       <Socials />

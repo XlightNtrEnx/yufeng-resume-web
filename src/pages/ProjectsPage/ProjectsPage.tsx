@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { Grid } from "@src/components";
+import { Grid, Modal } from "@src/components";
+import { zIndexes } from "@src/zIndex";
 import AISrc from "@src/assets/images/ai.jpg";
 import WebSrc from "@src/assets/images/web.jpg";
 import CysecSrc from "@src/assets/images/cybersecurity.png";
@@ -13,7 +14,6 @@ import {
 import { mobileBreakpointInPx } from "@src/atoms";
 
 import { Category } from "./Category";
-import { Modal } from "./Modal";
 import { AIProjects, WebProjects, CysecProjects } from "./Projects";
 
 const Container = styled(Grid)`
@@ -86,7 +86,10 @@ export const ProjectsPage = () => {
         ))}
       </Container>
       {typeof selectedCategoryIdx === "number" && (
-        <Modal onClose={handleCloseModal}>
+        <Modal
+          zIndex={zIndexes.pages.projects.categoryModal}
+          onClose={handleCloseModal}
+        >
           {categories[selectedCategoryIdx][2]}
         </Modal>
       )}

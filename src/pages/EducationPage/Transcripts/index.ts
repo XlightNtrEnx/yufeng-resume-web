@@ -1,0 +1,1 @@
+export { SUTDTranscript } from "./SUTDTranscript";

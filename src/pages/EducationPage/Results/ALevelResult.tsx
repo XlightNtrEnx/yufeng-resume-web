@@ -1,4 +1,4 @@
-import { Results, Subject } from "./Results";
+import { Results, Subject } from "./Result";
 
 const subjects = [
   new Subject("H1 Project Work", "A"),
@@ -10,6 +10,6 @@ const subjects = [
   new Subject("H3 Chemistry", "Pass"),
 ];
 
-export const ALevelResults = () => {
+export const ALevelResult = () => {
   return <Results subjects={subjects}></Results>;
 };

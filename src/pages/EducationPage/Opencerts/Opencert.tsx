@@ -1,15 +1,11 @@
 import styled from "styled-components";
 
-import { Span, A } from "@src/elements";
+import { Span } from "@src/elements";
 import { DownloadLink } from "@src/components";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  > :last-child {
-    margin-top: 1rem;
-  }
 `;
 
 const StyledSpan = styled(Span)`
@@ -18,7 +14,7 @@ const StyledSpan = styled(Span)`
   padding-bottom: 0.5rem;
 `;
 
-export const Opencerts = ({
+export const Opencert = ({
   assetsPath,
   filenames,
 }: {
@@ -35,7 +31,6 @@ export const Opencerts = ({
           href={`${assetsPath}/${filename}`}
         />
       ))}
-      <A href="https://opencerts.io/">View and verify on Opencerts.io</A>
     </Container>
   );
 };

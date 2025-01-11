@@ -14,7 +14,7 @@ interface Props {
 export const DownloadLink = ({ href, text, iconSize }: Props) => {
   return (
     <A download href={href}>
-      <Span>{text}</Span>
+      <Span>{text} </Span>
       <Icon
         src={DownloadIcon}
         alt="download-icon"

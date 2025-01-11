@@ -14,9 +14,9 @@ const StyledFooter = styled(FooterElement)`
 export const Footer = () => {
   return (
     <StyledFooter>
-      <DownloadLink text="Download CV " href="files/resume.pdf" />
+      <DownloadLink text="Download CV" href="files/resume.pdf" />
       <ExternalLink
-        text="Contact me  "
+        text="Contact me"
         href="mailto:xyf.oco@gmail.com"
         src={Email}
       />

@@ -4,6 +4,7 @@ import { Img } from "@src/elements";
 
 interface Props {
   size?: string;
+  src?: string;
 }
 
 export const Icon = styled(Img).attrs<Props>((props) => {

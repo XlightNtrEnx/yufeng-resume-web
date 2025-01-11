@@ -8,12 +8,13 @@ import { ReactComponent as ClipboardSVG } from "@src/assets/svgs/icons/clipboard
 import { FlexColumn, FlexRowReverse } from "@src/components";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { Button } from "@src/elements";
+import { zIndexes } from "@src/zIndex";
 
 import { ChildInternalLink } from "./ChildInternalLink";
 
 const Container = styled(FlexRowReverse)<{ animation?: any; open?: boolean }>`
   align-items: flex-start;
-  z-index: 9999;
+  z-index: ${zIndexes.mainLayout.sideBar};
   position: relative;
   left: 20px;
 

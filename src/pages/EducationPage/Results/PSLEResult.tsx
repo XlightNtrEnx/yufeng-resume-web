@@ -1,4 +1,4 @@
-import { Results, Subject } from "./Results";
+import { Results, Subject } from "./Result";
 
 const subjects = [
   new Subject("Aggregate", "242/300"),
@@ -8,6 +8,6 @@ const subjects = [
   new Subject("Chinese", "A"),
 ];
 
-export const PSLEResults = () => {
+export const PSLEResult = () => {
   return <Results subjects={subjects}></Results>;
 };

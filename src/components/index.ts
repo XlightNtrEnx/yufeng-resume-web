@@ -7,3 +7,4 @@ export * from "./ExternalLink";
 export * from "./Icon";
 export * from "./InlineContainer";
 export * from "./LoadingSpinner";
+export * from "./Modal";

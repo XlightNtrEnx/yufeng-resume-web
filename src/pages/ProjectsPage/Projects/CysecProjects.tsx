@@ -9,9 +9,14 @@ const KaliLinuxFamiliarisation = {
   - arping, fping, arp-scan, hping3, masscan, atk6-thcping6, nmap, netdiscover, nbtscan (Live Host Identification)
   - (OSINT analysis)
   - traceroute, mtr (Route analysis)
-  - snmpwalk, nmap, snmp, hping3 (Device discovery)
-  - (SMB attacks)
-  2) 
+  - snmpwalk, nmap, snmp, hping3, snmp-check, onesixtyone (Device discovery)
+  - nbtscan, enum4linux, smbmap (SMB scans)
+  - smtp-user-enum, swaks (SMTP server testing)
+  - sslscan, sslyze, ssldump (SSL/TLS analysis)
+
+  2) Vulnerability analysis
+  - SPIKE fuzzer suite (fuzzing)
+  - (VoIP analysis)
   `,
 };
 

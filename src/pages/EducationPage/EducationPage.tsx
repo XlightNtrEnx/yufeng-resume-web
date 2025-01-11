@@ -10,6 +10,7 @@ import { FlexColumn } from "@src/components";
 import { ExpendablePanel } from "./ExpendablePanel";
 import { PSLEOpencert, OLevelOpencert, ALevelOpencert } from "./Opencerts";
 import { PSLEResult, OLevelResult, ALevelResult, SUTDResult } from "./Results";
+import { SUTDTranscript } from "./Transcripts";
 
 const Container = styled(FlexColumn)`
   gap: 10px;
@@ -34,6 +35,8 @@ const opencerts = [
   <OLevelOpencert />,
   <PSLEOpencert />,
 ];
+
+const transcripts = [<SUTDTranscript />, <></>, <></>, <></>];
 
 const firstIndex = 0;
 const lastIndex = headers.length - 1;
@@ -60,6 +63,7 @@ export const EducationPage = () => {
         >
           {results[index]}
           {opencerts[index]}
+          {transcripts[index]}
         </ExpendablePanel>
       ))}
     </Container>
