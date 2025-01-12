@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { mobileBreakpointInPx } from "@src/atoms";
+
 import { FlexRow } from "./FlexBox";
 
 const Overlay = styled(FlexRow)<{ zIndex: number }>`
@@ -28,6 +30,10 @@ const Container = styled.div<{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: scroll;
   max-height: 90%;
+
+  @media (max-width: ${mobileBreakpointInPx}px) {
+    max-width: 90%;
+  }
 `;
 
 interface Props {
