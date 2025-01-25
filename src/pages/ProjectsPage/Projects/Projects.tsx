@@ -9,7 +9,7 @@ import { MainMediaContainer } from "./MainMediaContainer";
 
 const Container = styled(FlexColumn)`
   > *:not(:first-child) {
-    border-top: 1px solid black;
+    padding-top: 1rem;
   }
 `;
 

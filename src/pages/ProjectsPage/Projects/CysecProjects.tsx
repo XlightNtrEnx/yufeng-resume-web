@@ -1,5 +1,10 @@
 import { Projects } from "./Projects";
 
+const HackTheBox = {
+  name: "Hack The Box",
+  achievements: "Work in progress",
+};
+
 const KaliLinuxFamiliarisation = {
   name: "Kali Linux familiarisation",
   achievements: `Familiarised myself with the Kali Linux OS. Learnt how to use 
@@ -20,7 +25,7 @@ const KaliLinuxFamiliarisation = {
   `,
 };
 
-const projects = [KaliLinuxFamiliarisation];
+const projects = [HackTheBox, KaliLinuxFamiliarisation];
 
 export const CysecProjects = () => {
   return <Projects projects={projects} />;

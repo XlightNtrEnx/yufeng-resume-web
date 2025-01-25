@@ -9,8 +9,14 @@ import { FlexColumn } from "@src/components";
 
 import { ExpendablePanel } from "./ExpendablePanel";
 import { PSLEOpencert, OLevelOpencert, ALevelOpencert } from "./Opencerts";
-import { PSLEResult, OLevelResult, ALevelResult, SUTDResult } from "./Results";
-import { SUTDTranscript } from "./Transcripts";
+import {
+  PSLEResult,
+  OLevelResult,
+  ALevelResult,
+  YISSResult,
+  SUTDResult,
+} from "./Results";
+import { YISSTranscript, SUTDTranscript } from "./Transcripts";
 
 const Container = styled(FlexColumn)`
   gap: 10px;
@@ -20,10 +26,17 @@ const Container = styled(FlexColumn)`
   }
 `;
 
-const headers = ["SUTD", "A Level", "O Level", "PSLE"];
+const headers = [
+  "SUTD",
+  "YISS (Exchange student)",
+  "A Level",
+  "O Level",
+  "PSLE",
+];
 
 const results = [
   <SUTDResult />,
+  <YISSResult />,
   <ALevelResult />,
   <OLevelResult />,
   <PSLEResult />,
@@ -31,12 +44,19 @@ const results = [
 
 const opencerts = [
   <></>,
+  <></>,
   <ALevelOpencert />,
   <OLevelOpencert />,
   <PSLEOpencert />,
 ];
 
-const transcripts = [<SUTDTranscript />, <></>, <></>, <></>];
+const transcripts = [
+  <SUTDTranscript />,
+  <YISSTranscript />,
+  <></>,
+  <></>,
+  <></>,
+];
 
 const firstIndex = 0;
 const lastIndex = headers.length - 1;
