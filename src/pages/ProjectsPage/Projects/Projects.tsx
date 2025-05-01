@@ -6,7 +6,7 @@ import GitHub from "@src/assets/icons/github512.png";
 import { ReactComponent as ColabSVGIcon } from "@src/assets/svgs/icons/google-colab.svg";
 import { ImgIcon } from "@src/components";
 
-import { MainMediaContainer } from "./MainMediaContainer";
+import { MediaScroller } from "./MediaScroller";
 
 const Container = styled(FlexColumn)`
   > *:not(:first-child) {
@@ -84,7 +84,7 @@ export const Projects = ({ projects }: Props) => {
               </Links>
             )}
             <Span>{project.achievements}</Span>
-            {project.medias && <MainMediaContainer medias={project.medias} />}
+            {project.medias && <MediaScroller medias={project.medias} />}
           </ProjectContainer>
         );
       })}
