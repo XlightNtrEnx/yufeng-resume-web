@@ -1,9 +1,17 @@
-// import styled from "styled-components";
 import { Opencert } from "./Opencert";
+import { publicPaths } from "@src/publicPaths";
 
 export const PSLEOpencert = () => {
-  const folder = "files/education_milestones/psle/opencerts";
-  const filenames = ["1.opencert"];
+  const filenames = [
+    publicPaths.filesDir.educationMilestonesDir.psleDir.opencertsDir.main,
+  ];
 
-  return <Opencert assetsPath={folder} filenames={filenames}></Opencert>;
+  return (
+    <Opencert
+      certsDir={
+        publicPaths.filesDir.educationMilestonesDir.psleDir.opencertsDir.path
+      }
+      filenames={filenames}
+    ></Opencert>
+  );
 };

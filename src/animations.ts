@@ -1,6 +1,18 @@
-import { keyframes, css } from "styled-components";
+import { keyframes, css, styled, WebTarget } from "styled-components";
 
-export type Animation = () => ReturnType<typeof css>;
+import { RuleSet } from "styled-components";
+
+export type Animation = () => RuleSet<object>;
+
+export interface AnimationProps {
+  animation: Animation;
+}
+
+export const apply = (reactNode: WebTarget, animation: Animation) => {
+  return styled(reactNode)`
+    ${({ animation }) => animation()}
+  `;
+};
 
 export const fadeInFromLeft = () => {
   const keyframe = keyframes`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { DownloadLink, ExternalLink } from "@src/components";
-import { Footer as FooterElement } from "@src/elements";
+import { DownloadLinkWithIcon, ExternalLink, ImgIcon } from "@src/components";
+import { Footer as FooterElement, Span } from "@src/elements";
 import Email from "@src/assets/icons/email512.png";
 
 const StyledFooter = styled(FooterElement)`
@@ -14,12 +14,12 @@ const StyledFooter = styled(FooterElement)`
 export const Footer = () => {
   return (
     <StyledFooter>
-      <DownloadLink text="Download CV" href="files/resume.pdf" />
-      <ExternalLink
-        text="Contact me"
-        href="mailto:xyf.oco@gmail.com"
-        src={Email}
-      />
+      <DownloadLinkWithIcon href="files/resume.pdf">
+        <Span>Download CV </Span>
+      </DownloadLinkWithIcon>
+      <ExternalLink href="mailto:xyf.oco@gmail.com">
+        <Span>Contact me</Span> <ImgIcon src={Email} iconSize="0.75em" />
+      </ExternalLink>
     </StyledFooter>
   );
 };

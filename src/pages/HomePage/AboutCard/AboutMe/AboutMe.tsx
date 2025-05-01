@@ -28,8 +28,8 @@ export const AboutMe = () => {
     <Container>
       <StyledPartialColorH2>About me</StyledPartialColorH2>
       <P>
-        Hello! I am Xue Yufeng. As a young engineer, I am excited to broaden and
-        deepen my knowledge in the field of computer science.
+        Hello! I am Yufeng. I am excited to further my knowledge in computer
+        science.
       </P>
       <Stats />
     </Container>

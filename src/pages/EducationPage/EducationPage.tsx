@@ -78,7 +78,7 @@ export const EducationPage = () => {
       {headers.map((header, index) => (
         <ExpendablePanel
           key={index}
-          headerContent={header}
+          headerString={header}
           animation={assignAnimation(index)}
         >
           {results[index]}

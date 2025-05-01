@@ -35,9 +35,8 @@ const calculateAge = (birthday: Date = new Date(2002, 6, 26)) => {
   if (
     monthDifference < 0 ||
     (monthDifference === 0 && today.getDate() < birthday.getDate())
-  ) {
+  )
     return (age - 1).toString();
-  }
   return age.toString();
 };
 

@@ -1,9 +1,18 @@
-// import styled from "styled-components";
 import { Opencert } from "./Opencert";
+import { publicPaths } from "@src/publicPaths";
 
 export const ALevelOpencert = () => {
-  const folder = "files/education_milestones/alevel/opencerts";
-  const filenames = ["alevel.opencert", "alevel pw.opencert"];
+  const filenames = [
+    publicPaths.filesDir.educationMilestonesDir.alevelDir.opencertsDir.main,
+    publicPaths.filesDir.educationMilestonesDir.alevelDir.opencertsDir.pw,
+  ];
 
-  return <Opencert assetsPath={folder} filenames={filenames}></Opencert>;
+  return (
+    <Opencert
+      certsDir={
+        publicPaths.filesDir.educationMilestonesDir.alevelDir.opencertsDir.path
+      }
+      filenames={filenames}
+    ></Opencert>
+  );
 };

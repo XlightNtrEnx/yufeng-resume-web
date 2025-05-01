@@ -12,9 +12,10 @@ const Container = styled(FlexColumn)`
 export const Skills = () => {
   return (
     <Container>
-      <PartialColorH2>Skills</PartialColorH2>
-      <P>Mobile responsive and interactive web development 🌐</P>
-      <P>Image recognition AI 🌄</P>
+      <PartialColorH2>Proven skills</PartialColorH2>
+      <P>Mobile responsive and interactive web dev 🌐</P>
+      <P>Computer vision AI 📸</P>
+      <P>Electronic circuit design 📟</P>
     </Container>
   );
 };

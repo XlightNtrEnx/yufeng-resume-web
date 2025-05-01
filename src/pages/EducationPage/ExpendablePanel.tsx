@@ -3,9 +3,9 @@ import { useState } from "react";
 
 import { H2 } from "@src/elements";
 import { FlexColumn } from "@src/components";
-import { Animation } from "@src/animations";
+import { AnimationProps } from "@src/animations";
 
-const Container = styled(FlexColumn)<{ animation?: Animation }>`
+const Container = styled(FlexColumn)<Partial<AnimationProps>>`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.softerBackgroundColor};
   box-shadow: 5px 2px 2px ${({ theme }) => theme.colors.softerBlack};
@@ -46,22 +46,21 @@ const Content = styled.div<ContentProps>`
   }
 `;
 
-interface Props {
-  headerContent?: React.ReactNode;
+interface ExpendablePanelProps extends Partial<AnimationProps> {
+  headerString?: string;
   children?: React.ReactNode;
-  animation?: Animation;
 }
 
 export const ExpendablePanel = ({
-  headerContent,
+  headerString,
   children,
   animation,
-}: Props) => {
+}: ExpendablePanelProps) => {
   const [open, setOpen] = useState(false);
   return (
     <Container tabIndex={0} animation={animation}>
       <HeaderContainer onClick={() => setOpen(!open)} open={open}>
-        {headerContent}
+        {headerString}
       </HeaderContainer>
       <Content open={open}>{children}</Content>
     </Container>

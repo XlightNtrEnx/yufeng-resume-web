@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 import { FlexColumn } from "@src/components";
-
+import { AnimationProps } from "@src/animations";
 import { mobileBreakpointInPx } from "@src/atoms";
 
 import { AboutMe } from "./AboutMe";
 import { Skills } from "./Skills";
 
-const Container = styled(FlexColumn)<{ animation?: any }>`
+const Container = styled(FlexColumn)<AnimationProps>`
   height: 550px;
   width: 500px;
   max-width: 100%;
@@ -24,11 +24,7 @@ const Container = styled(FlexColumn)<{ animation?: any }>`
   }
 `;
 
-interface Props {
-  animation?: any;
-}
-
-export const AboutCard = ({ animation }: Props) => {
+export const AboutCard = ({ animation }: AnimationProps) => {
   return (
     <Container animation={animation}>
       <AboutMe />

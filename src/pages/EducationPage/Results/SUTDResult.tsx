@@ -1,24 +1,12 @@
-import { Results, Subject } from "./Result";
+import { Results, Subject, Category } from "./Result";
 
-const categorisedSubjects = [
-  {
-    category: "Overall",
-    subjects: [new Subject("Cumulative GPA", "4.70/5.00")],
-  },
-  {
-    category: "Term 3",
-    subjects: [new Subject("GPA", "4.75/5.00")],
-  },
-  {
-    category: "Term 2",
-    subjects: [new Subject("GPA", "4.50/5.00")],
-  },
-  {
-    category: "Term 1",
-    subjects: [new Subject("GPA", "NA")],
-  },
+const categories = [
+  new Category("Overall", [new Subject("Cumulative GPA", "4.70/5.00")]),
+  new Category("Term 3", [new Subject("GPA", "4.75/5.00")]),
+  new Category("Term 2", [new Subject("GPA", "4.50/5.00")]),
+  new Category("Term 1", [new Subject("GPA", "NA")]),
 ];
 
 export const SUTDResult = () => {
-  return <Results categorisedSubjects={categorisedSubjects} />;
+  return <Results categories={categories} />;
 };

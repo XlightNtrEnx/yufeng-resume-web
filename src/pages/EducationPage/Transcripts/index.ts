@@ -1,2 +1,2 @@
-export { SUTDTranscript } from "./SUTDTranscript";
-export { YISSTranscript } from "./YISSTranscript";
+export * from "./SUTDTranscript";
+export * from "./YISSTranscript";

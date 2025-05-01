@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
-import { FlexRow } from "@src/components";
+import { FlexRow, FlexColumn } from "@src/components";
 import { Span } from "@src/elements";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+const Container = styled(FlexColumn)``;
 
 const Header = styled(Span)`
   font-size: 1.2rem;
@@ -41,22 +38,29 @@ export class Subject {
   }
 }
 
-export type CategorisedSubjects = { category: string; subjects: Subject[] }[];
+export class Category {
+  name: string;
+  subjects: Subject[];
+
+  constructor(name: string, subjects: Subject[]) {
+    this.name = name;
+    this.subjects = subjects;
+  }
+}
 
 export const Results = ({
   subjects,
-  categorisedSubjects,
+  categories,
 }: {
   subjects?: Subject[];
-  categorisedSubjects?: CategorisedSubjects;
+  categories?: Category[];
 }) => {
   return (
     <Container>
       <Header>Results</Header>
-
-      {categorisedSubjects?.map((group) => (
-        <Group key={group.category}>
-          <SubHeader>{group.category}</SubHeader>
+      {categories?.map((group) => (
+        <Group key={group.name}>
+          <SubHeader>{group.name}</SubHeader>
           {group.subjects.map((subject) => subject.toHtml())}
         </Group>
       ))}

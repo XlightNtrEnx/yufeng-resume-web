@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-import { Grid, Icon } from "@src/components";
+import { Grid, ImgIcon } from "@src/components";
 import Mask from "@src/assets/icons/mask200.png";
 import Me from "@src/assets/icons/me810.png";
 import { H1, Span } from "@src/elements";
 import { zIndexes } from "@src/zIndex";
+import { AnimationProps } from "@src/animations";
 
 import { Footer } from "./Footer";
 import { Socials } from "./Socials";
@@ -13,7 +14,7 @@ const ContainerWidthInPx = 400;
 const BorderThicknessInPx = 16;
 const IconSizeInPx = ContainerWidthInPx - BorderThicknessInPx - 50;
 
-const Container = styled(Grid)<{ animation?: any }>`
+const Container = styled(Grid)<AnimationProps>`
   height: 620px;
   width: ${ContainerWidthInPx}px;
   max-width: 100%;
@@ -30,7 +31,7 @@ const Container = styled(Grid)<{ animation?: any }>`
   ${({ animation }) => animation()};
 `;
 
-const StyledIcon = styled(Icon)`
+const StyledIcon = styled(ImgIcon)`
   -webkit-mask-image: url(${Mask});
   mask-image: url(${Mask});
   mask-repeat: no-repeat;
@@ -46,14 +47,10 @@ const StyledSpan = styled(Span)`
   color: ${({ theme }) => theme.colors.pallete.complementary.primary};
 `;
 
-interface Props {
-  animation?: any;
-}
-
-export const ProfileCard = ({ animation }: Props) => {
+export const ProfileCard = ({ animation }: AnimationProps) => {
   return (
     <Container animation={animation}>
-      <StyledIcon size={`${IconSizeInPx}px`} src={Me} alt="Photo of me" />
+      <StyledIcon iconSize={`${IconSizeInPx}px`} src={Me} alt="Photo of me" />
       <StyledH1>Xue Yufeng</StyledH1>
       <StyledSpan>Music theory enthusiast</StyledSpan>
       <Socials />

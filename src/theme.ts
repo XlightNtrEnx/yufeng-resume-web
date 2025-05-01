@@ -28,6 +28,9 @@ const theme = {
   backgroundColor: colors.white,
   softBackgroundColor: colors.softWhite,
   softerBackgroundColor: colors.softerWhite,
+  negBackgroundColor: colors.black,
+  negSoftBackgroundColor: colors.softBlack,
+  negSofterBackgroundColor: colors.softerBlack,
   textColor: colors.black,
 };
 
