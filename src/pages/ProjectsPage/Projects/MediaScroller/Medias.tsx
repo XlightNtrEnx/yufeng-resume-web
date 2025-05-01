@@ -86,7 +86,9 @@ export const Medias = ({
   );
 };
 
-interface ThumbnailsProps extends MediasProps {}
+interface ThumbnailsProps extends MediasProps {
+  firstThumbnailIdx: number;
+}
 
 const ThumbnailsContainer = styled(Container)`
   aspect-ratio: 16 / 1.8;
@@ -105,12 +107,13 @@ const ActiveSelectionBorder = styled.div<{ width?: string; left?: string }>`
 
 export const Thumbnails = ({
   medias,
+  firstThumbnailIdx,
   selectedMediaIdx,
   setSelectedMediaIdx,
 }: ThumbnailsProps) => {
   return (
     <ThumbnailsContainer>
-      <ImgsContainer imgWidth="20%">
+      <ImgsContainer imgWidth="20%" right={`${firstThumbnailIdx * 20}%`}>
         <ActiveSelectionBorder left={`${selectedMediaIdx * 20}%`} />
         {medias.map((media, idx) => (
           <Img
