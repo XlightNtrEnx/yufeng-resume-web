@@ -6,3 +6,4 @@ export * from "./Text";
 export * from "./Form";
 export * from "./A";
 export * from "./Footer";
+export * from "./Video";
