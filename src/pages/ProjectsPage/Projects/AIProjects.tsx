@@ -1,7 +1,11 @@
 import { Projects, Project } from "./Projects";
 
-import media2 from "@src/assets/images/projects/cat-dog-classifier/1.png";
-import media1 from "@src/assets/images/projects/cat-dog-classifier/2.png";
+import media1 from "@src/assets/images/projects/cat-dog-classifier/1.png";
+import media2 from "@src/assets/images/projects/cat-dog-classifier/2.png";
+import media3 from "@src/assets/images/projects/cat-dog-classifier/3.png";
+import media4 from "@src/assets/images/projects/cat-dog-classifier/4.png";
+import media5 from "@src/assets/images/projects/cat-dog-classifier/5.png";
+import media6 from "@src/assets/images/projects/cat-dog-classifier/6.png";
 
 const projects = [
   new Project({
@@ -16,7 +20,7 @@ const projects = [
     colabURL:
       "https://colab.research.google.com/drive/1DO3Vp136JAMOekZNlbf7Pz3TawHV__xa?usp=sharing",
 
-    medias: [media1, media2],
+    medias: [media1, media2, media3, media4, media5, media6],
   }),
 ];
 
