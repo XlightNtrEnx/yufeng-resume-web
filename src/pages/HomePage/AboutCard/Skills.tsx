@@ -15,14 +15,21 @@ const StyledP = styled(P)`
   color: ${({ theme }) => theme.colors.black};
 `;
 
+const StrikethroughP = styled(StyledP)`
+  text-decoration: line-through;
+`;
+
 export const Skills = () => {
   return (
     <Container>
       <PartialColorH2>Proven skills</PartialColorH2>
-      <StyledP>Mobile responsive and interactive web dev 🌐</StyledP>
-      <StyledP>Computer vision AI 📸</StyledP>
-      <StyledP>Electronic circuit design 📟</StyledP>
+      <StyledP>AI (Computer Vision) 📸</StyledP>
+      <StyledP>Android dev 👽</StyledP>
+      <StyledP>CI/CD ⚙️</StyledP>
       <StyledP>Cloud computing 💨</StyledP>
+      <StyledP>Electronic circuit design 📟</StyledP>
+      <StyledP>Web dev (Interactive and mobile responsive) 🌐</StyledP>
+      <StrikethroughP>Vibe coding 💩</StrikethroughP>
     </Container>
   );
 };
