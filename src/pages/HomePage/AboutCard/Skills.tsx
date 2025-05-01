@@ -9,14 +9,20 @@ const Container = styled(FlexColumn)`
   gap: 15px;
 `;
 
+const StyledP = styled(P)`
+  padding-left: 0.5em;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  color: ${({ theme }) => theme.colors.black};
+`;
+
 export const Skills = () => {
   return (
     <Container>
       <PartialColorH2>Proven skills</PartialColorH2>
-      <P>Mobile responsive and interactive web dev 🌐</P>
-      <P>Computer vision AI 📸</P>
-      <P>Electronic circuit design 📟</P>
-      <P>Cloud computing 💨</P>
+      <StyledP>Mobile responsive and interactive web dev 🌐</StyledP>
+      <StyledP>Computer vision AI 📸</StyledP>
+      <StyledP>Electronic circuit design 📟</StyledP>
+      <StyledP>Cloud computing 💨</StyledP>
     </Container>
   );
 };
