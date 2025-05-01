@@ -1,1 +1,1 @@
-export { MainMediaContainer } from "./MainMediaContainer";
+export { MediaScroller as MainMediaContainer } from "./MediaScroller";
