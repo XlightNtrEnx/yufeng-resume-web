@@ -16,6 +16,7 @@ export const Skills = () => {
       <P>Mobile responsive and interactive web dev 🌐</P>
       <P>Computer vision AI 📸</P>
       <P>Electronic circuit design 📟</P>
+      <P>Cloud computing 💨</P>
     </Container>
   );
 };
