@@ -1,11 +1,12 @@
-import { Projects, Project } from "./Projects";
+import { ProjectProps } from "./Project";
+import { Projects } from "./Projects";
 
-const projects = [
-  new Project({
+const projects: ProjectProps[] = [
+  {
     name: "Hack The Box",
     achievements: "Work in progress",
-  }),
-  new Project({
+  },
+  {
     name: "Kali Linux familiarisation",
     achievements: `Familiarised myself with the Kali Linux OS. Learnt how to use 
     1) Information gathering tools
@@ -23,7 +24,7 @@ const projects = [
     - SPIKE fuzzer suite (fuzzing)
     - (VoIP analysis)
     `,
-  }),
+  },
 ];
 
 export const CysecProjects = () => {
