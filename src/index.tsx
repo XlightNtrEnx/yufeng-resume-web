@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import "@src/css/index.css";
 import theme from "@src/theme";
 import router from "@src/router";
-import { AuthProvider } from "@src/providers";
+import { AuthProvider, ScrollToHashProvider } from "@src/providers";
 // import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -14,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <AuthProvider>
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <ScrollToHashProvider>
+        <RouterProvider router={router} />
+      </ScrollToHashProvider>
     </ThemeProvider>
   </AuthProvider>
 );
