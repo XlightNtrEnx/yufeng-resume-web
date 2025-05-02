@@ -6,6 +6,7 @@ import { zIndexes } from "@src/zIndex";
 import AISrc from "@src/assets/images/ai.jpg";
 import WebSrc from "@src/assets/images/web.jpg";
 import CysecSrc from "@src/assets/images/cybersecurity.png";
+import EESrc from "@src/assets/images/electrical engineering.jpg";
 import {
   fadeInFromRight,
   fadeInFromTop,
@@ -14,7 +15,7 @@ import {
 import { mobileBreakpointInPx } from "@src/atoms";
 
 import { Category } from "./Category";
-import { AIProjects, WebProjects, CysecProjects } from "./Projects";
+import { AIProjects, WebProjects, CysecProjects, EEProjects } from "./Projects";
 
 const Container = styled(Grid)`
   grid-template-columns: repeat(3, 1fr);
@@ -32,6 +33,10 @@ const Container = styled(Grid)`
     height: 200px;
     background-color: ${({ theme }) => theme.softBackgroundColor};
   }
+
+  > :nth-child(n + 4) {
+    margin-top: 50px;
+  }
 `;
 
 interface ICategory {
@@ -44,6 +49,7 @@ const categories: ICategory[] = [
   ["AI", AISrc, <AIProjects />],
   ["Web", WebSrc, <WebProjects />],
   ["Cysec", CysecSrc, <CysecProjects />],
+  ["Elec. Eng", EESrc, <EEProjects />],
 ];
 
 const firstIndex = 0;
