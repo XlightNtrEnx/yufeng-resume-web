@@ -11,7 +11,7 @@ export const zIndexes = {
         arrow: 5,
         img: 4,
         activeSelectionBorder: 5,
-        enlargedMedia: 6,
+        enlargedProjectModal: 6,
       },
     },
   },

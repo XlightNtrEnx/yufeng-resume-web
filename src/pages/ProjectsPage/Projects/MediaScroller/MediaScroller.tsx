@@ -1,14 +1,10 @@
-import styled from "styled-components";
 import { useState } from "react";
+import styled from "styled-components";
 
 import { FlexRow, PageProps, Pagination } from "@src/components";
 import { Span } from "@src/elements";
 
 import { Medias, Thumbnails } from "./Medias";
-
-interface Props {
-  medias: any[];
-}
 
 const Container = styled.div`
   width: 100%;
@@ -36,14 +32,30 @@ const Page = ({ active, onClick, pageNumber }: PageProps) => {
   );
 };
 
-export const MediaScroller = ({ medias }: Props) => {
-  const [selectedMediaIdx, setSelectedMediaIdx] = useState<number>(0);
-  const [firstThumbnailIdx, setFirstThumbnailIdx] = useState<number>(0);
+interface CommonProps {
+  medias: any[];
+  onClickMedia: () => void;
+}
+
+interface MediaScrollerProps extends CommonProps {}
+
+export const MediaScroller = ({ medias, onClickMedia }: MediaScrollerProps) => {
+  return (
+    <Container>
+      <MS medias={medias} onClickMedia={onClickMedia} />
+    </Container>
+  );
+};
+
+interface MSProps extends CommonProps {}
+
+export const MS = ({ medias, onClickMedia }: MSProps) => {
   const thumbnailsPerPage = 5;
   const totalPages = Math.ceil(medias.length / thumbnailsPerPage); // One-indexed
-  const [currentPage, setCurrentPage] = useState<number>(
-    Math.floor(selectedMediaIdx / thumbnailsPerPage) + 1
-  );
+
+  const [selectedMediaIdx, setSelectedMediaIdx] = useState<number>(0);
+  const [firstThumbnailIdx, setFirstThumbnailIdx] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
   /**
    * Assumes that | selectedMediaIdx - idx | <= 1
@@ -109,9 +121,10 @@ export const MediaScroller = ({ medias }: Props) => {
   };
 
   return (
-    <Container>
+    <>
       <Medias
         medias={medias}
+        onClickMedia={onClickMedia}
         selectedMediaIdx={selectedMediaIdx}
         setSelectedMediaIdx={mediasComponentSelectedMediaIdxSetter}
       />
@@ -129,6 +142,6 @@ export const MediaScroller = ({ medias }: Props) => {
           totalPages={totalPages}
         />
       </PaginationContainer>
-    </Container>
+    </>
   );
 };

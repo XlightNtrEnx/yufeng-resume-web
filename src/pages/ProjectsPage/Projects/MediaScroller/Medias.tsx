@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { useState } from "react";
 
 import { Img } from "@src/elements";
-import { FlexRow, Modal } from "@src/components";
+import { FlexRow } from "@src/components";
+import { EnsurePropertyExists } from "@src/types";
 import { zIndexes } from "@src/zIndex";
 
 interface MediasProps {
   medias: string[];
+  onClickMedia: () => void;
   selectedMediaIdx: number;
   setSelectedMediaIdx: (idx: number) => void;
 }
@@ -25,6 +26,7 @@ const ImgsContainer = styled(FlexRow)<{ right?: string; imgWidth?: string }>`
   position: relative;
   right: ${({ right }) => right || "0%"};
   transition: right 0.5s, left 0.5s;
+  width: 100%;
 
   > img {
     z-index: ${zIndexes.pages.projects.projectModal.img};
@@ -45,22 +47,17 @@ const Arrow = styled.div<{ right: boolean }>`
   ${({ right }) => (right ? "right: 0" : "left: 0")};
 `;
 
-const EnlargedMedia = styled(Img)`
-  object-fit: contain;
-  width: 100%;
-`;
-
 export const Medias = ({
   medias,
+  onClickMedia,
   selectedMediaIdx,
   setSelectedMediaIdx,
 }: MediasProps) => {
-  const [enlargedMedia, setEnlargedMedia] = useState(-1);
   return (
     <Container>
       <ImgsContainer right={`${selectedMediaIdx * 100}%`}>
         {medias.map((media, idx) => (
-          <Img onClick={() => setEnlargedMedia(idx)} key={idx} src={media} />
+          <Img onClick={onClickMedia} key={idx} src={media} />
         ))}
       </ImgsContainer>
       <Arrow
@@ -71,26 +68,21 @@ export const Medias = ({
         right={true}
         onClick={() => setSelectedMediaIdx(selectedMediaIdx + 1)}
       />
-      {enlargedMedia !== -1 && (
-        <Modal
-          zIndex={zIndexes.pages.projects.projectModal.enlargedMedia}
-          padding="0"
-          width="90%"
-          maxWidth="90%"
-          onClose={() => setEnlargedMedia(-1)}
-        >
-          <EnlargedMedia src={medias[enlargedMedia]} />
-        </Modal>
-      )}
     </Container>
   );
 };
 
-interface ThumbnailsProps extends MediasProps {
+interface ThumbnailsProps
+  extends Omit<
+    EnsurePropertyExists<MediasProps, "onClickMedia">,
+    "onClickMedia"
+  > {
   firstThumbnailIdx: number;
+  imgWidth?: string;
 }
 
 const ThumbnailsContainer = styled(Container)`
+  width: 100%;
   aspect-ratio: 16 / 1.8;
 `;
 
@@ -108,12 +100,16 @@ const ActiveSelectionBorder = styled.div<{ width?: string; left?: string }>`
 export const Thumbnails = ({
   medias,
   firstThumbnailIdx,
+  imgWidth,
   selectedMediaIdx,
   setSelectedMediaIdx,
 }: ThumbnailsProps) => {
   return (
     <ThumbnailsContainer>
-      <ImgsContainer imgWidth="20%" right={`${firstThumbnailIdx * 20}%`}>
+      <ImgsContainer
+        imgWidth={imgWidth ? imgWidth : "20%"}
+        right={`${firstThumbnailIdx * 20}%`}
+      >
         <ActiveSelectionBorder left={`${selectedMediaIdx * 20}%`} />
         {medias.map((media, idx) => (
           <Img
