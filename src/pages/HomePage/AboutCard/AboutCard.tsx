@@ -20,7 +20,7 @@ const Container = styled(FlexColumn)<AnimationProps>`
   ${({ animation }) => animation()};
 
   @media (max-width: ${mobileBreakpointInPx}px) {
-    margin: 50px 0 100px 0;
+    margin: 10px 0 100px 0;
   }
 `;
 
