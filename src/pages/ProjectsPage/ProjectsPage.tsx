@@ -46,11 +46,20 @@ interface ICategory {
   2?: JSX.Element;
 }
 
+const AIName = "AI";
+const WebName = "Web";
+const CysecName = "Cysec";
+const ElecEngName = "Elec. Eng";
+const categoryNameToIndex = new Map<string, number>();
+categoryNameToIndex.set(AIName, 0);
+categoryNameToIndex.set(WebName, 1);
+categoryNameToIndex.set(CysecName, 2);
+categoryNameToIndex.set(ElecEngName, 3);
 const categories: ICategory[] = [
-  ["AI", AISrc, <AIProjects />],
-  ["Web", WebSrc, <WebProjects />],
-  ["Cysec", CysecSrc, <CysecProjects />],
-  ["Elec. Eng", EESrc, <EEProjects />],
+  [AIName, AISrc, <AIProjects />],
+  [WebName, WebSrc, <WebProjects />],
+  [CysecName, CysecSrc, <CysecProjects />],
+  [ElecEngName, EESrc, <EEProjects />],
 ];
 
 const firstIndex = 0;
@@ -72,9 +81,7 @@ export const ProjectsPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategoryIdx, setSelectedCategoryIdx] = useState<number | null>(
-    searchParams.get(categoryParam)
-      ? Number(searchParams.get(categoryParam))
-      : null
+    categoryNameToIndex.get(searchParams.get(categoryParam) || "") ?? null
   );
 
   return (
