@@ -85,7 +85,7 @@ export const ProjectsPage = () => {
             onClick={() => {
               setSelectedCategoryIdx(index);
               setSearchParams((prev) => {
-                prev.set(categoryParam, String(index));
+                prev.set(categoryParam, category[0]);
                 return prev;
               });
             }}
