@@ -1,3 +1,3 @@
-export type EnsurePropertyExists<T, K extends keyof any> = K extends keyof T
+export type EnsurePropertyExists<T, K extends keyof T> = K extends keyof T
   ? T
   : never;
