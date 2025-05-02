@@ -1,21 +1,22 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { Grid, Modal } from "@src/components";
-import { zIndexes } from "@src/zIndex";
-import AISrc from "@src/assets/images/ai.jpg";
-import WebSrc from "@src/assets/images/web.jpg";
-import CysecSrc from "@src/assets/images/cybersecurity.png";
-import EESrc from "@src/assets/images/electrical engineering.jpg";
 import {
+  fadeInFromBottom,
   fadeInFromRight,
   fadeInFromTop,
-  fadeInFromBottom,
 } from "@src/animations";
+import AISrc from "@src/assets/images/ai.jpg";
+import CysecSrc from "@src/assets/images/cybersecurity.png";
+import EESrc from "@src/assets/images/electrical engineering.jpg";
+import WebSrc from "@src/assets/images/web.jpg";
 import { mobileBreakpointInPx } from "@src/atoms";
+import { Grid, Modal } from "@src/components";
+import { zIndexes } from "@src/zIndex";
 
 import { Category } from "./Category";
-import { AIProjects, WebProjects, CysecProjects, EEProjects } from "./Projects";
+import { AIProjects, CysecProjects, EEProjects, WebProjects } from "./Projects";
 
 const Container = styled(Grid)`
   grid-template-columns: repeat(3, 1fr);
@@ -67,23 +68,27 @@ const assignAnimation = (index: number) => {
 };
 
 export const ProjectsPage = () => {
+  const categoryParam = "category";
+
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategoryIdx, setSelectedCategoryIdx] = useState<number | null>(
-    null
+    searchParams.get(categoryParam)
+      ? Number(searchParams.get(categoryParam))
+      : null
   );
 
-  const handleCategoryClick = (idx: number) => {
-    setSelectedCategoryIdx(idx);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedCategoryIdx(null);
-  };
   return (
     <>
       <Container>
         {categories.map((category, index) => (
           <Category
-            onClick={() => handleCategoryClick(index)}
+            onClick={() => {
+              setSelectedCategoryIdx(index);
+              setSearchParams((prev) => {
+                prev.set(categoryParam, String(index));
+                return prev;
+              });
+            }}
             src={category[1]}
             key={index}
             title={category[0]}
@@ -94,7 +99,13 @@ export const ProjectsPage = () => {
       {typeof selectedCategoryIdx === "number" && (
         <Modal
           zIndex={zIndexes.pages.projects.categoryModal}
-          onClose={handleCloseModal}
+          onClose={() => {
+            setSelectedCategoryIdx(null);
+            setSearchParams((prev) => {
+              prev.delete(categoryParam);
+              return prev;
+            });
+          }}
         >
           {categories[selectedCategoryIdx][2]}
         </Modal>
