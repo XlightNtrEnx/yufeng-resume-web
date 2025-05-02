@@ -21,6 +21,10 @@ const Container = styled(FlexColumn)`
   gap: 1rem;
 `;
 
+const ModalPjtContainer = styled(FlexColumn)`
+  gap: 1rem;
+`;
+
 interface CommonProps {
   name: string;
   achievements: string;
@@ -64,17 +68,19 @@ export const Project = ({
           maxWidth="1280px"
           onClose={() => setFocused(false)}
         >
-          <Pjt
-            // CommonProps
-            name={name}
-            achievements={achievements}
-            medias={medias}
-            colabURL={colabURL}
-            docsURL={docsURL}
-            gitHubURL={gitHubURL}
-            // Pjt-specific Props
-            onClickMedia={() => {}}
-          />
+          <ModalPjtContainer>
+            <Pjt
+              // CommonProps
+              name={name}
+              achievements={achievements}
+              medias={medias}
+              colabURL={colabURL}
+              docsURL={docsURL}
+              gitHubURL={gitHubURL}
+              // Pjt-specific Props
+              onClickMedia={() => {}}
+            />
+          </ModalPjtContainer>
         </Modal>
       )}
     </Container>
