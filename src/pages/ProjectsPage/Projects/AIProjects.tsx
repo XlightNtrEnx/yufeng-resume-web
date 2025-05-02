@@ -14,7 +14,7 @@ const projects: ProjectProps[] = [
     achievements: `Built a CNN from scratch in pytorch, achieving 95% training and validation accuracy on kagglehub datasets.
     \nIncorporated concepts from various proven models like ResNet and VGG
     - Residual connections that significantly combats vanishing gradients in deep networks
-    - Hierachical feature extraction through successive conv layers of incresaing feature size and decreasing image dimensions
+    - Hierachical feature extraction through successive conv layers of increasing feature size and decreasing image dimensions
     - Extensive use of batch normalization after conv layers to stabilize training
     - Dropout layers with dataset transformations to prevent overfitting
     - Multiple FC layers of decreasing size at the end for gradual reductions to learn more about nuances and increasingly abstract features`,
