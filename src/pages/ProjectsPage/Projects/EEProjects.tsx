@@ -2,10 +2,6 @@ import media1 from "@src/assets/images/projects/FPGA-integration-with-electrical
 import media2 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/2.jpg";
 import media3 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/3.png";
 
-import media4 from "@src/assets/images/projects/cat-dog-classifier/4.png";
-import media5 from "@src/assets/images/projects/cat-dog-classifier/5.png";
-import media6 from "@src/assets/images/projects/cat-dog-classifier/6.png";
-
 import { ProjectProps } from "./Project";
 import { Projects } from "./Projects";
 
