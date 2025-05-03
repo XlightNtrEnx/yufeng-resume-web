@@ -1,4 +1,4 @@
-import { useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { useEffect } from "react";
 
 import { scrollToHashAtom } from "@src/atoms";
@@ -7,8 +7,8 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const ScrollToHashProvider = ({ children }: Props) => {
-  const scrollToHash = useAtomValue(scrollToHashAtom);
+export const AutoScrollToHashProvider = ({ children }: Props) => {
+  const [scrollToHash] = useAtom(scrollToHashAtom);
 
   // Try to scroll to hash upon page load
   // Adds a listener that will attempt to scroll to hash when hash changes
@@ -27,9 +27,7 @@ export const ScrollToHashProvider = ({ children }: Props) => {
       const element = document.querySelector(hash);
 
       if (element) {
-        // Element found, scroll to it
         element.scrollIntoView({ behavior: "smooth" });
-        // Stop checking
         if (intervalId) clearInterval(intervalId);
         return true;
       }
@@ -59,7 +57,6 @@ export const ScrollToHashProvider = ({ children }: Props) => {
     const handleHashChange = () => {
       if (!scrollToHash) return;
 
-      // Reset previous attempt and try again with new hash
       if (intervalId) clearInterval(intervalId);
       attempts = 0;
 
@@ -76,7 +73,6 @@ export const ScrollToHashProvider = ({ children }: Props) => {
 
     window.addEventListener("hashchange", handleHashChange);
 
-    // Clean up
     return () => {
       if (intervalId) clearInterval(intervalId);
       window.removeEventListener("hashchange", handleHashChange);

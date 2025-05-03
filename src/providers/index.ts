@@ -1,2 +1,3 @@
 export * from "./AuthProvider";
-export * from "./ScrollToHashProvider";
+export * from "./AutoScrollToHashProvider";
+export * from "./HashUpdateOnManualScrollProvider";

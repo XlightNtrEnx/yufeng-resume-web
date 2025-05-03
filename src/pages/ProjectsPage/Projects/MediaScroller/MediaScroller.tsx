@@ -19,14 +19,14 @@ const PaginationContainer = styled(FlexRow)`
   gap: 0.5em;
 `;
 
-const StyledSpan = styled(Span)<{ active: boolean }>`
+const StyledSpan = styled(Span)<{ $active: boolean }>`
   cursor: pointer;
-  font-weight: ${({ active }) => (active ? "bold" : "normal")};
-  text-decoration: ${({ active }) => (active ? "underline" : "none")};
+  font-weight: ${({ $active }) => ($active ? "bold" : "normal")};
+  text-decoration: ${({ $active }) => ($active ? "underline" : "none")};
 `;
 const Page = ({ active, onClick, pageNumber }: PageProps) => {
   return (
-    <StyledSpan active={active} onClick={onClick}>
+    <StyledSpan $active={active} onClick={onClick}>
       {pageNumber}
     </StyledSpan>
   );
