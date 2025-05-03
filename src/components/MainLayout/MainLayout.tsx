@@ -39,7 +39,7 @@ const OutletContainer = styled(FlexColumn)`
 export function MainLayout() {
   return (
     <Container id="app">
-      <SideBar animation={fadeInFromLeft} />
+      <SideBar $animation={fadeInFromLeft} />
       <OutletContainer>
         <Suspense fallback={<LoadingSpinner />}>
           <Outlet />

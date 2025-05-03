@@ -9,10 +9,11 @@ import { FlexColumn, FlexRowReverse } from "@src/components";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { Button } from "@src/elements";
 import { zIndexes } from "@src/zIndex";
+import { AnimationProps } from "@src/animations";
 
 import { ChildInternalLink } from "./ChildInternalLink";
 
-const Container = styled(FlexRowReverse)<{ animation?: any; open?: boolean }>`
+const Container = styled(FlexRowReverse)<{ open?: boolean } & AnimationProps>`
   align-items: flex-start;
   z-index: ${zIndexes.mainLayout.sideBar};
   position: relative;
@@ -22,7 +23,7 @@ const Container = styled(FlexRowReverse)<{ animation?: any; open?: boolean }>`
     background: ${({ theme }) => theme.colors.softerWhite};
   }
 
-  ${({ animation }) => animation()}
+  ${({ $animation }) => $animation()}
 
   @media (max-width: ${mobileBreakpointInPx}px) {
     position: fixed;
@@ -59,11 +60,7 @@ const ArrowButton = styled(Button)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.softerBlack};
 `;
 
-interface Props {
-  animation?: any;
-}
-
-export const SideBar = ({ animation }: Props) => {
+export const SideBar = ({ $animation }: AnimationProps) => {
   const [open, setOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -71,7 +68,7 @@ export const SideBar = ({ animation }: Props) => {
   };
 
   return (
-    <Container animation={animation} open={open}>
+    <Container $animation={$animation} open={open}>
       <ArrowButton onClick={toggleSidebar}>{open ? "<" : ">"}</ArrowButton>
       <SideBarElements>
         <ChildInternalLink

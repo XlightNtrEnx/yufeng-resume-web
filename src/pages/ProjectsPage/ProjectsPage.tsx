@@ -99,7 +99,7 @@ export const ProjectsPage = () => {
             src={category[1]}
             key={index}
             title={category[0]}
-            animation={assignAnimation(index)}
+            $animation={assignAnimation(index)}
           />
         ))}
       </Container>

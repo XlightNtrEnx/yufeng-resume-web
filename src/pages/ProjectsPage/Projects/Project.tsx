@@ -126,7 +126,7 @@ const Pjt = ({
         <Links>
           {gitHubURL && (
             <ExternalLink href={gitHubURL}>
-              <ImgIcon iconSize={iconSize} src={GitHub} />
+              <ImgIcon $iconSize={iconSize} src={GitHub} />
             </ExternalLink>
           )}
           {colabURL && (

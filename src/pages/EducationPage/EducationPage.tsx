@@ -79,7 +79,7 @@ export const EducationPage = () => {
         <ExpendablePanel
           key={index}
           headerString={header}
-          animation={assignAnimation(index)}
+          $animation={assignAnimation(index)}
         >
           {results[index]}
           {opencerts[index]}

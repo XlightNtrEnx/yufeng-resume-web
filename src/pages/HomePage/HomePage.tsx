@@ -20,8 +20,8 @@ const Container = styled(Grid)`
 export const HomePage = () => {
   return (
     <Container>
-      <ProfileCard animation={fadeInFromTop} />
-      <AboutCard animation={fadeInFromRight} />
+      <ProfileCard $animation={fadeInFromTop} />
+      <AboutCard $animation={fadeInFromRight} />
     </Container>
   );
 };

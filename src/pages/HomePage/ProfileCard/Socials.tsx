@@ -13,10 +13,10 @@ export const Socials = () => {
   return (
     <Container>
       <ExternalLink href="https://github.com/XlightNtrEnx">
-        <ImgIcon src={Github} iconSize="20px" />
+        <ImgIcon src={Github} $iconSize="20px" />
       </ExternalLink>
       <ExternalLink href="https://www.linkedin.com/in/xue-yufeng-596a10297/">
-        <ImgIcon src={LinkedIn} iconSize="20px" />
+        <ImgIcon src={LinkedIn} $iconSize="20px" />
       </ExternalLink>
     </Container>
   );

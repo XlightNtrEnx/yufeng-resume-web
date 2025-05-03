@@ -28,7 +28,7 @@ const Container = styled(Grid)<AnimationProps>`
   border-right: transparent;
   z-index: ${zIndexes.pages.home.profileCard};
 
-  ${({ animation }) => animation()};
+  ${({ $animation: animation }) => animation()};
 `;
 
 const StyledIcon = styled(ImgIcon)`
@@ -47,10 +47,10 @@ const StyledSpan = styled(Span)`
   color: ${({ theme }) => theme.colors.pallete.complementary.primary};
 `;
 
-export const ProfileCard = ({ animation }: AnimationProps) => {
+export const ProfileCard = ({ $animation: animation }: AnimationProps) => {
   return (
-    <Container animation={animation}>
-      <StyledIcon iconSize={`${IconSizeInPx}px`} src={Me} alt="Photo of me" />
+    <Container $animation={animation}>
+      <StyledIcon $iconSize={`${IconSizeInPx}px`} src={Me} alt="Photo of me" />
       <StyledH1>Xue Yufeng</StyledH1>
       <StyledSpan>Music theory enthusiast</StyledSpan>
       <Socials />

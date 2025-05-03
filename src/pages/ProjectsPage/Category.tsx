@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import { Img, Span } from "@src/elements";
 import { FlexColumn } from "@src/components";
-import { Animation } from "@src/animations";
+import { Animation, AnimationProps } from "@src/animations";
 
-const Container = styled(FlexColumn)<{ animation?: Animation }>`
+const Container = styled(FlexColumn)<AnimationProps>`
   align-items: center;
   padding: 10px;
   gap: 10px;
@@ -14,7 +14,7 @@ const Container = styled(FlexColumn)<{ animation?: Animation }>`
     ${({ theme }) => theme.colors.pallete.complementary.primary};
   border-radius: 10px;
 
-  ${({ animation }) => (animation ? animation() : undefined)}
+  ${({ $animation }) => $animation()}
 `;
 
 const StyledImg = styled(Img)`
@@ -23,16 +23,15 @@ const StyledImg = styled(Img)`
   overflow: hidden;
 `;
 
-interface Props {
+interface Props extends AnimationProps {
   title: string;
   src: string;
   onClick: () => void;
-  animation?: any;
 }
 
-export const Category = ({ title, src, onClick, animation }: Props) => {
+export const Category = ({ title, src, onClick, $animation }: Props) => {
   return (
-    <Container animation={animation} onClick={onClick}>
+    <Container $animation={$animation} onClick={onClick}>
       <StyledImg src={src} />
       <Span>{title}</Span>
     </Container>

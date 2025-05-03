@@ -2,15 +2,19 @@ import { Link, useLocation } from "react-router-dom";
 import { ReactNode } from "react";
 import { styled } from "styled-components";
 
-const StyledLink = styled(Link)<{ isactive: boolean }>`
+const StyledLink = styled(Link)<{ $isActive: boolean }>`
   text-decoration: none;
   border-radius: 10px;
-  background-color: ${({ theme, isactive }) =>
-    isactive ? theme.colors.softerWhite : theme.colors.softWhite};
-  color: ${({ theme, isactive }) =>
-    isactive ? theme.colors.pallete.complementary.primary : theme.colors.black};
-  fill: ${({ theme, isactive }) =>
-    isactive ? theme.colors.pallete.complementary.primary : theme.colors.black};
+  background-color: ${({ theme, $isActive }) =>
+    $isActive ? theme.colors.softerWhite : theme.colors.softWhite};
+  color: ${({ theme, $isActive }) =>
+    $isActive
+      ? theme.colors.pallete.complementary.primary
+      : theme.colors.black};
+  fill: ${({ theme, $isActive }) =>
+    $isActive
+      ? theme.colors.pallete.complementary.primary
+      : theme.colors.black};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.softerWhite};
@@ -32,7 +36,7 @@ export const InternalLink = ({ children, to }: Props) => {
   return (
     <StyledLink
       to={to}
-      isactive={isactive}
+      $isActive={isactive}
       {...(isactive ? { className: "active" } : {})}
     >
       {children}

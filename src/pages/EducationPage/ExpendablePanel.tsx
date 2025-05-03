@@ -14,7 +14,7 @@ const Container = styled(FlexColumn)<Partial<AnimationProps>>`
     border-color: ${({ theme }) => theme.colors.pallete.complementary.primary};
   }
 
-  ${({ animation }) => (animation ? animation() : undefined)}
+  ${({ $animation: animation }) => (animation ? animation() : undefined)}
 `;
 
 interface HeaderContainerProps {
@@ -54,11 +54,11 @@ interface ExpendablePanelProps extends Partial<AnimationProps> {
 export const ExpendablePanel = ({
   headerString,
   children,
-  animation,
+  $animation: animation,
 }: ExpendablePanelProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <Container tabIndex={0} animation={animation}>
+    <Container tabIndex={0} $animation={animation}>
       <HeaderContainer onClick={() => setOpen(!open)} open={open}>
         {headerString}
       </HeaderContainer>

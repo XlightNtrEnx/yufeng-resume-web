@@ -5,7 +5,7 @@ import { RuleSet } from "styled-components";
 export type Animation = () => RuleSet<object>;
 
 export interface AnimationProps {
-  animation: Animation;
+  $animation: Animation;
 }
 
 export const apply = (reactNode: WebTarget, animation: Animation) => {

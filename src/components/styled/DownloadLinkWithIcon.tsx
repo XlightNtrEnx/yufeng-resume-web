@@ -18,7 +18,7 @@ export interface DownloadLinkWithIconProps
  */
 export const DownloadLinkWithIcon = ({
   href,
-  iconSize,
+  $iconSize: iconSize,
   children,
 }: DownloadLinkWithIconProps) => {
   return (
@@ -27,7 +27,7 @@ export const DownloadLinkWithIcon = ({
       <ImgIcon
         src={DownloadIcon}
         alt="download-icon"
-        iconSize={iconSize || "0.75em"}
+        $iconSize={iconSize || "0.75em"}
       />
     </DownloadLink>
   );

@@ -17,16 +17,16 @@ const Container = styled(FlexColumn)<AnimationProps>`
   background: ${({ theme }) => theme.softerBackgroundColor};
   overflow-y: auto;
 
-  ${({ animation }) => animation()};
+  ${({ $animation: animation }) => animation()};
 
   @media (max-width: ${mobileBreakpointInPx}px) {
     margin: 10px 0 100px 0;
   }
 `;
 
-export const AboutCard = ({ animation }: AnimationProps) => {
+export const AboutCard = ({ $animation: animation }: AnimationProps) => {
   return (
-    <Container animation={animation}>
+    <Container $animation={animation}>
       <AboutMe />
       <Skills />
     </Container>

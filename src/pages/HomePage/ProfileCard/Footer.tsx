@@ -18,7 +18,7 @@ export const Footer = () => {
         <Span>Download CV </Span>
       </DownloadLinkWithIcon>
       <ExternalLink href="mailto:xyf.oco@gmail.com">
-        <Span>Contact me</Span> <ImgIcon src={Email} iconSize="0.75em" />
+        <Span>Contact me</Span> <ImgIcon src={Email} $iconSize="0.75em" />
       </ExternalLink>
     </StyledFooter>
   );
