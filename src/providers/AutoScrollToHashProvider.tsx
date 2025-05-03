@@ -52,30 +52,8 @@ export const AutoScrollToHashProvider = ({ children }: Props) => {
       );
     }
 
-    // When hash change start a new series of attempts
-    // if scrollToHash atom reflects true
-    const handleHashChange = () => {
-      if (!scrollToHash) return;
-
-      if (intervalId) clearInterval(intervalId);
-      attempts = 0;
-
-      const newHash = window.location.hash;
-      if (!newHash) return;
-
-      if (!findAndScrollToElement()) {
-        intervalId = window.setInterval(
-          findAndScrollToElement,
-          attemptIntervalMS
-        );
-      }
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-
     return () => {
       if (intervalId) clearInterval(intervalId);
-      window.removeEventListener("hashchange", handleHashChange);
     };
   });
 
