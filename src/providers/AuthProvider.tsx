@@ -14,6 +14,8 @@ interface Props {
 export const AuthProvider = ({ children }: Props) => {
   const setUser = useSetAtom(userAtom);
 
+  // Adds a listener to firebase to set or unset user atom when
+  // there's a change in auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(
       async (authUser: AuthUser | null) => {
