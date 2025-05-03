@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { FlexRow, PageProps, Pagination } from "@src/components";
 import { Span } from "@src/elements";
+import { PjtContext } from "@src/pages/ProjectsPage/Projects/Project";
 
 import { Medias, Thumbnails } from "./Medias";
 
@@ -34,22 +35,23 @@ const Page = ({ active, onClick, pageNumber }: PageProps) => {
 
 interface CommonProps {
   medias: any[];
-  onClickMedia: () => void;
 }
 
-interface MediaScrollerProps extends CommonProps {}
+export interface MediaScrollerProps extends CommonProps {}
 
-export const MediaScroller = ({ medias, onClickMedia }: MediaScrollerProps) => {
+export const MediaScroller = ({ medias }: MediaScrollerProps) => {
   return (
     <Container>
-      <MS medias={medias} onClickMedia={onClickMedia} />
+      <MS medias={medias} />
     </Container>
   );
 };
 
 interface MSProps extends CommonProps {}
 
-export const MS = ({ medias, onClickMedia }: MSProps) => {
+export const MS = ({ medias }: MSProps) => {
+  const onClickMedia = useContext(PjtContext);
+
   const thumbnailsPerPage = 5;
   const totalPages = Math.ceil(medias.length / thumbnailsPerPage); // One-indexed
 

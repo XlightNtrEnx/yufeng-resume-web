@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { FlexColumn } from "@src/components";
 
-import { Project, ProjectProps } from "./Project";
+import { Project } from "./Project";
 
 const Container = styled(FlexColumn)`
   > *:not(:first-child) {
@@ -11,15 +11,19 @@ const Container = styled(FlexColumn)`
 `;
 
 interface ProjectsProps {
-  projects: ProjectProps[];
+  children:
+    | React.ReactElement<typeof Project>
+    | React.ReactElement<typeof Project>[];
 }
 
-export const Projects = ({ projects }: ProjectsProps) => {
-  return (
-    <Container>
-      {projects.map((project, index) => (
-        <Project key={index} {...project} />
-      ))}
-    </Container>
-  );
+/**
+ * Example usage:
+ * ```jsx
+ * <Projects>
+ *  <Project />
+ * </Projects>
+ * ```
+ */
+export const Projects = ({ children }: ProjectsProps) => {
+  return <Container>{children}</Container>;
 };
