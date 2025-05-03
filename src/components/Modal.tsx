@@ -18,15 +18,15 @@ const Overlay = styled(FlexRow)<{ $zIndex: number }>`
 `;
 
 const Container = styled.div<{
-  width?: string;
-  maxWidth?: string;
-  padding?: string;
+  $width?: string;
+  $maxWidth?: string;
+  $padding?: string;
 }>`
   background: white;
-  padding: ${(props) => props.padding || "1.5rem"};
+  padding: ${(props) => props.$padding || "1.5rem"};
   border-radius: 8px;
-  width: ${(props) => props.width || "auto"};
-  max-width: ${(props) => props.maxWidth || "60%"};
+  width: ${(props) => props.$width || "auto"};
+  max-width: ${(props) => props.$maxWidth || "60%"};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: scroll;
   max-height: 90%;
@@ -39,18 +39,18 @@ const Container = styled.div<{
 interface Props {
   onClose: () => void;
   children: React.ReactNode;
-  padding?: string;
-  width?: string;
-  maxWidth?: string;
+  $padding?: string;
+  $width?: string;
+  $maxWidth?: string;
   $zIndex: number;
 }
 
 export const Modal = ({
   onClose,
   children,
-  padding,
-  width,
-  maxWidth,
+  $padding,
+  $width,
+  $maxWidth,
   $zIndex,
 }: Props) => {
   return (
@@ -61,9 +61,9 @@ export const Modal = ({
       $zIndex={$zIndex}
     >
       <Container
-        padding={padding}
-        width={width}
-        maxWidth={maxWidth}
+        $padding={$padding}
+        $width={$width}
+        $maxWidth={$maxWidth}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
