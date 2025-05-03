@@ -86,13 +86,13 @@ const ThumbnailsContainer = styled(Container)`
   aspect-ratio: 16 / 1.8;
 `;
 
-const ActiveSelectionBorder = styled.div<{ width?: string; left?: string }>`
+const ActiveSelectionBorder = styled.div<{ $width?: string; $left?: string }>`
   position: absolute;
   border: 3px solid red;
   top: 0;
-  left: ${({ left }) => left || "0%"};
+  left: ${({ $left: left }) => left || "0%"};
   aspect-ratio: 16 / 9;
-  width: ${({ width }) => width || "20%"};
+  width: ${({ $width: width }) => width || "20%"};
   transition: right 0.5s, left 0.5s;
   z-index: ${zIndexes.pages.projects.projectModal.activeSelectionBorder};
 `;
@@ -110,7 +110,7 @@ export const Thumbnails = ({
         $imgWidth={imgWidth ? imgWidth : "20%"}
         $right={`${firstThumbnailIdx * 20}%`}
       >
-        <ActiveSelectionBorder left={`${selectedMediaIdx * 20}%`} />
+        <ActiveSelectionBorder $left={`${selectedMediaIdx * 20}%`} />
         {medias.map((media, idx) => (
           <Img
             onClick={() => {
