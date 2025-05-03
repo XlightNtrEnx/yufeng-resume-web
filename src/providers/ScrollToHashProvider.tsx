@@ -1,17 +1,26 @@
+import { useAtomValue } from "jotai";
 import { useEffect } from "react";
+
+import { scrollToHashAtom } from "@src/atoms";
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const ScrollToHashProvider = ({ children }: Props) => {
+  const scrollToHash = useAtomValue(scrollToHashAtom);
+
+  // Try to scroll to hash upon page load
+  // Adds a listener that will attempt to scroll to hash when hash changes
+  // if scrollToHash is true
   useEffect(() => {
     const hash = window.location.hash;
     if (!hash) return;
 
+    // 11 attempts with 500ms spacing gives 5s
     let attempts = 0;
-    const interval = 500; // ms
-    const maxAttempts = 20; // Try to find within (maxAttempts*intervals)ms or give up
+    const maxAttempts = 11;
+    const attemptIntervalMS = 500;
     let intervalId: number | null = null;
 
     const findAndScrollToElement = () => {
@@ -36,14 +45,21 @@ export const ScrollToHashProvider = ({ children }: Props) => {
       return false;
     };
 
-    // Try immediately first
-    if (!findAndScrollToElement()) {
-      intervalId = window.setInterval(findAndScrollToElement, interval);
+    // Try immediately first upon app load
+    // If not found, start polling every 100ms
+    if (scrollToHash && !findAndScrollToElement()) {
+      intervalId = window.setInterval(
+        findAndScrollToElement,
+        attemptIntervalMS
+      );
     }
 
-    // Handle hash changes
+    // When hash change start a new series of attempts
+    // if scrollToHash atom reflects true
     const handleHashChange = () => {
-      // Reset and try again with new hash
+      if (!scrollToHash) return;
+
+      // Reset previous attempt and try again with new hash
       if (intervalId) clearInterval(intervalId);
       attempts = 0;
 
@@ -51,7 +67,10 @@ export const ScrollToHashProvider = ({ children }: Props) => {
       if (!newHash) return;
 
       if (!findAndScrollToElement()) {
-        intervalId = window.setInterval(findAndScrollToElement, interval);
+        intervalId = window.setInterval(
+          findAndScrollToElement,
+          attemptIntervalMS
+        );
       }
     };
 
@@ -62,7 +81,7 @@ export const ScrollToHashProvider = ({ children }: Props) => {
       if (intervalId) clearInterval(intervalId);
       window.removeEventListener("hashchange", handleHashChange);
     };
-  }, []);
+  });
 
   return <>{children}</>;
 };

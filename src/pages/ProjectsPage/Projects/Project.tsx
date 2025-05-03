@@ -103,6 +103,9 @@ interface PjtProps extends CommonProps {
   onClickMedia: () => void;
 }
 
+export const pjtNameToId = (name: string) => {
+  return name.replace(/[^a-zA-Z0-9-_:.]/g, "");
+};
 const Pjt = ({
   name,
   achievements,
@@ -118,7 +121,7 @@ const Pjt = ({
   if (docsURL) count += 1;
   return (
     <>
-      <H2>{name}</H2>
+      <H2 id={pjtNameToId(name)}>{name}</H2>
       {count > 0 && (
         <Links>
           {gitHubURL && (
