@@ -1,7 +1,4 @@
-import {
-  MediaScroller,
-  MediaScrollerProps,
-} from "../MediaScroller/MediaScroller";
+import { MediaScroller, MediaScrollerProps } from "./MediaScroller";
 
 interface Props extends MediaScrollerProps {}
 
