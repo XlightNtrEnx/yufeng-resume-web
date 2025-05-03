@@ -50,6 +50,8 @@ export const URLHashUpdateOnManualScrollProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  // Keep track of all registered fragments and provide the function
+  // to register fragment
   const [fragmentCount, setFragmentCount] = useState<number>(0);
   const registerFragment = (id: string) => {
     fragmentMap.set(id, true);
@@ -60,7 +62,7 @@ export const URLHashUpdateOnManualScrollProvider = ({
     };
   };
 
-  // Makes the observer watch over all register fragments
+  // Makes the observer watch over all registered fragments
   useEffect(() => {
     const fragments = Array.from(fragmentMap.keys());
     for (const id of fragments) {
