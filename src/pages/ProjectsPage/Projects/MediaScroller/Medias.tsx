@@ -22,9 +22,9 @@ const Container = styled(FlexRow)`
   }
 `;
 
-const ImgsContainer = styled(FlexRow)<{ right?: string; imgWidth?: string }>`
+const ImgsContainer = styled(FlexRow)<{ $right?: string; $imgWidth?: string }>`
   position: relative;
-  right: ${({ right }) => right || "0%"};
+  right: ${({ $right }) => $right || "0%"};
   transition: right 0.5s, left 0.5s;
   width: 100%;
 
@@ -32,11 +32,11 @@ const ImgsContainer = styled(FlexRow)<{ right?: string; imgWidth?: string }>`
     z-index: ${zIndexes.pages.projects.projectModal.img};
     object-fit: contain;
     aspect-ratio: 16 / 9;
-    width: ${({ imgWidth }) => imgWidth || "100%"};
+    width: ${({ $imgWidth }) => $imgWidth || "100%"};
   }
 `;
 
-const Arrow = styled.div<{ right: boolean }>`
+const Arrow = styled.div<{ $right: boolean }>`
   background-color: rgba(0, 0, 0, 0.2);
   z-index: ${zIndexes.pages.projects.projectModal.arrow};
   cursor: pointer;
@@ -44,7 +44,7 @@ const Arrow = styled.div<{ right: boolean }>`
   height: 100%;
   position: absolute;
   top: 0;
-  ${({ right }) => (right ? "right: 0" : "left: 0")};
+  ${({ $right }) => ($right ? "right: 0" : "left: 0")};
 `;
 
 export const Medias = ({
@@ -55,17 +55,17 @@ export const Medias = ({
 }: MediasProps) => {
   return (
     <Container>
-      <ImgsContainer right={`${selectedMediaIdx * 100}%`}>
+      <ImgsContainer $right={`${selectedMediaIdx * 100}%`}>
         {medias.map((media, idx) => (
           <Img onClick={onClickMedia} key={idx} src={media} />
         ))}
       </ImgsContainer>
       <Arrow
-        right={false}
+        $right={false}
         onClick={() => setSelectedMediaIdx(selectedMediaIdx - 1)}
       />
       <Arrow
-        right={true}
+        $right={true}
         onClick={() => setSelectedMediaIdx(selectedMediaIdx + 1)}
       />
     </Container>
@@ -107,8 +107,8 @@ export const Thumbnails = ({
   return (
     <ThumbnailsContainer>
       <ImgsContainer
-        imgWidth={imgWidth ? imgWidth : "20%"}
-        right={`${firstThumbnailIdx * 20}%`}
+        $imgWidth={imgWidth ? imgWidth : "20%"}
+        $right={`${firstThumbnailIdx * 20}%`}
       >
         <ActiveSelectionBorder left={`${selectedMediaIdx * 20}%`} />
         {medias.map((media, idx) => (
