@@ -11,10 +11,11 @@ import {
   Modal,
 } from "@src/components";
 import { H2, Span } from "@src/elements";
+import { RegisterFragmentContext } from "@src/providers";
 import { zIndexes } from "@src/zIndex";
 
 import { MediaScroller } from "./MediaScroller";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Container = styled(FlexColumn)`
   align-items: start;
@@ -104,7 +105,7 @@ interface PjtProps extends CommonProps {
 }
 
 export const pjtNameToId = (name: string) => {
-  return name.replace(/[^a-zA-Z0-9-_:.]/g, "");
+  return name.replace(/[^a-zA-Z0-9-_:]/g, "");
 };
 const Pjt = ({
   name,
@@ -119,9 +120,15 @@ const Pjt = ({
   if (gitHubURL) count += 1;
   if (colabURL) count += 1;
   if (docsURL) count += 1;
+  const id = pjtNameToId(name);
+
+  const registerFragment = useContext(RegisterFragmentContext);
+  useEffect(() => {
+    return registerFragment(id);
+  }, []); // Do not remove this empty array as it'll cause infinite calls
   return (
     <>
-      <H2 id={pjtNameToId(name)}>{name}</H2>
+      <H2 id={id}>{name}</H2>
       {count > 0 && (
         <Links>
           {gitHubURL && (

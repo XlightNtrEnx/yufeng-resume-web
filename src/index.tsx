@@ -8,7 +8,7 @@ import router from "@src/router";
 import {
   AuthProvider,
   AutoScrollToHashProvider,
-  HashUpdateOnManualScrollProvider,
+  URLHashUpdateOnManualScrollProvider,
 } from "@src/providers";
 // import reportWebVitals from "./reportWebVitals";
 
@@ -18,11 +18,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <AuthProvider>
     <ThemeProvider theme={theme}>
-      <HashUpdateOnManualScrollProvider>
+      <URLHashUpdateOnManualScrollProvider>
         <AutoScrollToHashProvider>
           <RouterProvider router={router} />
         </AutoScrollToHashProvider>
-      </HashUpdateOnManualScrollProvider>
+      </URLHashUpdateOnManualScrollProvider>
     </ThemeProvider>
   </AuthProvider>
 );
