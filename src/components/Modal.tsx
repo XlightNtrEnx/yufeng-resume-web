@@ -5,7 +5,7 @@ import { mobileBreakpointInPx } from "@src/atoms";
 
 import { FlexRow } from "./FlexBox";
 
-const Overlay = styled(FlexRow)<{ zIndex: number }>`
+const Overlay = styled(FlexRow)<{ $zIndex: number }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@ const Overlay = styled(FlexRow)<{ zIndex: number }>`
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  z-index: ${(props) => props.zIndex};
+  z-index: ${(props) => props.$zIndex};
 `;
 
 const Container = styled.div<{
@@ -39,26 +39,26 @@ const Container = styled.div<{
 interface Props {
   onClose: () => void;
   children: React.ReactNode;
-  zIndex: number;
   padding?: string;
   width?: string;
   maxWidth?: string;
+  $zIndex: number;
 }
 
 export const Modal = ({
   onClose,
   children,
-  zIndex,
   padding,
   width,
   maxWidth,
+  $zIndex,
 }: Props) => {
   return (
     <Overlay
       onClick={() => {
         onClose();
       }}
-      zIndex={zIndex}
+      $zIndex={$zIndex}
     >
       <Container
         padding={padding}

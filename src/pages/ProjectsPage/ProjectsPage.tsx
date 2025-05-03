@@ -105,7 +105,7 @@ export const ProjectsPage = () => {
       </Container>
       {typeof selectedCategoryIdx === "number" && (
         <Modal
-          zIndex={zIndexes.pages.projects.categoryModal}
+          $zIndex={zIndexes.pages.projects.categoryModal}
           onClose={() => {
             setSelectedCategoryIdx(null);
             setSearchParams((prev) => {
