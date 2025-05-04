@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { FlexRow, PageProps, Pagination } from "@src/components";
@@ -60,14 +60,19 @@ export const MS = ({ medias, skip }: MSProps) => {
   const [firstThumbnailIdx, setFirstThumbnailIdx] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1); // One-indexed
 
+  const selectedMediaIdxRef = useRef(selectedMediaIdx);
   useEffect(() => {
-    if (skip && skip[0] !== selectedMediaIdx) {
+    selectedMediaIdxRef.current = selectedMediaIdx;
+  }, [selectedMediaIdx]);
+
+  useEffect(() => {
+    if (skip && skip[0] !== selectedMediaIdxRef.current) {
       setSelectedMediaIdx(skip[0]);
       const newPageNumber = Math.ceil((skip[0] + 1) / thumbnailsPerPage);
       setCurrentPage(newPageNumber);
       setFirstThumbnailIdx((newPageNumber - 1) * thumbnailsPerPage);
     }
-  }, [selectedMediaIdx, skip]);
+  }, [skip]);
 
   /**
    * Assumes that | selectedMediaIdx - idx | <= 1
