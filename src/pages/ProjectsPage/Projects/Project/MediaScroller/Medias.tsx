@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { Img } from "@src/elements";
 import { FlexRow } from "@src/components";
+import { Img, Video } from "@src/elements";
 import { EnsurePropertyExists } from "@src/types";
 import { zIndexes } from "@src/zIndex";
 
@@ -15,6 +15,7 @@ interface MediasProps {
 const Container = styled(FlexRow)`
   position: relative;
   overflow-x: hidden;
+  width: 100%;
   aspect-ratio: 16 / 9;
 
   img {
@@ -22,13 +23,17 @@ const Container = styled(FlexRow)`
   }
 `;
 
-const ImgsContainer = styled(FlexRow)<{ $right?: string; $imgWidth?: string }>`
+const ActualMediasContainer = styled(FlexRow)<{
+  $right?: string;
+  $imgWidth?: string;
+}>`
   position: relative;
   right: ${({ $right }) => $right || "0%"};
   transition: right 0.5s, left 0.5s;
   width: 100%;
 
-  > img {
+  > img,
+  video {
     z-index: ${zIndexes.pages.projects.projectModal.img};
     object-fit: contain;
     aspect-ratio: 16 / 9;
@@ -41,9 +46,9 @@ const Arrow = styled.div<{ $right: boolean }>`
   z-index: ${zIndexes.pages.projects.projectModal.arrow};
   cursor: pointer;
   width: 10%;
-  height: 100%;
+  height: 50%;
   position: absolute;
-  top: 0;
+  top: 25%;
   ${({ $right }) => ($right ? "right: 0" : "left: 0")};
 `;
 
@@ -55,14 +60,22 @@ export const Medias = ({
 }: MediasProps) => {
   return (
     <Container>
-      <ImgsContainer $right={`${selectedMediaIdx * 100}%`}>
-        {medias.map((media, idx) => (
-          <Img onClick={onClickMedia} key={idx} src={media} />
-        ))}
-      </ImgsContainer>
+      <ActualMediasContainer $right={`${selectedMediaIdx * 100}%`}>
+        {medias.map((media, idx) =>
+          media.endsWith("mp4") ? (
+            <Video src={media} controls />
+          ) : (
+            <Img onClick={onClickMedia} key={idx} src={media} />
+          )
+        )}
+      </ActualMediasContainer>
       <Arrow
         $right={false}
-        onClick={() => setSelectedMediaIdx(selectedMediaIdx - 1)}
+        onClick={() =>
+          setSelectedMediaIdx(
+            selectedMediaIdx === 0 ? medias.length - 1 : selectedMediaIdx - 1
+          )
+        }
       />
       <Arrow
         $right={true}
@@ -82,14 +95,12 @@ interface ThumbnailsProps
 }
 
 const ThumbnailsContainer = styled(Container)`
-  width: 100%;
   aspect-ratio: 16 / 1.8;
 `;
 
 const ActiveSelectionBorder = styled.div<{ $width?: string; $left?: string }>`
   position: absolute;
   border: 3px solid red;
-  top: 0;
   left: ${({ $left: left }) => left || "0%"};
   aspect-ratio: 16 / 9;
   width: ${({ $width: width }) => width || "20%"};
@@ -106,21 +117,31 @@ export const Thumbnails = ({
 }: ThumbnailsProps) => {
   return (
     <ThumbnailsContainer>
-      <ImgsContainer
+      <ActualMediasContainer
         $imgWidth={imgWidth ? imgWidth : "20%"}
         $right={`${firstThumbnailIdx * 20}%`}
       >
         <ActiveSelectionBorder $left={`${selectedMediaIdx * 20}%`} />
-        {medias.map((media, idx) => (
-          <Img
-            onClick={() => {
-              setSelectedMediaIdx(idx);
-            }}
-            key={idx}
-            src={media}
-          />
-        ))}
-      </ImgsContainer>
+        {medias.map((media, idx) =>
+          media.endsWith(".mp4") ? (
+            <Img
+              onClick={() => {
+                setSelectedMediaIdx(idx);
+              }}
+              key={idx}
+              src={media}
+            />
+          ) : (
+            <Img
+              onClick={() => {
+                setSelectedMediaIdx(idx);
+              }}
+              key={idx}
+              src={media}
+            />
+          )
+        )}
+      </ActualMediasContainer>
     </ThumbnailsContainer>
   );
 };

@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 import media1 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/1.jpg";
 import media2 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/2.jpg";
 import media3 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/3.png";
+import { SpanOnClick } from "@src/components";
 import { P } from "@src/elements";
 
 import {
@@ -13,6 +16,7 @@ import { Projects } from "./Projects";
 
 const fpgaMedias = [media1, media2, media3];
 const FPGAProject = () => {
+  const [skip, setSkip] = useState<number[]>([0]);
   return (
     <Project
       name="FPGA integration with electrical components"
@@ -21,9 +25,12 @@ const FPGAProject = () => {
           <P>Solved various problems from optimization to bugs for my team</P>
           <P>
             Our FPGA controlled 6 7-SEG displays and I made sure that there
-            wasn't excessive current flow by creating code that cycles through
-            all displays rapidly to give the illusion that all lit up at same
-            time (Fig 3).
+            wasn't excessive current flow by creating{" "}
+            <SpanOnClick onClick={() => setSkip([2])}>
+              code that cycles
+            </SpanOnClick>{" "}
+            through all displays rapidly to give the illusion that all lit up at
+            same time.
           </P>
           <P>
             We needed our FPGA to be able to control the digits on the displays
@@ -32,8 +39,9 @@ const FPGAProject = () => {
           </P>
           <P>
             We were on a tight time constraint due to poor contribution from a
-            teammate so in place of soldering I used Blu Tack to connect the
-            wires together.
+            teammate so in place of soldering I used{" "}
+            <SpanOnClick onClick={() => setSkip([0])}>Blu Tack</SpanOnClick> to
+            connect the wires together.
           </P>
         </ProjectAchievements>
       }
@@ -43,7 +51,7 @@ const FPGAProject = () => {
           gitHubURL="https://github.com/Term-4-CSD-Team-48/fpga-game"
         />
       }
-      medias={<ProjectMedias medias={fpgaMedias} />}
+      medias={<ProjectMedias medias={fpgaMedias} skip={skip} />}
     />
   );
 };

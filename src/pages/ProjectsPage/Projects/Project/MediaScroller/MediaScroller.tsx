@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { FlexRow, PageProps, Pagination } from "@src/components";
@@ -35,29 +35,39 @@ const Page = ({ active, onClick, pageNumber }: PageProps) => {
 
 interface CommonProps {
   medias: any[];
+  skip?: number[];
 }
 
 export interface MediaScrollerProps extends CommonProps {}
 
-export const MediaScroller = ({ medias }: MediaScrollerProps) => {
+export const MediaScroller = (props: MediaScrollerProps) => {
   return (
     <Container>
-      <MS medias={medias} />
+      <MS {...props} />
     </Container>
   );
 };
 
 interface MSProps extends CommonProps {}
 
-export const MS = ({ medias }: MSProps) => {
+export const MS = ({ medias, skip }: MSProps) => {
   const onClickMedia = useContext(PjtContext);
 
   const thumbnailsPerPage = 5;
-  const totalPages = Math.ceil(medias.length / thumbnailsPerPage); // One-indexed
+  const totalPages = Math.ceil(medias.length / thumbnailsPerPage);
 
   const [selectedMediaIdx, setSelectedMediaIdx] = useState<number>(0);
   const [firstThumbnailIdx, setFirstThumbnailIdx] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1); // One-indexed
+
+  useEffect(() => {
+    if (skip && skip[0] !== selectedMediaIdx) {
+      setSelectedMediaIdx(skip[0]);
+      const newPageNumber = Math.ceil((skip[0] + 1) / thumbnailsPerPage);
+      setCurrentPage(newPageNumber);
+      setFirstThumbnailIdx((newPageNumber - 1) * thumbnailsPerPage);
+    }
+  }, [skip]);
 
   /**
    * Assumes that | selectedMediaIdx - idx | <= 1
@@ -107,7 +117,6 @@ export const MS = ({ medias }: MSProps) => {
     } else {
       return;
     }
-
     setSelectedMediaIdx(newMediaIdx);
     if (newCurrentPage === totalPages)
       newFirstThumbnailIdx = (newCurrentPage - 1) * thumbnailsPerPage;
