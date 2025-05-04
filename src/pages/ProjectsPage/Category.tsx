@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Img, Span } from "@src/elements";
 import { FlexColumn } from "@src/components";
-import { Animation, AnimationProps } from "@src/animations";
+import { AnimationProps } from "@src/animations";
 
 const Container = styled(FlexColumn)<AnimationProps>`
   align-items: center;

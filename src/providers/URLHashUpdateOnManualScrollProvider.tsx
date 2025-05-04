@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 // Keys are id of all fragments registered
 const fragmentMap = new Map<string, boolean>();
@@ -53,14 +53,14 @@ export const URLHashUpdateOnManualScrollProvider = ({
   // Keep track of all registered fragments and provide the function
   // to register fragment
   const [fragmentCount, setFragmentCount] = useState<number>(0);
-  const registerFragment = (id: string) => {
+  const registerFragment = useCallback((id: string) => {
     fragmentMap.set(id, true);
-    setFragmentCount(fragmentCount + 1);
+    setFragmentCount((f) => f + 1);
     return () => {
       fragmentMap.delete(id);
-      setFragmentCount(fragmentCount - 1);
+      setFragmentCount((f) => f - 1);
     };
-  };
+  }, []);
 
   // Makes the observer watch over all registered fragments
   useEffect(() => {

@@ -86,7 +86,7 @@ const Pjt = ({ name, achievements, links, medias, onClickMedia }: PjtProps) => {
   const registerFragment = useContext(RegisterFragmentContext);
   useEffect(() => {
     return registerFragment(id);
-  }, []); // Do not remove this empty array as it'll cause infinite calls
+  }, [registerFragment, id]);
   return (
     <PjtContext.Provider value={onClickMedia}>
       <H2 id={id}>{name}</H2>

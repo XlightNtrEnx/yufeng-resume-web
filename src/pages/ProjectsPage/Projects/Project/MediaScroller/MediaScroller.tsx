@@ -67,7 +67,7 @@ export const MS = ({ medias, skip }: MSProps) => {
       setCurrentPage(newPageNumber);
       setFirstThumbnailIdx((newPageNumber - 1) * thumbnailsPerPage);
     }
-  }, [skip]);
+  }, [selectedMediaIdx, skip]);
 
   /**
    * Assumes that | selectedMediaIdx - idx | <= 1
