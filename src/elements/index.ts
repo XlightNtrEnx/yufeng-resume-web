@@ -9,3 +9,4 @@ export * from "./Footer";
 export * from "./Video";
 export * from "./Lists";
 export * from "./Div";
+export * from "./Canvas";
