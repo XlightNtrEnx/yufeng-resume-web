@@ -7,6 +7,7 @@ const colors = {
   black,
   softBlack: `${black}cc`,
   softerBlack: `${black}66`,
+  blue: "#0000EE",
   pallete: {
     splitComplementary: {
       primary: "#eb4fed",
@@ -32,6 +33,7 @@ const theme = {
   negSoftBackgroundColor: colors.softBlack,
   negSofterBackgroundColor: colors.softerBlack,
   textColor: colors.black,
+  hyperLinkColor: colors.blue,
 };
 
 export type Theme = typeof theme;
