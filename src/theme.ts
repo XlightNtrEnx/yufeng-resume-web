@@ -8,6 +8,7 @@ const colors = {
   black,
   softBlack: `${black}cc`,
   softerBlack: `${black}66`,
+  evenSofterBlack: `${black}55`,
   blue: "#0000EE",
   pallete: {
     splitComplementary: {
@@ -34,7 +35,9 @@ const theme = {
   negBackgroundColor: colors.black,
   negSoftBackgroundColor: colors.softBlack,
   negSofterBackgroundColor: colors.softerBlack,
+  negEvenSofterBackgroundColor: colors.evenSofterBlack,
   textColor: colors.black,
+  negTextColor: colors.white,
   hyperLinkColor: colors.blue,
 };
 
