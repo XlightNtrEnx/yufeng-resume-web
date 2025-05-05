@@ -44,7 +44,7 @@ export const AutoScrollToHashProvider = ({ children }: Props) => {
     };
 
     // Try immediately first upon app load
-    // If not found, start polling every 100ms
+    // If not found, start polling every (attemptIntervalMS)ms
     if (scrollToHash && !findAndScrollToElement()) {
       intervalId = window.setInterval(
         findAndScrollToElement,
