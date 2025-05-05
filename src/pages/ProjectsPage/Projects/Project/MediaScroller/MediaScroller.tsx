@@ -5,7 +5,7 @@ import { FlexRow, PageProps, Pagination } from "@src/components";
 import { Span } from "@src/elements";
 import { PjtContext } from "@src/pages/ProjectsPage/Projects/Project";
 
-import { Medias } from "./Medias";
+import { Main } from "./Main";
 import { Thumbnails } from "./Thumbnails";
 
 const Container = styled.div`
@@ -141,7 +141,7 @@ export const MS = ({ mediasDir, totalMedias, nonPNGMedias, skip }: MSProps) => {
 
   return (
     <>
-      <Medias
+      <Main
         mediasDir={mediasDir}
         totalMedias={totalMedias}
         onClickMedia={onClickMedia}

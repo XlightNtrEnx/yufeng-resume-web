@@ -6,11 +6,11 @@ import { Img } from "@src/elements";
 import { EnsurePropertyExists } from "@src/types";
 import { zIndexes } from "@src/zIndex";
 
-import { MediasProps } from "./Medias";
+import { MainProps } from "./Main";
 
 interface ThumbnailsProps
   extends Omit<
-    EnsurePropertyExists<MediasProps, "onClickMedia">,
+    EnsurePropertyExists<MainProps, "onClickMedia">,
     "onClickMedia"
   > {
   firstThumbnailIdx: number;

@@ -44,7 +44,7 @@ const Arrow = styled.div<{ $right: boolean }>`
   ${({ $right }) => ($right ? "right: 0" : "left: 0")};
 `;
 
-export interface MediasProps {
+export interface MainProps {
   mediasDir: string;
   onClickMedia: () => void;
   selectedMediaIdx: number;
@@ -53,14 +53,14 @@ export interface MediasProps {
   nonPNGMedias?: Record<number, string>;
 }
 
-export const Medias = ({
+export const Main = ({
   mediasDir,
   onClickMedia,
   selectedMediaIdx,
   setSelectedMediaIdx,
   totalMedias,
   nonPNGMedias,
-}: MediasProps) => {
+}: MainProps) => {
   const newMedias = [];
   if (nonPNGMedias) {
     for (let i = 1; i <= totalMedias; i++) {
