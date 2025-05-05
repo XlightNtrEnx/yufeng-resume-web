@@ -13,6 +13,7 @@ import EESrc from "@src/assets/images/electrical engineering.jpg";
 import WebSrc from "@src/assets/images/web.jpg";
 import DBSrc from "@src/assets/images/database.jpg";
 import AndroidSrc from "@src/assets/images/android.jpg";
+import ServerSrc from "@src/assets/images/server.jpg";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { Grid, Modal } from "@src/components";
 import { zIndexes } from "@src/zIndex";
@@ -25,6 +26,7 @@ import {
   WebProjects,
   DBProjects,
   AndroidProjects,
+  ServerProjects,
 } from "./Projects";
 
 const Container = styled(Grid)`
@@ -61,6 +63,7 @@ const CysecName = "Cysec";
 const ElecEngName = "Elec. Eng";
 const DBName = "Database";
 const AndroidName = "Android";
+const ServerName = "Server";
 const categoryNameToIndex = new Map<string, number>();
 categoryNameToIndex.set(AIName, 0);
 categoryNameToIndex.set(WebName, 1);
@@ -68,6 +71,7 @@ categoryNameToIndex.set(CysecName, 2);
 categoryNameToIndex.set(ElecEngName, 3);
 categoryNameToIndex.set(DBName, 4);
 categoryNameToIndex.set(AndroidName, 5);
+categoryNameToIndex.set(ServerName, 6);
 const categories: ICategory[] = [
   [AIName, AISrc, <AIProjects />],
   [WebName, WebSrc, <WebProjects />],
@@ -75,6 +79,7 @@ const categories: ICategory[] = [
   [ElecEngName, EESrc, <EEProjects />],
   [DBName, DBSrc, <DBProjects />],
   [AndroidName, AndroidSrc, <AndroidProjects />],
+  [ServerName, ServerSrc, <ServerProjects />],
 ];
 
 const firstIndex = 0;
