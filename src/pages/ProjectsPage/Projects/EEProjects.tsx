@@ -19,7 +19,7 @@ const FPGAProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
     <Project
-      name="FPGA integration with electrical components"
+      name="FPGA integration with electrical components (lucid)"
       achievements={
         <ProjectAchievements>
           <P>Solved various problems from optimization to bugs for my team</P>

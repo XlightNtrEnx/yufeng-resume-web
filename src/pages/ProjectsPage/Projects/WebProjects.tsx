@@ -19,7 +19,7 @@ const ResumeProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
     <Project
-      name="Resume (React)"
+      name="Resume (React, typescript)"
       achievements={
         <ProjectAchievements>
           <P>

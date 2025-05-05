@@ -20,7 +20,7 @@ const MongoProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
     <Project
-      name="MongoDB for users"
+      name="MongoDB for users (java)"
       achievements={
         <ProjectAchievements>
           <P>

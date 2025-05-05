@@ -24,7 +24,7 @@ const SamProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
     <Project
-      name="SAM2.1 Instance Segmentation"
+      name="SAM2.1 Instance Segmentation (python)"
       achievements={
         <ProjectAchievements>
           <P>
@@ -57,7 +57,7 @@ const CatDogProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
     <Project
-      name="Cat Dog Classifier"
+      name="Cat Dog Classifier (python)"
       achievements={
         <ProjectAchievements>
           <P>
