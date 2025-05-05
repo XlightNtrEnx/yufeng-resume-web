@@ -45,36 +45,51 @@ const Arrow = styled.div<{ $right: boolean }>`
 `;
 
 export interface MediasProps {
-  medias: string[];
+  mediasDir: string;
   onClickMedia: () => void;
   selectedMediaIdx: number;
   setSelectedMediaIdx: (idx: number) => void;
+  totalMedias: number;
+  nonPNGMedias?: Record<number, string>;
 }
 
 export const Medias = ({
-  medias,
+  mediasDir,
   onClickMedia,
   selectedMediaIdx,
   setSelectedMediaIdx,
+  totalMedias,
+  nonPNGMedias,
 }: MediasProps) => {
+  const newMedias = [];
+  if (nonPNGMedias) {
+    for (let i = 1; i <= totalMedias; i++) {
+      if (nonPNGMedias[i]) {
+        newMedias.push(
+          <Video key={i} src={mediasDir + `${i}${nonPNGMedias[i]}`} controls />
+        );
+      } else {
+        newMedias.push(
+          <Img key={i} src={mediasDir + `${i}.png`} onClick={onClickMedia} />
+        );
+      }
+    }
+  } else {
+    for (let i = 1; i <= totalMedias; i++) {
+      newMedias.push(
+        <Img key={i} src={mediasDir + `${i}.png`} onClick={onClickMedia} />
+      );
+    }
+  }
+
   return (
     <Container>
       <ActualMediasContainer $right={`${selectedMediaIdx * 100}%`}>
-        {medias.map((media, idx) =>
-          media.endsWith("mp4") ? (
-            <Video key={idx} src={media} controls />
-          ) : (
-            <Img onClick={onClickMedia} key={idx} src={media} />
-          )
-        )}
+        {newMedias.length > 0 && <>{newMedias}</>}
       </ActualMediasContainer>
       <Arrow
         $right={false}
-        onClick={() =>
-          setSelectedMediaIdx(
-            selectedMediaIdx === 0 ? medias.length - 1 : selectedMediaIdx - 1
-          )
-        }
+        onClick={() => setSelectedMediaIdx(selectedMediaIdx - 1)}
       />
       <Arrow
         $right={true}

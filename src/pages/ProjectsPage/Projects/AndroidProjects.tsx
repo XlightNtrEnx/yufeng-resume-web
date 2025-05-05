@@ -1,11 +1,8 @@
 import { useState } from "react";
 
-import pe1 from "@src/assets/videos/projects/parcel-eye/1.mp4";
-import pe2 from "@src/assets/images/projects/parcel-eye/2.png";
-import pe3 from "@src/assets/images/projects/parcel-eye/3.png";
-import pe4 from "@src/assets/images/projects/parcel-eye/4.png";
 import { BlueUnderlineExternalLink } from "@src/components";
 import { P, LI, UL } from "@src/elements";
+import { publicPaths } from "@src/publicPaths";
 
 import {
   Project,
@@ -16,7 +13,6 @@ import {
 } from "./Project";
 import { Projects } from "./Projects";
 
-const parcelEyeMedias = [pe1, pe2, pe3, pe4];
 const ParcelEyeProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -59,7 +55,14 @@ const ParcelEyeProject = () => {
           docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
         />
       }
-      medias={<ProjectMedias medias={parcelEyeMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={publicPaths.projectsDir.parcelEyeDir.path}
+          skip={skip}
+          totalMedias={4}
+          nonPNGMedias={{ 1: ".mp4" }}
+        />
+      }
     />
   );
 };

@@ -43,4 +43,31 @@ export const publicPaths = {
       },
     },
   },
+  projectsDir: {
+    path: "project-images/",
+    term4InfosysAIDir: {
+      path: "project-images/term4-infosys-ai/",
+    },
+    term4InfosysAPIDir: {
+      path: "project-images/term4-infosys-api/",
+    },
+    webResumeDir: {
+      path: "project-images/web-resume/",
+    },
+    fpgaIntegrationWithElectricalComponentsDir: {
+      path: "project-images/FPGA-integration-with-electrical-components/",
+    },
+    mongoDir: {
+      path: "project-images/mongo/",
+    },
+    parcelEyeDir: {
+      path: "project-images/parcel-eye/",
+    },
+    samDir: {
+      path: "project-images/sam/",
+    },
+    catDogClassfierDir: {
+      path: "project-images/cat-dog-classifier/",
+    },
+  },
 };

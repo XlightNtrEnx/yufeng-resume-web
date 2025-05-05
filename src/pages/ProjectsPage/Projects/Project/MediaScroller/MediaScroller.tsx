@@ -35,7 +35,9 @@ const Page = ({ active, onClick, pageNumber }: PageProps) => {
 };
 
 interface CommonProps {
-  medias: any[];
+  mediasDir: string;
+  totalMedias: number;
+  nonPNGMedias?: Record<number, string>;
   skip?: number[];
 }
 
@@ -51,11 +53,11 @@ export const MediaScroller = (props: MediaScrollerProps) => {
 
 interface MSProps extends CommonProps {}
 
-export const MS = ({ medias, skip }: MSProps) => {
+export const MS = ({ mediasDir, totalMedias, nonPNGMedias, skip }: MSProps) => {
   const onClickMedia = useContext(PjtContext);
 
   const thumbnailsPerPage = 5;
-  const totalPages = Math.ceil(medias.length / thumbnailsPerPage);
+  const totalPages = Math.ceil(totalMedias / thumbnailsPerPage);
 
   const [selectedMediaIdx, setSelectedMediaIdx] = useState<number>(0);
   const [firstThumbnailIdx, setFirstThumbnailIdx] = useState<number>(0);
@@ -84,13 +86,13 @@ export const MS = ({ medias, skip }: MSProps) => {
     var newMediaIdx: number;
     var newFirstThumbnailIdx: number;
     const newCurrentPage: number =
-      Math.floor((idx % medias.length) / thumbnailsPerPage) + 1;
+      Math.floor((idx % totalMedias) / thumbnailsPerPage) + 1;
 
     if (change > 0) {
       // Moved right
-      if (idx >= medias.length) {
+      if (idx >= totalMedias) {
         // Positive overflow
-        newMediaIdx = idx % medias.length;
+        newMediaIdx = idx % totalMedias;
         newFirstThumbnailIdx = newMediaIdx;
       } else {
         // No overflow
@@ -107,7 +109,7 @@ export const MS = ({ medias, skip }: MSProps) => {
       // Means moved left
       if (idx < 0) {
         // Negative overflow
-        newMediaIdx = medias.length - 1;
+        newMediaIdx = totalMedias - 1;
         newFirstThumbnailIdx = (totalPages - 1) * thumbnailsPerPage;
       } else {
         // No overflow
@@ -140,16 +142,20 @@ export const MS = ({ medias, skip }: MSProps) => {
   return (
     <>
       <Medias
-        medias={medias}
+        mediasDir={mediasDir}
+        totalMedias={totalMedias}
         onClickMedia={onClickMedia}
         selectedMediaIdx={selectedMediaIdx}
         setSelectedMediaIdx={mediasComponentSelectedMediaIdxSetter}
+        nonPNGMedias={nonPNGMedias}
       />
       <Thumbnails
-        medias={medias}
+        mediasDir={mediasDir}
+        totalMedias={totalMedias}
         firstThumbnailIdx={firstThumbnailIdx}
         selectedMediaIdx={selectedMediaIdx}
         setSelectedMediaIdx={setSelectedMediaIdx}
+        nonPNGMedias={nonPNGMedias}
       />
       {totalPages > 1 && (
         <PaginationContainer>

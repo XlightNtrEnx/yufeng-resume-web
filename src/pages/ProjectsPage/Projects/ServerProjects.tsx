@@ -1,19 +1,7 @@
 import { useState } from "react";
 
-import t4isai1 from "@src/assets/images/projects/term4-infosys-ai/1.png";
-import t4isai2 from "@src/assets/images/projects/term4-infosys-ai/2.png";
-import t4isai3 from "@src/assets/images/projects/term4-infosys-ai/3.png";
-import t4isai4 from "@src/assets/images/projects/term4-infosys-ai/4.png";
-import t4isai5 from "@src/assets/images/projects/term4-infosys-ai/5.png";
-import t4isai6 from "@src/assets/images/projects/term4-infosys-ai/6.png";
-import t4isai7 from "@src/assets/images/projects/term4-infosys-ai/7.png";
-import t4isai8 from "@src/assets/images/projects/term4-infosys-ai/8.png";
-
-import t4isa1 from "@src/assets/images/projects/term4-infosys-api/1.png";
-import t4isa2 from "@src/assets/images/projects/term4-infosys-api/2.png";
-import t4isa3 from "@src/assets/images/projects/term4-infosys-api/3.png";
-import t4isa4 from "@src/assets/images/projects/term4-infosys-api/4.png";
 import { P, LI, UL } from "@src/elements";
+import { publicPaths } from "@src/publicPaths";
 
 import {
   Project,
@@ -24,16 +12,6 @@ import {
 } from "./Project";
 import { Projects } from "./Projects";
 
-const term4InfoSysAIMedias = [
-  t4isai1,
-  t4isai2,
-  t4isai3,
-  t4isai4,
-  t4isai5,
-  t4isai6,
-  t4isai7,
-  t4isai8,
-];
 const Term4InfoSysAIProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -86,12 +64,17 @@ const Term4InfoSysAIProject = () => {
           docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
         />
       }
-      medias={<ProjectMedias medias={term4InfoSysAIMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={publicPaths.projectsDir.term4InfosysAIDir.path}
+          totalMedias={8}
+          skip={skip}
+        />
+      }
     />
   );
 };
 
-const term4InfoSysAPIMedias = [t4isa1, t4isa2, t4isa3, t4isa4];
 const Term4InfoSysAPIProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -136,7 +119,13 @@ const Term4InfoSysAPIProject = () => {
           docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
         />
       }
-      medias={<ProjectMedias medias={term4InfoSysAPIMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={publicPaths.projectsDir.term4InfosysAIDir.path}
+          totalMedias={4}
+          skip={skip}
+        />
+      }
     />
   );
 };

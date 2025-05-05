@@ -61,12 +61,52 @@ const VideoThumbnail = styled(Img)`
 `;
 
 export const Thumbnails = ({
-  medias,
+  mediasDir,
   firstThumbnailIdx,
   imgWidth,
   selectedMediaIdx,
   setSelectedMediaIdx,
+  totalMedias,
+  nonPNGMedias,
 }: ThumbnailsProps) => {
+  const newMedias = [];
+  if (nonPNGMedias) {
+    for (let i = 1; i <= totalMedias; i++) {
+      if (nonPNGMedias[i]) {
+        newMedias.push(
+          <VideoThumbnail
+            onClick={() => {
+              setSelectedMediaIdx(i - 1);
+            }}
+            key={i}
+            src={playButton}
+          />
+        );
+      } else {
+        newMedias.push(
+          <Img
+            onClick={() => {
+              setSelectedMediaIdx(i - 1);
+            }}
+            key={i}
+            src={mediasDir + `${i}.png`}
+          />
+        );
+      }
+    }
+  } else {
+    for (let i = 1; i <= totalMedias; i++) {
+      newMedias.push(
+        <Img
+          onClick={() => {
+            setSelectedMediaIdx(i - 1);
+          }}
+          key={i}
+          src={mediasDir + `${i}.png`}
+        />
+      );
+    }
+  }
   return (
     <ThumbnailsContainer>
       <ActualMediasContainer
@@ -74,25 +114,7 @@ export const Thumbnails = ({
         $right={`${firstThumbnailIdx * 20}%`}
       >
         <ActiveSelectionBorder $left={`${selectedMediaIdx * 20}%`} />
-        {medias.map((media, idx) =>
-          media.endsWith(".mp4") ? (
-            <VideoThumbnail
-              onClick={() => {
-                setSelectedMediaIdx(idx);
-              }}
-              key={idx}
-              src={playButton}
-            />
-          ) : (
-            <Img
-              onClick={() => {
-                setSelectedMediaIdx(idx);
-              }}
-              key={idx}
-              src={media}
-            />
-          )
-        )}
+        {newMedias.length > 0 && <>{newMedias}</>}
       </ActualMediasContainer>
     </ThumbnailsContainer>
   );

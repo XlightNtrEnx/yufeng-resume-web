@@ -1,14 +1,7 @@
 import { useState } from "react";
 
-import cd1 from "@src/assets/images/projects/cat-dog-classifier/1.png";
-import cd2 from "@src/assets/images/projects/cat-dog-classifier/2.png";
-import cd3 from "@src/assets/images/projects/cat-dog-classifier/3.png";
-import cd4 from "@src/assets/images/projects/cat-dog-classifier/4.png";
-import cd5 from "@src/assets/images/projects/cat-dog-classifier/5.png";
-import cd6 from "@src/assets/images/projects/cat-dog-classifier/6.png";
-import sam1 from "@src/assets/images/projects/sam/1.png";
-import sam2 from "@src/assets/videos/projects/sam/2.mp4";
 import { LI, P, UL } from "@src/elements";
+import { publicPaths } from "@src/publicPaths";
 
 import {
   Project,
@@ -19,7 +12,6 @@ import {
 } from "./Project";
 import { Projects } from "./Projects";
 
-const samMedias = [sam1, sam2];
 const SamProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -45,12 +37,18 @@ const SamProject = () => {
           docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
         />
       }
-      medias={<ProjectMedias medias={samMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={publicPaths.projectsDir.samDir.path}
+          skip={skip}
+          totalMedias={2}
+          nonPNGMedias={{ 2: ".mp4" }}
+        />
+      }
     />
   );
 };
 
-const catDogMedias = [cd1, cd2, cd3, cd4, cd5, cd6];
 const CatDogProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -99,7 +97,13 @@ const CatDogProject = () => {
       links={
         <ProjectLinks colabURL="https://colab.research.google.com/drive/1DO3Vp136JAMOekZNlbf7Pz3TawHV__xa?usp=sharing" />
       }
-      medias={<ProjectMedias medias={catDogMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={publicPaths.projectsDir.catDogClassfierDir.path}
+          skip={skip}
+          totalMedias={6}
+        />
+      }
     />
   );
 };

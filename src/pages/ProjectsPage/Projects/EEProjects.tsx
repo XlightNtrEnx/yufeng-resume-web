@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-import media1 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/1.jpg";
-import media2 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/2.jpg";
-import media3 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/3.png";
 import { P } from "@src/elements";
+import { publicPaths } from "@src/publicPaths";
 
 import {
   Project,
@@ -14,7 +12,6 @@ import {
 } from "./Project";
 import { Projects } from "./Projects";
 
-const fpgaMedias = [media1, media2, media3];
 const FPGAProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -49,7 +46,16 @@ const FPGAProject = () => {
           gitHubURL="https://github.com/Term-4-CSD-Team-48/fpga-game"
         />
       }
-      medias={<ProjectMedias medias={fpgaMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={
+            publicPaths.projectsDir.fpgaIntegrationWithElectricalComponentsDir
+              .path
+          }
+          totalMedias={3}
+          skip={skip}
+        />
+      }
     />
   );
 };

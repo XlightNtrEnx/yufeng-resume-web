@@ -1,10 +1,7 @@
 import { useState } from "react";
 
-import mongo1 from "@src/assets/images/projects/mongo/1.png";
-import mongo2 from "@src/assets/images/projects/mongo/2.png";
-import mongo3 from "@src/assets/images/projects/mongo/3.png";
-import mongo4 from "@src/assets/images/projects/mongo/4.png";
 import { P } from "@src/elements";
+import { publicPaths } from "@src/publicPaths";
 
 import {
   Project,
@@ -15,7 +12,6 @@ import {
 } from "./Project";
 import { Projects } from "./Projects";
 
-const mongoMedias = [mongo1, mongo2, mongo3, mongo4];
 const MongoProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -45,7 +41,13 @@ const MongoProject = () => {
           docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
         />
       }
-      medias={<ProjectMedias medias={mongoMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={publicPaths.projectsDir.mongoDir.path}
+          skip={skip}
+          totalMedias={4}
+        />
+      }
     />
   );
 };

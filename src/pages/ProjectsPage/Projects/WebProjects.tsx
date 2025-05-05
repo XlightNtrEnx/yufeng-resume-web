@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-import media1 from "@src/assets/images/projects/web-resume/1.png";
-import media2 from "@src/assets/images/projects/web-resume/2.png";
-import media3 from "@src/assets/images/projects/web-resume/3.png";
 import { LI, P, UL } from "@src/elements";
+import { publicPaths } from "@src/publicPaths";
 
 import {
   Project,
@@ -14,7 +12,6 @@ import {
 } from "./Project";
 import { Projects } from "./Projects";
 
-const resumeMedias = [media1, media2, media3];
 const ResumeProject = () => {
   const [skip, setSkip] = useState<number[]>([0]);
   return (
@@ -44,7 +41,13 @@ const ResumeProject = () => {
       links={
         <ProjectLinks gitHubURL="https://github.com/XlightNtrEnx/yufeng-resume-web" />
       }
-      medias={<ProjectMedias medias={resumeMedias} skip={skip} />}
+      medias={
+        <ProjectMedias
+          mediasDir={publicPaths.projectsDir.webResumeDir.path}
+          totalMedias={3}
+          skip={skip}
+        />
+      }
     />
   );
 };
