@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+import t4isai1 from "@src/assets/images/projects/term4-infosys-ai/1.png";
+import t4isai2 from "@src/assets/images/projects/term4-infosys-ai/2.png";
+import t4isai3 from "@src/assets/images/projects/term4-infosys-ai/3.png";
+import t4isai4 from "@src/assets/images/projects/term4-infosys-ai/4.png";
+import t4isai5 from "@src/assets/images/projects/term4-infosys-ai/5.png";
+import t4isai6 from "@src/assets/images/projects/term4-infosys-ai/6.png";
+import t4isai7 from "@src/assets/images/projects/term4-infosys-ai/7.png";
+import t4isai8 from "@src/assets/images/projects/term4-infosys-ai/8.png";
+
 import t4isa1 from "@src/assets/images/projects/term4-infosys-api/1.png";
 import t4isa2 from "@src/assets/images/projects/term4-infosys-api/2.png";
 import t4isa3 from "@src/assets/images/projects/term4-infosys-api/3.png";
@@ -14,6 +23,73 @@ import {
   OnClick,
 } from "./Project";
 import { Projects } from "./Projects";
+
+const term4InfoSysAIMedias = [
+  t4isai1,
+  t4isai2,
+  t4isai3,
+  t4isai4,
+  t4isai5,
+  t4isai6,
+  t4isai7,
+  t4isai8,
+];
+const Term4InfoSysAIProject = () => {
+  const [skip, setSkip] = useState<number[]>([0]);
+  return (
+    <Project
+      name="Wrapped AI with a server (python, HTTP, RTMP)"
+      achievements={
+        <ProjectAchievements>
+          <P>
+            My team needed our AI to be able to communicate through the internet
+            with users and a CCTV, so I wrapped our AI with{" "}
+            <OnClick onClick={() => setSkip([0])}>nginx</OnClick> proxy server
+            that <OnClick onClick={() => setSkip([1])}>feeds</OnClick> to a{" "}
+            <OnClick onClick={() => setSkip([2])}>flask server</OnClick> housing
+            the AI and starts a{" "}
+            <OnClick onClick={() => setSkip([3])}>RTMP server</OnClick> that
+            takes input from CCTV.
+            <UL>
+              <LI>
+                <OnClick onClick={() => setSkip([4])}>Streamer</OnClick> object
+                uses opencv and a secondary thread to always output latest frame
+                from the stream at the RTMP server
+              </LI>
+              <LI>
+                <OnClick onClick={() => setSkip([5])}>Tracker</OnClick> object
+                builds the AI and uses cv2 to convert the frames to feed to the
+                AI and uses its output to draw masks on the frame. The tracker
+                uses request module to send out a HTTP request to another server
+                when it is unable to generate masks.
+              </LI>
+              <LI>
+                <OnClick onClick={() => setSkip([6])}>
+                  RGBFramesToHLSProcess
+                </OnClick>{" "}
+                starts a FFmpeg process to take in the frames and automatically
+                generate HLS live stream of 4 second segments.
+              </LI>
+              <LI>
+                <OnClick onClick={() => setSkip([7])}>
+                  nginx exposes hls endpoint
+                </OnClick>{" "}
+                to allow any player to consume the .m3u8 playlist
+              </LI>
+            </UL>
+          </P>
+        </ProjectAchievements>
+      }
+      links={
+        <ProjectLinks
+          gitHubURL="https://github.com/Term-4-CSD-Team-48/ai-endpoint"
+          docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
+        />
+      }
+      medias={<ProjectMedias medias={term4InfoSysAIMedias} skip={skip} />}
+    />
+  );
+};
 
 const term4InfoSysAPIMedias = [t4isa1, t4isa2, t4isa3, t4isa4];
 const Term4InfoSysAPIProject = () => {
@@ -68,6 +144,7 @@ const Term4InfoSysAPIProject = () => {
 export const ServerProjects = () => {
   return (
     <Projects>
+      <Term4InfoSysAIProject />
       <Term4InfoSysAPIProject />
     </Projects>
   );
