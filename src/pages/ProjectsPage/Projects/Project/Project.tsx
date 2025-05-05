@@ -46,7 +46,7 @@ export const Project = ({
         medias={medias}
         // Pjt-specific Props
         onClickMedia={() => {
-          window.innerWidth >= mobileBreakpointInPx || setFocused(true);
+          window.innerWidth < mobileBreakpointInPx || setFocused(true);
         }}
       />
       {focused && (
