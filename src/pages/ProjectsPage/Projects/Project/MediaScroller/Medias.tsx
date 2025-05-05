@@ -63,7 +63,7 @@ export const Medias = ({
       <ActualMediasContainer $right={`${selectedMediaIdx * 100}%`}>
         {medias.map((media, idx) =>
           media.endsWith("mp4") ? (
-            <Video src={media} controls />
+            <Video key={idx} src={media} controls />
           ) : (
             <Img onClick={onClickMedia} key={idx} src={media} />
           )
