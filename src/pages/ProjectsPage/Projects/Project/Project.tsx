@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 
+import { mobileBreakpointInPx } from "@src/atoms";
 import { FlexColumn, Modal } from "@src/components";
 import { H2 } from "@src/elements";
 import { RegisterFragmentContext } from "@src/providers";
@@ -45,7 +46,7 @@ export const Project = ({
         medias={medias}
         // Pjt-specific Props
         onClickMedia={() => {
-          setFocused(true);
+          window.innerWidth >= mobileBreakpointInPx || setFocused(true);
         }}
       />
       {focused && (
