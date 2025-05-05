@@ -33,7 +33,8 @@ const SamProject = () => {
             <SpanOnClick onClick={() => setSkip([1])}>
               track an object
             </SpanOnClick>{" "}
-            on a camera and receive push notifications if it becomes untrackable
+            on a camera and receive push notifications (notification delay is
+            smaller than camera stream latency) if it becomes untrackable
           </P>
           <P>
             Used it out of the box without any transfer learning or training
