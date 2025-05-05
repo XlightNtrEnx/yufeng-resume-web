@@ -21,6 +21,7 @@ import { Projects } from "./Projects";
 
 const samMedias = [sam1, sam2];
 const SamProject = () => {
+  const [skip, setSkip] = useState<number[]>([0]);
   return (
     <Project
       name="SAM2.1 Instance Segmentation"
@@ -28,8 +29,11 @@ const SamProject = () => {
         <ProjectAchievements>
           <P>
             Wrapped a python flask server with nginx proxy around SAM2.1 by Meta
-            to allow users to track an object on a camera and receive push
-            notifications if it becomes untrackable
+            to allow users to{" "}
+            <SpanOnClick onClick={() => setSkip([1])}>
+              track an object
+            </SpanOnClick>{" "}
+            on a camera and receive push notifications if it becomes untrackable
           </P>
           <P>
             Used it out of the box without any transfer learning or training
@@ -42,7 +46,7 @@ const SamProject = () => {
           docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
         />
       }
-      medias={<ProjectMedias medias={samMedias} />}
+      medias={<ProjectMedias medias={samMedias} skip={skip} />}
     />
   );
 };
