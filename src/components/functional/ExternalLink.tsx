@@ -6,14 +6,24 @@ const StyledA = styled(A)``;
 
 export interface ExternalLinkProps extends AProps {
   children?: React.ReactNode;
+  className?: string;
 }
 
 /**
  * Link to an external website
  */
-export const ExternalLink = ({ href, children }: ExternalLinkProps) => {
+export const ExternalLink = ({
+  href,
+  children,
+  className,
+}: ExternalLinkProps) => {
   return (
-    <StyledA target="_blank" rel="noreferrer noopener" href={href}>
+    <StyledA
+      target="_blank"
+      rel="noreferrer noopener"
+      href={href}
+      className={className}
+    >
       {children}
     </StyledA>
   );
