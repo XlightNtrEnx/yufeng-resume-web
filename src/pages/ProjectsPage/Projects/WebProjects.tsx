@@ -10,7 +10,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
-  SpanOnClick,
+  OnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 
@@ -28,17 +28,14 @@ const ResumeProject = () => {
           </P>
           <UL>
             <LI>
-              <SpanOnClick onClick={() => setSkip([0])}>React</SpanOnClick>{" "}
-              (frontend)
+              <OnClick onClick={() => setSkip([0])}>React</OnClick> (frontend)
             </LI>
             <LI>
-              <SpanOnClick onClick={() => setSkip([1])}>Firebase</SpanOnClick>{" "}
-              (backend + hosting)
+              <OnClick onClick={() => setSkip([1])}>Firebase</OnClick> (backend
+              + hosting)
             </LI>
             <LI>
-              <SpanOnClick onClick={() => setSkip([2])}>
-                Github actions
-              </SpanOnClick>{" "}
+              <OnClick onClick={() => setSkip([2])}>Github actions</OnClick>{" "}
               (CI/CD)
             </LI>
           </UL>

@@ -1,11 +1,16 @@
-import { Span } from "@src/elements";
 import { styled } from "styled-components";
+
+import { ReactComponent as LinkSVGIcon } from "@src/assets/svgs/icons/link.svg";
+import { Span } from "@src/elements";
 
 const Container = styled(Span)`
   cursor: pointer;
-  color: ${({ theme }) => theme.hyperLinkColor};
-  display: inline;
-  text-decoration: underline;
+  background-color: ${({ theme }) => theme.negEvenSofterBackgroundColor};
+  color: ${({ theme }) => theme.negTextColor};
+`;
+
+const StyledLinkSVGIcon = styled(LinkSVGIcon)`
+  color: ${({ theme }) => theme.negTextColor};
 `;
 
 interface Props {
@@ -13,6 +18,10 @@ interface Props {
   onClick: () => void;
 }
 
-export const SpanOnClick = ({ children, onClick }: Props) => {
-  return <Container onClick={onClick}>{children}</Container>;
+export const OnClick = ({ children, onClick }: Props) => {
+  return (
+    <Container onClick={onClick}>
+      {children} <StyledLinkSVGIcon width="0.75em" height="0.75em" />
+    </Container>
+  );
 };

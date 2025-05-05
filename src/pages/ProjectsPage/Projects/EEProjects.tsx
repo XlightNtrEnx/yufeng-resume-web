@@ -10,7 +10,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
-  SpanOnClick,
+  OnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 
@@ -26,9 +26,7 @@ const FPGAProject = () => {
           <P>
             Our FPGA controlled 6 7-SEG displays and I made sure that there
             wasn't excessive current flow by creating{" "}
-            <SpanOnClick onClick={() => setSkip([2])}>
-              code that cycles
-            </SpanOnClick>{" "}
+            <OnClick onClick={() => setSkip([2])}>code that cycles</OnClick>{" "}
             through all displays rapidly to give the illusion that all lit up at
             same time.
           </P>
@@ -40,8 +38,8 @@ const FPGAProject = () => {
           <P>
             We were on a tight time constraint due to poor contribution from a
             teammate so in place of soldering I used{" "}
-            <SpanOnClick onClick={() => setSkip([0])}>Blu Tack</SpanOnClick> to
-            connect the wires together.
+            <OnClick onClick={() => setSkip([0])}>Blu Tack</OnClick> to connect
+            the wires together.
           </P>
         </ProjectAchievements>
       }

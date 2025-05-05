@@ -11,7 +11,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
-  SpanOnClick,
+  OnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 
@@ -31,28 +31,24 @@ const Term4InfoSysAPIProject = () => {
             <UL>
               <LI>
                 Send verification emails upon registration{" "}
-                <SpanOnClick onClick={() => setSkip([0])}>
-                  (MailService)
-                </SpanOnClick>
+                <OnClick onClick={() => setSkip([0])}>(MailService)</OnClick>
               </LI>
               <LI>
                 Customized authentication process as we did not need login page
                 and this is meant to be used as API{" "}
-                <SpanOnClick onClick={() => setSkip([1])}>
+                <OnClick onClick={() => setSkip([1])}>
                   (SecurityConfiguration)
-                </SpanOnClick>
+                </OnClick>
               </LI>
               <LI>
                 Used MongoDB's SDK to connect to the database{" "}
-                <SpanOnClick onClick={() => setSkip([2])}>
+                <OnClick onClick={() => setSkip([2])}>
                   (MongoClientConnection)
-                </SpanOnClick>
+                </OnClick>
               </LI>
               <LI>
                 Enforced data integrity and consistency by indexing the database{" "}
-                <SpanOnClick onClick={() => setSkip([3])}>
-                  (UserCollection)
-                </SpanOnClick>
+                <OnClick onClick={() => setSkip([3])}>(UserCollection)</OnClick>
               </LI>
             </UL>
           </P>

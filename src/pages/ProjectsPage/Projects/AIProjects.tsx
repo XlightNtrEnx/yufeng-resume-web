@@ -15,7 +15,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
-  SpanOnClick,
+  OnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 
@@ -30,11 +30,9 @@ const SamProject = () => {
           <P>
             Wrapped a python flask server with nginx proxy around SAM2.1 by Meta
             to allow users to{" "}
-            <SpanOnClick onClick={() => setSkip([1])}>
-              track an object
-            </SpanOnClick>{" "}
-            on a camera and receive push notifications (notification delay is
-            smaller than camera stream latency) if it becomes untrackable
+            <OnClick onClick={() => setSkip([1])}>track an object</OnClick> on a
+            camera and receive push notifications (notification delay is smaller
+            than camera stream latency) if it becomes untrackable
           </P>
           <P>
             Used it out of the box without any transfer learning or training
@@ -62,42 +60,36 @@ const CatDogProject = () => {
         <ProjectAchievements>
           <P>
             Built a CNN from scratch in pytorch, achieving{" "}
-            <SpanOnClick onClick={() => setSkip([0])}>95%</SpanOnClick> training
-            and validation accuracy on kagglehub datasets.
+            <OnClick onClick={() => setSkip([0])}>95%</OnClick> training and
+            validation accuracy on kagglehub datasets.
           </P>
           <P>
             Incorporated concepts from various proven models like ResNet and VGG
           </P>
           <UL>
             <LI>
-              <SpanOnClick onClick={() => setSkip([2])}>Residual</SpanOnClick>{" "}
+              <OnClick onClick={() => setSkip([2])}>Residual</OnClick>{" "}
               connections that significantly combats vanishing gradients in deep
               networks
             </LI>
             <LI>
-              <SpanOnClick onClick={() => setSkip([4])}>
-                Hierachical
-              </SpanOnClick>{" "}
+              <OnClick onClick={() => setSkip([4])}>Hierachical</OnClick>{" "}
               feature extraction through successive conv layers of increasing
               feature size and decreasing image dimensions
             </LI>
             <LI>
               Extensive use of{" "}
-              <SpanOnClick onClick={() => setSkip([1])}>
+              <OnClick onClick={() => setSkip([1])}>
                 batch normalization
-              </SpanOnClick>{" "}
+              </OnClick>{" "}
               after conv layers to stabilize training
             </LI>
             <LI>
-              <SpanOnClick onClick={() => setSkip([1])}>
-                Dropout layers
-              </SpanOnClick>{" "}
+              <OnClick onClick={() => setSkip([1])}>Dropout layers</OnClick>{" "}
               with dataset transformations to prevent overfitting
             </LI>
             <LI>
-              <SpanOnClick onClick={() => setSkip([4])}>
-                Multiple FC layers
-              </SpanOnClick>{" "}
+              <OnClick onClick={() => setSkip([4])}>Multiple FC layers</OnClick>{" "}
               of decreasing size at the end for gradual reductions to learn more
               about nuances and increasingly abstract features
             </LI>

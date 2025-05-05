@@ -11,7 +11,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
-  SpanOnClick,
+  OnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 
@@ -28,21 +28,19 @@ const ParcelEyeProject = () => {
             <UL>
               <LI>
                 HTTP communication capability{" "}
-                <SpanOnClick onClick={() => setSkip([1])}>
-                  (ApiClient)
-                </SpanOnClick>
+                <OnClick onClick={() => setSkip([1])}>(ApiClient)</OnClick>
               </LI>
               <LI>
                 Push notifications{" "}
-                <SpanOnClick onClick={() => setSkip([2])}>
+                <OnClick onClick={() => setSkip([2])}>
                   (MyFirebaseMessagingService)
-                </SpanOnClick>
+                </OnClick>
               </LI>
               <LI>
                 Video player{" "}
-                <SpanOnClick onClick={() => setSkip([3])}>
+                <OnClick onClick={() => setSkip([3])}>
                   (HLS consumption by PlayerViewModel)
-                </SpanOnClick>
+                </OnClick>
               </LI>
             </UL>
           </P>

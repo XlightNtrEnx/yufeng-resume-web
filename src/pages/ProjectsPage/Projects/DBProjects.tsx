@@ -11,7 +11,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
-  SpanOnClick,
+  OnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 
@@ -26,15 +26,12 @@ const MongoProject = () => {
           <P>
             My teammates wanted authentication so I made a MongoDB database to
             store all the users securely with{" "}
-            <SpanOnClick onClick={() => setSkip([1])}>
-              password hashing
-            </SpanOnClick>
+            <OnClick onClick={() => setSkip([1])}>password hashing</OnClick>
           </P>
           <P>
-            Employed{" "}
-            <SpanOnClick onClick={() => setSkip([2])}>indexes</SpanOnClick> in{" "}
-            <SpanOnClick onClick={() => setSkip([3])}>java</SpanOnClick> to
-            force all users to have unique email and username
+            Employed <OnClick onClick={() => setSkip([2])}>indexes</OnClick> in{" "}
+            <OnClick onClick={() => setSkip([3])}>java</OnClick> to force all
+            users to have unique email and username
           </P>
           <P>
             MongoDB was chosen because I learnt about SQL before and was curious
