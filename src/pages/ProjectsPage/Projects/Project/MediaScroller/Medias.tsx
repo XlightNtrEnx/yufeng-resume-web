@@ -2,15 +2,7 @@ import styled from "styled-components";
 
 import { FlexRow } from "@src/components";
 import { Img, Video } from "@src/elements";
-import { EnsurePropertyExists } from "@src/types";
 import { zIndexes } from "@src/zIndex";
-
-interface MediasProps {
-  medias: string[];
-  onClickMedia: () => void;
-  selectedMediaIdx: number;
-  setSelectedMediaIdx: (idx: number) => void;
-}
 
 const Container = styled(FlexRow)`
   position: relative;
@@ -52,6 +44,13 @@ const Arrow = styled.div<{ $right: boolean }>`
   ${({ $right }) => ($right ? "right: 0" : "left: 0")};
 `;
 
+export interface MediasProps {
+  medias: string[];
+  onClickMedia: () => void;
+  selectedMediaIdx: number;
+  setSelectedMediaIdx: (idx: number) => void;
+}
+
 export const Medias = ({
   medias,
   onClickMedia,
@@ -82,66 +81,5 @@ export const Medias = ({
         onClick={() => setSelectedMediaIdx(selectedMediaIdx + 1)}
       />
     </Container>
-  );
-};
-
-interface ThumbnailsProps
-  extends Omit<
-    EnsurePropertyExists<MediasProps, "onClickMedia">,
-    "onClickMedia"
-  > {
-  firstThumbnailIdx: number;
-  imgWidth?: string;
-}
-
-const ThumbnailsContainer = styled(Container)`
-  aspect-ratio: 16 / 1.8;
-`;
-
-const ActiveSelectionBorder = styled.div<{ $width?: string; $left?: string }>`
-  position: absolute;
-  border: 3px solid red;
-  left: ${({ $left: left }) => left || "0%"};
-  aspect-ratio: 16 / 9;
-  width: ${({ $width: width }) => width || "20%"};
-  transition: right 0.5s, left 0.5s;
-  z-index: ${zIndexes.pages.projects.projectModal.activeSelectionBorder};
-`;
-
-export const Thumbnails = ({
-  medias,
-  firstThumbnailIdx,
-  imgWidth,
-  selectedMediaIdx,
-  setSelectedMediaIdx,
-}: ThumbnailsProps) => {
-  return (
-    <ThumbnailsContainer>
-      <ActualMediasContainer
-        $imgWidth={imgWidth ? imgWidth : "20%"}
-        $right={`${firstThumbnailIdx * 20}%`}
-      >
-        <ActiveSelectionBorder $left={`${selectedMediaIdx * 20}%`} />
-        {medias.map((media, idx) =>
-          media.endsWith(".mp4") ? (
-            <Img
-              onClick={() => {
-                setSelectedMediaIdx(idx);
-              }}
-              key={idx}
-              src={media}
-            />
-          ) : (
-            <Img
-              onClick={() => {
-                setSelectedMediaIdx(idx);
-              }}
-              key={idx}
-              src={media}
-            />
-          )
-        )}
-      </ActualMediasContainer>
-    </ThumbnailsContainer>
   );
 };

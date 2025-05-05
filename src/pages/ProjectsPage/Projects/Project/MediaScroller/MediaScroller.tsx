@@ -5,7 +5,8 @@ import { FlexRow, PageProps, Pagination } from "@src/components";
 import { Span } from "@src/elements";
 import { PjtContext } from "@src/pages/ProjectsPage/Projects/Project";
 
-import { Medias, Thumbnails } from "./Medias";
+import { Medias } from "./Medias";
+import { Thumbnails } from "./Thumbnails";
 
 const Container = styled.div`
   width: 100%;
