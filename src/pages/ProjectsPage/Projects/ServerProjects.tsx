@@ -4,7 +4,6 @@ import t4isa1 from "@src/assets/images/projects/term4-infosys-api/1.png";
 import t4isa2 from "@src/assets/images/projects/term4-infosys-api/2.png";
 import t4isa3 from "@src/assets/images/projects/term4-infosys-api/3.png";
 import t4isa4 from "@src/assets/images/projects/term4-infosys-api/4.png";
-import { SpanOnClick } from "@src/components";
 import { P, LI, UL } from "@src/elements";
 
 import {
@@ -12,6 +11,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
+  SpanOnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 

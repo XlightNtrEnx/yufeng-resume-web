@@ -8,7 +8,6 @@ import cd5 from "@src/assets/images/projects/cat-dog-classifier/5.png";
 import cd6 from "@src/assets/images/projects/cat-dog-classifier/6.png";
 import sam1 from "@src/assets/images/projects/sam/1.png";
 import sam2 from "@src/assets/videos/projects/sam/2.mp4";
-import { SpanOnClick } from "@src/components";
 import { LI, P, UL } from "@src/elements";
 
 import {
@@ -16,6 +15,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
+  SpanOnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 

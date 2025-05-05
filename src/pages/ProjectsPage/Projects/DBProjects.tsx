@@ -4,7 +4,6 @@ import mongo1 from "@src/assets/images/projects/mongo/1.png";
 import mongo2 from "@src/assets/images/projects/mongo/2.png";
 import mongo3 from "@src/assets/images/projects/mongo/3.png";
 import mongo4 from "@src/assets/images/projects/mongo/4.png";
-import { SpanOnClick } from "@src/components";
 import { P } from "@src/elements";
 
 import {
@@ -12,6 +11,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
+  SpanOnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 

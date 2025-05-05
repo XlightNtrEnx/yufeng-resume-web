@@ -4,7 +4,6 @@ import pe1 from "@src/assets/videos/projects/parcel-eye/1.mp4";
 import pe2 from "@src/assets/images/projects/parcel-eye/2.png";
 import pe3 from "@src/assets/images/projects/parcel-eye/3.png";
 import pe4 from "@src/assets/images/projects/parcel-eye/4.png";
-import { SpanOnClick } from "@src/components";
 import { P, LI, UL } from "@src/elements";
 
 import {
@@ -12,6 +11,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
+  SpanOnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 

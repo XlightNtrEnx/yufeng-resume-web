@@ -3,7 +3,6 @@ import { useState } from "react";
 import media1 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/1.jpg";
 import media2 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/2.jpg";
 import media3 from "@src/assets/images/projects/FPGA-integration-with-electrical-components/3.png";
-import { SpanOnClick } from "@src/components";
 import { P } from "@src/elements";
 
 import {
@@ -11,6 +10,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
+  SpanOnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 

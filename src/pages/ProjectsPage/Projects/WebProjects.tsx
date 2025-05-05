@@ -3,7 +3,6 @@ import { useState } from "react";
 import media1 from "@src/assets/images/projects/web-resume/1.png";
 import media2 from "@src/assets/images/projects/web-resume/2.png";
 import media3 from "@src/assets/images/projects/web-resume/3.png";
-import { SpanOnClick } from "@src/components";
 import { LI, P, UL } from "@src/elements";
 
 import {
@@ -11,6 +10,7 @@ import {
   ProjectAchievements,
   ProjectLinks,
   ProjectMedias,
+  SpanOnClick,
 } from "./Project";
 import { Projects } from "./Projects";
 
