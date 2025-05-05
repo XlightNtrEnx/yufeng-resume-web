@@ -11,12 +11,19 @@ import AISrc from "@src/assets/images/ai.jpg";
 import CysecSrc from "@src/assets/images/cybersecurity.png";
 import EESrc from "@src/assets/images/electrical engineering.jpg";
 import WebSrc from "@src/assets/images/web.jpg";
+import DBSrc from "@src/assets/images/database.jpg";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { Grid, Modal } from "@src/components";
 import { zIndexes } from "@src/zIndex";
 
 import { Category } from "./Category";
-import { AIProjects, CysecProjects, EEProjects, WebProjects } from "./Projects";
+import {
+  AIProjects,
+  CysecProjects,
+  EEProjects,
+  WebProjects,
+  DBProjects,
+} from "./Projects";
 
 const Container = styled(Grid)`
   grid-template-columns: repeat(3, 1fr);
@@ -50,16 +57,19 @@ const AIName = "AI";
 const WebName = "Web";
 const CysecName = "Cysec";
 const ElecEngName = "Elec. Eng";
+const DBName = "Database";
 const categoryNameToIndex = new Map<string, number>();
 categoryNameToIndex.set(AIName, 0);
 categoryNameToIndex.set(WebName, 1);
 categoryNameToIndex.set(CysecName, 2);
 categoryNameToIndex.set(ElecEngName, 3);
+categoryNameToIndex.set(DBName, 4);
 const categories: ICategory[] = [
   [AIName, AISrc, <AIProjects />],
   [WebName, WebSrc, <WebProjects />],
   [CysecName, CysecSrc, <CysecProjects />],
   [ElecEngName, EESrc, <EEProjects />],
+  [DBName, DBSrc, <DBProjects />],
 ];
 
 const firstIndex = 0;
