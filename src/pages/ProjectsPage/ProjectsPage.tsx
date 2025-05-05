@@ -57,30 +57,19 @@ interface ICategory {
   2?: JSX.Element;
 }
 
-const AIName = "AI";
-const WebName = "Web";
-const CysecName = "Cysec";
-const ElecEngName = "Elec. Eng";
-const DBName = "Database";
-const AndroidName = "Android";
-const ServerName = "Server";
-const categoryNameToIndex = new Map<string, number>();
-categoryNameToIndex.set(AIName, 0);
-categoryNameToIndex.set(WebName, 1);
-categoryNameToIndex.set(CysecName, 2);
-categoryNameToIndex.set(ElecEngName, 3);
-categoryNameToIndex.set(DBName, 4);
-categoryNameToIndex.set(AndroidName, 5);
-categoryNameToIndex.set(ServerName, 6);
 const categories: ICategory[] = [
-  [AIName, AISrc, <AIProjects />],
-  [WebName, WebSrc, <WebProjects />],
-  [CysecName, CysecSrc, <CysecProjects />],
-  [ElecEngName, EESrc, <EEProjects />],
-  [DBName, DBSrc, <DBProjects />],
-  [AndroidName, AndroidSrc, <AndroidProjects />],
-  [ServerName, ServerSrc, <ServerProjects />],
+  ["AI", AISrc, <AIProjects />],
+  ["Web", WebSrc, <WebProjects />],
+  ["Cysec", CysecSrc, <CysecProjects />],
+  ["Elec. Eng", EESrc, <EEProjects />],
+  ["Database", DBSrc, <DBProjects />],
+  ["Android", AndroidSrc, <AndroidProjects />],
+  ["Server", ServerSrc, <ServerProjects />],
 ];
+const categoryNameToIndex = new Map<string, number>();
+for (let i = 0; i < categories.length; i++) {
+  categoryNameToIndex.set(categories[i][0], i);
+}
 
 const firstIndex = 0;
 const lastIndex = categories.length - 1;
