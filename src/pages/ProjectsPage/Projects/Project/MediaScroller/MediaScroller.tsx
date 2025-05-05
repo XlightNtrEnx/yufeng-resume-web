@@ -151,14 +151,16 @@ export const MS = ({ medias, skip }: MSProps) => {
         selectedMediaIdx={selectedMediaIdx}
         setSelectedMediaIdx={setSelectedMediaIdx}
       />
-      <PaginationContainer>
-        <Pagination
-          PageComponent={Page}
-          currentPage={currentPage}
-          onPageChange={onPageChange}
-          totalPages={totalPages}
-        />
-      </PaginationContainer>
+      {totalPages > 1 && (
+        <PaginationContainer>
+          <Pagination
+            PageComponent={Page}
+            currentPage={currentPage}
+            onPageChange={onPageChange}
+            totalPages={totalPages}
+          />
+        </PaginationContainer>
+      )}
     </>
   );
 };
