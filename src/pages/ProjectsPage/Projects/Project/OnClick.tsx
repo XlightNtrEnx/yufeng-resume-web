@@ -7,6 +7,7 @@ const Container = styled(Span)`
   cursor: pointer;
   background-color: ${({ theme }) => theme.negEvenSofterBackgroundColor};
   color: ${({ theme }) => theme.negTextColor};
+  padding: 0.1em;
 `;
 
 const StyledLinkSVGIcon = styled(LinkSVGIcon)`
