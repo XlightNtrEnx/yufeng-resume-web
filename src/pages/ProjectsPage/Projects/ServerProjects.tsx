@@ -28,34 +28,34 @@ const Term4InfoSysAIProject = () => {
             the AI and starts a{" "}
             <OnClick onClick={() => setSkip([3])}>RTMP server</OnClick> that
             takes input from CCTV.
-            <UL>
-              <LI>
-                <OnClick onClick={() => setSkip([4])}>Streamer</OnClick> object
-                uses opencv and a secondary thread to always output latest frame
-                from the stream at the RTMP server
-              </LI>
-              <LI>
-                <OnClick onClick={() => setSkip([5])}>Tracker</OnClick> object
-                builds the AI and uses cv2 to convert the frames to feed to the
-                AI and uses its output to draw masks on the frame. The tracker
-                uses request module to send out a HTTP request to another server
-                when it is unable to generate masks.
-              </LI>
-              <LI>
-                <OnClick onClick={() => setSkip([6])}>
-                  RGBFramesToHLSProcess
-                </OnClick>{" "}
-                starts a FFmpeg process to take in the frames and automatically
-                generate HLS live stream of 4 second segments.
-              </LI>
-              <LI>
-                <OnClick onClick={() => setSkip([7])}>
-                  nginx exposes hls endpoint
-                </OnClick>{" "}
-                to allow any player to consume the .m3u8 playlist
-              </LI>
-            </UL>
           </P>
+          <UL>
+            <LI>
+              <OnClick onClick={() => setSkip([4])}>Streamer</OnClick> object
+              uses opencv and a secondary thread to always output latest frame
+              from the stream at the RTMP server
+            </LI>
+            <LI>
+              <OnClick onClick={() => setSkip([5])}>Tracker</OnClick> object
+              builds the AI and uses cv2 to convert the frames to feed to the AI
+              and uses its output to draw masks on the frame. The tracker uses
+              request module to send out a HTTP request to another server when
+              it is unable to generate masks.
+            </LI>
+            <LI>
+              <OnClick onClick={() => setSkip([6])}>
+                RGBFramesToHLSProcess
+              </OnClick>{" "}
+              starts a FFmpeg process to take in the frames and automatically
+              generate HLS live stream of 4 second segments.
+            </LI>
+            <LI>
+              <OnClick onClick={() => setSkip([7])}>
+                nginx exposes hls endpoint
+              </OnClick>{" "}
+              to allow any player to consume the .m3u8 playlist
+            </LI>
+          </UL>
         </ProjectAchievements>
       }
       links={
@@ -87,30 +87,30 @@ const Term4InfoSysAPIProject = () => {
             created a java spring framework based HTTP server for communication
             between all 3. The server is RESTful with the exception of the
             session based authentication for the app.
-            <UL>
-              <LI>
-                Send verification emails upon registration{" "}
-                <OnClick onClick={() => setSkip([0])}>(MailService)</OnClick>
-              </LI>
-              <LI>
-                Customized authentication process as we did not need login page
-                and this is meant to be used as API{" "}
-                <OnClick onClick={() => setSkip([1])}>
-                  (SecurityConfiguration)
-                </OnClick>
-              </LI>
-              <LI>
-                Used MongoDB's SDK to connect to the database{" "}
-                <OnClick onClick={() => setSkip([2])}>
-                  (MongoClientConnection)
-                </OnClick>
-              </LI>
-              <LI>
-                Enforced data integrity and consistency by indexing the database{" "}
-                <OnClick onClick={() => setSkip([3])}>(UserCollection)</OnClick>
-              </LI>
-            </UL>
           </P>
+          <UL>
+            <LI>
+              Send verification emails upon registration{" "}
+              <OnClick onClick={() => setSkip([0])}>(MailService)</OnClick>
+            </LI>
+            <LI>
+              Customized authentication process as we did not need login page
+              and this is meant to be used as API{" "}
+              <OnClick onClick={() => setSkip([1])}>
+                (SecurityConfiguration)
+              </OnClick>
+            </LI>
+            <LI>
+              Used MongoDB's SDK to connect to the database{" "}
+              <OnClick onClick={() => setSkip([2])}>
+                (MongoClientConnection)
+              </OnClick>
+            </LI>
+            <LI>
+              Enforced data integrity and consistency by indexing the database{" "}
+              <OnClick onClick={() => setSkip([3])}>(UserCollection)</OnClick>
+            </LI>
+          </UL>
         </ProjectAchievements>
       }
       links={
