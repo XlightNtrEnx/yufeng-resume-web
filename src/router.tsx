@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { MainLayout } from "@src/components";
+import { MainLayout } from "@src/layouts";
 import { LoginPage, HomePage, ProjectsPage, EducationPage } from "./pages";
 
 const publicPaths = {
