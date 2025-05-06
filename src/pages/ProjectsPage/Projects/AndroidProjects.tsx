@@ -26,27 +26,25 @@ const ParcelEyeProject = () => {
               https://www.linkedin.com/in/jinghuan/
             </BlueUnderlineExternalLink>
           </P>
-          <P>
-            Worked on the frontend to deliver features like
-            <UL>
-              <LI>
-                HTTP communication capability{" "}
-                <OnClick onClick={() => setSkip([1])}>(ApiClient)</OnClick>
-              </LI>
-              <LI>
-                Push notifications{" "}
-                <OnClick onClick={() => setSkip([2])}>
-                  (MyFirebaseMessagingService)
-                </OnClick>
-              </LI>
-              <LI>
-                Video player{" "}
-                <OnClick onClick={() => setSkip([3])}>
-                  (HLS consumption by PlayerViewModel)
-                </OnClick>
-              </LI>
-            </UL>
-          </P>
+          <P>Worked on the frontend to deliver features like</P>
+          <UL>
+            <LI>
+              HTTP communication capability{" "}
+              <OnClick onClick={() => setSkip([1])}>(ApiClient)</OnClick>
+            </LI>
+            <LI>
+              Push notifications{" "}
+              <OnClick onClick={() => setSkip([2])}>
+                (MyFirebaseMessagingService)
+              </OnClick>
+            </LI>
+            <LI>
+              Video player{" "}
+              <OnClick onClick={() => setSkip([3])}>
+                (HLS consumption by PlayerViewModel)
+              </OnClick>
+            </LI>
+          </UL>
         </ProjectAchievements>
       }
       links={
