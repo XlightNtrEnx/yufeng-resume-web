@@ -30,6 +30,11 @@ const Term4InfoSysAIContainerizationProject = () => {
             <OnClick onClick={() => setSkip([0])}>5GB</OnClick> using{" "}
             <OnClick onClick={() => setSkip([1])}>multi-stage builds</OnClick>
           </P>
+          <P>
+            Abused{" "}
+            <OnClick onClick={() => setSkip([5])}>github actions CI/CD</OnClick>{" "}
+            so I don't need to waste my CPU to build containers
+          </P>
         </ProjectAchievements>
       }
       links={
@@ -44,7 +49,7 @@ const Term4InfoSysAIContainerizationProject = () => {
             paths.public.projectsDir.term4InfosysAIContainerizationDir.path
           }
           skip={skip}
-          totalMedias={5}
+          totalMedias={6}
         />
       }
     />
