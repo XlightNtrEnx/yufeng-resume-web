@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { LI, P, UL } from "@src/elements";
-import { publicPaths } from "@src/publicPaths";
+import { paths } from "@src/router";
 
 import {
   Project,
@@ -43,7 +43,7 @@ const ResumeProject = () => {
       }
       medias={
         <ProjectMedias
-          mediasDir={publicPaths.projectsDir.webResumeDir.path}
+          mediasDir={paths.public.projectsDir.webResumeDir.path}
           totalMedias={3}
           skip={skip}
         />

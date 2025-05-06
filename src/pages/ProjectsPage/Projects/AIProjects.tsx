@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { LI, P, UL } from "@src/elements";
-import { publicPaths } from "@src/publicPaths";
+import { paths } from "@src/router";
 
 import {
   Project,
@@ -39,7 +39,7 @@ const SamProject = () => {
       }
       medias={
         <ProjectMedias
-          mediasDir={publicPaths.projectsDir.samDir.path}
+          mediasDir={paths.public.projectsDir.samDir.path}
           skip={skip}
           totalMedias={2}
           nonPNGMedias={{ 2: ".mp4" }}
@@ -99,7 +99,7 @@ const CatDogProject = () => {
       }
       medias={
         <ProjectMedias
-          mediasDir={publicPaths.projectsDir.catDogClassfierDir.path}
+          mediasDir={paths.public.projectsDir.catDogClassfierDir.path}
           skip={skip}
           totalMedias={6}
         />

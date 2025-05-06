@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { P } from "@src/elements";
-import { publicPaths } from "@src/publicPaths";
+import { paths } from "@src/router";
 
 import {
   Project,
@@ -49,7 +49,7 @@ const FPGAProject = () => {
       medias={
         <ProjectMedias
           mediasDir={
-            publicPaths.projectsDir.fpgaIntegrationWithElectricalComponentsDir
+            paths.public.projectsDir.fpgaIntegrationWithElectricalComponentsDir
               .path
           }
           totalMedias={3}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { P } from "@src/elements";
-import { publicPaths } from "@src/publicPaths";
+import { paths } from "@src/router";
 
 import {
   Project,
@@ -43,7 +43,7 @@ const MongoProject = () => {
       }
       medias={
         <ProjectMedias
-          mediasDir={publicPaths.projectsDir.mongoDir.path}
+          mediasDir={paths.public.projectsDir.mongoDir.path}
           skip={skip}
           totalMedias={4}
         />

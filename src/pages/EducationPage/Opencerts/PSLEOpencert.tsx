@@ -1,15 +1,16 @@
+import { paths } from "@src/router";
+
 import { Opencert } from "./Opencert";
-import { publicPaths } from "@src/publicPaths";
 
 export const PSLEOpencert = () => {
   const filenames = [
-    publicPaths.filesDir.educationMilestonesDir.psleDir.opencertsDir.main,
+    paths.public.filesDir.educationMilestonesDir.psleDir.opencertsDir.main,
   ];
 
   return (
     <Opencert
       certsDir={
-        publicPaths.filesDir.educationMilestonesDir.psleDir.opencertsDir.path
+        paths.public.filesDir.educationMilestonesDir.psleDir.opencertsDir.path
       }
       filenames={filenames}
     ></Opencert>

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { BlueUnderlineExternalLink } from "@src/components";
 import { P, LI, UL } from "@src/elements";
-import { publicPaths } from "@src/publicPaths";
+import { paths } from "@src/router";
 
 import {
   Project,
@@ -55,7 +55,7 @@ const ParcelEyeProject = () => {
       }
       medias={
         <ProjectMedias
-          mediasDir={publicPaths.projectsDir.parcelEyeDir.path}
+          mediasDir={paths.public.projectsDir.parcelEyeDir.path}
           skip={skip}
           totalMedias={4}
           nonPNGMedias={{ 1: ".mp4" }}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { P, LI, UL } from "@src/elements";
-import { publicPaths } from "@src/publicPaths";
+import { paths } from "@src/router";
 
 import {
   Project,
@@ -66,7 +66,7 @@ const Term4InfoSysAIProject = () => {
       }
       medias={
         <ProjectMedias
-          mediasDir={publicPaths.projectsDir.term4InfosysAIDir.path}
+          mediasDir={paths.public.projectsDir.term4InfosysAIDir.path}
           totalMedias={8}
           skip={skip}
         />
@@ -121,7 +121,7 @@ const Term4InfoSysAPIProject = () => {
       }
       medias={
         <ProjectMedias
-          mediasDir={publicPaths.projectsDir.term4InfosysAIDir.path}
+          mediasDir={paths.public.projectsDir.term4InfosysAIDir.path}
           totalMedias={4}
           skip={skip}
         />
