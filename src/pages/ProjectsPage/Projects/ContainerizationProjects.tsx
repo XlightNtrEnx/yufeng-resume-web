@@ -33,7 +33,7 @@ const Term4InfoSysAIContainerizationProject = () => {
           <P>
             Abused{" "}
             <OnClick onClick={() => setSkip([5])}>github actions CI/CD</OnClick>{" "}
-            so I don't need to waste my CPU to build containers
+            so I don't need to waste my CPU to build images
           </P>
         </ProjectAchievements>
       }
