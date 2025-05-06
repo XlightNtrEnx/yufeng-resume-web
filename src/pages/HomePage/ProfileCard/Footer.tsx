@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-import { DownloadLinkWithIcon, SafeNewTabLink, ImgIcon } from "@src/components";
-import { Footer as FooterElement, Span } from "@src/elements";
 import Email from "@src/assets/icons/email512.png";
+import { ReactComponent as OpenInNewTabSVGIcon } from "@src/assets/svgs/icons/open-in-new-tab.svg";
+import { SafeNewTabLink, ImgIcon } from "@src/components";
+import { Footer as FooterElement, Span } from "@src/elements";
 
 const StyledFooter = styled(FooterElement)`
   display: flex;
@@ -14,9 +15,10 @@ const StyledFooter = styled(FooterElement)`
 export const Footer = () => {
   return (
     <StyledFooter>
-      <DownloadLinkWithIcon href="files/resume.pdf">
-        <Span>Download CV </Span>
-      </DownloadLinkWithIcon>
+      <SafeNewTabLink href="files/resume.pdf">
+        <Span>View CV</Span>{" "}
+        <OpenInNewTabSVGIcon width="0.8em" height="0.8em" />
+      </SafeNewTabLink>
       <SafeNewTabLink href="mailto:xyf.oco@gmail.com">
         <Span>Contact me</Span> <ImgIcon src={Email} $iconSize="0.75em" />
       </SafeNewTabLink>
