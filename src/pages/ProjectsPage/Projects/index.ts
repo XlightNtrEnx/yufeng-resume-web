@@ -5,3 +5,4 @@ export * from "./EEProjects";
 export * from "./DBProjects";
 export * from "./AndroidProjects";
 export * from "./ServerProjects";
+export * from "./CloudProjects";

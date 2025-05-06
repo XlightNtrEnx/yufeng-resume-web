@@ -69,5 +69,8 @@ export const publicPaths = {
     catDogClassfierDir: {
       path: "project-images/cat-dog-classifier/",
     },
+    term4InfosysCloudDir: {
+      path: "project-images/term4-infosys-cloud/",
+    },
   },
 };

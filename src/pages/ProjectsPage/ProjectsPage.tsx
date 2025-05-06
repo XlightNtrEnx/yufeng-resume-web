@@ -14,6 +14,7 @@ import WebSrc from "@src/assets/images/web.jpg";
 import DBSrc from "@src/assets/images/database.jpg";
 import AndroidSrc from "@src/assets/images/android.jpg";
 import ServerSrc from "@src/assets/images/server.jpg";
+import CloudSrc from "@src/assets/images/cloud.jpg";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { Grid, Modal } from "@src/components";
 import { zIndexes } from "@src/zIndex";
@@ -27,6 +28,7 @@ import {
   DBProjects,
   AndroidProjects,
   ServerProjects,
+  CloudProjects,
 } from "./Projects";
 
 const Container = styled(Grid)`
@@ -64,7 +66,8 @@ const categories: ICategory[] = [
   ["Elec. Eng", EESrc, <EEProjects />],
   ["Database", DBSrc, <DBProjects />],
   ["Android", AndroidSrc, <AndroidProjects />],
-  ["Server", ServerSrc, <ServerProjects />],
+  ["Server (Misc)", ServerSrc, <ServerProjects />],
+  ["Cloud computing", CloudSrc, <CloudProjects />],
 ];
 const categoryNameToIndex = new Map<string, number>();
 for (let i = 0; i < categories.length; i++) {
