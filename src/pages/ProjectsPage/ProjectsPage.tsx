@@ -42,6 +42,9 @@ const Container = styled(Grid)`
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+    > :nth-child(n + 2) {
+      margin-top: 50px;
+    }
   }
 
   > * {
