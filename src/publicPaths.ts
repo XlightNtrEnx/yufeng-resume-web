@@ -72,5 +72,8 @@ export const publicPaths = {
     term4InfosysCloudDir: {
       path: "project-images/term4-infosys-cloud/",
     },
+    term4InfosysAIContainerizationDir: {
+      path: "project-images/term4-infosys-ai-containerization/",
+    },
   },
 };
