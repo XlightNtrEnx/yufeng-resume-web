@@ -94,9 +94,18 @@ const assignAnimation = (index: number) => {
   }
 };
 
+const categoryParam = "category";
+export const categoryToURL = {
+  ai: "/projects?category=AI",
+  android: "/projects?category=Android",
+  containerization: "/projects?category=Containerization",
+  database: "/projects?category=Database",
+  cloud: "/projects?category=Cloud+computing",
+  electricalEngineering: "/projects?category=Elec.+Eng",
+  server: "/projects?category=Server+%28Misc%29",
+  web: "/projects?category=Web",
+};
 export const ProjectsPage = () => {
-  const categoryParam = "category";
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategoryIdx, setSelectedCategoryIdx] = useState<number | null>(
     categoryNameToIndex.get(searchParams.get(categoryParam) || "") ?? null
