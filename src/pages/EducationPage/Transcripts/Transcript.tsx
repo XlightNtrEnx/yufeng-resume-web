@@ -19,7 +19,6 @@ interface TranscriptProps {
 }
 
 export const Transcript = ({ dir, filenames }: TranscriptProps) => {
-  console.log(dir);
   return (
     <Container>
       <StyledSpan>Transcripts</StyledSpan>
