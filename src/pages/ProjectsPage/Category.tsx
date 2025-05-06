@@ -20,6 +20,7 @@ const Container = styled(FlexColumn)<AnimationProps>`
 const StyledImg = styled(Img)`
   width: 160px;
   height: 160px;
+  object-fit: cover;
   overflow: hidden;
 `;
 
