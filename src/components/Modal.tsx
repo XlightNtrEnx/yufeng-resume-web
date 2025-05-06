@@ -37,7 +37,7 @@ const Container = styled.div<{
 `;
 
 interface Props {
-  onClose: () => void;
+  closer: () => void;
   children: React.ReactNode;
   $padding?: string;
   $width?: string;
@@ -46,7 +46,7 @@ interface Props {
 }
 
 export const Modal = ({
-  onClose,
+  closer,
   children,
   $padding,
   $width,
@@ -56,7 +56,7 @@ export const Modal = ({
   return (
     <Overlay
       onClick={() => {
-        onClose();
+        closer();
       }}
       $zIndex={$zIndex}
     >

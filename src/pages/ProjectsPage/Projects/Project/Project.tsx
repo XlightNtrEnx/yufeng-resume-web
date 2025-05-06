@@ -54,7 +54,7 @@ export const Project = ({
           $zIndex={zIndexes.pages.projects.projectModal.enlargedProjectModal}
           $width="1280px"
           $maxWidth="1280px"
-          onClose={() => setFocused(false)}
+          closer={() => setFocused(false)}
         >
           <ModalPjtContainer>
             <Pjt

@@ -133,7 +133,7 @@ export const ProjectsPage = () => {
       {typeof selectedCategoryIdx === "number" && (
         <Modal
           $zIndex={zIndexes.pages.projects.categoryModal}
-          onClose={() => {
+          closer={() => {
             setSelectedCategoryIdx(null);
             setSearchParams((prev) => {
               prev.delete(categoryParam);
