@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Span } from "@src/elements";
-import { ExternalLink, FlexColumn } from "@src/components";
+import { SafeNewTabLink, FlexColumn } from "@src/components";
 import { ReactComponent as OpenInNewTabSVGIcon } from "@src/assets/svgs/icons/open-in-new-tab.svg";
 
 const Container = styled(FlexColumn)``;
@@ -19,14 +19,15 @@ interface TranscriptProps {
 }
 
 export const Transcript = ({ dir, filenames }: TranscriptProps) => {
+  console.log(dir);
   return (
     <Container>
       <StyledSpan>Transcripts</StyledSpan>
       {filenames.map((filename, index) => (
-        <ExternalLink key={index} href={dir + filename}>
+        <SafeNewTabLink key={index} href={dir + filename}>
           <Span>{filename} </Span>
           <OpenInNewTabSVGIcon width={iconSize} height={iconSize} />
-        </ExternalLink>
+        </SafeNewTabLink>
       ))}
     </Container>
   );

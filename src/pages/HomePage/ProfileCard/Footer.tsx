@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { DownloadLinkWithIcon, ExternalLink, ImgIcon } from "@src/components";
+import { DownloadLinkWithIcon, SafeNewTabLink, ImgIcon } from "@src/components";
 import { Footer as FooterElement, Span } from "@src/elements";
 import Email from "@src/assets/icons/email512.png";
 
@@ -17,9 +17,9 @@ export const Footer = () => {
       <DownloadLinkWithIcon href="files/resume.pdf">
         <Span>Download CV </Span>
       </DownloadLinkWithIcon>
-      <ExternalLink href="mailto:xyf.oco@gmail.com">
+      <SafeNewTabLink href="mailto:xyf.oco@gmail.com">
         <Span>Contact me</Span> <ImgIcon src={Email} $iconSize="0.75em" />
-      </ExternalLink>
+      </SafeNewTabLink>
     </StyledFooter>
   );
 };

@@ -12,7 +12,7 @@ export interface ExternalLinkProps extends AProps {
 /**
  * Link to an external website
  */
-export const ExternalLink = ({
+export const SafeNewTabLink = ({
   href,
   children,
   className,

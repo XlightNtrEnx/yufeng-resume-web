@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import GitHub from "@src/assets/icons/github512.png";
 import { ReactComponent as ColabSVGIcon } from "@src/assets/svgs/icons/google-colab.svg";
 import { ReactComponent as DocsSVGIcon } from "@src/assets/svgs/icons/google-docs.svg";
-import { ExternalLink, FlexRow, ImgIcon } from "@src/components";
+import { SafeNewTabLink, FlexRow, ImgIcon } from "@src/components";
 
 const Links = styled(FlexRow)`
   gap: 0.3em;
@@ -28,19 +28,19 @@ export const ProjectLinks = ({ gitHubURL, colabURL, docsURL }: Props) => {
   return (
     <Links>
       {gitHubURL && (
-        <ExternalLink href={gitHubURL}>
+        <SafeNewTabLink href={gitHubURL}>
           <ImgIcon $iconSize={iconSize} src={GitHub} />
-        </ExternalLink>
+        </SafeNewTabLink>
       )}
       {colabURL && (
-        <ExternalLink href={colabURL}>
+        <SafeNewTabLink href={colabURL}>
           <ColabSVGIcon width={iconSize} height={iconSize} />
-        </ExternalLink>
+        </SafeNewTabLink>
       )}
       {docsURL && (
-        <ExternalLink href={docsURL}>
+        <SafeNewTabLink href={docsURL}>
           <DocsSVGIcon width={iconSize} height={iconSize} />
-        </ExternalLink>
+        </SafeNewTabLink>
       )}
     </Links>
   );

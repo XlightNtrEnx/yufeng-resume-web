@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
-import { ExternalLink, ExternalLinkProps } from "@src/components";
+import { SafeNewTabLink, ExternalLinkProps } from "@src/components";
 
-const StyledExternalLink = styled(ExternalLink)`
+const StyledExternalLink = styled(SafeNewTabLink)`
   text-decoration: underline !important;
   color: ${({ theme }) => theme.hyperLinkColor};
 `;
