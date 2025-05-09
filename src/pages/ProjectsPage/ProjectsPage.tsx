@@ -16,6 +16,7 @@ import AndroidSrc from "@src/assets/images/android.jpg";
 import ServerSrc from "@src/assets/images/server.jpg";
 import CloudSrc from "@src/assets/images/cloud.jpg";
 import DockerSrc from "@src/assets/images/docker.jpg";
+import CrossPlatformSrc from "@src/assets/images/cross-platform.jpg";
 import { mobileBreakpointInPx } from "@src/atoms";
 import { Grid, Modal } from "@src/components";
 import { zIndexes } from "@src/zIndex";
@@ -31,6 +32,7 @@ import {
   ServerProjects,
   CloudProjects,
   ContainerizationProjects,
+  CrossPlatformProjects,
 } from "./Projects";
 
 const Container = styled(Grid)`
@@ -65,15 +67,16 @@ interface ICategory {
 }
 
 const categories: ICategory[] = [
-  ["AI", AISrc, <AIProjects />],
-  ["Web", WebSrc, <WebProjects />],
-  ["Cysec", CysecSrc, <CysecProjects />],
-  ["Elec. Eng", EESrc, <EEProjects />],
-  ["Database", DBSrc, <DBProjects />],
   ["Android", AndroidSrc, <AndroidProjects />],
-  ["Server (Misc)", ServerSrc, <ServerProjects />],
+  ["AI", AISrc, <AIProjects />],
   ["Cloud computing", CloudSrc, <CloudProjects />],
   ["Containerization", DockerSrc, <ContainerizationProjects />],
+  ["Cross platform", CrossPlatformSrc, <CrossPlatformProjects />],
+  ["Cysec", CysecSrc, <CysecProjects />],
+  ["Database", DBSrc, <DBProjects />],
+  ["Elec. Eng", EESrc, <EEProjects />],
+  ["Server (Misc)", ServerSrc, <ServerProjects />],
+  ["Web", WebSrc, <WebProjects />],
 ];
 const categoryNameToIndex = new Map<string, number>();
 for (let i = 0; i < categories.length; i++) {

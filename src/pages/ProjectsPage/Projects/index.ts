@@ -7,3 +7,4 @@ export * from "./AndroidProjects";
 export * from "./ServerProjects";
 export * from "./CloudProjects";
 export * from "./ContainerizationProjects";
+export * from "./CrossPlatformProjects";
