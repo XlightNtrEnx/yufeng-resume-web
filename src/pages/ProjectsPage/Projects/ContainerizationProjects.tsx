@@ -39,7 +39,7 @@ const Term4InfoSysAIContainerizationProject = () => {
       }
       links={
         <ProjectLinks
-          gitHubURL="https://github.com/Term-4-CSD-Team-48/ai"
+          gitHubURL="https://github.com/Term-4-CSD-Team-48/api"
           docsURL="https://docs.google.com/document/d/1dvR93rBY1RPfFKiElFRue1kAFKH0__rnXRhzZnTRy3s/edit?usp=sharing"
         />
       }
