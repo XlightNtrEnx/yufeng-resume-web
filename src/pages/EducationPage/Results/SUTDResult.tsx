@@ -1,7 +1,8 @@
 import { Results, Subject, Category } from "./Result";
 
 const categories = [
-  new Category("Overall", [new Subject("Cumulative GPA", "4.70/5.00")]),
+  new Category("Overall", [new Subject("Cumulative GPA", "4.64/5.00")]),
+  new Category("Term 4", [new Subject("GPA", "4.58/5.00")]),
   new Category("Term 3", [new Subject("GPA", "4.75/5.00")]),
   new Category("Term 2", [new Subject("GPA", "4.50/5.00")]),
   new Category("Term 1", [new Subject("GPA", "NA")]),
