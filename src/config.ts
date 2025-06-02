@@ -1,18 +1,16 @@
-const envVariables = [
-  "REACT_APP_RECAPTCHA_SITE_KEY",
-  "REACT_APP_FIREBASE_API_KEY",
-];
+const envVariables = ["VITE_RECAPTCHA_SITE_KEY", "VITE_FIREBASE_API_KEY"];
 
 for (const envVariable of envVariables) {
-  if (!process.env[envVariable])
+  if (!(import.meta.env as Record<string, string>)[envVariable]) {
     throw new Error(`Environment variable ${envVariable} is missing`);
+  }
 }
 
 const config = {
   firebase: {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY!,
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   },
-  recaptchaSiteKey: process.env.REACT_APP_RECAPTCHA_SITE_KEY!,
+  recaptchaSiteKey: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
 };
 
 export default config;

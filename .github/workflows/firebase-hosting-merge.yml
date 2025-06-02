@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Create .env file
         run: |
-          echo "REACT_APP_RECAPTCHA_SITE_KEY=${{ secrets.REACT_APP_RECAPTCHA_SITE_KEY }}" >> .env
-          echo "REACT_APP_FIREBASE_API_KEY=${{ secrets.REACT_APP_FIREBASE_API_KEY }}" >> .env
+          echo "VITE_RECAPTCHA_SITE_KEY=${{ secrets.VITE_RECAPTCHA_SITE_KEY }}" >> .env
+          echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> .env
       - name: Install dependencies
         run: yarn install
       - name: Build project
