@@ -1,17 +1,9 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 
 import { FlexColumn } from "@src/common/layouts/flex";
 import { Button } from "@src/common/elements/Button";
 import { Modal } from "@src/common/components/Modal";
-import { AI } from "@src/features/achievement/achievements/AI";
-import { EE } from "@src/features/achievement/achievements/EE";
-import { Web } from "@src/features/achievement/achievements/Web";
-import { Database } from "@src/features/achievement/achievements/Database";
-import { Android } from "@src/features/achievement/achievements/Android";
-import { Server } from "@src/features/achievement/achievements/Server";
-import { Cloud } from "@src/features/achievement/achievements/Cloud";
-import { Containerization } from "@src/features/achievement/achievements/Containerization";
 
 import { PartialColorH2 } from "./components";
 
@@ -36,15 +28,56 @@ const VibeCoding = () => {
   return <StrikeThroughButton>Vibe coding 💩</StrikeThroughButton>;
 };
 
+const LazyAndroid = lazy(() =>
+  import("@src/features/achievement/achievements/Android").then((m) => ({
+    default: m.Android,
+  }))
+);
+const LazyAI = lazy(() =>
+  import("@src/features/achievement/achievements/AI").then((m) => ({
+    default: m.AI,
+  }))
+);
+const LazyCloud = lazy(() =>
+  import("@src/features/achievement/achievements/Cloud").then((m) => ({
+    default: m.Cloud,
+  }))
+);
+const LazyContainerization = lazy(() =>
+  import("@src/features/achievement/achievements/Containerization").then(
+    (m) => ({ default: m.Containerization })
+  )
+);
+const LazyDatabase = lazy(() =>
+  import("@src/features/achievement/achievements/Database").then((m) => ({
+    default: m.Database,
+  }))
+);
+const LazyEE = lazy(() =>
+  import("@src/features/achievement/achievements/EE").then((m) => ({
+    default: m.EE,
+  }))
+);
+const LazyServer = lazy(() =>
+  import("@src/features/achievement/achievements/Server").then((m) => ({
+    default: m.Server,
+  }))
+);
+const LazyWeb = lazy(() =>
+  import("@src/features/achievement/achievements/Web").then((m) => ({
+    default: m.Web,
+  }))
+);
+
 const achievements = [
-  [Android],
-  [AI],
-  [Cloud],
-  [Containerization],
-  [Database],
-  [EE],
-  [Server],
-  [Web],
+  LazyAndroid,
+  LazyAI,
+  LazyCloud,
+  LazyContainerization,
+  LazyDatabase,
+  LazyEE,
+  LazyServer,
+  LazyWeb,
 ];
 
 export const Skills = () => {
@@ -117,7 +150,12 @@ export const Skills = () => {
             setSelectedAchievementIdx(null);
           }}
         >
-          {achievements[selectedAchievementIdx][0]()}
+          <Suspense fallback={<div>Loading...</div>}>
+            {(() => {
+              const Component = achievements[selectedAchievementIdx];
+              return <Component />;
+            })()}
+          </Suspense>
         </Modal>
       )}
     </>
