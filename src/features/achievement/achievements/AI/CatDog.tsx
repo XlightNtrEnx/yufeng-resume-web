@@ -1,6 +1,7 @@
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { CatDog as CatDogProject } from "@src/features/project/projects/CatDog";
 
 const catDogDescription = `
 Built a CNN from scratch in pytorch, achieving {95%}(ocs0) training and validation accuracy on kagglehub datasets.
@@ -15,10 +16,10 @@ Incorporated concepts from various proven models like ResNet and VGG
 `;
 
 export const CatDog = () => {
-  console.log("CatDog");
   return (
     <Achievement
       name="Cat Dog Classifier (python)"
+      Project={() => <CatDogProject />}
       description={catDogDescription}
       urls={[
         "https://colab.research.google.com/drive/1DO3Vp136JAMOekZNlbf7Pz3TawHV__xa?usp=sharing",

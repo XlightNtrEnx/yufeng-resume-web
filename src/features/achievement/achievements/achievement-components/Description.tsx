@@ -6,7 +6,7 @@ import {
   onClickSpanPlugin,
   hName,
 } from "@src/common/components/MarkDown/plugins/remark/onclickspan";
-import { OnClickSpan } from "./OnClickSpan";
+import { OnClickSpan } from "@src/common/components/text-block";
 import { AchievementContext } from "./Achievement";
 import { Components } from "react-markdown/lib";
 

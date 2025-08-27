@@ -2,6 +2,7 @@ import { term4CSDFPGADocs, term4CSDFPGARepo } from "@src/common/strings";
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { HighLow } from "@src/features/project/projects/HighLow";
 
 const fpgaDescription = `
 Solved various problems from optimization to bugs for my team
@@ -17,6 +18,7 @@ export const FPGA = () => {
   return (
     <Achievement
       name="FPGA integration with electrical components (lucid)"
+      Project={() => <HighLow />}
       description={fpgaDescription}
       urls={[term4CSDFPGADocs, term4CSDFPGARepo]}
       mediasDir={

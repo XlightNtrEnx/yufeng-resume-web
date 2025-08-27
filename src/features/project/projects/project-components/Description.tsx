@@ -6,11 +6,15 @@ import {
   onClickSpanPlugin,
   hName,
 } from "@src/common/components/MarkDown/plugins/remark/onclickspan";
-import { OnClickSpan } from "./OnClickSpan";
+import { OnClickSpan } from "@src/common/components/text-block";
 import { ProjectContext } from "./Project";
 import { Components } from "react-markdown/lib";
 
-export const Description = ({ description }: { description: string }) => {
+interface Props {
+  description: string;
+}
+
+export const Description = ({ description }: Props) => {
   const setSkip = useContext(ProjectContext);
   const components: Components = {};
   components[hName] = (props: IntermediateProps) => {

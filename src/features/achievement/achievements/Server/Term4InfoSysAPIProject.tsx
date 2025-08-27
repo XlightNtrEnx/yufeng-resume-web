@@ -1,6 +1,7 @@
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { ParcelEye } from "@src/features/project/projects/ParcelEye";
 
 const description = `
 My team had 3 components that needed to talk to one another so I
@@ -18,6 +19,7 @@ export const Term4InfoSysAPIProject = () => {
   return (
     <Achievement
       name="Combined API for AI, app, and database (java, HTTP)"
+      Project={() => <ParcelEye />}
       description={description}
       urls={[
         "https://github.com/Term-4-CSD-Team-48/api",

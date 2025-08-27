@@ -90,3 +90,5 @@ export const EducationPage = () => {
     </Container>
   );
 };
+
+export default EducationPage;

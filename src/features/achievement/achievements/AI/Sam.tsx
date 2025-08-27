@@ -1,6 +1,7 @@
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { ParcelEye } from "@src/features/project/projects/ParcelEye";
 
 const samDescription = `
 Wrapped a python flask server with nginx proxy around SAM2.1 by Meta to allow users to {track an object}(ocs1) on a camera and receive push notifications (notification delay is smaller than camera stream latency) if it becomes untrackable
@@ -12,6 +13,7 @@ export const Sam = () => {
   return (
     <Achievement
       name="SAM2.1 Instance Segmentation (python)"
+      Project={() => <ParcelEye />}
       description={samDescription}
       urls={[
         "https://github.com/Term-4-CSD-Team-48/ai-endpoint",

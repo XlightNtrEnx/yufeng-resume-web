@@ -1,6 +1,7 @@
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { ParcelEye } from "@src/features/project/projects/ParcelEye";
 
 const mongoDescription = `
 My teammates wanted authentication so I made a MongoDB database to store all the users securely with {password hashing}(ocs1)
@@ -14,6 +15,7 @@ export const Mongo = () => {
   return (
     <Achievement
       name="MongoDB for users (java)"
+      Project={() => <ParcelEye />}
       description={mongoDescription}
       urls={[
         "https://github.com/Term-4-CSD-Team-48/api",

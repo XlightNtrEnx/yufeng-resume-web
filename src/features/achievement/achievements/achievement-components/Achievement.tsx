@@ -10,7 +10,7 @@ import { Button } from "@src/common/elements/Button";
 import { Modal } from "@src/common/components/Modal";
 import { H2 } from "@src/common/elements/text";
 import { FlexColumn } from "@src/common/layouts/flex";
-import { Project } from "@src/features/project/projects/project-components";
+import { Project as Pjt } from "@src/features/project/projects/project-components";
 import {
   RegisterFragmentContext,
   sanitizeFragment,
@@ -28,23 +28,25 @@ export interface AchievementProps
   extends Omit<MediaScrollerProps, "onClickMedia"> {
   name: string;
   description: string;
-  Pjt?: () => React.ReactElement<typeof Project>;
+  Project?: () => React.ReactElement<typeof Pjt>;
   urls?: string[];
   isRecursed?: boolean;
 }
 
-const SourceProjectButton = ({ Pjt }: Pick<AchievementProps, "Pjt">) => {
+const SourceProjectButton = ({
+  Project,
+}: Pick<AchievementProps, "Project">) => {
   const [displayModal, setDisplayModal] = useState<boolean>(false);
   return (
     <>
       <Button onClick={() => setDisplayModal(true)}>Source Project</Button>
-      {Pjt && displayModal && (
+      {Project && displayModal && (
         <Modal
           $width="1080px"
           $maxWidth="1080px"
           closer={() => setDisplayModal(false)}
         >
-          {Pjt()}
+          {Project()}
         </Modal>
       )}
     </>
@@ -57,7 +59,7 @@ export const Achievement = ({
   description,
   urls,
   isRecursed,
-  Pjt,
+  Project,
   ...rest
 }: AchievementProps) => {
   const id = sanitizeFragment(name);
@@ -75,7 +77,7 @@ export const Achievement = ({
         <StyledFlexColumn id={id}>
           <Div>
             <H2>{name}</H2>
-            {Pjt && <SourceProjectButton Pjt={Pjt} />}
+            {Project && <SourceProjectButton Project={Project} />}
           </Div>
           {urls && <Links urls={urls} />}
           <Description description={description} />

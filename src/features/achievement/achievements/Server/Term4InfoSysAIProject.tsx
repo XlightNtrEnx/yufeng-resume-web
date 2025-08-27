@@ -1,6 +1,7 @@
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { ParcelEye } from "@src/features/project/projects/ParcelEye";
 
 const description = `
 My team needed our AI to be able to communicate through the internet with users and a CCTV, so I wrapped our AI with {nginx}(ocs0) proxy server that {feeds}(ocs1) to a {flask server}(ocs2) housing the AI and starts a {RTMP server}(ocs3) that takes input from CCTV.
@@ -14,6 +15,7 @@ export const Term4InfoSysAIProject = () => {
   return (
     <Achievement
       name="Wrapped AI with a server (python, HTTP, RTMP)"
+      Project={() => <ParcelEye />}
       description={description}
       urls={[
         "https://github.com/Term-4-CSD-Team-48/ai-endpoint",

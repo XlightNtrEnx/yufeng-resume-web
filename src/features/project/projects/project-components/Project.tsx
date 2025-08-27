@@ -11,10 +11,10 @@ import { H2 } from "@src/common/elements/text";
 import { Div } from "@src/common/elements/Div";
 import { FlexColumn } from "@src/common/layouts/flex";
 import { Button } from "@src/common/elements/Button";
-import { Achievement } from "@src/features/achievement/achievements/achievement-components";
 
 import { Description } from "./Description";
 import { Links } from "./Links";
+import { AchievementsLayout } from "@src/features/achievement/achievements/achievement-components/AchievementsLayout";
 
 const StyledFlexColumn = styled(FlexColumn).attrs({ as: "article" })`
   align-items: start;
@@ -25,16 +25,18 @@ export interface ProjectProps
   extends Omit<MediaScrollerProps, "onClickMedia" | "skip"> {
   name: string;
   description: string;
-  achievements?:
-    | React.ReactElement<typeof Achievement>[]
-    | React.ReactElement<typeof Achievement>;
+  Achievements?: () => React.ReactElement<typeof AchievementsLayout>;
   urls?: string[];
   isRecursed?: boolean;
 }
 
+const StyledH2 = styled(H2)`
+  text-align: start;
+`;
+
 const AchievementsButton = ({
-  achievements,
-}: Pick<ProjectProps, "achievements">) => {
+  Achievements,
+}: Pick<ProjectProps, "Achievements">) => {
   const [displayModal, setDisplayModal] = useState<boolean>(false);
   return (
     <>
@@ -45,7 +47,7 @@ const AchievementsButton = ({
           $maxWidth="1080px"
           closer={() => setDisplayModal(false)}
         >
-          {achievements}
+          {Achievements && Achievements()}
         </Modal>
       )}
     </>
@@ -58,7 +60,7 @@ export const Project = ({
   description,
   urls,
   isRecursed,
-  achievements,
+  Achievements,
   ...rest
 }: ProjectProps) => {
   const [focused, setFocused] = useState<boolean>(false);
@@ -68,8 +70,8 @@ export const Project = ({
       <ProjectContext.Provider value={setSkip}>
         <StyledFlexColumn>
           <Div>
-            <H2>{name}</H2>
-            {achievements && <AchievementsButton achievements={achievements} />}
+            <StyledH2>{name}</StyledH2>
+            {Achievements && <AchievementsButton Achievements={Achievements} />}
           </Div>
           {urls && <Links urls={urls} />}
           <Description description={description} />

@@ -1,6 +1,7 @@
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { ParcelEye } from "@src/features/project/projects/ParcelEye";
 
 const term4InfoSysAIContainerizationDescription = `
 For submission to my university, it was required that the code be runnable. Unfortunately it is only runnable on linux and I doubted that my professors would use linux. As such I containerized my AI server.
@@ -14,6 +15,7 @@ export const Term4InfoSysAIContainerizationProject = () => {
   return (
     <Achievement
       name="Containerization for my project submission"
+      Project={() => <ParcelEye />}
       description={term4InfoSysAIContainerizationDescription}
       urls={[
         "https://github.com/Term-4-CSD-Team-48/api",

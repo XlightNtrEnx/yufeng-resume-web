@@ -1,6 +1,7 @@
 import { paths } from "@src/router/paths";
 
 import { Achievement } from "@src/features/achievement/achievements/achievement-components";
+import { ParcelEye } from "@src/features/project/projects/ParcelEye";
 
 const term4InfoSysAICloudDescription = `
 My team's physical prototype needed to be lightweight so instead of hauling our own desktop around with a GPU, I developed a cloud based solution to house our AI server
@@ -16,6 +17,7 @@ export const Term4InfoSysAICloudAchievement = () => {
   return (
     <Achievement
       name="Deploying EC2 instances and configuring their VPC"
+      Project={() => <ParcelEye />}
       description={term4InfoSysAICloudDescription}
       urls={[
         "https://github.com/Term-4-CSD-Team-48/ai-endpoint",
