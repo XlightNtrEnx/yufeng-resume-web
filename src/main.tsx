@@ -1,33 +1,41 @@
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "styled-components";
 import { RouterProvider } from "react-router-dom";
+import { ReportHandler } from "web-vitals";
 
 import "@src/css/index.css";
 import theme from "@src/theme";
 import router from "@src/router";
-import {
-  AuthProvider,
-  AutoScrollToHashProvider,
-  URLHashUpdateOnManualScrollProvider,
-} from "@src/providers";
-// import reportWebVitals from "./reportWebVitals";
+import { ScrollToHashOnLoad } from "@src/providers/ScrollToHashOnLoad";
+import { MaintainURLHash } from "@src/providers/MaintainURLHash";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <AuthProvider>
-    <ThemeProvider theme={theme}>
-      <URLHashUpdateOnManualScrollProvider>
-        <AutoScrollToHashProvider>
-          <RouterProvider router={router} />
-        </AutoScrollToHashProvider>
-      </URLHashUpdateOnManualScrollProvider>
-    </ThemeProvider>
-  </AuthProvider>
+  <ThemeProvider theme={theme}>
+    <MaintainURLHash>
+      <ScrollToHashOnLoad>
+        <RouterProvider router={router} />
+      </ScrollToHashOnLoad>
+    </MaintainURLHash>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+
+const reportWebVitals = (onPerfEntry?: ReportHandler) => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import("web-vitals").then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+reportWebVitals(console.log);
