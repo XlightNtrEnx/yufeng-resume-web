@@ -1,0 +1,14 @@
+export { ReactComponent as HomeSVG } from "./home.svg";
+export { ReactComponent as GraduationCapSVG } from "./graduation-cap.svg";
+export { ReactComponent as ClipboardSVG } from "./clipboard.svg";
+export { ReactComponent as OpenInNewTabSVGIcon } from "./open-in-new-tab.svg";
+export { ReactComponent as TrophySVGIcon } from "./trophy.svg";
+export { ReactComponent as ColabSVGIcon } from "./google-colab.svg";
+export { ReactComponent as DocsSVGIcon } from "./google-docs.svg";
+export { ReactComponent as LinkSVGIcon } from "./link.svg";
+export { ReactComponent as GitHubSVGIcon } from "./github.svg";
+export { ReactComponent as Email } from "./email.svg";
+export { ReactComponent as LinkedIn } from "./linkedin.svg";
+export { ReactComponent as LeetCode } from "./leetcode.svg";
+export { ReactComponent as PlayButton } from "./playbutton.svg";
+export { ReactComponent as Download } from "./download.svg";

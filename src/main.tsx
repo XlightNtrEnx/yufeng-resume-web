@@ -6,8 +6,8 @@ import { ReportHandler } from "web-vitals";
 import "@src/css/index.css";
 import theme from "@src/theme";
 import router from "@src/router";
-import { ScrollToHashOnLoad } from "@src/providers/ScrollToHashOnLoad";
-import { MaintainURLHash } from "@src/providers/MaintainURLHash";
+import { ScrollToHashOnLoad } from "@src/provider/ScrollToHashOnLoad";
+import { MaintainURLHash } from "@src/provider/MaintainURLHash";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

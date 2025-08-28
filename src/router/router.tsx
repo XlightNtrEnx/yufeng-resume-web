@@ -1,18 +1,18 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
-import { MainLayout } from "@src/common/layouts/MainLayout";
+import { MainLayout } from "@src/common/layout/MainLayout";
 import { paths } from "@src/router/paths";
 
 // Lazy-loaded pages
-const HomePage = lazy(() => import("@src/features/home/HomePage"));
+const LandingPage = lazy(() => import("@src/feature/landing/LandingPage"));
 const EducationPage = lazy(
-  () => import("@src/features/education/EducationPage")
+  () => import("@src/feature/education/EducationPage")
 );
 const AchievementsPage = lazy(
-  () => import("@src/features/achievement/AchievementsPage")
+  () => import("@src/feature/achievement/AchievementsPage")
 );
-const ProjectsPage = lazy(() => import("@src/features/project/ProjectsPage"));
+const ProjectsPage = lazy(() => import("@src/feature/project/ProjectsPage"));
 
 const router = createBrowserRouter([
   {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <LandingPage />,
       },
       {
         path: paths.education,
