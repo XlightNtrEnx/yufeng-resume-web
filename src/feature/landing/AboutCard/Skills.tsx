@@ -33,6 +33,9 @@ const LazyAI = lazy(() => import("@src/feature/achievement/achievements/AI"));
 const LazyAndroid = lazy(
   () => import("@src/feature/achievement/achievements/Android")
 );
+const LazyArchitecture = lazy(
+  () => import("@src/feature/achievement/achievements/Architecture")
+);
 const LazyCloud = lazy(
   () => import("@src/feature/achievement/achievements/Cloud")
 );
@@ -42,6 +45,9 @@ const LazyContainerization = lazy(
 const LazyDatabase = lazy(
   () => import("@src/feature/achievement/achievements/Database")
 );
+const LazyDevOps = lazy(
+  () => import("@src/feature/achievement/achievements/DevOps")
+);
 const LazyEE = lazy(() => import("@src/feature/achievement/achievements/EE"));
 const LazyServer = lazy(
   () => import("@src/feature/achievement/achievements/Server")
@@ -49,14 +55,16 @@ const LazyServer = lazy(
 const LazyWeb = lazy(() => import("@src/feature/achievement/achievements/Web"));
 
 const achievements = [
-  LazyAndroid,
-  LazyAI,
-  LazyCloud,
-  LazyContainerization,
-  LazyDatabase,
-  LazyEE,
-  LazyServer,
-  LazyWeb,
+  LazyAndroid, // 0
+  LazyAI, // 1
+  LazyCloud, // 2
+  LazyContainerization, // 3
+  LazyDatabase, // 4
+  LazyEE, // 5
+  LazyServer, // 6
+  LazyWeb, // 7
+  LazyArchitecture, // 8
+  LazyDevOps, // 9
 ];
 
 export const Skills = () => {
@@ -81,15 +89,21 @@ export const Skills = () => {
         />
         <Skill
           onClick={() => {
-            setSelectedAchievementIdx(7);
+            setSelectedAchievementIdx(8);
           }}
-          text="CI/CD ⚙️"
+          text="Software Architecture 🏗️"
+        />
+        <Skill
+          onClick={() => {
+            setSelectedAchievementIdx(9);
+          }}
+          text="DevOps ⚙️"
         />
         <Skill
           onClick={() => {
             setSelectedAchievementIdx(5);
           }}
-          text="Some electronic circuit design 📟"
+          text="Hardware design 📟"
         />
         <Skill
           onClick={() => {
@@ -107,7 +121,7 @@ export const Skills = () => {
           onClick={() => {
             setSelectedAchievementIdx(4);
           }}
-          text="Lil' bit of database management 🛢"
+          text="Database management 🛢"
         />
         <Skill
           onClick={() => {
