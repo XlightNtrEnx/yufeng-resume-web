@@ -9,7 +9,6 @@ import { Skills } from "./Skills";
 const StyledFlexColumn = styled(FlexColumn)`
   height: 550px;
   width: 500px;
-  max-width: 100%;
   padding: 20px;
   gap: 1rem;
   align-items: start;

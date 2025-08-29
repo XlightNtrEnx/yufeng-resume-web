@@ -1,15 +1,13 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 import { Carousel } from "@src/common/layout/Carousel";
 import { FlexColumn, FlexRow } from "@src/common/layout/flex";
+
+import { ProfileCard } from "../landing/ProfileCard";
+import { useState } from "react";
+
+import { AboutCard } from "../landing/AboutCard";
 import { LeftArrow, RightArrow } from "@src/common/svg";
-
-import { AboutCard } from "./AboutCard";
-import { Backrooms } from "./Backrooms";
-import { ProfileCard } from "./ProfileCard";
-
-const $breakPoint = "600px";
 
 const StyledFlexRow = styled(FlexRow)`
   align-items: center;
@@ -17,24 +15,6 @@ const StyledFlexRow = styled(FlexRow)`
 
   & > :nth-child(2) {
     margin: 0 10px 0 0;
-  }
-
-  @media (max-width: ${$breakPoint}) {
-    flex-direction: column;
-
-    & > :nth-child(2) {
-      bottom: 140px;
-    }
-
-    & > :nth-child(3) {
-      bottom: 90px;
-    }
-
-    & > :nth-child(n + 2) {
-      transform: rotateZ(90deg);
-      position: absolute;
-      margin: 0;
-    }
   }
 `;
 
@@ -44,9 +24,9 @@ const Arrow = styled(FlexColumn)`
   background-color: ${({ theme }) =>
     theme.colors.pallete.complementary.softPrimary + "dd"};
   cursor: pointer;
-  border-radius: 10px;
   width: 40px;
   height: 100px;
+  border-radius: 10px;
 
   & > * {
     width: 50px;
@@ -54,9 +34,16 @@ const Arrow = styled(FlexColumn)`
   }
 `;
 
+const BackRooms = styled(FlexColumn)`
+  width: 400px;
+  background: white;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const TestPage = () => {
   const [focusOn, setFocusOn] = useState<number>(0);
-
   return (
     <StyledFlexRow>
       <Carousel
@@ -64,11 +51,10 @@ export const TestPage = () => {
         focusOn={focusOn}
         $heightPx={600}
         $widthPx={550}
-        $breakPoint={$breakPoint}
       >
         <ProfileCard />
         <AboutCard />
-        <Backrooms />
+        <BackRooms>the backrooms</BackRooms>
       </Carousel>
       <Arrow onClick={() => setFocusOn(focusOn - 1)}>
         <LeftArrow />

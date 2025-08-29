@@ -39,6 +39,7 @@ const theme = {
   textColor: colors.black,
   negTextColor: colors.white,
   hyperLinkColor: colors.blue,
+  maxPageWidth: "924px",
 };
 
 export type Theme = typeof theme;

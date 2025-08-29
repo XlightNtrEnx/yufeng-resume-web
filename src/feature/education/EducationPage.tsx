@@ -21,6 +21,8 @@ import { YISSTranscript } from "./transcripts/YISSTranscript";
 
 const StyledFlexColumn = styled(FlexColumn)`
   gap: 10px;
+  width: 100%;
+
   & > * {
     border-left: 20px solid
       ${({ theme }) => theme.colors.pallete.complementary.primary};

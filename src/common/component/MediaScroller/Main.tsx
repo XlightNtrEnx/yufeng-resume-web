@@ -46,12 +46,9 @@ const Arrow = styled.div<{ $right: boolean }>`
 
 export interface MainProps {
   medias: Media[];
-  // mediasDir: string;
-  onClickMedia?: () => void;
+  onClickMedia?: (mediaIndex: number) => void;
   selectedMediaIdx: number;
   setSelectedMediaIdx: (idx: number) => void;
-  // totalMedias: number;
-  // nonPNGMedias?: Record<number, string>;
 }
 
 export const Main = ({
@@ -64,30 +61,19 @@ export const Main = ({
   for (let i = 0; i < medias.length; i++) {
     const media = medias[i];
     if (!media.isVideo) {
-      components.push(<Img key={i} src={media.src} onClick={onClickMedia} />);
+      components.push(
+        <Img
+          key={i}
+          src={media.src}
+          onClick={() => {
+            if (onClickMedia) onClickMedia(i);
+          }}
+        />
+      );
     } else {
       components.push(<Video key={i} src={media.src} controls />);
     }
   }
-  // if (nonPNGMedias) {
-  //   for (let i = 1; i <= totalMedias; i++) {
-  //     if (nonPNGMedias[i]) {
-  //       newMedias.push(
-  //         <Video key={i} src={mediasDir + `/${i}${nonPNGMedias[i]}`} controls />
-  //       );
-  //     } else {
-  //       newMedias.push(
-  //         <Img key={i} src={mediasDir + `/${i}.png`} onClick={onClickMedia} />
-  //       );
-  //     }
-  //   }
-  // } else {
-  //   for (let i = 1; i <= totalMedias; i++) {
-  //     newMedias.push(
-  //       <Img key={i} src={mediasDir + `/${i}.png`} onClick={onClickMedia} />
-  //     );
-  //   }
-  // }
 
   return (
     <StyledFlexRow>

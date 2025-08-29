@@ -12,3 +12,5 @@ export { ReactComponent as LinkedIn } from "./linkedin.svg";
 export { ReactComponent as LeetCode } from "./leetcode.svg";
 export { ReactComponent as PlayButton } from "./playbutton.svg";
 export { ReactComponent as Download } from "./download.svg";
+export { ReactComponent as RightArrow } from "./right-arrow.svg";
+export { ReactComponent as LeftArrow } from "./left-arrow.svg";

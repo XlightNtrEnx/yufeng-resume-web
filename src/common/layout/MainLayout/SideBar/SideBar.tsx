@@ -16,10 +16,8 @@ import { ChildInternalLink } from "./ChildInternalLink";
 
 const StyledFlexRowReverse = styled(FlexRowReverse)<{ open?: boolean }>`
   align-items: flex-start;
-  position: relative;
-  left: 20px;
 
-  * {
+  & > * {
     background: ${({ theme }) => theme.colors.softerWhite};
   }
 
@@ -40,7 +38,7 @@ const SideBarElements = styled(FlexColumn)`
 
   border: 1px solid ${({ theme }) => theme.colors.softerBlack};
 
-  > *:not(:last-child) {
+  & > *:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.softerBlack};
   }
 `;
@@ -48,6 +46,7 @@ const SideBarElements = styled(FlexColumn)`
 const ArrowButton = styled(Button)`
   width: 20px;
   height: 64px;
+  border-radius: 0;
 
   @media (min-width: ${mobileBreakpointInPx}px) {
     display: none;
@@ -93,6 +92,12 @@ export const SideBar = () => {
           label="Education"
           SVG={GraduationCapSVG}
         />
+        {/* <ChildInternalLink
+          key="Test"
+          to="/test"
+          label="Test"
+          SVG={GraduationCapSVG}
+        /> */}
       </SideBarElements>
     </StyledFlexRowReverse>
   );

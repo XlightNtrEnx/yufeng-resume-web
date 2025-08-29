@@ -94,8 +94,11 @@ export const Achievement = ({
           {urls && <Links urls={urls} />}
           <Description description={description} />
           <MediaScroller
-            onClickMedia={() => {
-              window.innerWidth < mobileBreakpointInPx || setZoomIn(true);
+            onClickMedia={(mediaIdx: number) => {
+              if (window.innerWidth > mobileBreakpointInPx) {
+                setZoomIn(true);
+                setSkip([mediaIdx]);
+              }
             }}
             skip={skip}
             {...rest}

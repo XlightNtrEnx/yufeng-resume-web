@@ -16,8 +16,6 @@ const StyledInternalLink = styled(InternalLink)<{ $isActive: boolean }>`
   gap: 5px;
 
   text-decoration: none;
-  background-color: ${({ theme, $isActive }) =>
-    $isActive ? theme.colors.softerWhite : theme.colors.softWhite};
 
   > * {
     color: ${({ theme, $isActive }) =>

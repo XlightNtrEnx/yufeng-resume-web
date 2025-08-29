@@ -12,10 +12,9 @@ const ContainerWidthInPx = 400;
 const BorderThicknessInPx = 16;
 const IconSizeInPx = ContainerWidthInPx - BorderThicknessInPx - 50;
 
-const Container = styled(Grid)`
+const StyledGrid = styled(Grid)`
   height: 620px;
   width: ${ContainerWidthInPx}px;
-  max-width: 100%;
   gap: 20px;
   grid-template-rows: ${IconSizeInPx}px 5fr 5fr 20fr;
   justify-items: center;
@@ -42,7 +41,7 @@ const StyledSpan = styled(Span)`
 
 export const ProfileCard = () => {
   return (
-    <Container>
+    <StyledGrid>
       <StyledIcon
         $iconSize={`${IconSizeInPx}px`}
         src={paths.public.meDir.me}
@@ -52,6 +51,6 @@ export const ProfileCard = () => {
       <StyledSpan>Music theory enthusiast</StyledSpan>
       <Socials />
       <Footer />
-    </Container>
+    </StyledGrid>
   );
 };

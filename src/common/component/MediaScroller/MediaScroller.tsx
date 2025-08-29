@@ -36,19 +36,13 @@ const Page = ({ active, onClick, pageNumber }: PageProps) => {
 };
 
 export interface MediaScrollerProps {
-  // mediasDir: string;
-  // mediasDirSize: number;
-  // nonPNGMedias?: Record<number, string>;
   medias: Media[];
   skip?: number[];
-  onClickMedia?: () => void;
+  onClickMedia?: (mediaIndex: number) => void;
 }
 
 export const MediaScroller = ({
   medias,
-  // mediasDir,
-  // mediasDirSize,
-  // nonPNGMedias,
   skip,
   onClickMedia,
 }: MediaScrollerProps) => {
@@ -135,21 +129,15 @@ export const MediaScroller = ({
     <Container>
       <Main
         medias={medias}
-        // mediasDir={mediasDir}
-        // totalMedias={mediasDirSize}
         onClickMedia={onClickMedia}
         selectedMediaIdx={activeMediaIdx}
         setSelectedMediaIdx={mainSetActiveMediaIdx}
-        // nonPNGMedias={nonPNGMedias}
       />
       <Thumbnails
         medias={medias}
-        // mediasDir={mediasDir}
-        // totalMedias={mediasDirSize}
         firstThumbnailIdx={firstThumbnailIdx}
         selectedMediaIdx={activeMediaIdx}
         setSelectedMediaIdx={setActiveMediaIdx}
-        // nonPNGMedias={nonPNGMedias}
       />
       {totalPages > 1 && (
         <PaginationContainer>

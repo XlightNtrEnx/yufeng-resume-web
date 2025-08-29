@@ -62,15 +62,12 @@ const ActiveSelectionBorder = styled.div<{ $width?: string; $left?: string }>`
 `;
 
 export const Thumbnails = ({
-  // mediasDir,
   medias,
   firstThumbnailIdx,
   imgWidth,
   selectedMediaIdx,
   setSelectedMediaIdx,
-}: // totalMedias,
-// nonPNGMedias,
-ThumbnailsProps) => {
+}: ThumbnailsProps) => {
   const components = [];
   for (let i = 0; i < medias.length; i++) {
     const media = medias[i];
@@ -107,42 +104,7 @@ ThumbnailsProps) => {
       }
     }
   }
-  // if (nonPNGMedias) {
-  //   for (let i = 1; i <= totalMedias; i++) {
-  //     if (nonPNGMedias[i]) {
-  //       newMedias.push(
-  //         <PlayButton
-  //           key={i}
-  //           onClick={() => {
-  //             setSelectedMediaIdx(i - 1);
-  //           }}
-  //         />
-  //       );
-  //     } else {
-  //       newMedias.push(
-  //         <Img
-  //           onClick={() => {
-  //             setSelectedMediaIdx(i - 1);
-  //           }}
-  //           key={i}
-  //           src={mediasDir + `/${i}.png`}
-  //         />
-  //       );
-  //     }
-  //   }
-  // } else {
-  //   for (let i = 1; i <= totalMedias; i++) {
-  //     newMedias.push(
-  //       <Img
-  //         onClick={() => {
-  //           setSelectedMediaIdx(i - 1);
-  //         }}
-  //         key={i}
-  //         src={mediasDir + `/${i}.png`}
-  //       />
-  //     );
-  //   }
-  // }
+
   return (
     <StyledFlexRow>
       <InnerStyledFlexRow

@@ -13,6 +13,7 @@ const AchievementsPage = lazy(
   () => import("@src/feature/achievement/AchievementsPage")
 );
 const ProjectsPage = lazy(() => import("@src/feature/project/ProjectsPage"));
+const TestPage = lazy(() => import("@src/feature/test/TestPage"));
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
         path: paths.projects,
         element: <ProjectsPage />,
       },
+      { path: "/test", element: <TestPage /> },
     ],
   },
 ]);
