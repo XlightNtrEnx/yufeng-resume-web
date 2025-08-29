@@ -56,6 +56,7 @@ const Arrow = styled(FlexColumn)`
 
 export const TestPage = () => {
   const [focusOn, setFocusOn] = useState<number>(0);
+  const childCount = 3;
 
   return (
     <StyledFlexRow>
@@ -68,7 +69,11 @@ export const TestPage = () => {
       >
         <ProfileCard />
         <AboutCard />
-        <Backrooms />
+        <Backrooms
+          preloadAudio={
+            2 === ((focusOn % childCount) + childCount) % childCount
+          }
+        />
       </Carousel>
       <Arrow onClick={() => setFocusOn(focusOn - 1)}>
         <LeftArrow />

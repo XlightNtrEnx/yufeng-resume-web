@@ -30,7 +30,11 @@ enum Part {
   Part8 = "PART8",
 }
 
-export const Backrooms = () => {
+interface Props {
+  preloadAudio?: boolean;
+}
+
+export const Backrooms = ({ preloadAudio }: Props) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [part, setPart] = useState<Part>(Part.Part1);
@@ -141,7 +145,7 @@ export const Backrooms = () => {
       <audio
         ref={audioRef}
         src={paths.public.landingDir.backroomsDir.oiia}
-        preload="auto"
+        preload={preloadAudio ? "auto" : "none"}
       />
     </StyledFlexColumn>
   );
