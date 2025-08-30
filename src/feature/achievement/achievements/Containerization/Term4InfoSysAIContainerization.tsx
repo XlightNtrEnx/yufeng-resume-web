@@ -41,7 +41,7 @@ export const Term4InfoSysAIContainerization = () => {
         },
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .img_,
+            .img_4,
         },
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
