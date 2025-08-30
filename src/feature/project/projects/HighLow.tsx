@@ -24,9 +24,9 @@ export const HighLow = () => {
       description={description}
       urls={[term4CSDFPGARepo, term4CSDFPGADocs]}
       medias={[
-        { src: paths.public.projectDir.highLowDir.png_1 },
-        { src: paths.public.projectDir.highLowDir.png_2 },
-        { src: paths.public.projectDir.highLowDir.png_3 },
+        { src: paths.public.projectDir.highLowDir.img_1 },
+        { src: paths.public.projectDir.highLowDir.img_2 },
+        { src: paths.public.projectDir.highLowDir.img_3 },
       ]}
     />
   );

@@ -28,15 +28,15 @@ export const FPGA = () => {
       medias={[
         {
           src: paths.public.achievementDir
-            .fpgaIntegrationWithElectricalComponentsDir.png_1,
+            .fpgaIntegrationWithElectricalComponentsDir.img_1,
         },
         {
           src: paths.public.achievementDir
-            .fpgaIntegrationWithElectricalComponentsDir.png_2,
+            .fpgaIntegrationWithElectricalComponentsDir.img_2,
         },
         {
           src: paths.public.achievementDir
-            .fpgaIntegrationWithElectricalComponentsDir.png_3,
+            .fpgaIntegrationWithElectricalComponentsDir.img_3,
         },
       ]}
     />

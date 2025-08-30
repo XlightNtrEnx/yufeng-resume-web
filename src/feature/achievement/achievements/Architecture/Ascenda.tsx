@@ -20,11 +20,11 @@ export const Ascenda = () => {
       description={description}
       urls={[term5CSDAscendaOrg, term5CSDAscendaDocs]}
       medias={[
-        { src: paths.public.achievementDir.architectureDir.ascendaDir.png_1 },
-        { src: paths.public.achievementDir.architectureDir.ascendaDir.jpg_2 },
-        { src: paths.public.achievementDir.architectureDir.ascendaDir.png_3 },
-        { src: paths.public.achievementDir.architectureDir.ascendaDir.png_4 },
-        { src: paths.public.achievementDir.architectureDir.ascendaDir.png_5 },
+        { src: paths.public.achievementDir.architectureDir.ascendaDir.img_1 },
+        { src: paths.public.achievementDir.architectureDir.ascendaDir.img_2 },
+        { src: paths.public.achievementDir.architectureDir.ascendaDir.img_3 },
+        { src: paths.public.achievementDir.architectureDir.ascendaDir.img_4 },
+        { src: paths.public.achievementDir.architectureDir.ascendaDir.img_5 },
       ]}
     />
   );

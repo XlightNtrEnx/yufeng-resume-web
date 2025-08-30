@@ -43,9 +43,9 @@ export const Ascenda = () => {
       urls={[term4CSDGitHubOrg, ascendaFinalReportDocs]}
       medias={[
         { src: paths.public.projectDir.ascendaDir.mp4_1, isVideo: true },
-        { src: paths.public.projectDir.ascendaDir.png_2 },
-        { src: paths.public.projectDir.ascendaDir.png_3 },
-        { src: paths.public.projectDir.ascendaDir.png_4 },
+        { src: paths.public.projectDir.ascendaDir.img_2 },
+        { src: paths.public.projectDir.ascendaDir.img_3 },
+        { src: paths.public.projectDir.ascendaDir.img_4 },
       ]}
     />
   );

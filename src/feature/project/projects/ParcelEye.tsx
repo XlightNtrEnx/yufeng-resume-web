@@ -42,9 +42,9 @@ export const ParcelEye = () => {
       description={description}
       urls={[term4CSDGitHubOrg, term4CSDParcelEyeDocs]}
       medias={[
-        { src: paths.public.projectDir.parcelEyeDir.mp4_1, isVideo: true },
-        { src: paths.public.projectDir.parcelEyeDir.png_2 },
-        { src: paths.public.projectDir.parcelEyeDir.png_3 },
+        { src: paths.public.projectDir.parcelEyeDir.vid_1, isVideo: true },
+        { src: paths.public.projectDir.parcelEyeDir.img_2 },
+        { src: paths.public.projectDir.parcelEyeDir.img_3 },
       ]}
     />
   );

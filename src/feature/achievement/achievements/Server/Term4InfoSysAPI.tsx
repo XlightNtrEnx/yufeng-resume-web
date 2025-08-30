@@ -31,10 +31,10 @@ export const Term4InfoSysAPI = () => {
       description={description}
       urls={[term4CSDParcelEyeAPIRepo, term4CSDParcelEyeDocs]}
       medias={[
-        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.png_1 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.png_2 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.png_3 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.png_4 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.img_1 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.img_2 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.img_3 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAPIDir.img_4 },
       ]}
     />
   );

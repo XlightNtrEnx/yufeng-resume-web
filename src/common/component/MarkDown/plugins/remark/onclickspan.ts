@@ -8,7 +8,6 @@ export const onClickSpanPlugin = PluginFactory.replacerPlugin({
   // value is missing but it works
   replacer: (match: RegExpExecArray) => {
     const [text, skip] = match[0].slice(1, -1).split("}(ocs");
-    console.log(text);
     const hProperties: IntermediateProps = {
       text,
       skip: Number.parseInt(skip),

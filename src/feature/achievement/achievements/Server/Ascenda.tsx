@@ -29,13 +29,13 @@ export const Ascenda = () => {
       description={description}
       urls={[term5CSDAscendaAPIRepo, term5CSDAscendaDocs]}
       medias={[
-        { src: paths.public.achievementDir.serverDir.ascendaDir.png_1 },
-        { src: paths.public.achievementDir.serverDir.ascendaDir.png_2 },
-        { src: paths.public.achievementDir.serverDir.ascendaDir.png_3 },
-        { src: paths.public.achievementDir.serverDir.ascendaDir.png_4 },
-        { src: paths.public.achievementDir.serverDir.ascendaDir.png_5 },
-        { src: paths.public.achievementDir.serverDir.ascendaDir.png_6 },
-        { src: paths.public.achievementDir.serverDir.ascendaDir.png_7 },
+        { src: paths.public.achievementDir.serverDir.ascendaDir.img_1 },
+        { src: paths.public.achievementDir.serverDir.ascendaDir.img_2 },
+        { src: paths.public.achievementDir.serverDir.ascendaDir.img_3 },
+        { src: paths.public.achievementDir.serverDir.ascendaDir.img_4 },
+        { src: paths.public.achievementDir.serverDir.ascendaDir.img_5 },
+        { src: paths.public.achievementDir.serverDir.ascendaDir.img_6 },
+        { src: paths.public.achievementDir.serverDir.ascendaDir.img_7 },
       ]}
     />
   );

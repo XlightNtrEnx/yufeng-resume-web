@@ -23,8 +23,8 @@ export const Resume = () => {
       description={description}
       urls={[resumeGitHub]}
       medias={[
-        { src: paths.public.projectDir.resumeDir.png_1 },
-        { src: paths.public.projectDir.resumeDir.png_2 },
+        { src: paths.public.projectDir.resumeDir.img_1 },
+        { src: paths.public.projectDir.resumeDir.img_2 },
       ]}
     />
   );

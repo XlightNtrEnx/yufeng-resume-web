@@ -23,8 +23,7 @@ const StyledFlexColumn = styled(FlexColumn).attrs({ as: "article" })`
   gap: 1rem;
 `;
 
-export interface ProjectProps
-  extends Omit<MediaScrollerProps, "onClickMedia" | "skip"> {
+export interface ProjectProps extends Omit<MediaScrollerProps, "onClickMedia"> {
   name: string;
   description: string;
   lazyAchievements?: React.LazyExoticComponent<
@@ -70,10 +69,10 @@ export const Project = ({
   description,
   urls,
   isRecursed,
-  lazyAchievements: LazyAchievementsLayout,
+  lazyAchievements,
   ...rest
 }: ProjectProps) => {
-  const [focused, setFocused] = useState<boolean>(false);
+  const [zoomIn, setZoomIn] = useState<boolean>(false);
   const [skip, setSkip] = useState<number[]>([0]);
   return (
     <>
@@ -81,32 +80,36 @@ export const Project = ({
         <StyledFlexColumn>
           <Div>
             <StyledH2>{name}</StyledH2>
-            {LazyAchievementsLayout && (
-              <AchievementsButton lazyAchievements={LazyAchievementsLayout} />
+            {lazyAchievements && (
+              <AchievementsButton lazyAchievements={lazyAchievements} />
             )}
           </Div>
           {urls && <Links urls={urls} />}
           <Description description={description} />
           <MediaScroller
-            {...rest}
-            onClickMedia={() => {
-              window.innerWidth < mobileBreakpointInPx || setFocused(true);
+            onClickMedia={(mediaIdx: number) => {
+              if (window.innerWidth > mobileBreakpointInPx) {
+                setZoomIn(true);
+                setSkip([mediaIdx]);
+              }
             }}
             skip={skip}
+            {...rest}
           />
         </StyledFlexColumn>
       </ProjectContext.Provider>
-      {!isRecursed && focused && (
+      {!isRecursed && zoomIn && (
         <Modal
           $width="1080px"
           $maxWidth="1080px"
-          closer={() => setFocused(false)}
+          closer={() => setZoomIn(false)}
         >
           <Project
             name={name}
             description={description}
             urls={urls}
             isRecursed={true}
+            skip={skip}
             {...rest}
           />
         </Modal>

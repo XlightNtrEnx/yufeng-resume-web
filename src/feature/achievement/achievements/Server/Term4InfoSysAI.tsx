@@ -27,14 +27,14 @@ export const Term4InfoSysAI = () => {
       description={description}
       urls={[term4CSDParcelEyeAIRepo, term4CSDParcelEyeDocs]}
       medias={[
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_1 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_2 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_3 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_4 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_5 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_6 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_7 },
-        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.png_8 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_1 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_2 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_3 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_4 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_5 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_6 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_7 },
+        { src: paths.public.achievementDir.serverDir.term4InfosysAIDir.img_8 },
       ]}
     />
   );

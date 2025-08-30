@@ -24,9 +24,9 @@ export const CatDog = () => {
       description={description}
       urls={[term4CSDGitHubOrg]}
       medias={[
-        { src: paths.public.projectDir.catDogDir.png_1 },
-        { src: paths.public.projectDir.catDogDir.png_2 },
-        { src: paths.public.projectDir.catDogDir.png_3 },
+        { src: paths.public.projectDir.catDogDir.img_1 },
+        { src: paths.public.projectDir.catDogDir.img_2 },
+        { src: paths.public.projectDir.catDogDir.img_3 },
       ]}
     />
   );

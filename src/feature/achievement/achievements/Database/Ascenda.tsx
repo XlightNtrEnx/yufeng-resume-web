@@ -25,8 +25,8 @@ export const Ascenda = () => {
       description={description}
       urls={[term5CSDAscendaAPIRepo, term5CSDAscendaDocs]}
       medias={[
-        { src: paths.public.achievementDir.databaseDir.ascendaDir.png_1 },
-        { src: paths.public.achievementDir.databaseDir.ascendaDir.png_2 },
+        { src: paths.public.achievementDir.databaseDir.ascendaDir.img_1 },
+        { src: paths.public.achievementDir.databaseDir.ascendaDir.img_2 },
       ]}
     />
   );

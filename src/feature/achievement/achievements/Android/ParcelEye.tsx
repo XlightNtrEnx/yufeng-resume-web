@@ -29,10 +29,10 @@ export const ParcelEye = () => {
       description={parcelEyeDescription}
       urls={[term4CSDParcelEyeRepo, term4CSDParcelEyeDocs]}
       medias={[
-        { src: paths.public.achievementDir.parcelEyeDir.mp4_1, isVideo: true },
-        { src: paths.public.achievementDir.parcelEyeDir.png_2 },
-        { src: paths.public.achievementDir.parcelEyeDir.png_3 },
-        { src: paths.public.achievementDir.parcelEyeDir.png_4 },
+        { src: paths.public.achievementDir.parcelEyeDir.vid_1, isVideo: true },
+        { src: paths.public.achievementDir.parcelEyeDir.img_2 },
+        { src: paths.public.achievementDir.parcelEyeDir.img_3 },
+        { src: paths.public.achievementDir.parcelEyeDir.img_4 },
       ]}
     />
   );

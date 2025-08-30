@@ -27,10 +27,10 @@ export const Mongo = () => {
       description={mongoDescription}
       urls={[term4CSDParcelEyeAPIRepo, term4CSDParcelEyeDocs]}
       medias={[
-        { src: paths.public.achievementDir.databaseDir.mongoDir.png_1 },
-        { src: paths.public.achievementDir.databaseDir.mongoDir.png_2 },
-        { src: paths.public.achievementDir.databaseDir.mongoDir.png_3 },
-        { src: paths.public.achievementDir.databaseDir.mongoDir.png_4 },
+        { src: paths.public.achievementDir.databaseDir.mongoDir.img_1 },
+        { src: paths.public.achievementDir.databaseDir.mongoDir.img_2 },
+        { src: paths.public.achievementDir.databaseDir.mongoDir.img_3 },
+        { src: paths.public.achievementDir.databaseDir.mongoDir.img_4 },
       ]}
     />
   );

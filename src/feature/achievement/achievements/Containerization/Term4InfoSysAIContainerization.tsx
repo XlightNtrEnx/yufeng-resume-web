@@ -29,27 +29,27 @@ export const Term4InfoSysAIContainerization = () => {
       medias={[
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .png_1,
+            .img_1,
         },
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .png_2,
+            .img_2,
         },
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .png_3,
+            .img_3,
         },
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .png_4,
+            .img_,
         },
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .png_5,
+            .img_5,
         },
         {
           src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .png_6,
+            .img_6,
         },
       ]}
     />

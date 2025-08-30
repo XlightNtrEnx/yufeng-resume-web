@@ -28,12 +28,12 @@ export const CatDog = () => {
       description={catDogDescription}
       urls={[catDogColab]}
       medias={[
-        { src: paths.public.achievementDir.catDogClassfierDir.png_1 },
-        { src: paths.public.achievementDir.catDogClassfierDir.png_2 },
-        { src: paths.public.achievementDir.catDogClassfierDir.png_3 },
-        { src: paths.public.achievementDir.catDogClassfierDir.png_4 },
-        { src: paths.public.achievementDir.catDogClassfierDir.png_5 },
-        { src: paths.public.achievementDir.catDogClassfierDir.png_6 },
+        { src: paths.public.achievementDir.catDogClassfierDir.img_1 },
+        { src: paths.public.achievementDir.catDogClassfierDir.img_2 },
+        { src: paths.public.achievementDir.catDogClassfierDir.img_3 },
+        { src: paths.public.achievementDir.catDogClassfierDir.img_4 },
+        { src: paths.public.achievementDir.catDogClassfierDir.img_5 },
+        { src: paths.public.achievementDir.catDogClassfierDir.img_6 },
       ]}
     />
   );

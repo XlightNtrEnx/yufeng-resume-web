@@ -51,7 +51,6 @@ export class PluginFactory {
             const iterator = matches[Symbol.iterator]();
             const firstMatch = iterator.next().value;
             if (firstMatch) {
-              console.log(firstMatch);
               const newChildren: TextNode[] = [];
               let processedLength = 0;
 
@@ -64,7 +63,6 @@ export class PluginFactory {
 
               processedLength = firstMatch.index + firstMatch[0].length;
               for (const match of iterator) {
-                console.log(match);
                 if (processedLength < match.index) {
                   newChildren.push({
                     value: text.slice(processedLength, match.index),

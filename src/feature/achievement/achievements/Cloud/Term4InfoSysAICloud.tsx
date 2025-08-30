@@ -29,8 +29,8 @@ export const Term4InfoSysAICloudAchievement = () => {
       description={term4InfoSysAICloudDescription}
       urls={[term4CSDParcelEyeAIRepo, term4CSDParcelEyeDocs]}
       medias={[
-        { src: paths.public.achievementDir.term4InfosysCloudDir.png_1 },
-        { src: paths.public.achievementDir.term4InfosysCloudDir.png_2 },
+        { src: paths.public.achievementDir.term4InfosysCloudDir.img_1 },
+        { src: paths.public.achievementDir.term4InfosysCloudDir.img_2 },
       ]}
     />
   );
