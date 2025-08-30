@@ -34,16 +34,6 @@ export const Backrooms = ({ preload }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
   const isHoveredRef = useRef(isHovered);
 
-  // Ensure partRef is always updated
-  useEffect(() => {
-    partRef.current = part;
-  }, [part]);
-
-  // Ensure isHoveredRef is always updated
-  useEffect(() => {
-    isHoveredRef.current = isHovered;
-  }, [isHovered]);
-
   // Utility to advance part
   const nextPart = () => {
     const part = partRef.current;
@@ -114,7 +104,6 @@ export const Backrooms = ({ preload }: Props) => {
       const audioStopTime = getAudioStopTime();
       if (isHoveredRef.current) {
         nextPart();
-        audioEl.currentTime = audioStopTime;
         memoizedTimeout();
       } else {
         audioEl.pause();
@@ -135,8 +124,14 @@ export const Backrooms = ({ preload }: Props) => {
 
   return (
     <StyledFlexColumn
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        isHoveredRef.current = true;
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        isHoveredRef.current = false;
+      }}
     >
       <LSD part={part} />
       <audio
