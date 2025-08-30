@@ -33,7 +33,7 @@ export const MinionEthels = memo(() => {
   const bottomRight = { top: 80, left: 80 }; // in %
 
   // generate random positions within bounding box
-  const totalEthels = 70;
+  const totalEthels = 39;
   const randomEthels = useMemo(() => {
     return Array.from({ length: totalEthels }, () => ({
       top: topLeft.top + Math.random() * (bottomRight.top - topLeft.top),
@@ -59,7 +59,7 @@ export const MinionEthels = memo(() => {
       if (index >= visibleStates.length) {
         clearInterval(interval);
       }
-    }, 40);
+    }, 70);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

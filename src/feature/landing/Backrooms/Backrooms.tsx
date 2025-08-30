@@ -6,7 +6,7 @@ import { paths } from "@src/router/paths";
 
 import { LSD } from "./LSD";
 import { Part } from "./part";
-import { ImagePreloader } from "@src/common/component/ImagePreloader";
+import { MemoImagePreloader } from "@src/common/component/ImagePreloader";
 
 const StyledFlexColumn = styled(FlexColumn)`
   width: 400px;
@@ -145,7 +145,7 @@ export const Backrooms = ({ preload }: Props) => {
         preload={preload ? "auto" : "none"}
       />
       {preload && (
-        <ImagePreloader
+        <MemoImagePreloader
           urls={[
             paths.public.landingDir.backroomsDir.oiiaCat,
             paths.public.landingDir.backroomsDir.oiiaCatNoBg,
