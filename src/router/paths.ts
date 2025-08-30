@@ -174,7 +174,7 @@ const pub = {
   },
   meDir: {
     path: "/me",
-    me: "/me/me810.png",
+    me: "/me/me810.jpg",
     mask: "/me/mask200.png",
     resume: "/me/resume.pdf",
   },
