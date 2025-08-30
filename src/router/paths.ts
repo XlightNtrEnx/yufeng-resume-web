@@ -223,16 +223,11 @@ const pub = {
   landingDir: {
     backroomsDir: {
       oiiaCat: "/landing/backrooms/oiia-cat.jpg",
+      oiiaCatNoBg: "/landing/backrooms/oiia-cat-no-bg.png",
+      spinningOiiaCatGod: "/landing/backrooms/spinning-oiia-cat-no-bg-god.gif",
+      spinningOiiaCatNoBg: "/landing/backrooms/spinning-oiia-cat-no-bg.gif",
       spinningOiiaCat: "/landing/backrooms/spinning-oiia-cat.gif",
-      pt1: "/landing/backrooms/pt1.m4a",
-      pt2: "/landing/backrooms/pt2.m4a",
-      pt3: "/landing/backrooms/pt3.m4a",
-      pt4: "/landing/backrooms/pt4.m4a",
-      pt5: "/landing/backrooms/pt5.m4a",
-      pt6: "/landing/backrooms/pt6.m4a",
-      pt7: "/landing/backrooms/pt7.m4a",
-      pt8: "/landing/backrooms/pt8.m4a",
-      oiia: "/landing/backrooms/oiia.mp3",
+      oiia: "/landing/backrooms/0ez0o-q2o9a.m4a",
     },
   },
 };

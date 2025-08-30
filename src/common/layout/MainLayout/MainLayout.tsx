@@ -48,7 +48,6 @@ export function MainLayout() {
         </Suspense>
       </StyledFlexColumn>
       <SideBar />
-      <div id="portal" />
     </StyledFlexRowReverse>
   );
 }

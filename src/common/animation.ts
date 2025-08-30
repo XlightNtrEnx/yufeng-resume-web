@@ -96,16 +96,46 @@ export const rotateInX = () => {
   `;
 };
 
-export const spinForever = () => {
-  const spin = keyframes`
-    from {
-      transform: rotateY(0deg);
+export const moveUp = () => {
+  const keyframe = keyframes`
+    0% {
+      transform: translateY(0);
     }
-    to {
-      transform: rotateY(360deg);
+    100% {
+      transform: translateY(-100px); /* adjust distance */
     }
   `;
   return css`
-    animation: ${spin} 1s linear infinite;
+    animation: ${keyframe} 5.5s linear forwards;
+  `;
+};
+
+export const mindFuck = () => {
+  const keyframe = keyframes`
+    0% {
+      width: 0vw; height: 0vh; 
+    }
+
+    100% {
+      width: 100vw; height: 100vh;
+    }
+  `;
+  return css`
+    animation: ${keyframe} 0.2s linear forwards;
+  `;
+};
+
+export const mindFuckReverse = () => {
+  const keyframe = keyframes`
+    0% {
+      width: 100vw; height: 100vh; 
+    }
+
+    100% {
+      width: 0vw; height: 0vh;
+    }
+  `;
+  return css`
+    animation: ${keyframe} 0.2s linear forwards;
   `;
 };

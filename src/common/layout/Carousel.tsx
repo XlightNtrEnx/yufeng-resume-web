@@ -12,7 +12,6 @@ const Scene = styled(Div)<{
   width: ${({ $widthPx }) => $widthPx}px;
   height: ${({ $heightPx }) => $heightPx}px;
   position: relative;
-  perspective: ${({ $perspective }) => $perspective};
 `;
 
 const CellContainer = styled(FlexRow)<{
@@ -22,7 +21,7 @@ const CellContainer = styled(FlexRow)<{
 }>`
   width: 100%;
   height: 100%;
-  position: absolute;
+
   transform-style: preserve-3d;
 
   transform: rotateY(${({ $rotateDeg }) => $rotateDeg}deg);

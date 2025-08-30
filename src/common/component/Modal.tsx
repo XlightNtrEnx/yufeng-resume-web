@@ -53,7 +53,7 @@ export const Modal = ({
   const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    const el = document.getElementById("portal");
+    const el = document.getElementById("app");
     setPortalEl(el);
   }, []);
 
