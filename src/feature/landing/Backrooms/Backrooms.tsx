@@ -66,9 +66,13 @@ export const Backrooms = ({ preload }: Props) => {
         setPart(Part.Part7);
         partRef.current = Part.Part7;
         break;
+      case Part.Part7:
+        setPart(Part.Idle);
+        partRef.current = Part.Idle;
+        break;
       default:
         setPart(Part.Idle);
-        partRef.current = Part.Part8;
+        partRef.current = Part.Idle;
     }
   };
 
@@ -90,8 +94,10 @@ export const Backrooms = ({ preload }: Props) => {
         return 20.8;
       case Part.Part6:
         return 33.7;
-      default:
+      case Part.Part7:
         if (audioRef && audioRef.current) return audioRef.current.duration;
+        return 0;
+      default:
         return 0;
     }
   };
@@ -100,16 +106,20 @@ export const Backrooms = ({ preload }: Props) => {
   const memoizedTimeout = useCallback(() => {
     const audioEl = audioRef.current;
     if (!audioEl) return;
+    if (partRef.current === Part.Idle) audioEl.currentTime = 0;
+    const audioStopTime = getAudioStopTime();
+    const timeout = (audioStopTime - audioEl.currentTime) * 1000;
+
     setTimeout(() => {
-      const audioStopTime = getAudioStopTime();
       if (isHoveredRef.current) {
+        audioEl.play();
         nextPart();
         memoizedTimeout();
       } else {
         audioEl.pause();
         audioEl.currentTime = audioStopTime;
       }
-    }, (getAudioStopTime() - audioEl.currentTime) * 1000);
+    }, timeout);
   }, []);
 
   useEffect(() => {
