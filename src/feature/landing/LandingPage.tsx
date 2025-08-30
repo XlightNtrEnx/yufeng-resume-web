@@ -70,9 +70,7 @@ export const TestPage = () => {
         <ProfileCard />
         <AboutCard />
         <Backrooms
-          preloadAudio={
-            2 === ((focusOn % childCount) + childCount) % childCount
-          }
+          preload={2 === ((focusOn % childCount) + childCount) % childCount}
         />
       </Carousel>
       <Arrow onClick={() => setFocusOn(focusOn - 1)}>

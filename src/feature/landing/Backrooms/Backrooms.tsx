@@ -6,6 +6,7 @@ import { paths } from "@src/router/paths";
 
 import { LSD } from "./LSD";
 import { Part } from "./part";
+import { ImagePreloader } from "@src/common/component/ImagePreloader";
 
 const StyledFlexColumn = styled(FlexColumn)`
   width: 400px;
@@ -21,10 +22,10 @@ const StyledFlexColumn = styled(FlexColumn)`
 `;
 
 interface Props {
-  preloadAudio?: boolean;
+  preload?: boolean;
 }
 
-export const Backrooms = ({ preloadAudio }: Props) => {
+export const Backrooms = ({ preload }: Props) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [part, setPart] = useState<Part>(Part.Idle);
@@ -141,8 +142,19 @@ export const Backrooms = ({ preloadAudio }: Props) => {
       <audio
         ref={audioRef}
         src={paths.public.landingDir.backroomsDir.oiia}
-        preload={preloadAudio ? "auto" : "none"}
+        preload={preload ? "auto" : "none"}
       />
+      {preload && (
+        <ImagePreloader
+          urls={[
+            paths.public.landingDir.backroomsDir.oiiaCat,
+            paths.public.landingDir.backroomsDir.oiiaCatNoBg,
+            paths.public.landingDir.backroomsDir.spinningOiiaCat,
+            paths.public.landingDir.backroomsDir.spinningOiiaCatGod,
+            paths.public.landingDir.backroomsDir.spinningOiiaCatNoBg,
+          ]}
+        />
+      )}
     </StyledFlexColumn>
   );
 };
