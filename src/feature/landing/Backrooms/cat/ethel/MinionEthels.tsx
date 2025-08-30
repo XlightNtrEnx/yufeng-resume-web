@@ -33,7 +33,7 @@ export const MinionEthels = memo(() => {
   const bottomRight = { top: 80, left: 80 }; // in %
 
   // generate random positions within bounding box
-  const totalEthels = 39;
+  const totalEthels = 45;
   const randomEthels = useMemo(() => {
     return Array.from({ length: totalEthels }, () => ({
       top: topLeft.top + Math.random() * (bottomRight.top - topLeft.top),

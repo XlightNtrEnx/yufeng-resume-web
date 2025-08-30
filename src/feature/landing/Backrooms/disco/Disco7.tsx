@@ -44,7 +44,7 @@ export const Disco7 = () => {
         setPose(poseRef.current);
         setPoseBgColor(getRandomColor());
       }, 350);
-    }, 3125 - 120);
+    }, 2925 - 120);
 
     // Pose 2
     setTimeout(() => {
@@ -55,7 +55,7 @@ export const Disco7 = () => {
         setPose(poseRef.current);
         setPoseBgColor(getRandomColor());
       }, 350);
-    }, (3125 - 100) * 2);
+    }, (3025 - 100) * 2);
 
     // Pose 3 + trigger final and finish countdown
     setTimeout(() => {
@@ -70,7 +70,7 @@ export const Disco7 = () => {
           setFinish(true);
         }, 1600);
       }, 350);
-    }, 3125 * 3);
+    }, 3058 * 3);
   }, []);
 
   if (!portalEl) return <></>;

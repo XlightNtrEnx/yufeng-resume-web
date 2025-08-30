@@ -99,7 +99,7 @@ export const Backrooms = ({ preload }: Props) => {
       case Part.Part5:
         return 20.8;
       case Part.Part6:
-        return 33.5;
+        return 33.7;
       default:
         if (audioRef && audioRef.current) return audioRef.current.duration;
         return 0;

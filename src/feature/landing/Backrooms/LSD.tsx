@@ -60,12 +60,12 @@ export const LSD = ({ part }: GoCrazyProps) => {
       case Part.Part6:
         setTimeout(() => {
           if (partRef.current === Part.Part6) setPlay(false);
-        }, 12700 + 200);
+        }, 12900 + 200);
         return <Disco6 />;
       case Part.Part7:
         setTimeout(() => {
           if (partRef.current === Part.Part7) setPlay(false);
-        }, 12400 + 200);
+        }, 12200 + 200);
         return <Disco7 />;
       default:
         return <Ethel />;
