@@ -5,6 +5,8 @@ import { paths } from "@src/router/paths";
 import { Achievement } from "@src/feature/achievement/achievements/achievement-components";
 
 const description = `
+Learnt 3D and animation techniques in HTML, CSS, and JS to make a {fun easter egg}(ocs3) (best to experience instead of viewing as video has low fps). 
+
 Learnt how to build an interactive and mobile responsive website as well as how to deploy it automatically
 - {React}(ocs0) (frontend)
 - {Firebase}(ocs1) (backend + hosting)
@@ -23,9 +25,10 @@ export const Resume = () => {
       description={description}
       urls={[resumeRepo]}
       medias={[
-        { src: paths.public.achievementDir.webResumeDir.png_1 },
-        { src: paths.public.achievementDir.webResumeDir.png_2 },
-        { src: paths.public.achievementDir.webResumeDir.png_3 },
+        { src: paths.public.achievementDir.webDir.resume.png_1 },
+        { src: paths.public.achievementDir.webDir.resume.png_2 },
+        { src: paths.public.achievementDir.webDir.resume.png_3 },
+        { src: paths.public.achievementDir.webDir.resume.mp4_4, isVideo: true },
       ]}
     />
   );

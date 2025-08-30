@@ -12,11 +12,13 @@ const pub = {
       ee: "/achievement/preview-card-images/electrical-engineering.jpg",
       web: "/achievement/preview-card-images/web.jpg",
     },
-    webResumeDir: {
-      path: "/achievement/web-resume",
-      png_1: "/achievement/web-resume/1.png",
-      png_2: "/achievement/web-resume/2.png",
-      png_3: "/achievement/web-resume/3.png",
+    webDir: {
+      resume: {
+        png_1: "/achievement/web/web-resume/1.png",
+        png_2: "/achievement/web/web-resume/2.png",
+        png_3: "/achievement/web/web-resume/3.png",
+        mp4_4: "/achievement/web/web-resume/4.mp4",
+      },
     },
     fpgaIntegrationWithElectricalComponentsDir: {
       path: "/achievement/FPGA-integration-with-electrical-components",
