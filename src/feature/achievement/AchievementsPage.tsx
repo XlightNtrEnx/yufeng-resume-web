@@ -29,6 +29,9 @@ const LazyDevOps = lazy(
   () => import("@src/feature/achievement/achievements/DevOps")
 );
 const LazyEE = lazy(() => import("@src/feature/achievement/achievements/EE"));
+const LazyScripting = lazy(
+  () => import("@src/feature/achievement/achievements/Scripting")
+);
 const LazyServer = lazy(
   () => import("@src/feature/achievement/achievements/Server")
 );
@@ -41,12 +44,12 @@ const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
 })[] = [
   {
     title: "AI",
-    src: paths.public.achievementDir.previewCardImagesDir.ai,
+    src: paths.public.achievementDir.aiDir.preview,
     ActualElement: LazyAI,
   },
   {
     title: "Android",
-    src: paths.public.achievementDir.previewCardImagesDir.android,
+    src: paths.public.achievementDir.androidDir.preview,
     ActualElement: LazyAndroid,
   },
   {
@@ -56,12 +59,12 @@ const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
   },
   {
     title: "Cloud computing",
-    src: paths.public.achievementDir.previewCardImagesDir.cloud,
+    src: paths.public.achievementDir.cloudDir.preview,
     ActualElement: LazyCloud,
   },
   {
     title: "Containerization",
-    src: paths.public.achievementDir.previewCardImagesDir.docker,
+    src: paths.public.achievementDir.dockerDir.preview,
     ActualElement: LazyContainerization,
   },
 
@@ -77,8 +80,13 @@ const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
   },
   {
     title: "Elec. Eng",
-    src: paths.public.achievementDir.previewCardImagesDir.ee,
+    src: paths.public.achievementDir.eeDir.preview,
     ActualElement: LazyEE,
+  },
+  {
+    title: "Scripting",
+    src: paths.public.achievementDir.scriptingDir.preview,
+    ActualElement: LazyScripting,
   },
   {
     title: "Server (Misc)",
@@ -87,7 +95,7 @@ const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
   },
   {
     title: "Web",
-    src: paths.public.achievementDir.previewCardImagesDir.web,
+    src: paths.public.achievementDir.webDir.preview,
     ActualElement: LazyWeb,
   },
 ];

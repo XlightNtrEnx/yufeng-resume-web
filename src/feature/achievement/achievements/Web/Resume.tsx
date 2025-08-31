@@ -25,10 +25,13 @@ export const Resume = () => {
       description={description}
       urls={[resumeRepo]}
       medias={[
-        { src: paths.public.achievementDir.webDir.resume.img_1 },
-        { src: paths.public.achievementDir.webDir.resume.img_2 },
-        { src: paths.public.achievementDir.webDir.resume.img_3 },
-        { src: paths.public.achievementDir.webDir.resume.vid_4, isVideo: true },
+        { src: paths.public.achievementDir.webDir.resumeDir.img_1 },
+        { src: paths.public.achievementDir.webDir.resumeDir.img_2 },
+        { src: paths.public.achievementDir.webDir.resumeDir.img_3 },
+        {
+          src: paths.public.achievementDir.webDir.resumeDir.vid_4,
+          isVideo: true,
+        },
       ]}
     />
   );

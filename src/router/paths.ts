@@ -1,64 +1,32 @@
 const pub = {
   achievementDir: {
     path: "/achievement",
-    previewCardImagesDir: {
-      path: "/achievement/preview-card-images",
-      ai: "/achievement/preview-card-images/ai.jpg",
-      android: "/achievement/preview-card-images/android.jpg",
-      cloud: "/achievement/preview-card-images/cloud.jpg",
-      crossPlatform: "/achievement/preview-card-images/cross-platform.jpg",
-      cybersecurity: "/achievement/preview-card-images/cybersecurity.jpg",
-      docker: "/achievement/preview-card-images/docker.jpg",
-      ee: "/achievement/preview-card-images/electrical-engineering.jpg",
-      web: "/achievement/preview-card-images/web.jpg",
-    },
-    webDir: {
-      resume: {
-        img_1: "/achievement/web/web-resume/1.webp",
-        img_2: "/achievement/web/web-resume/2.webp",
-        img_3: "/achievement/web/web-resume/3.webp",
-        vid_4: "/achievement/web/web-resume/4.mp4",
+    aiDir: {
+      preview: "/achievement/ai/preview.jpg",
+      samDir: {
+        path: "/achievement/ai/sam",
+        img_1: "/achievement/ai/sam/1.webp",
+        vid_2: "/achievement/ai/sam/2.mp4",
+      },
+      catDogClassfierDir: {
+        path: "/achievement/ai/cat-dog-classifier",
+        img_1: "/achievement/ai/cat-dog-classifier/1.webp",
+        img_2: "/achievement/ai/cat-dog-classifier/2.webp",
+        img_3: "/achievement/ai/cat-dog-classifier/3.webp",
+        img_4: "/achievement/ai/cat-dog-classifier/4.webp",
+        img_5: "/achievement/ai/cat-dog-classifier/5.webp",
+        img_6: "/achievement/ai/cat-dog-classifier/6.webp",
       },
     },
-    fpgaIntegrationWithElectricalComponentsDir: {
-      img_1: "/achievement/FPGA-integration-with-electrical-components/1.webp",
-      img_2: "/achievement/FPGA-integration-with-electrical-components/2.webp",
-      img_3: "/achievement/FPGA-integration-with-electrical-components/3.webp",
-    },
-    parcelEyeDir: {
-      path: "/achievement/parcel-eye",
-      vid_1: "/achievement/parcel-eye/1.mp4",
-      img_2: "/achievement/parcel-eye/2.webp",
-      img_3: "/achievement/parcel-eye/3.webp",
-      img_4: "/achievement/parcel-eye/4.webp",
-    },
-    samDir: {
-      path: "/achievement/sam",
-      img_1: "/achievement/sam/1.webp",
-      vid_2: "/achievement/sam/2.mp4",
-    },
-    catDogClassfierDir: {
-      path: "/achievement/cat-dog-classifier",
-      img_1: "/achievement/cat-dog-classifier/1.webp",
-      img_2: "/achievement/cat-dog-classifier/2.webp",
-      img_3: "/achievement/cat-dog-classifier/3.webp",
-      img_4: "/achievement/cat-dog-classifier/4.webp",
-      img_5: "/achievement/cat-dog-classifier/5.webp",
-      img_6: "/achievement/cat-dog-classifier/6.webp",
-    },
-    term4InfosysCloudDir: {
-      path: "/achievement/term4-infosys-cloud",
-      img_1: "/achievement/term4-infosys-cloud/1.webp",
-      img_2: "/achievement/term4-infosys-cloud/2.webp",
-    },
-    term4InfosysAIContainerizationDir: {
-      path: "/achievement/term4-infosys-ai-containerization",
-      img_1: "/achievement/term4-infosys-ai-containerization/1.webp",
-      img_2: "/achievement/term4-infosys-ai-containerization/2.webp",
-      img_3: "/achievement/term4-infosys-ai-containerization/3.webp",
-      img_4: "/achievement/term4-infosys-ai-containerization/4.webp",
-      img_5: "/achievement/term4-infosys-ai-containerization/5.webp",
-      img_6: "/achievement/term4-infosys-ai-containerization/6.webp",
+    androidDir: {
+      preview: "/achievement/android/preview.jpg",
+      parcelEyeDir: {
+        path: "/achievement/android/parcel-eye",
+        vid_1: "/achievement/android/parcel-eye/1.mp4",
+        img_2: "/achievement/android/parcel-eye/2.webp",
+        img_3: "/achievement/android/parcel-eye/3.webp",
+        img_4: "/achievement/android/parcel-eye/4.webp",
+      },
     },
     architectureDir: {
       preview: "/achievement/architecture/preview.jpg",
@@ -68,6 +36,14 @@ const pub = {
         img_3: "/achievement/architecture/ascenda/3.webp",
         img_4: "/achievement/architecture/ascenda/4.webp",
         img_5: "/achievement/architecture/ascenda/5.webp",
+      },
+    },
+    cloudDir: {
+      preview: "/achievement/cloud/preview.jpg",
+      term4InfosysCloudDir: {
+        path: "/achievement/cloud/term4-infosys-cloud",
+        img_1: "/achievement/cloud/term4-infosys-cloud/1.webp",
+        img_2: "/achievement/cloud/term4-infosys-cloud/2.webp",
       },
     },
     databaseDir: {
@@ -92,6 +68,36 @@ const pub = {
       ascendaDir: {
         img_1: "/achievement/devops/ascenda/1.webp",
         img_2: "/achievement/devops/ascenda/2.webp",
+      },
+    },
+    dockerDir: {
+      preview: "/achievement/docker/preview.jpg",
+      term4InfosysAIContainerizationDir: {
+        path: "/achievement/docker/term4-infosys-ai-containerization",
+        img_1: "/achievement/docker/term4-infosys-ai-containerization/1.webp",
+        img_2: "/achievement/docker/term4-infosys-ai-containerization/2.webp",
+        img_3: "/achievement/docker/term4-infosys-ai-containerization/3.webp",
+        img_4: "/achievement/docker/term4-infosys-ai-containerization/4.webp",
+        img_5: "/achievement/docker/term4-infosys-ai-containerization/5.webp",
+        img_6: "/achievement/docker/term4-infosys-ai-containerization/6.webp",
+      },
+    },
+    eeDir: {
+      preview: "/achievement/ee/preview.jpg",
+      fpgaIntegrationWithElectricalComponentsDir: {
+        img_1:
+          "/achievement/ee/FPGA-integration-with-electrical-components/1.webp",
+        img_2:
+          "/achievement/ee/FPGA-integration-with-electrical-components/2.webp",
+        img_3:
+          "/achievement/ee/FPGA-integration-with-electrical-components/3.webp",
+      },
+    },
+    scriptingDir: {
+      preview: "/achievement/scripting/preview.webp",
+      resumeDir: {
+        img_1: "/achievement/scripting/resume/1.webp",
+        img_2: "/achievement/scripting/resume/2.webp",
       },
     },
     serverDir: {
@@ -125,6 +131,15 @@ const pub = {
       },
 
       preview: "/achievement/server/preview.jpg",
+    },
+    webDir: {
+      preview: "/achievement/web/preview.jpg",
+      resumeDir: {
+        img_1: "/achievement/web/web-resume/1.webp",
+        img_2: "/achievement/web/web-resume/2.webp",
+        img_3: "/achievement/web/web-resume/3.webp",
+        vid_4: "/achievement/web/web-resume/4.mp4",
+      },
     },
   },
   educationDir: {

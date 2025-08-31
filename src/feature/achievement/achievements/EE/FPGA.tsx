@@ -27,15 +27,15 @@ export const FPGA = () => {
       urls={[term4CSDFPGADocs, term4CSDFPGARepo]}
       medias={[
         {
-          src: paths.public.achievementDir
+          src: paths.public.achievementDir.eeDir
             .fpgaIntegrationWithElectricalComponentsDir.img_1,
         },
         {
-          src: paths.public.achievementDir
+          src: paths.public.achievementDir.eeDir
             .fpgaIntegrationWithElectricalComponentsDir.img_2,
         },
         {
-          src: paths.public.achievementDir
+          src: paths.public.achievementDir.eeDir
             .fpgaIntegrationWithElectricalComponentsDir.img_3,
         },
       ]}

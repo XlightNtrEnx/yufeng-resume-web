@@ -11,15 +11,17 @@ A single-page application (SPA) built for recruiters to easily navigate my portf
 - {Folder structure}(ocs1)
 `;
 
-const ResumeAchievement = lazy(
+const ResumeWebAchievement = lazy(
   () => import("@src/feature/achievement/achievements/Web/Resume")
 );
-
+const ResumeScriptingAchievement = lazy(
+  () => import("@src/feature/achievement/achievements/Scripting/Resume")
+);
 export const Resume = () => {
   return (
     <Project
       name="Resume"
-      lazyAchievements={[ResumeAchievement]}
+      lazyAchievements={[ResumeScriptingAchievement, ResumeWebAchievement]}
       description={description}
       urls={[resumeGitHub]}
       medias={[

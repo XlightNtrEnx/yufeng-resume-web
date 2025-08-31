@@ -28,28 +28,28 @@ export const Term4InfoSysAIContainerization = () => {
       urls={[term4CSDParcelEyeAIRepo, term4CSDParcelEyeDocs]}
       medias={[
         {
-          src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .img_1,
+          src: paths.public.achievementDir.dockerDir
+            .term4InfosysAIContainerizationDir.img_1,
         },
         {
-          src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .img_2,
+          src: paths.public.achievementDir.dockerDir
+            .term4InfosysAIContainerizationDir.img_2,
         },
         {
-          src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .img_3,
+          src: paths.public.achievementDir.dockerDir
+            .term4InfosysAIContainerizationDir.img_3,
         },
         {
-          src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .img_4,
+          src: paths.public.achievementDir.dockerDir
+            .term4InfosysAIContainerizationDir.img_4,
         },
         {
-          src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .img_5,
+          src: paths.public.achievementDir.dockerDir
+            .term4InfosysAIContainerizationDir.img_5,
         },
         {
-          src: paths.public.achievementDir.term4InfosysAIContainerizationDir
-            .img_6,
+          src: paths.public.achievementDir.dockerDir
+            .term4InfosysAIContainerizationDir.img_6,
         },
       ]}
     />

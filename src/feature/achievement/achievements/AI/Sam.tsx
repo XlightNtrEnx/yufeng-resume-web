@@ -25,8 +25,8 @@ export const Sam = () => {
       description={samDescription}
       urls={[term4CSDParcelEyeAIRepo, term4CSDParcelEyeDocs]}
       medias={[
-        { src: paths.public.achievementDir.samDir.img_1 },
-        { src: paths.public.achievementDir.samDir.vid_2, isVideo: true },
+        { src: paths.public.achievementDir.aiDir.samDir.img_1 },
+        { src: paths.public.achievementDir.aiDir.samDir.vid_2, isVideo: true },
       ]}
     />
   );
