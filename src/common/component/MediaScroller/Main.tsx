@@ -6,31 +6,29 @@ import { Video } from "@src/common/element/Video";
 
 import { Media } from "./Media";
 
-const StyledFlexRow = styled(FlexRow)`
+const Viewport = styled(FlexRow)`
   position: relative;
   overflow-x: hidden;
-  width: 100%;
   aspect-ratio: 16 / 9;
-
-  img {
-    cursor: pointer;
-  }
 `;
 
-const ActualMediasContainer = styled(FlexRow)<{
+const Strip = styled(FlexRow)<{
   $right?: string;
   $imgWidth?: string;
 }>`
   position: relative;
   right: ${({ $right }) => $right || "0%"};
   transition: right 0.5s, left 0.5s;
-  width: 100%;
 
   > img,
   video {
     object-fit: contain;
     aspect-ratio: 16 / 9;
     width: ${({ $imgWidth }) => $imgWidth || "100%"};
+  }
+
+  & > img {
+    cursor: pointer;
   }
 `;
 
@@ -76,10 +74,10 @@ export const Main = ({
   }
 
   return (
-    <StyledFlexRow>
-      <ActualMediasContainer $right={`${selectedMediaIdx * 100}%`}>
+    <Viewport>
+      <Strip $right={`${selectedMediaIdx * 100}%`}>
         {components.length > 0 && <>{components}</>}
-      </ActualMediasContainer>
+      </Strip>
       <Arrow
         $right={false}
         onClick={() => setSelectedMediaIdx(selectedMediaIdx - 1)}
@@ -88,6 +86,6 @@ export const Main = ({
         $right={true}
         onClick={() => setSelectedMediaIdx(selectedMediaIdx + 1)}
       />
-    </StyledFlexRow>
+    </Viewport>
   );
 };
