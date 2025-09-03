@@ -6,8 +6,14 @@ const OverallGPAName = "Overall GPA (Incl. Humanities subjects)";
 
 const categories = [
   new Category("Overall", [
-    new Subject(TechnicalGPAName, "4.83/5.00"),
-    new Subject(CumulativeGPAName, "4.64/5.00"),
+    new Subject(TechnicalGPAName, "4.86/5.00"),
+    new Subject(CumulativeGPAName, "4.62/5.00"),
+  ]),
+  new Category("Term 5", [
+    new Subject(OverallGPAName, "4.58/5.00"),
+    new Subject("50.005: Computer System Engineering", "A+"),
+    new Subject("50.003: Elements of Software Construction", "A"),
+    new Subject("50.043: Database Systems", "A-"),
   ]),
   new Category("Term 4", [
     new Subject(OverallGPAName, "4.58/5.00"),
