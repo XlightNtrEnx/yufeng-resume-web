@@ -3,33 +3,12 @@ import styled from "styled-components";
 import { FlexRow } from "@src/common/layout/flex";
 import { Img } from "@src/common/element/Img";
 import { Video } from "@src/common/element/Video";
+import { FlatCarousel } from "@src/common/layout/Carousel/FlatCarousel";
 
 import { Media } from "./Media";
 
-const Viewport = styled(FlexRow)`
+const StyledFlexRow = styled(FlexRow)`
   position: relative;
-  overflow-x: hidden;
-  aspect-ratio: 16 / 9;
-`;
-
-const Strip = styled(FlexRow)<{
-  $right?: string;
-  $imgWidth?: string;
-}>`
-  position: relative;
-  right: ${({ $right }) => $right || "0%"};
-  transition: right 0.5s, left 0.5s;
-
-  > img,
-  video {
-    object-fit: contain;
-    aspect-ratio: 16 / 9;
-    width: ${({ $imgWidth }) => $imgWidth || "100%"};
-  }
-
-  & > img {
-    cursor: pointer;
-  }
 `;
 
 const Arrow = styled.div<{ $right: boolean }>`
@@ -45,15 +24,15 @@ const Arrow = styled.div<{ $right: boolean }>`
 export interface MainProps {
   medias: Media[];
   onClickMedia?: (mediaIndex: number) => void;
-  selectedMediaIdx: number;
-  setSelectedMediaIdx: (idx: number) => void;
+  visibleMediaIdx: number;
+  setVisibleMediaIdx: (idx: number) => void;
 }
 
 export const Main = ({
   medias,
   onClickMedia,
-  selectedMediaIdx,
-  setSelectedMediaIdx,
+  visibleMediaIdx,
+  setVisibleMediaIdx,
 }: MainProps) => {
   const components = [];
   for (let i = 0; i < medias.length; i++) {
@@ -74,18 +53,18 @@ export const Main = ({
   }
 
   return (
-    <Viewport>
-      <Strip $right={`${selectedMediaIdx * 100}%`}>
+    <StyledFlexRow>
+      <FlatCarousel visibleEleIdx={visibleMediaIdx}>
         {components.length > 0 && <>{components}</>}
-      </Strip>
+      </FlatCarousel>
       <Arrow
         $right={false}
-        onClick={() => setSelectedMediaIdx(selectedMediaIdx - 1)}
+        onClick={() => setVisibleMediaIdx(visibleMediaIdx - 1)}
       />
       <Arrow
         $right={true}
-        onClick={() => setSelectedMediaIdx(selectedMediaIdx + 1)}
+        onClick={() => setVisibleMediaIdx(visibleMediaIdx + 1)}
       />
-    </Viewport>
+    </StyledFlexRow>
   );
 };

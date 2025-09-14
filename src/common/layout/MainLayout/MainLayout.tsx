@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
 
 import { fadeInFromLeft } from "@src/common/animation";
-import { mobileBreakpointInPx } from "@src/common/atom/isMobile";
 import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
 import { FlexColumn, FlexRowReverse } from "@src/common/layout/flex";
 import { paths } from "@src/router/paths";
@@ -19,24 +18,19 @@ const StyledFlexRowReverse = styled(FlexRowReverse)`
   position: relative;
   background-image: url(${paths.public.imagesDir.background});
 
-  @media (min-width: ${mobileBreakpointInPx}px) {
+  @media (min-width: ${({ theme }) => theme.mobileBreakPoint}) {
     & > :nth-child(2) {
       ${fadeInFromLeft()};
       position: relative;
-      left: 20px;
+      left: 1.25em;
     }
-  }
-
-  @media (max-width: ${mobileBreakpointInPx}px) {
-    flex-direction: column;
-    justify-content: flex-start;
   }
 `;
 
 const StyledFlexColumn = styled(FlexColumn)`
-  max-width: ${({ theme }) => theme.maxPageWidth};
+  max-width: 57.75em;
   width: 100%;
-  padding: 12px;
+  padding: 0.75em;
 `;
 
 export function MainLayout() {

@@ -9,10 +9,12 @@ import {
   TrophySVGIcon,
 } from "@src/common/svg";
 import { FlexColumn, FlexRowReverse } from "@src/common/layout/flex";
-import { mobileBreakpointInPx } from "@src/common/atom/isMobile";
 import { Button } from "@src/common/element/Button";
 
 import { ChildInternalLink } from "./ChildInternalLink";
+
+const sideBarEleWidth = "4em";
+const sideBarEleHeight = "4em";
 
 const StyledFlexRowReverse = styled(FlexRowReverse)<{ open?: boolean }>`
   align-items: flex-start;
@@ -21,19 +23,18 @@ const StyledFlexRowReverse = styled(FlexRowReverse)<{ open?: boolean }>`
     background: ${({ theme }) => theme.colors.softerWhite};
   }
 
-  @media (max-width: ${mobileBreakpointInPx}px) {
+  @media (max-width: ${({ theme }) => theme.mobileBreakPoint}) {
     position: fixed;
-    top: 20px;
-    left: ${({ open }) =>
-      open ? "0px" : "-64px"}; /* Adjust based on sidebar width */
+    top: 1.25em;
+    left: ${({ open }) => (open ? "0" : `-${sideBarEleWidth}`)};
     transition: left 0.3s;
   }
 `;
 
-const SideBarElements = styled(FlexColumn)`
+const StyledFlexColumn = styled(FlexColumn)`
   > * {
-    width: 64px;
-    height: 64px;
+    width: ${sideBarEleWidth};
+    height: ${sideBarEleHeight};
   }
 
   border: 1px solid ${({ theme }) => theme.colors.softerBlack};
@@ -44,61 +45,53 @@ const SideBarElements = styled(FlexColumn)`
 `;
 
 const ArrowButton = styled(Button)`
-  width: 20px;
-  height: 64px;
+  width: 1.25em;
+  height: ${sideBarEleHeight};
   border-radius: 0;
 
-  @media (min-width: ${mobileBreakpointInPx}px) {
+  @media (min-width: ${({ theme }) => theme.mobileBreakPoint}) {
     display: none;
   }
 
-  border-right: 1px solid ${({ theme }) => theme.colors.softerBlack};
-  border-top: 1px solid ${({ theme }) => theme.colors.softerBlack};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.softerBlack};
+  border: 1px solid ${({ theme }) => theme.colors.softerBlack};
+  border-left: none;
 `;
 
 export const SideBar = () => {
   const [open, setOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setOpen(!open);
-  };
-
   return (
     <StyledFlexRowReverse open={open}>
-      <ArrowButton onClick={toggleSidebar}>{open ? "<" : ">"}</ArrowButton>
-      <SideBarElements>
+      <ArrowButton
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {open ? "<" : ">"}
+      </ArrowButton>
+      <StyledFlexColumn>
+        <ChildInternalLink to={paths.landing} label="Home" SVG={HomeSVG} />
         <ChildInternalLink
-          key="Home"
-          to={paths.landing}
-          label="Home"
-          SVG={HomeSVG}
-        />
-        <ChildInternalLink
-          key="Projects"
           to={paths.projects}
           label="Projects"
           SVG={ClipboardSVG}
         />
         <ChildInternalLink
-          key="Achievements"
           to={paths.achievements}
           label="Achieved"
           SVG={TrophySVGIcon}
         />
         <ChildInternalLink
-          key="Education"
           to={paths.education}
           label="Education"
           SVG={GraduationCapSVG}
         />
         {/* <ChildInternalLink
-          key="Test"
           to="/test"
           label="Test"
           SVG={GraduationCapSVG}
         /> */}
-      </SideBarElements>
+      </StyledFlexColumn>
     </StyledFlexRowReverse>
   );
 };

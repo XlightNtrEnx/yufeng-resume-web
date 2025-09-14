@@ -5,7 +5,7 @@ import { InternalLink } from "@src/common/component/InternalLink";
 import { Span } from "@src/common/element/text";
 
 const StyledSpan = styled(Span)`
-  font-size: 10px;
+  font-size: 0.625rem;
 `;
 
 const StyledInternalLink = styled(InternalLink)<{ $isActive: boolean }>`
@@ -13,15 +13,20 @@ const StyledInternalLink = styled(InternalLink)<{ $isActive: boolean }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 0.3125em;
 
   text-decoration: none;
 
-  > * {
+  & > * {
     color: ${({ theme, $isActive }) =>
       $isActive
         ? theme.colors.pallete.complementary.primary
         : theme.colors.black};
+  }
+
+  & > svg {
+    width: 1.25em;
+    height: 1.25em;
   }
 `;
 
@@ -35,7 +40,7 @@ export const ChildInternalLink = ({ SVG, label, to }: Props) => {
   const location = useLocation();
   return (
     <StyledInternalLink to={to} $isActive={location.pathname === to}>
-      <SVG width="20px" height="20px" />
+      <SVG />
       <StyledSpan>{label}</StyledSpan>
     </StyledInternalLink>
   );

@@ -4,20 +4,20 @@ import { Img } from "@src/common/element/Img";
 import { Span } from "@src/common/element/text";
 import { FlexColumn } from "@src/common/layout/flex/FlexColumn";
 
-const Container = styled(FlexColumn)`
+const StyledFlexColumn = styled(FlexColumn)`
   align-items: center;
-  padding: 10px;
-  gap: 10px;
+  padding: 0.625em;
+  gap: 0.625em;
   background-color: ${({ theme }) => theme.softBackgroundColor};
   cursor: pointer;
-  border-left: 20px solid
+  border-left: 1.25em solid
     ${({ theme }) => theme.colors.pallete.complementary.primary};
-  border-radius: 10px;
+  border-radius: 0.625em;
 `;
 
 const StyledImg = styled(Img)`
-  width: 160px;
-  height: 160px;
+  width: 9em;
+  height: 9em;
   object-fit: cover;
   overflow: hidden;
 `;
@@ -30,9 +30,9 @@ export interface PreviewCardProps {
 
 export const PreviewCard = ({ title, src, onClick }: PreviewCardProps) => {
   return (
-    <Container onClick={onClick}>
+    <StyledFlexColumn onClick={onClick}>
       <StyledImg src={src} />
       <Span>{title}</Span>
-    </Container>
+    </StyledFlexColumn>
   );
 };

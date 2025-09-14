@@ -1,0 +1,1 @@
+export { VolumetricCarousel } from "./VolumetricCarousel";

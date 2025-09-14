@@ -1,24 +1,30 @@
 import { Children, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Div } from "@src/common/element/Div";
-import { FlexColumn, FlexRow } from "./flex";
-import { fadeInFromBottom, fadeInFromTop } from "../animation";
+import { FlexColumn, FlexRow } from "@src/common/layout/flex";
+import { fadeInFromBottom, fadeInFromTop } from "src/common/animation";
+import { stripUnit } from "@src/common/util";
+
+interface CommonProps {
+  $breakPoint?: string;
+}
 
 const Scene = styled(Div)<{
-  $widthPx: number;
-  $heightPx: number;
+  $width: string;
+  $height: string;
   $perspective: string;
 }>`
-  width: ${({ $widthPx }) => $widthPx}px;
-  height: ${({ $heightPx }) => $heightPx}px;
+  width: ${({ $width }) => $width};
+  height: ${({ $height }) => $height};
   position: relative;
 `;
 
-const CellContainer = styled(FlexRow)<{
-  $childCount: number;
-  $rotateDeg: number;
-  $breakPoint: string;
-}>`
+const CellContainer = styled(FlexRow)<
+  {
+    $childCount: number;
+    $rotateDeg: number;
+  } & CommonProps
+>`
   width: 100%;
   height: 100%;
 
@@ -43,23 +49,24 @@ const CellContainer = styled(FlexRow)<{
   }
 `;
 
-const Cell = styled(FlexColumn)<{
-  $isFocused: boolean;
-  $rotateDeg: number;
-  $translateZPx: number;
-  $noTransition?: boolean;
-  $breakPoint: string;
-}>`
+const Cell = styled(FlexColumn)<
+  {
+    $isFocused: boolean;
+    $rotateDeg: number;
+    $translateZ: string;
+    $noTransition?: boolean;
+  } & CommonProps
+>`
   position: absolute;
   width: 95%;
   height: 95%;
 
   transform: rotateY(${({ $rotateDeg }) => $rotateDeg}deg)
-    translateZ(${({ $translateZPx }) => $translateZPx}px);
+    translateZ(${({ $translateZ }) => $translateZ});
 
   @media (max-width: ${({ $breakPoint }) => $breakPoint}) {
     transform: rotateX(${({ $rotateDeg }) => $rotateDeg}deg)
-      translateZ(${({ $translateZPx }) => $translateZPx}px);
+      translateZ(${({ $translateZ }) => $translateZ});
   }
   background: ${({ theme }) => theme.backgroundColor + "22"};
   ${({ $noTransition }) => ($noTransition ? "" : "transition: transform 1s;")}
@@ -68,43 +75,42 @@ const Cell = styled(FlexColumn)<{
   z-index: ${({ $isFocused }) => ($isFocused ? "auto" : "-1")};
 `;
 
-interface Props {
+interface VolumetricCarouselProps extends CommonProps {
   children: React.ReactNode;
-  $widthPx: number;
-  $heightPx: number;
   focusOn: number;
   $perspective: string;
-  $breakPoint: string;
+  $width: string;
+  $height: string;
 }
 
-export const Carousel = ({
+export const VolumetricCarousel = ({
   children,
-  $widthPx,
-  $heightPx,
   focusOn,
   $perspective,
   $breakPoint,
-}: Props) => {
+  $width,
+  $height,
+}: VolumetricCarouselProps) => {
   const childCount = Children.count(children);
   const rotation = 360 / childCount;
 
-  const [$translateZPx, set$TranslateZPx] = useState<number>(0);
+  const [$translateZ, set$TranslateZ] = useState<string>("0");
   const [$rotateDeg, set$RotateDeg] = useState<number>(0);
 
   useEffect(() => {
-    set$TranslateZPx(
-      Math.ceil($widthPx / 2 / Math.tan(((rotation / 2) * Math.PI) / 180))
+    const [width, widthUnit] = stripUnit($width);
+
+    set$TranslateZ(
+      Math.ceil(
+        parseFloat(width) / 2 / Math.tan(((rotation / 2) * Math.PI) / 180)
+      ) + widthUnit
     );
     set$RotateDeg(rotation);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Scene
-      $perspective={$perspective}
-      $heightPx={$heightPx}
-      $widthPx={$widthPx}
-    >
+    <Scene $perspective={$perspective} $height={$height} $width={$width}>
       <CellContainer
         $breakPoint={$breakPoint}
         $childCount={childCount}
@@ -117,7 +123,7 @@ export const Carousel = ({
               $isFocused={
                 index === ((focusOn % childCount) + childCount) % childCount
               }
-              $translateZPx={$translateZPx}
+              $translateZ={$translateZ}
               $rotateDeg={$rotateDeg * index}
               $noTransition={index === childCount / 2}
               key={index}

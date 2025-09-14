@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Carousel } from "@src/common/layout/Carousel";
+import { VolumetricCarousel } from "@src/common/layout/Carousel";
 import { FlexColumn, FlexRow } from "@src/common/layout/flex";
 
 import { ProfileCard } from "../landing/ProfileCard";
@@ -46,7 +46,7 @@ export const TestPage = () => {
   const [focusOn, setFocusOn] = useState<number>(0);
   return (
     <StyledFlexRow>
-      <Carousel
+      <VolumetricCarousel
         $perspective={"none"}
         focusOn={focusOn}
         $heightPx={600}
@@ -55,7 +55,7 @@ export const TestPage = () => {
         <ProfileCard />
         <AboutCard />
         <BackRooms>the backrooms</BackRooms>
-      </Carousel>
+      </VolumetricCarousel>
       <Arrow onClick={() => setFocusOn(focusOn - 1)}>
         <LeftArrow />
       </Arrow>

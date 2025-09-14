@@ -10,7 +10,7 @@ import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
 
 const StyledFlexColumn = styled(FlexColumn).attrs({ as: "article" })`
   align-items: start;
-  gap: 15px;
+  gap: 1em;
 `;
 
 const StyledButton = styled(Button)`

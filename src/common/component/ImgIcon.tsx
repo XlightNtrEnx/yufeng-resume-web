@@ -2,15 +2,12 @@ import styled from "styled-components";
 
 import { Img, ImgProps } from "@src/common/element/Img";
 
-export interface ImgIconProps extends ImgProps {
-  $iconSize?: string;
-}
+export interface ImgIconProps extends ImgProps {}
 
-export const ImgIcon = styled(Img).attrs<ImgIconProps>((props) => {
-  if (!props.$iconSize) props.$iconSize = "100%";
-  return props;
-})`
-  width: ${({ $iconSize }) => $iconSize};
-  height: ${({ $iconSize }) => $iconSize};
-  object-fit: contain;
+export const StyledImg = styled(Img)`
+  aspect-ratio: 1/1;
 `;
+
+export const ImgIcon = (props: ImgIconProps) => {
+  return <StyledImg {...props} />;
+};

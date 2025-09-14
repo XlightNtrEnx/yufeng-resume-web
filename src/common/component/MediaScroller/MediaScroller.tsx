@@ -130,14 +130,14 @@ export const MediaScroller = ({
       <Main
         medias={medias}
         onClickMedia={onClickMedia}
-        selectedMediaIdx={activeMediaIdx}
-        setSelectedMediaIdx={mainSetActiveMediaIdx}
+        visibleMediaIdx={activeMediaIdx}
+        setVisibleMediaIdx={mainSetActiveMediaIdx}
       />
       <Thumbnails
         medias={medias}
         firstThumbnailIdx={firstThumbnailIdx}
-        selectedMediaIdx={activeMediaIdx}
-        setSelectedMediaIdx={setActiveMediaIdx}
+        visibleMediaIdx={activeMediaIdx}
+        setVisibleMediaIdx={setActiveMediaIdx}
       />
       {totalPages > 1 && (
         <PaginationContainer>

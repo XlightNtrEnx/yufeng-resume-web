@@ -5,6 +5,7 @@ import { FlexColumn, FlexRow } from "@src/common/layout/flex";
 
 const StatContainer = styled(FlexRow)`
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const StyledSpan = styled(Span)`
@@ -24,7 +25,7 @@ const Stat = ({ category, data }: { category: string; data: string }) => {
   );
 };
 
-const Container = styled(FlexColumn)`
+const StyledFlexColumn = styled(FlexColumn)`
   gap: 1em;
 `;
 
@@ -49,10 +50,10 @@ const data = [
 
 export const Stats = () => {
   return (
-    <Container>
+    <StyledFlexColumn>
       {data.map(([category, data]) => (
         <Stat key={category} category={category} data={data} />
       ))}
-    </Container>
+    </StyledFlexColumn>
   );
 };

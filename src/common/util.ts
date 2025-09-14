@@ -8,3 +8,10 @@ export const getRandomColor = () => {
   const b = Math.floor(Math.random() * 256);
   return `rgba(${r}, ${g}, ${b}, 0.4)`;
 };
+
+export const stripUnit = (value: string) => {
+  if (value.endsWith("rem")) return [value.slice(0, -3), "rem"];
+  if (value.endsWith("em")) return [value.slice(0, -2), "em"];
+  if (value.endsWith("px")) return [value.slice(0, -2), "px"];
+  return [value, ""];
+};

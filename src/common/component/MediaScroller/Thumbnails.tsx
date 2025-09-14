@@ -65,8 +65,8 @@ export const Thumbnails = ({
   medias,
   firstThumbnailIdx,
   imgWidth,
-  selectedMediaIdx,
-  setSelectedMediaIdx,
+  visibleMediaIdx: selectedMediaIdx,
+  setVisibleMediaIdx: setSelectedMediaIdx,
 }: ThumbnailsProps) => {
   const components = [];
   for (let i = 0; i < medias.length; i++) {

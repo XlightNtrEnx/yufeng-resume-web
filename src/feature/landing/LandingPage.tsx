@@ -1,86 +1,70 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { Carousel } from "@src/common/layout/Carousel";
-import { FlexColumn, FlexRow } from "@src/common/layout/flex";
+import { VolumetricCarousel } from "@src/common/layout/Carousel";
+import { FlexRow } from "@src/common/layout/flex";
+import { Button } from "@src/common/element/Button";
 import { LeftArrow, RightArrow } from "@src/common/svg";
 
 import { AboutCard } from "./AboutCard";
 import { Backrooms } from "./Backrooms";
 import { ProfileCard } from "./ProfileCard";
 
-const $breakPoint = "600px";
-
 const StyledFlexRow = styled(FlexRow)`
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 
   & > :nth-child(2) {
-    margin: 0 10px 0 0;
-  }
-
-  @media (max-width: ${$breakPoint}) {
-    flex-direction: column;
-
-    & > :nth-child(2) {
-      bottom: 140px;
-    }
-
-    & > :nth-child(3) {
-      bottom: 90px;
-    }
-
-    & > :nth-child(n + 2) {
-      transform: rotateZ(90deg);
-      position: absolute;
-      margin: 0;
-    }
+    margin: 0 0.625em 0 0;
   }
 `;
 
-const Arrow = styled(FlexColumn)`
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) =>
-    theme.colors.pallete.complementary.softPrimary + "dd"};
+const Arrow = styled(Button)`
+  background-color: ${({ theme }) => theme.evenSofterBackgroundColor};
   cursor: pointer;
-  border-radius: 10px;
-  width: 40px;
-  height: 100px;
+  width: 2.5em;
+  height: 6.25em;
 
-  & > * {
-    width: 50px;
-    height: 20px;
+  & > svg {
+    display: block;
+    width: 3.13em;
+    height: 1.25em;
   }
 `;
 
-export const TestPage = () => {
+const Arrows = styled(FlexRow)`
+  gap: 1em;
+`;
+
+export const LandingPage = () => {
   const [focusOn, setFocusOn] = useState<number>(0);
   const childCount = 3;
 
   return (
     <StyledFlexRow>
-      <Carousel
+      <VolumetricCarousel
         $perspective={"none"}
         focusOn={focusOn}
-        $heightPx={600}
-        $widthPx={550}
-        $breakPoint={$breakPoint}
+        $height={"37.5em"}
+        $width={"34.4em"}
       >
         <ProfileCard />
         <AboutCard />
         <Backrooms
           preload={2 === ((focusOn % childCount) + childCount) % childCount}
         />
-      </Carousel>
-      <Arrow onClick={() => setFocusOn(focusOn - 1)}>
-        <LeftArrow />
-      </Arrow>
-      <Arrow onClick={() => setFocusOn(focusOn + 1)}>
-        <RightArrow />
-      </Arrow>
+      </VolumetricCarousel>
+      <Arrows>
+        <Arrow onClick={() => setFocusOn(focusOn - 1)}>
+          <LeftArrow />
+        </Arrow>
+        <Arrow onClick={() => setFocusOn(focusOn + 1)}>
+          <RightArrow />
+        </Arrow>
+      </Arrows>
     </StyledFlexRow>
   );
 };
 
-export default TestPage;
+export default LandingPage;

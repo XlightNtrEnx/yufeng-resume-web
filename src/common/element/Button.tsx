@@ -7,6 +7,9 @@ interface ButtonProps {
 }
 
 const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 1em;
   border-style: none;
   background-color: ${({ theme }) =>

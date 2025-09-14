@@ -1,13 +1,13 @@
-import { useState, lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Modal } from "@src/common/component/Modal";
 import { ColumnGrid } from "@src/common/layout/grid/ColumnGrid";
 import { paths } from "@src/router/paths";
 
+import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
 import { PreviewCard, PreviewCardProps } from "./PreviewCard";
 import { Project } from "./projects/project-components";
-import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
 
 const LazyAscenda = lazy(() => import("./projects/Ascenda"));
 const LazyHighLow = lazy(() => import("./projects/HighLow"));

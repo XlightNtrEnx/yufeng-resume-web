@@ -1,5 +1,20 @@
 import { css, keyframes } from "styled-components";
 
+export const fadeIn = () => {
+  const keyframe = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }`;
+
+  return css`
+    animation: ${keyframe} 1s;
+  `;
+};
+
 export const fadeInFromLeft = () => {
   const keyframe = keyframes`
   from {

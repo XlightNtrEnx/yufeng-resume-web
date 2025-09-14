@@ -4,19 +4,19 @@ import { NewTabLink } from "@src/common/component/NewTabLink";
 import { FlexRow } from "@src/common/layout/flex";
 import { GitHubSVGIcon, LeetCode, LinkedIn } from "@src/common/svg";
 
-const Container = styled(FlexRow)`
-  gap: 8px;
+const StyledFlexRow = styled(FlexRow)`
+  gap: 0.5em;
   justify-content: center;
 
   & > * > * {
-    width: 20px;
-    height: 20px;
+    width: 1.25em;
+    height: 1.25em;
   }
 `;
 
 export const Socials = () => {
   return (
-    <Container>
+    <StyledFlexRow>
       <NewTabLink href="https://github.com/XlightNtrEnx">
         <GitHubSVGIcon />
       </NewTabLink>
@@ -26,6 +26,6 @@ export const Socials = () => {
       <NewTabLink href="https://leetcode.com/u/XU3mCuw2Sb/">
         <LeetCode />
       </NewTabLink>
-    </Container>
+    </StyledFlexRow>
   );
 };

@@ -1,15 +1,10 @@
-import { useAtom } from "jotai";
 import { useEffect } from "react";
-
-import { scrollToHashAtom } from "@src/common/atom/scrollToHash";
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const ScrollToHashOnLoad = ({ children }: Props) => {
-  const [scrollToHash] = useAtom(scrollToHashAtom);
-
   // Try to scroll to hash upon page load
   useEffect(() => {
     const hash = window.location.hash;
@@ -43,7 +38,7 @@ export const ScrollToHashOnLoad = ({ children }: Props) => {
 
     // Try immediately first upon app load
     // If not found, start polling every (attemptIntervalMS)ms
-    if (scrollToHash && !findAndScrollToElement()) {
+    if (!findAndScrollToElement()) {
       intervalId = window.setInterval(
         findAndScrollToElement,
         attemptIntervalMS
