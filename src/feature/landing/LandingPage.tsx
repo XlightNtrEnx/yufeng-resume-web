@@ -40,6 +40,8 @@ const Arrows = styled(FlexRow)`
 export const LandingPage = () => {
   const [focusOn, setFocusOn] = useState<number>(0);
   const childCount = 3;
+  const backroomsFocused =
+    2 === ((focusOn % childCount) + childCount) % childCount;
 
   return (
     <StyledFlexRow>
@@ -51,9 +53,7 @@ export const LandingPage = () => {
       >
         <ProfileCard />
         <AboutCard />
-        <Backrooms
-          preload={2 === ((focusOn % childCount) + childCount) % childCount}
-        />
+        <Backrooms preload={backroomsFocused} disable={!backroomsFocused} />
       </VolumetricCarousel>
       <Arrows>
         <Arrow onClick={() => setFocusOn(focusOn - 1)}>

@@ -23,9 +23,10 @@ const StyledFlexColumn = styled(FlexColumn)`
 
 interface Props {
   preload?: boolean;
+  disable?: boolean;
 }
 
-export const Backrooms = ({ preload }: Props) => {
+export const Backrooms = ({ preload, disable }: Props) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [part, setPart] = useState<Part>(Part.Idle);
@@ -124,13 +125,13 @@ export const Backrooms = ({ preload }: Props) => {
 
   useEffect(() => {
     const audioEl = audioRef.current;
-    if (audioEl && audioEl.paused && isHovered) {
+    if (audioEl && audioEl.paused && isHovered && !disable) {
       audioEl.play().then(() => {
         nextPart();
         memoizedTimeout();
       });
     }
-  }, [part, isHovered, memoizedTimeout]);
+  }, [part, isHovered, memoizedTimeout, disable]);
 
   return (
     <StyledFlexColumn
