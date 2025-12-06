@@ -2,7 +2,7 @@
 export default {
   async fetch(request, env, ctx) {
     return new Response(
-      { hi: "hi" },
+      { hi: "his" },
       {
         headers: { "Content-Type": "application/json" },
       }
