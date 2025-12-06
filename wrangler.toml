@@ -1,8 +1,0 @@
-name = 'yufeng-resume-web'
-type = "javascript"  # or "esm" if using ES modules
-
-[build]
-command = ""  # no build command
-upload.format = "service-worker"
-upload.main = "src/cloudflare-worker.js"
-

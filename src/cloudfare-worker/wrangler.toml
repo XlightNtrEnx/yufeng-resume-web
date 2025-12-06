@@ -1,0 +1,3 @@
+name = 'yufeng-resume-web'
+main = "cloudfare-worker.js"
+
