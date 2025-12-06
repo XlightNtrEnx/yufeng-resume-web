@@ -1,8 +1,8 @@
 name = 'yufeng-resume-web'
 type = "javascript"  # or "esm" if using ES modules
 
-# tell Wrangler where your main entry file is
-main = "src/cloudfare-worker.js"
-
-compatibility_date = "2025-12-06"
+[build]
+command = ""  # no build command
+upload.format = "service-worker"
+upload.main = "src/cloudflare-worker.js"
 
