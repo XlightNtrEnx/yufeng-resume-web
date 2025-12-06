@@ -1,0 +1,11 @@
+name = "my-worker"
+type = "javascript"  # or "esm" if using ES modules
+
+# tell Wrangler where your main entry file is
+main = "src/cloudfare-worker.js"
+
+account_id = "ca216d49960a65702a340b5f4cc94245"
+compatibility_date = "2025-12-06"
+
+[env.production]
+# optional environment variables
