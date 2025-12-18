@@ -4,8 +4,7 @@ import { catDogColab } from "@src/common/string";
 import { paths } from "@src/router/paths";
 import { Achievement } from "@src/feature/achievement/achievements/achievement-components";
 
-const catDogDescription = `
-Built a CNN from scratch in pytorch, achieving {95%}(ocs0) training and validation accuracy on kagglehub datasets.
+const catDogDescription = `Built a CNN from scratch in pytorch, achieving {95%}(ocs0) training and validation accuracy on kagglehub datasets.
 
 Incorporated concepts from various proven models like ResNet and VGG
 
@@ -13,8 +12,7 @@ Incorporated concepts from various proven models like ResNet and VGG
 - {Hierachical}(ocs4) feature extraction through successive conv layers of increasing feature size and decreasing image dimensions
 - Extensive use of {batch normalization}(ocs1) after conv layers to stabilize training
 - {Dropout layers}(ocs1) with dataset transformations to prevent overfitting
-- {Multiple FC layers}(ocs4) of decreasing size at the end for gradual reductions to learn more about nuances and increasingly abstract features
-`;
+- {Multiple FC layers}(ocs4) of decreasing size at the end for gradual reductions to learn more about nuances and increasingly abstract features`;
 
 const LazyCatDogProject = lazy(
   () => import("@src/feature/project/projects/CatDog")

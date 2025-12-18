@@ -19,9 +19,10 @@ interface AchievementsLayoutProps {
 /**
  * Example usage:
  * ```jsx
- * <GroupedAchievements>
- *  <Achievement />
- * </GroupedAchievements>
+ * <AchievementsLayout>
+ *  <ParcelEye />
+ *  <Resume />
+ * </AchievementsLayout>
  * ```
  */
 export const AchievementsLayout = ({ children }: AchievementsLayoutProps) => {

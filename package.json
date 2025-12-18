@@ -26,8 +26,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build-cloudfare-worker": ""
+    "build": "vite build"
   },
   "eslintConfig": {
     "extends": [

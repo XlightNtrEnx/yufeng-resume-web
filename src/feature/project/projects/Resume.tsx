@@ -21,7 +21,7 @@ export const Resume = () => {
   return (
     <Project
       name="Resume"
-      lazyAchievements={[ResumeScriptingAchievement, ResumeWebAchievement]}
+      achievementIds={[ResumeScriptingAchievement, ResumeWebAchievement]}
       description={description}
       urls={[resumeGitHub]}
       medias={[

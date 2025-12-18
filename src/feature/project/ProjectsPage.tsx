@@ -6,14 +6,18 @@ import { ColumnGrid } from "@src/common/layout/grid/ColumnGrid";
 import { paths } from "@src/router/paths";
 
 import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
-import { PreviewCard, PreviewCardProps } from "./PreviewCard";
+import {
+  PreviewCard,
+  PreviewCardProps,
+} from "@src/common/component/PreviewCard";
 import { Project } from "./projects/project-components";
 
-const LazyAscenda = lazy(() => import("./projects/Ascenda"));
-const LazyHighLow = lazy(() => import("./projects/HighLow"));
-const LazyParcelEye = lazy(() => import("./projects/ParcelEye"));
-const LazyCatDog = lazy(() => import("./projects/CatDog"));
-const LazyResume = lazy(() => import("./projects/Resume"));
+const Ascenda = lazy(() => import("./projects/Ascenda"));
+const HighLow = lazy(() => import("./projects/HighLow"));
+const ParcelEye = lazy(() => import("./projects/ParcelEye"));
+const CatDog = lazy(() => import("./projects/CatDog"));
+const Resume = lazy(() => import("./projects/Resume"));
+const PanasonicFMCWRadar = lazy(() => import("./projects/PanasonicFMCWRadar"));
 
 const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
   LazyProject: React.LazyExoticComponent<
@@ -21,29 +25,34 @@ const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
   >;
 })[] = [
   {
-    title: "Ascenda",
+    title: "Panasonic FMCW Radar",
+    src: paths.public.projectDir.panasonicFMCWRadar.preview,
+    LazyProject: PanasonicFMCWRadar,
+  },
+  {
+    title: "Ascenda CRUD webapp",
     src: paths.public.projectDir.ascendaDir.preview,
-    LazyProject: LazyAscenda,
+    LazyProject: Ascenda,
   },
   {
-    title: "HighLow",
+    title: "HighLow FPGA game",
     src: paths.public.projectDir.highLowDir.preview,
-    LazyProject: LazyHighLow,
+    LazyProject: HighLow,
   },
   {
-    title: "ParcelEye",
+    title: "ParcelEye Android AI app",
     src: paths.public.projectDir.parcelEyeDir.preview,
-    LazyProject: LazyParcelEye,
+    LazyProject: ParcelEye,
   },
   {
     title: "CatDog (CNN)",
     src: paths.public.projectDir.catDogDir.preview,
-    LazyProject: LazyCatDog,
+    LazyProject: CatDog,
   },
   {
-    title: "Resume",
+    title: "Resume web",
     src: paths.public.projectDir.resumeDir.preview,
-    LazyProject: LazyResume,
+    LazyProject: Resume,
   },
 ];
 const previewCardTitleToIdx = new Map<string, number>();

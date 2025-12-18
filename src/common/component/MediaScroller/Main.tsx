@@ -4,7 +4,7 @@ import { FlexRow } from "@src/common/layout/flex";
 import { Img } from "@src/common/element/Img";
 import { Video } from "@src/common/element/Video";
 import { FlatCarousel } from "@src/common/layout/Carousel/FlatCarousel";
-
+import { isVideo } from "@src/common/util";
 import { Media } from "./Media";
 
 const StyledFlexRow = styled(FlexRow)`
@@ -37,18 +37,18 @@ export const Main = ({
   const components = [];
   for (let i = 0; i < medias.length; i++) {
     const media = medias[i];
-    if (!media.isVideo) {
+    if (!isVideo(media)) {
       components.push(
         <Img
           key={i}
-          src={media.src}
+          src={media}
           onClick={() => {
             if (onClickMedia) onClickMedia(i);
           }}
         />
       );
     } else {
-      components.push(<Video key={i} src={media.src} controls />);
+      components.push(<Video key={i} src={media} controls />);
     }
   }
 

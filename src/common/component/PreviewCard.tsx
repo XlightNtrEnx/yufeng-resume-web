@@ -22,6 +22,10 @@ const StyledImg = styled(Img)`
   overflow: hidden;
 `;
 
+const StyledSpan = styled(Span)`
+  text-align: center;
+`;
+
 export interface PreviewCardProps {
   title: string;
   src: string;
@@ -32,7 +36,7 @@ export const PreviewCard = ({ title, src, onClick }: PreviewCardProps) => {
   return (
     <StyledFlexColumn onClick={onClick}>
       <StyledImg src={src} />
-      <Span>{title}</Span>
+      <StyledSpan>{title}</StyledSpan>
     </StyledFlexColumn>
   );
 };

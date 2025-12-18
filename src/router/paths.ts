@@ -63,6 +63,14 @@ const pub = {
       },
       preview: "/achievement/database/preview.jpg",
     },
+    dataScienceDir: {
+      panasonicDir: {
+        img_1: "/achievement/datascience/panasonic/1.png",
+        img_2: "/achievement/datascience/panasonic/2.png",
+        img_3: "/achievement/datascience/panasonic/3.png",
+      },
+      preview: "/achievement/datascience/preview.webp",
+    },
     devOpsDir: {
       preview: "/achievement/devops/preview.jpg",
       ascendaDir: {
@@ -132,6 +140,15 @@ const pub = {
 
       preview: "/achievement/server/preview.jpg",
     },
+    signalDir: {
+      preview: "/achievement/signal/preview.jpg",
+      panasonicFMCWDir: {
+        img_1: "/achievement/signal/panasonic-fmcw/1.png",
+        img_2: "/achievement/signal/panasonic-fmcw/2.png",
+        img_3: "/achievement/signal/panasonic-fmcw/3.png",
+        img_4: "/achievement/signal/panasonic-fmcw/4.png",
+      },
+    },
     webDir: {
       preview: "/achievement/web/preview.jpg",
       resumeDir: {
@@ -188,6 +205,17 @@ const pub = {
       },
     },
   },
+  careerDir: {
+    path: "/career-p",
+    panasonicDir: {
+      preview: "/career-p/panasonic/preview.png",
+      img_1: "/career-p/panasonic/1.png",
+      img_2: "/career-p/panasonic/2.png",
+      img_3: "/career-p/panasonic/3.png",
+      img_4: "/career-p/panasonic/4.png",
+      vid_5: "/career-p/panasonic/5.mp4",
+    },
+  },
   meDir: {
     path: "/me",
     me: "/me/me810.jpg",
@@ -200,6 +228,11 @@ const pub = {
   },
   projectDir: {
     path: "/project",
+    panasonicFMCWRadar: {
+      path: "/project/panasonic-fmcw-radar",
+      img_1: "/project/panasonic-fmcw-radar/1.png",
+      preview: "/project/panasonic-fmcw-radar/preview.png",
+    },
     catDogDir: {
       path: "/project/catdog",
       img_1: "/project/catdog/1.webp",
@@ -253,7 +286,6 @@ export const paths = {
   education: "/education",
   achievements: "/achievements",
   projects: "/projects",
-  get public() {
-    return pub;
-  },
+  career: "/career",
+  public: pub,
 };

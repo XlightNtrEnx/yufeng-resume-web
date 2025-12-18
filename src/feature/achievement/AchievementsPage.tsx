@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useState, useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
@@ -8,34 +8,39 @@ import { paths } from "@src/router/paths";
 
 import { PreviewCard, PreviewCardProps } from "./PreviewCard";
 import { AchievementsLayout } from "./achievements/achievement-components/AchievementsLayout";
+import { APIServiceContext } from "@src/provider/APIServiceProvider";
 
-const LazyAI = lazy(() => import("@src/feature/achievement/achievements/AI"));
-const LazyAndroid = lazy(
+const AI = lazy(() => import("@src/feature/achievement/achievements/AI"));
+const Android = lazy(
   () => import("@src/feature/achievement/achievements/Android")
 );
-const LazyArchitecture = lazy(
+const Architecture = lazy(
   () => import("@src/feature/achievement/achievements/Architecture")
 );
-const LazyCloud = lazy(
-  () => import("@src/feature/achievement/achievements/Cloud")
-);
-const LazyContainerization = lazy(
+const Cloud = lazy(() => import("@src/feature/achievement/achievements/Cloud"));
+const Containerization = lazy(
   () => import("@src/feature/achievement/achievements/Containerization")
 );
-const LazyDatabase = lazy(
+const Database = lazy(
   () => import("@src/feature/achievement/achievements/Database")
 );
-const LazyDevOps = lazy(
+const DataScience = lazy(
+  () => import("@src/feature/achievement/achievements/DataScience")
+);
+const DevOps = lazy(
   () => import("@src/feature/achievement/achievements/DevOps")
 );
-const LazyEE = lazy(() => import("@src/feature/achievement/achievements/EE"));
-const LazyScripting = lazy(
+const EE = lazy(() => import("@src/feature/achievement/achievements/EE"));
+const Scripting = lazy(
   () => import("@src/feature/achievement/achievements/Scripting")
 );
-const LazyServer = lazy(
+const Server = lazy(
   () => import("@src/feature/achievement/achievements/Server")
 );
-const LazyWeb = lazy(() => import("@src/feature/achievement/achievements/Web"));
+const Web = lazy(() => import("@src/feature/achievement/achievements/Web"));
+const Signal = lazy(
+  () => import("@src/feature/achievement/achievements/Signal")
+);
 
 const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
   ActualElement: React.LazyExoticComponent<
@@ -45,58 +50,67 @@ const previewCardData: (Omit<PreviewCardProps, "onClick"> & {
   {
     title: "AI",
     src: paths.public.achievementDir.aiDir.preview,
-    ActualElement: LazyAI,
+    ActualElement: AI,
   },
   {
     title: "Android",
     src: paths.public.achievementDir.androidDir.preview,
-    ActualElement: LazyAndroid,
+    ActualElement: Android,
   },
   {
     title: "Architecture",
     src: paths.public.achievementDir.architectureDir.preview,
-    ActualElement: LazyArchitecture,
+    ActualElement: Architecture,
   },
   {
     title: "Cloud computing",
     src: paths.public.achievementDir.cloudDir.preview,
-    ActualElement: LazyCloud,
+    ActualElement: Cloud,
   },
   {
     title: "Containerization",
     src: paths.public.achievementDir.dockerDir.preview,
-    ActualElement: LazyContainerization,
+    ActualElement: Containerization,
   },
-
   {
     title: "Database",
     src: paths.public.achievementDir.databaseDir.preview,
-    ActualElement: LazyDatabase,
+    ActualElement: Database,
+  },
+  {
+    title: "Data Science",
+    src: paths.public.achievementDir.dataScienceDir.preview,
+    ActualElement: DataScience,
   },
   {
     title: "DevOps",
     src: paths.public.achievementDir.devOpsDir.preview,
-    ActualElement: LazyDevOps,
+    ActualElement: DevOps,
   },
   {
     title: "Elec. Eng",
     src: paths.public.achievementDir.eeDir.preview,
-    ActualElement: LazyEE,
+    ActualElement: EE,
   },
   {
     title: "Scripting",
     src: paths.public.achievementDir.scriptingDir.preview,
-    ActualElement: LazyScripting,
+    ActualElement: Scripting,
   },
   {
-    title: "Server (Misc)",
+    title: "Server",
     src: paths.public.achievementDir.serverDir.preview,
-    ActualElement: LazyServer,
+    ActualElement: Server,
+  },
+  {
+    title: "Signal",
+    src: paths.public.achievementDir.signalDir.preview,
+    ActualElement: Signal,
   },
   {
     title: "Web",
     src: paths.public.achievementDir.webDir.preview,
-    ActualElement: LazyWeb,
+    ActualElement: Web,
   },
 ];
 const previewCardTitleToIdx = new Map<string, number>();
@@ -111,6 +125,28 @@ export const AchievementsPage = () => {
   const [activePCIdx, setActivePCIdx] = useState<number | null>(
     previewCardTitleToIdx.get(searchParams.get(achievementParam) || "") ?? null
   );
+
+  const { achievementCategoryService } = useContext(APIServiceContext);
+
+  useEffect(() => {
+    previewCardData.forEach((pcd) => {
+      console.log(
+        achievementCategoryService.find({
+          name: { $eq: pcd.title },
+        })
+      );
+      // .then((values) => {
+      //   achievementCategoryService.updateOne({
+      //     filter: { id: { $eq: "0ceca66f-0ed5-4fcc-a7a1-fce166abdfac" } },
+      //     update: {
+      //       $set: {
+      //         achievement_ids: ["b907ce11-a5ca-4076-a56d-58878b02ce77"],
+      //       },
+      //     },
+      //   });
+      // });
+    });
+  });
 
   return (
     <>

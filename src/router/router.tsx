@@ -10,9 +10,10 @@ const EducationPage = lazy(
   () => import("@src/feature/education/EducationPage")
 );
 const AchievementsPage = lazy(
-  () => import("@src/feature/achievement/AchievementsPage")
+  () => import("@src/feature/achievement/AchievementsPageNew")
 );
-const ProjectsPage = lazy(() => import("@src/feature/project/ProjectsPage"));
+const ProjectsPage = lazy(() => import("@src/feature/project/ProjectsPageNew"));
+const CareerPage = lazy(() => import("@src/feature/career/CareerPage"));
 const TestPage = lazy(() => import("@src/feature/test/TestPage"));
 
 const router = createBrowserRouter([
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
         path: paths.projects,
         element: <ProjectsPage />,
       },
+      { path: paths.career, element: <CareerPage /> },
       // { path: "/test", element: <TestPage /> },
     ],
   },

@@ -15,3 +15,8 @@ export const stripUnit = (value: string) => {
   if (value.endsWith("px")) return [value.slice(0, -2), "px"];
   return [value, ""];
 };
+
+const videoExtensions = [".mp4", ".mov", ".avi", ".mkv", ".webm", ".flv"];
+export const isVideo = (str: string) => {
+  return videoExtensions.some((ext) => str.toLowerCase().endsWith(ext));
+};

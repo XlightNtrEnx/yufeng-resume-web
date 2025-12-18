@@ -8,18 +8,24 @@ import theme from "@src/theme";
 import router from "@src/router";
 import { ScrollToHashOnLoad } from "@src/provider/ScrollToHashOnLoad";
 import { MaintainURLHash } from "@src/provider/MaintainURLHash";
+import { ConfigProvider } from "@src/provider/ConfigProvider";
+import { APIServiceProvider } from "@src/provider/APIServiceProvider/APIServiceProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ThemeProvider theme={theme}>
-    <MaintainURLHash>
-      <ScrollToHashOnLoad>
-        <RouterProvider router={router} />
-      </ScrollToHashOnLoad>
-    </MaintainURLHash>
-  </ThemeProvider>
+  <ConfigProvider>
+    <APIServiceProvider>
+      <ThemeProvider theme={theme}>
+        <MaintainURLHash>
+          <ScrollToHashOnLoad>
+            <RouterProvider router={router} />
+          </ScrollToHashOnLoad>
+        </MaintainURLHash>
+      </ThemeProvider>
+    </APIServiceProvider>
+  </ConfigProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

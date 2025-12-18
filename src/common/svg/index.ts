@@ -14,3 +14,4 @@ export { ReactComponent as PlayButton } from "./playbutton.svg";
 export { ReactComponent as Download } from "./download.svg";
 export { ReactComponent as RightArrow } from "./right-arrow.svg";
 export { ReactComponent as LeftArrow } from "./left-arrow.svg";
+export { ReactComponent as CareerSVG } from "./career.svg";

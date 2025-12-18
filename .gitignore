@@ -26,3 +26,6 @@ yarn-error.log*
 .env
 
 /scripts
+
+# lock
+yarn.lock

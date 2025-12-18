@@ -33,7 +33,7 @@ export const ParcelEye = () => {
   return (
     <Project
       name="ParcelEye"
-      lazyAchievements={[
+      achievementIds={[
         Term4InfoSysAICloudAchievement,
         Term4InfoSysAIContainerization,
         Term4InfoSysAIServer,

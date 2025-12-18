@@ -33,7 +33,7 @@ export const Ascenda = () => {
   return (
     <Project
       name="Ascenda"
-      lazyAchievements={[
+      achievementIds={[
         LazyServerAchievement,
         LazyDatabaseAchievement,
         LazyDevOpsAchievement,

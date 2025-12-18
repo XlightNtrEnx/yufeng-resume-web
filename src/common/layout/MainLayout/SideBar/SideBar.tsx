@@ -7,6 +7,7 @@ import {
   GraduationCapSVG,
   ClipboardSVG,
   TrophySVGIcon,
+  CareerSVG,
 } from "@src/common/svg";
 import { FlexColumn, FlexRowReverse } from "@src/common/layout/flex";
 import { Button } from "@src/common/element/Button";
@@ -71,6 +72,7 @@ export const SideBar = () => {
       </ArrowButton>
       <StyledFlexColumn>
         <ChildInternalLink to={paths.landing} label="Home" SVG={HomeSVG} />
+        <ChildInternalLink to={paths.career} label="Career" SVG={CareerSVG} />
         <ChildInternalLink
           to={paths.projects}
           label="Projects"

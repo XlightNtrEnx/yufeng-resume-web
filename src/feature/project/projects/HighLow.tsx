@@ -20,7 +20,7 @@ export const HighLow = () => {
   return (
     <Project
       name="HighLow"
-      lazyAchievements={[LazyFPGA]}
+      achievementIds={[LazyFPGA]}
       description={description}
       urls={[term4CSDFPGARepo, term4CSDFPGADocs]}
       medias={[

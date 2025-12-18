@@ -20,7 +20,7 @@ export const CatDog = () => {
   return (
     <Project
       name="CatDog"
-      lazyAchievements={[LazyCatDogAchievement]}
+      achievementIds={[LazyCatDogAchievement]}
       description={description}
       urls={[term4CSDGitHubOrg]}
       medias={[

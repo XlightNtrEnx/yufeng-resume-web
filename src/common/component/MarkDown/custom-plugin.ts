@@ -18,16 +18,16 @@ interface RootNode extends PositionProperty {
 interface ParagraphNode extends PositionProperty {
   type: "paragraph";
   data?: { hName: string };
-  children: TextNode[];
+  children: EndNode[];
 }
 
-interface TextNode extends PositionProperty {
-  type?: "text";
+interface EndNode extends PositionProperty {
+  type?: "text" | "link";
   data?: { hName: string };
-  value: string;
+  value?: string;
 }
 
-type Replacer = (match: RegExpExecArray) => TextNode;
+type Replacer = (match: RegExpExecArray) => EndNode;
 
 type ReplacerPluginArgs = {
   regex: RegExp;
@@ -47,38 +47,40 @@ export class PluginFactory {
             parent: RootNode | undefined
           ) => {
             const text = node.children[0].value;
-            const matches = text.matchAll(regex);
-            const iterator = matches[Symbol.iterator]();
-            const firstMatch = iterator.next().value;
-            if (firstMatch) {
-              const newChildren: TextNode[] = [];
-              let processedLength = 0;
+            if (text) {
+              const matches = text.matchAll(regex);
+              const iterator = matches[Symbol.iterator]();
+              const firstMatch = iterator.next().value;
+              if (firstMatch) {
+                const newChildren: EndNode[] = [];
+                let processedLength = 0;
 
-              if (firstMatch.index > 0) {
-                newChildren.push({
-                  value: text.slice(0, firstMatch.index),
-                });
-              }
-              newChildren.push(replacer(firstMatch));
-
-              processedLength = firstMatch.index + firstMatch[0].length;
-              for (const match of iterator) {
-                if (processedLength < match.index) {
+                if (firstMatch.index > 0) {
                   newChildren.push({
-                    value: text.slice(processedLength, match.index),
+                    value: text.slice(0, firstMatch.index),
                   });
                 }
-                newChildren.push(replacer(match));
-                processedLength = match.index + match[0].length;
-              }
+                newChildren.push(replacer(firstMatch));
 
-              if (processedLength < text.length) {
-                newChildren.push({
-                  value: text.slice(processedLength, text.length),
-                });
-              }
+                processedLength = firstMatch.index + firstMatch[0].length;
+                for (const match of iterator) {
+                  if (processedLength < match.index) {
+                    newChildren.push({
+                      value: text.slice(processedLength, match.index),
+                    });
+                  }
+                  newChildren.push(replacer(match));
+                  processedLength = match.index + match[0].length;
+                }
 
-              node.children = newChildren;
+                if (processedLength < text.length) {
+                  newChildren.push({
+                    value: text.slice(processedLength, text.length),
+                  });
+                }
+
+                node.children = newChildren;
+              }
             }
           }
         );

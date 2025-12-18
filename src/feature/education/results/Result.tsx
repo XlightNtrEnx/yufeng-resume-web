@@ -29,9 +29,9 @@ export class Subject {
     this.score = score;
   }
 
-  toHtml() {
+  toHtml(key?: number | string) {
     return (
-      <Span>
+      <Span key={key}>
         {this.name}: {this.score}
       </Span>
     );
@@ -58,14 +58,14 @@ export const Results = ({
   return (
     <Container>
       <Header>Results</Header>
-      {categories?.map((group) => (
-        <Group key={group.name}>
+      {categories?.map((group, categoryIdx) => (
+        <Group key={categoryIdx}>
           <SubHeader>{group.name}</SubHeader>
-          {group.subjects.map((subject) => subject.toHtml())}
+          {group.subjects.map((subject, i) => subject.toHtml(i))}
         </Group>
       ))}
 
-      {subjects?.map((subject) => subject.toHtml())}
+      {subjects?.map((subject, idx) => subject.toHtml(idx))}
     </Container>
   );
 };

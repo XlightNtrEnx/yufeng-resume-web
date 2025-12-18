@@ -1,29 +1,24 @@
-import {
-  createContext,
-  Suspense,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 
 import { mobileBreakpointInPx } from "@src/common/atom/isMobile";
+import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
 import {
   MediaScroller,
   MediaScrollerProps,
 } from "@src/common/component/MediaScroller";
-import { Button } from "@src/common/element/Button";
 import { Modal } from "@src/common/component/Modal";
+import { Button } from "@src/common/element/Button";
+import { Div } from "@src/common/element/Div";
 import { H2 } from "@src/common/element/text";
 import { FlexColumn } from "@src/common/layout/flex";
-import { Project } from "@src/feature/project/projects/project-components";
+import { Project as ProjectComponent } from "@src/feature/project/projects/project-components";
+import { APIServiceContext } from "@src/provider/APIServiceProvider";
+import { Project as ProjectModel } from "@src/provider/APIServiceProvider/project/project-model";
 import {
   RegisterFragmentContext,
   sanitizeFragment,
 } from "@src/provider/MaintainURLHash";
-import { Div } from "@src/common/element/Div";
-import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
-
 import { Description } from "./Description";
 import { Links } from "./Links";
 
@@ -36,29 +31,59 @@ export interface AchievementProps
   extends Omit<MediaScrollerProps, "onClickMedia"> {
   name: string;
   description: string;
-  LazyProject?: React.LazyExoticComponent<
-    () => React.ReactElement<typeof Project>
-  >;
+  projectId: string;
+  projectPreviewId: string;
   urls?: string[];
   isNestedAchievement?: boolean;
 }
 
+const StyledH2 = styled(H2)`
+  text-align: left;
+`;
+
 const SourceProjectButton = ({
-  LazyProject,
-}: Pick<AchievementProps, "LazyProject">) => {
+  projectPreviewId,
+  projectId,
+}: Pick<AchievementProps, "projectPreviewId" | "projectId">) => {
+  const { projectService } = useContext(APIServiceContext);
   const [displayModal, setDisplayModal] = useState<boolean>(false);
+  const [projectModel, setProjectModel] = useState<null | ProjectModel>(null);
+
+  useEffect(() => {
+    if (displayModal) {
+      projectService
+        .getPartition({ preview_id: projectPreviewId })
+        .then((projects) => {
+          for (const project of projects) {
+            if (project.id === projectId) {
+              setProjectModel(project);
+              return;
+            }
+          }
+        });
+    }
+  }, [displayModal, projectService, projectId, projectPreviewId]);
   return (
     <>
       <Button onClick={() => setDisplayModal(true)}>Source Project</Button>
-      {LazyProject && displayModal && (
+      {displayModal && (
         <Modal
           $width="1080px"
           $maxWidth="1080px"
           closer={() => setDisplayModal(false)}
         >
-          <Suspense fallback={<LoadingSpinner />}>
-            <LazyProject />
-          </Suspense>
+          {projectModel == null ? (
+            <LoadingSpinner />
+          ) : (
+            <ProjectComponent
+              name={projectModel.name}
+              description={projectModel.description}
+              urls={projectModel.urls}
+              medias={projectModel.medias}
+              achievementPreviewIds={projectModel.achievement_preview_ids}
+              achievementIds={projectModel.achievement_ids}
+            />
+          )}
         </Modal>
       )}
     </>
@@ -71,7 +96,9 @@ export const Achievement = ({
   description,
   urls,
   isNestedAchievement,
-  LazyProject,
+  projectId,
+  projectPreviewId,
+  medias,
   ...rest
 }: AchievementProps) => {
   const id = sanitizeFragment(name);
@@ -83,13 +110,17 @@ export const Achievement = ({
   const [skip, setSkip] = useState<number[]>([0]);
 
   const [zoomIn, setZoomIn] = useState<boolean>(false);
+
   return (
     <>
       <AchievementContext.Provider value={setSkip}>
         <StyledFlexColumn id={id}>
           <Div>
-            <H2>{name}</H2>
-            {LazyProject && <SourceProjectButton LazyProject={LazyProject} />}
+            <StyledH2>{name}</StyledH2>
+            <SourceProjectButton
+              projectId={projectId}
+              projectPreviewId={projectPreviewId}
+            />
           </Div>
           {urls && <Links urls={urls} />}
           <Description description={description} />
@@ -101,6 +132,7 @@ export const Achievement = ({
               }
             }}
             skip={skip}
+            medias={medias}
             {...rest}
           />
         </StyledFlexColumn>
@@ -116,8 +148,10 @@ export const Achievement = ({
             description={description}
             urls={urls}
             isNestedAchievement={true}
-            LazyProject={LazyProject}
+            projectPreviewId={projectPreviewId}
+            projectId={projectId}
             skip={skip}
+            medias={medias}
             {...rest}
           />
         </Modal>

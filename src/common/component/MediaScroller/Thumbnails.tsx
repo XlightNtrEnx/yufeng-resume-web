@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Img } from "@src/common/element/Img";
 import { FlexRow } from "@src/common/layout/flex";
 import { EnsurePropertyExists } from "@src/types";
-
+import { isVideo } from "@src/common/util";
 import { PlayButton } from "@src/common/svg";
 
 import { MainProps } from "./Main";
@@ -71,37 +71,25 @@ export const Thumbnails = ({
   const components = [];
   for (let i = 0; i < medias.length; i++) {
     const media = medias[i];
-    if (!media.isVideo) {
+    if (!isVideo(media)) {
       components.push(
         <Img
           key={i}
           onClick={() => {
             setSelectedMediaIdx(i);
           }}
-          src={media.src}
+          src={media}
         />
       );
     } else {
-      if (media.thumbnailSrc) {
-        components.push(
-          <Img
-            key={i}
-            onClick={() => {
-              setSelectedMediaIdx(i);
-            }}
-            src={media.src}
-          />
-        );
-      } else {
-        components.push(
-          <PlayButton
-            key={i}
-            onClick={() => {
-              setSelectedMediaIdx(i);
-            }}
-          />
-        );
-      }
+      components.push(
+        <PlayButton
+          key={i}
+          onClick={() => {
+            setSelectedMediaIdx(i);
+          }}
+        />
+      );
     }
   }
 
