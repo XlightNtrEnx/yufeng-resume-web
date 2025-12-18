@@ -15,6 +15,7 @@ jobs:
         run: |
           echo "VITE_RECAPTCHA_SITE_KEY=${{ secrets.VITE_RECAPTCHA_SITE_KEY }}" >> .env
           echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> .env
+          echo "VITE_ASTRA_API=${{ secrets.VITE_ASTRA_API }}" >> .env
       - name: Install dependencies
         run: yarn install
       - name: Build project
