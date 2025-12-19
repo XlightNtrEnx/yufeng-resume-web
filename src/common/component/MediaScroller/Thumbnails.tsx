@@ -30,7 +30,6 @@ const InnerStyledFlexRow = styled(FlexRow)<{
   right: ${({ $right }) => $right || "0%"};
   transition: right 0.5s, left 0.5s;
   width: 100%;
-  overflow-x: hidden;
 
   > img,
   video,

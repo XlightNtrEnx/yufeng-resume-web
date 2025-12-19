@@ -72,7 +72,9 @@ export const MediaScroller = ({
     var newMediaIdx: number;
     var newFirstThumbnailIdx: number;
     const newCurrentPage: number =
-      Math.floor((idx % mediasDirSize) / thumbnailsPerPage) + 1;
+      idx === -1
+        ? totalPages
+        : Math.floor((idx % mediasDirSize) / thumbnailsPerPage) + 1;
 
     if (change > 0) {
       // Moved right
