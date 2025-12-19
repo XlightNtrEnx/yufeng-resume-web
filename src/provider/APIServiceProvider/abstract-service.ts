@@ -31,6 +31,7 @@ type UpdateOne<M extends AbstractModel> = {
 type Find<M extends AbstractModel> = {
   filter: Filter<M>;
   sort?: Sort<M>;
+  options?: { pageState?: string };
 };
 type Filter<M extends AbstractModel> = {
   [K in keyof M]?: {
@@ -63,7 +64,7 @@ export abstract class AbstractService<
     this.baseURL = baseURL;
   }
 
-  public async findAllModelsAndSync() {
+  public async findAllModelsAndSyncToLocalStorage() {
     const dbModels = await this.find({ filter: {} });
     dbModels.sort((a, b) => {
       return a.created_at.getTime() - b.created_at.getTime();
@@ -79,7 +80,7 @@ export abstract class AbstractService<
       modelsByPartition[partitionPath] = partitionedDbModels;
     }
     for (const [partitionPath, models] of Object.entries(modelsByPartition)) {
-      this.appendDbModelsToLocalStoragePartition({
+      this.overwriteDbModelsToLocalStoragePartition({
         partitionPath,
         models,
         from: 0,
@@ -105,8 +106,8 @@ export abstract class AbstractService<
         // 8 hours
         return lsModels;
       }
-      const elapsedHours = elapsedMS / 3600000;
-      const elapsedDays = elapsedHours / 24;
+      // const elapsedHours = elapsedMS / 3600000;
+      // const elapsedDays = elapsedHours / 24;
       // if (elapsedDays >= 0) {
       this.deleteLocalStoragePartition(partitionPath);
       // }
@@ -152,6 +153,26 @@ export abstract class AbstractService<
     });
 
     if (responseJSON.data) {
+      if (responseJSON.data.nextPageState) {
+        const models: M[][] = [responseJSON.data.documents ?? []];
+        let nextPageState: string | null = responseJSON.data.nextPageState;
+        while (nextPageState != null) {
+          const newFind = {
+            ...find,
+            options: { pageState: nextPageState },
+          };
+          const responseJSON = await this.fetchAPI({
+            body: { find: newFind, options },
+          });
+          if (responseJSON.data && responseJSON.data.documents) {
+            models.push(responseJSON.data.documents);
+            nextPageState = responseJSON.data.nextPageState;
+          } else {
+            nextPageState = null;
+          }
+        }
+        return models.flat();
+      }
       return responseJSON.data.documents ?? [];
     } else {
       throw new Error();
@@ -171,10 +192,10 @@ export abstract class AbstractService<
   }
 
   public async insertOne(newModel: N) {
-    newModel.id = uuidv4();
+    newModel.id = newModel.id ? newModel.id : uuidv4();
     const date = new Date();
-    newModel.created_at = date;
-    newModel.updated_at = date;
+    newModel.created_at = newModel.created_at ? newModel.created_at : date;
+    newModel.updated_at = newModel.updated_at ? newModel.updated_at : date;
     await this.fetchAPI({
       body: { insertOne: { document: newModel } },
     });
@@ -293,7 +314,7 @@ export abstract class AbstractService<
     return models;
   }
 
-  private appendDbModelsToLocalStoragePartition({
+  private overwriteDbModelsToLocalStoragePartition({
     partitionPath,
     models,
     from,
@@ -354,7 +375,7 @@ export abstract class AbstractService<
           },
           sort: { created_at: 1 },
         });
-        this.appendDbModelsToLocalStoragePartition({
+        this.overwriteDbModelsToLocalStoragePartition({
           partitionPath,
           models: laterDbModels,
           from: results.metadata.latest + 1,
@@ -368,7 +389,7 @@ export abstract class AbstractService<
           filter: partitionFilter,
           sort: { created_at: 1 },
         });
-        this.appendDbModelsToLocalStoragePartition({
+        this.overwriteDbModelsToLocalStoragePartition({
           partitionPath,
           models: dbModels,
           from: 0,
@@ -403,6 +424,7 @@ export abstract class AbstractService<
       data?: {
         documents?: M[]; // find
         document?: M | null; // findOne
+        nextPageState: string | null;
       };
       status?: {
         insertedIds?: string[]; // insert or insertOne

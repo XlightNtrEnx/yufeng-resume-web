@@ -1,6 +1,9 @@
 import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
 import { Modal } from "@src/common/component/Modal";
-import { Post as PostComponent } from "@src/common/component/Post";
+import {
+  Post as PostComponent,
+  RelatedPostsButtonName,
+} from "@src/common/component/Post";
 import { PreviewCard } from "@src/common/component/PreviewCard";
 import { FlexColumn } from "@src/common/layout/flex";
 import { ColumnGrid } from "@src/common/layout/grid/ColumnGrid";
@@ -22,8 +25,13 @@ const StyledFlexColumn = styled(FlexColumn).attrs({ as: "section" })`
 interface Props {
   previewParam: string;
   type: PreviewType;
+  referenceButtonName: RelatedPostsButtonName;
 }
-export const AchievementsPageNew = ({ previewParam, type }: Props) => {
+export const PostsPage = ({
+  previewParam,
+  type,
+  referenceButtonName,
+}: Props) => {
   const { previewService, postService } = useContext(APIServiceContext);
 
   // Get all Preview
@@ -112,9 +120,11 @@ export const AchievementsPageNew = ({ previewParam, type }: Props) => {
               <>
                 {activePostModels.map((postModel, idx) => {
                   return (
-                    <>
-                      <PostComponent key={idx} {...postModel} />
-                    </>
+                    <PostComponent
+                      key={postModel.id}
+                      {...postModel}
+                      buttonName={referenceButtonName}
+                    />
                   );
                 })}
               </>
@@ -126,4 +136,4 @@ export const AchievementsPageNew = ({ previewParam, type }: Props) => {
   );
 };
 
-export default AchievementsPageNew;
+export default PostsPage;

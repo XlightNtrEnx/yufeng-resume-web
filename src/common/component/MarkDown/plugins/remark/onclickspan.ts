@@ -1,9 +1,10 @@
 import { OnClickSpanProps } from "@src/common/component/text-block";
 import { PluginFactory } from "@src/common/component/MarkDown/custom-plugin";
+export { OnClickSpan } from "@src/common/component/text-block";
 
 export const hName = "onClickSpan";
 
-export const onClickSpanPlugin = PluginFactory.replacerPlugin({
+export const onClickSpanPlugin = PluginFactory.textReplacerPlugin({
   regex: /{.*?}\(ocs.*?\)/g,
   // value is missing but it works
   replacer: (match: RegExpExecArray) => {

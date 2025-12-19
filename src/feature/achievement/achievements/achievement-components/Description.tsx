@@ -17,7 +17,7 @@ interface Props {
 export const Description = ({ description }: Props) => {
   const setSkip = useContext(AchievementContext);
   const components: Components = {};
-  components[hName] = (props: IntermediateProps) => {
+  (components as any)[hName] = (props: IntermediateProps) => {
     const skip = props.skip;
     const text = props.text;
     return <OnClickSpan text={text} onClick={() => setSkip([skip])} />;

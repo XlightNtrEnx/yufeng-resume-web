@@ -3,17 +3,15 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { MainLayout } from "@src/common/layout/MainLayout";
 import { paths } from "@src/router/paths";
+import { PreviewType } from "@src/provider/APIServiceProvider/preview/preview-model";
+import { RelatedPostsButtonName } from "@src/common/component/Post";
 
 // Lazy-loaded pages
 const LandingPage = lazy(() => import("@src/feature/landing/LandingPage"));
 const EducationPage = lazy(
   () => import("@src/feature/education/EducationPage")
 );
-const AchievementsPage = lazy(
-  () => import("@src/feature/achievement/AchievementsPageNew")
-);
-const ProjectsPage = lazy(() => import("@src/feature/project/ProjectsPageNew"));
-const CareerPage = lazy(() => import("@src/feature/career/CareerPage"));
+const PostsPage = lazy(() => import("@src/feature/post/PostsPage"));
 const TestPage = lazy(() => import("@src/feature/test/TestPage"));
 
 const router = createBrowserRouter([
@@ -31,13 +29,34 @@ const router = createBrowserRouter([
       },
       {
         path: paths.achievements,
-        element: <AchievementsPage />,
+        element: (
+          <PostsPage
+            previewParam="achievement"
+            type={PreviewType.Achievement}
+            referenceButtonName={RelatedPostsButtonName.ACHIEVEMENT}
+          />
+        ),
       },
       {
         path: paths.projects,
-        element: <ProjectsPage />,
+        element: (
+          <PostsPage
+            previewParam="project"
+            type={PreviewType.Project}
+            referenceButtonName={RelatedPostsButtonName.PROJECT}
+          />
+        ),
       },
-      { path: paths.career, element: <CareerPage /> },
+      {
+        path: paths.career,
+        element: (
+          <PostsPage
+            previewParam="career"
+            type={PreviewType.Career}
+            referenceButtonName={RelatedPostsButtonName.CAREER}
+          />
+        ),
+      },
       // { path: "/test", element: <TestPage /> },
     ],
   },

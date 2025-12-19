@@ -35,7 +35,7 @@ type ReplacerPluginArgs = {
 };
 
 export class PluginFactory {
-  public static replacerPlugin({ regex, replacer }: ReplacerPluginArgs) {
+  public static textReplacerPlugin({ regex, replacer }: ReplacerPluginArgs) {
     return () => {
       return (tree: RootNode) => {
         visit(
@@ -46,42 +46,33 @@ export class PluginFactory {
             index: number | undefined,
             parent: RootNode | undefined
           ) => {
-            const text = node.children[0].value;
-            if (text) {
-              const matches = text.matchAll(regex);
-              const iterator = matches[Symbol.iterator]();
-              const firstMatch = iterator.next().value;
-              if (firstMatch) {
-                const newChildren: EndNode[] = [];
-                let processedLength = 0;
-
-                if (firstMatch.index > 0) {
-                  newChildren.push({
-                    value: text.slice(0, firstMatch.index),
-                  });
-                }
-                newChildren.push(replacer(firstMatch));
-
-                processedLength = firstMatch.index + firstMatch[0].length;
-                for (const match of iterator) {
-                  if (processedLength < match.index) {
-                    newChildren.push({
-                      value: text.slice(processedLength, match.index),
+            const newChildren = node.children.map((child, index, children) => {
+              if (child.type === "text") {
+                const text = child.value;
+                if (text) {
+                  const matches = text.matchAll(regex);
+                  const newChild: EndNode[] = [];
+                  let processedLength = 0;
+                  for (const match of matches) {
+                    if (processedLength < match.index) {
+                      newChild.push({
+                        value: text.slice(processedLength, match.index),
+                      });
+                    }
+                    newChild.push(replacer(match));
+                    processedLength = match.index + match[0].length;
+                  }
+                  if (processedLength < text.length) {
+                    newChild.push({
+                      value: text.slice(processedLength, text.length),
                     });
                   }
-                  newChildren.push(replacer(match));
-                  processedLength = match.index + match[0].length;
+                  return newChild;
                 }
-
-                if (processedLength < text.length) {
-                  newChildren.push({
-                    value: text.slice(processedLength, text.length),
-                  });
-                }
-
-                node.children = newChildren;
               }
-            }
+              return [child];
+            });
+            node.children = newChildren.flat();
           }
         );
       };

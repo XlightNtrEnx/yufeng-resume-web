@@ -17,7 +17,7 @@ export const ScrollToHashOnLoad = ({ children }: Props) => {
     let intervalId: number | null = null;
 
     const findAndScrollToElement = () => {
-      const element = document.querySelector(hash);
+      const element = document.getElementById(hash);
 
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
