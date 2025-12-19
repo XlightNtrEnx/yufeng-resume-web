@@ -7,8 +7,22 @@ import { FlatCarousel } from "@src/common/layout/Carousel/FlatCarousel";
 import { isVideo } from "@src/common/util";
 import { Media } from "./Media";
 
+const StyledFlatCarousel = styled(FlatCarousel)`
+  * > img,
+  video {
+    object-fit: contain;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  * > img {
+    cursor: pointer;
+  }
+`;
+
 const StyledFlexRow = styled(FlexRow)`
   position: relative;
+  overflow-x: hidden;
 `;
 
 const Arrow = styled.div<{ $right: boolean }>`
@@ -24,15 +38,15 @@ const Arrow = styled.div<{ $right: boolean }>`
 export interface MainProps {
   medias: Media[];
   onClickMedia?: (mediaIndex: number) => void;
-  visibleMediaIdx: number;
-  setVisibleMediaIdx: (idx: number) => void;
+  activeMediaIdx: number;
+  setActiveMediaIdx: (idx: number) => void;
 }
 
 export const Main = ({
   medias,
   onClickMedia,
-  visibleMediaIdx,
-  setVisibleMediaIdx,
+  activeMediaIdx,
+  setActiveMediaIdx,
 }: MainProps) => {
   const components = [];
   for (let i = 0; i < medias.length; i++) {
@@ -54,16 +68,16 @@ export const Main = ({
 
   return (
     <StyledFlexRow>
-      <FlatCarousel visibleEleIdx={visibleMediaIdx}>
+      <StyledFlatCarousel activeEleIdx={activeMediaIdx}>
         {components.length > 0 && <>{components}</>}
-      </FlatCarousel>
+      </StyledFlatCarousel>
       <Arrow
         $right={false}
-        onClick={() => setVisibleMediaIdx(visibleMediaIdx - 1)}
+        onClick={() => setActiveMediaIdx(activeMediaIdx - 1)}
       />
       <Arrow
         $right={true}
-        onClick={() => setVisibleMediaIdx(visibleMediaIdx + 1)}
+        onClick={() => setActiveMediaIdx(activeMediaIdx + 1)}
       />
     </StyledFlexRow>
   );

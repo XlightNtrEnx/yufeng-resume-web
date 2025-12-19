@@ -14,7 +14,6 @@ interface ThumbnailsProps
     "onClickMedia"
   > {
   firstThumbnailIdx: number;
-  imgWidth?: string;
 }
 
 const StyledFlexRow = styled(FlexRow)`
@@ -22,29 +21,26 @@ const StyledFlexRow = styled(FlexRow)`
   overflow-x: hidden;
   width: 100%;
   aspect-ratio: 16 / 1.8;
-
-  img,
-  svg {
-    cursor: pointer;
-  }
 `;
 
 const InnerStyledFlexRow = styled(FlexRow)<{
   $right?: string;
-  $imgWidth?: string;
 }>`
   position: relative;
   right: ${({ $right }) => $right || "0%"};
   transition: right 0.5s, left 0.5s;
   width: 100%;
+  overflow-x: hidden;
 
   > img,
   video,
   svg {
     object-fit: contain;
     aspect-ratio: 16 / 9;
-    width: ${({ $imgWidth }) => $imgWidth || "100%"};
+    width: 20%;
     height: 100%;
+    cursor: pointer;
+    flex-shrink: 0; /* Firefox won't overflow but shrink so use this to force overflow */
   }
 
   > svg {
@@ -64,9 +60,8 @@ const ActiveSelectionBorder = styled.div<{ $width?: string; $left?: string }>`
 export const Thumbnails = ({
   medias,
   firstThumbnailIdx,
-  imgWidth,
-  visibleMediaIdx: selectedMediaIdx,
-  setVisibleMediaIdx: setSelectedMediaIdx,
+  activeMediaIdx,
+  setActiveMediaIdx,
 }: ThumbnailsProps) => {
   const components = [];
   for (let i = 0; i < medias.length; i++) {
@@ -76,7 +71,7 @@ export const Thumbnails = ({
         <Img
           key={i}
           onClick={() => {
-            setSelectedMediaIdx(i);
+            setActiveMediaIdx(i);
           }}
           src={media}
         />
@@ -86,7 +81,7 @@ export const Thumbnails = ({
         <PlayButton
           key={i}
           onClick={() => {
-            setSelectedMediaIdx(i);
+            setActiveMediaIdx(i);
           }}
         />
       );
@@ -95,11 +90,8 @@ export const Thumbnails = ({
 
   return (
     <StyledFlexRow>
-      <InnerStyledFlexRow
-        $imgWidth={imgWidth ? imgWidth : "20%"}
-        $right={`${firstThumbnailIdx * 20}%`}
-      >
-        <ActiveSelectionBorder $left={`${selectedMediaIdx * 20}%`} />
+      <InnerStyledFlexRow $right={`${firstThumbnailIdx * 20}%`}>
+        <ActiveSelectionBorder $left={`${activeMediaIdx * 20}%`} />
         {components.length > 0 && <>{components}</>}
       </InnerStyledFlexRow>
     </StyledFlexRow>

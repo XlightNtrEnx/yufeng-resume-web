@@ -9,13 +9,7 @@ import { Media } from "./Media";
 import { Main } from "./Main";
 import { Thumbnails } from "./Thumbnails";
 
-const Container = styled.div`
-  width: 100%;
-
-  > * {
-    width: 100%;
-  }
-`;
+const Container = styled.div``;
 
 const PaginationContainer = styled(FlexRow)`
   justify-content: center;
@@ -54,13 +48,13 @@ export const MediaScroller = ({
   const [firstThumbnailIdx, setFirstThumbnailIdx] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1); // One-indexed
 
-  const selectedMediaIdxRef = useRef(activeMediaIdx);
+  const activeMediaIdxRef = useRef(activeMediaIdx);
   useEffect(() => {
-    selectedMediaIdxRef.current = activeMediaIdx;
+    activeMediaIdxRef.current = activeMediaIdx;
   }, [activeMediaIdx]);
 
   useEffect(() => {
-    if (skip && skip[0] !== selectedMediaIdxRef.current) {
+    if (skip && skip[0] !== activeMediaIdxRef.current) {
       setActiveMediaIdx(skip[0]);
       const newPageNumber = Math.ceil((skip[0] + 1) / thumbnailsPerPage);
       setCurrentPage(newPageNumber);
@@ -130,14 +124,14 @@ export const MediaScroller = ({
       <Main
         medias={medias}
         onClickMedia={onClickMedia}
-        visibleMediaIdx={activeMediaIdx}
-        setVisibleMediaIdx={mainSetActiveMediaIdx}
+        activeMediaIdx={activeMediaIdx}
+        setActiveMediaIdx={mainSetActiveMediaIdx}
       />
       <Thumbnails
         medias={medias}
         firstThumbnailIdx={firstThumbnailIdx}
-        visibleMediaIdx={activeMediaIdx}
-        setVisibleMediaIdx={setActiveMediaIdx}
+        activeMediaIdx={activeMediaIdx}
+        setActiveMediaIdx={setActiveMediaIdx}
       />
       {totalPages > 1 && (
         <PaginationContainer>
