@@ -6,9 +6,9 @@ import { Button } from "@src/common/element/Button";
 import { FlexColumn } from "@src/common/layout/flex";
 
 import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
-import { Achievement as AchievementComponent } from "@src/feature/achievement/achievements/achievement-components";
+import { Post as PostComponent } from "@src/common/component/Post";
+import { Post as PostModel } from "@src/provider/APIServiceProvider/post/post-model";
 import { APIServiceContext } from "@src/provider/APIServiceProvider";
-import { Achievement as AchievementModel } from "@src/provider/APIServiceProvider/achievement/achievement-model";
 import { PartialColorH2 } from "./components";
 
 const StyledFlexColumn = styled(FlexColumn).attrs({ as: "article" })`
@@ -28,7 +28,7 @@ const StrikeThroughButton = styled(Button)`
   text-decoration: line-through;
 `;
 
-const achievementPreviewIds = {
+const postPreviewIds = {
   ai: "0ad6c888-b3f6-453c-ac7b-5cf82fd81a34",
   scripting: "0d4989a2-2e13-4bdb-bdca-9317ca173168",
   server: "1efe5ed4-5fab-4eb1-9b16-3ca4010215c2",
@@ -44,130 +44,114 @@ const achievementPreviewIds = {
   dataScience: "fbbdeab7-5f3d-4466-8752-4d136c1b4145",
 };
 export const Skills = () => {
-  const { achievementService } = useContext(APIServiceContext);
-  const [activeAchievementPreviewId, setActiveAchievementPreviewId] = useState<
-    string | null
-  >(null);
-  const [fetchingActiveAchievements, setFetchingActiveAchievements] =
+  const { postService } = useContext(APIServiceContext);
+  const [activePostPreviewId, setActivePostPreviewId] = useState<string | null>(
+    null
+  );
+  const [fetchingActivePosts, setFetchingActivePosts] =
     useState<boolean>(false);
-  const [activeAchievements, setActiveAchievements] = useState<
-    AchievementModel[]
-  >([]);
+  const [activePosts, setActivePosts] = useState<PostModel[]>([]);
   useEffect(() => {
-    if (activeAchievementPreviewId != null) {
-      setFetchingActiveAchievements(true);
-      achievementService
-        .getPartition({ preview_id: activeAchievementPreviewId })
+    if (activePostPreviewId != null) {
+      setFetchingActivePosts(true);
+      postService
+        .getPartition({ preview_id: activePostPreviewId })
         .then((values) => {
-          setActiveAchievements(values);
-          setFetchingActiveAchievements(false);
+          setActivePosts(values);
+          setFetchingActivePosts(false);
         });
     }
-  }, [activeAchievementPreviewId, achievementService]);
+  }, [activePostPreviewId, postService]);
   return (
     <>
       <StyledFlexColumn>
         <PartialColorH2>Proven skills (Click below!)</PartialColorH2>
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.ai);
+            setActivePostPreviewId(postPreviewIds.ai);
           }}
           text="AI (Computer Vision) 📸"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.android);
+            setActivePostPreviewId(postPreviewIds.android);
           }}
           text="Android dev 👽"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.cloudComputing);
+            setActivePostPreviewId(postPreviewIds.cloudComputing);
           }}
           text="Cloud computing 💨"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(
-              achievementPreviewIds.containerization
-            );
+            setActivePostPreviewId(postPreviewIds.containerization);
           }}
           text="Containerization 🫙"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.dataScience);
+            setActivePostPreviewId(postPreviewIds.dataScience);
           }}
           text="Data Science 🧪"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.database);
+            setActivePostPreviewId(postPreviewIds.database);
           }}
           text="Database management 🛢"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.devOps);
+            setActivePostPreviewId(postPreviewIds.devOps);
           }}
           text="DevOps ⚙️"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(
-              achievementPreviewIds.electricalEngineering
-            );
+            setActivePostPreviewId(postPreviewIds.electricalEngineering);
           }}
           text="Hardware design 📟"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.server);
+            setActivePostPreviewId(postPreviewIds.server);
           }}
           text="Server building 💻"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.signal);
+            setActivePostPreviewId(postPreviewIds.signal);
           }}
-          text="Siganl processing 📡"
+          text="Signal processing 📡"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.architecture);
+            setActivePostPreviewId(postPreviewIds.architecture);
           }}
           text="Software Architecture 🏗️"
         />
         <Skill
           onClick={() => {
-            setActiveAchievementPreviewId(achievementPreviewIds.web);
+            setActivePostPreviewId(postPreviewIds.web);
           }}
           text="Web dev (Interactive and mobile responsive) 🌐"
         />
         <StrikeThroughButton>Vibe coding 💩</StrikeThroughButton>
       </StyledFlexColumn>
-      {activeAchievementPreviewId != null && (
+      {activePostPreviewId != null && (
         <Modal
           closer={() => {
-            setActiveAchievementPreviewId(null);
+            setActivePostPreviewId(null);
           }}
         >
-          {fetchingActiveAchievements ? (
+          {fetchingActivePosts ? (
             <LoadingSpinner />
           ) : (
             <>
-              {activeAchievements.map((activeAchievementModel, idx) => {
-                return (
-                  <AchievementComponent
-                    key={idx}
-                    name={activeAchievementModel.name}
-                    description={activeAchievementModel.description}
-                    urls={activeAchievementModel.urls}
-                    projectId={activeAchievementModel.project_id}
-                    projectPreviewId={activeAchievementModel.project_preview_id}
-                    medias={activeAchievementModel.medias}
-                  />
-                );
+              {activePosts.map((activePostModel, idx) => {
+                return <PostComponent key={idx} {...activePostModel} />;
               })}
             </>
           )}

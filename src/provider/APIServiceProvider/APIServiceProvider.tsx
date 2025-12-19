@@ -8,13 +8,19 @@ const defaultInitializeValues = {
   baseURL: "",
 };
 
-export const APIServiceContext = createContext<{
-  previewService: PreviewService;
-  postService: PostService;
-}>({
-  postService: new PostService(defaultInitializeValues),
-  previewService: new PreviewService(defaultInitializeValues),
-});
+class APIServices {
+  public postService: PostService;
+  public previewService: PreviewService;
+
+  constructor(initializeValues: { baseURL: string }) {
+    this.postService = new PostService(initializeValues);
+    this.previewService = new PreviewService(initializeValues);
+  }
+}
+
+export const APIServiceContext = createContext<APIServices>(
+  new APIServices(defaultInitializeValues)
+);
 
 export const APIServiceProvider = ({
   children,
@@ -26,12 +32,7 @@ export const APIServiceProvider = ({
     baseURL: config.api,
   };
 
-  const previewService = new PreviewService(initializeValues);
-  const postService = new PostService(initializeValues);
-  const services = {
-    previewService,
-    postService,
-  };
+  const services = new APIServices(initializeValues);
 
   useEffect(() => {
     for (const service of Object.values(services)) {
