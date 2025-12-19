@@ -28,7 +28,8 @@ const StyledFlexColumn = styled(FlexColumn).attrs({ as: "article" })`
 `;
 
 export interface AchievementProps
-  extends Omit<MediaScrollerProps, "onClickMedia"> {
+  extends Omit<MediaScrollerProps, "onClickMedia" | "medias">,
+    Partial<Pick<MediaScrollerProps, "medias">> {
   name: string;
   description: string;
   projectId: string;
@@ -132,7 +133,7 @@ export const Achievement = ({
               }
             }}
             skip={skip}
-            medias={medias}
+            medias={medias ?? []}
             {...rest}
           />
         </StyledFlexColumn>
@@ -151,7 +152,7 @@ export const Achievement = ({
             projectPreviewId={projectPreviewId}
             projectId={projectId}
             skip={skip}
-            medias={medias}
+            medias={medias ?? []}
             {...rest}
           />
         </Modal>
