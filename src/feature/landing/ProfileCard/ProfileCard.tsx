@@ -13,7 +13,6 @@ const StyledGrid = styled(Grid)`
   max-width: 25em;
   width: 100%;
   gap: 1.25em;
-  overflow-y: auto;
   grid-template-rows: 20.875em 2.4em 1.2em 2.325em 1.825em;
   justify-items: center;
   box-shadow: 3px 2px 1px ${({ theme }) => theme.colors.softerBlack};
@@ -27,9 +26,11 @@ const StyledIcon = styled(ImgIcon)`
   mask-image: url(${paths.public.meDir.mask});
   mask-repeat: no-repeat;
   mask-size: contain;
-  object-fit: contain;
+  object-fit: cover;
   height: 100%;
   min-height: 0;
+  max-height: 100%;
+  overflow-y: scroll;
 `;
 
 const StyledSpan = styled(Span)`
