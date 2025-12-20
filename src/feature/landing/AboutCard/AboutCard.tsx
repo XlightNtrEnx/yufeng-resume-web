@@ -14,6 +14,8 @@ const StyledFlexColumn = styled(FlexColumn)`
   align-items: start;
   background: ${({ theme }) => theme.softerBackgroundColor};
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 `;
 
 export const AboutCard = () => {
