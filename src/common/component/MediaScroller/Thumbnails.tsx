@@ -35,7 +35,6 @@ const InnerStyledFlexRow = styled(FlexRow)<{
   video,
   svg {
     object-fit: contain;
-    aspect-ratio: 16 / 9;
     width: 20%;
     height: 100%;
     cursor: pointer;

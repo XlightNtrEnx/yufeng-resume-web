@@ -4,7 +4,6 @@ import { FlexRow } from "@src/common/layout/flex";
 
 const Viewport = styled(FlexRow)`
   position: relative;
-  aspect-ratio: 16 / 9;
 `;
 
 const Strip = styled(FlexRow)<{

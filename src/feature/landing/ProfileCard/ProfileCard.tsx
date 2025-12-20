@@ -29,6 +29,7 @@ const StyledIcon = styled(ImgIcon)`
   mask-size: contain;
   object-fit: contain;
   height: 100%;
+  min-height: 0;
 `;
 
 const StyledSpan = styled(Span)`

@@ -11,7 +11,6 @@ const StyledFlatCarousel = styled(FlatCarousel)`
   * > img,
   video {
     object-fit: contain;
-    aspect-ratio: 16 / 9;
     width: 100%;
   }
 
@@ -23,6 +22,7 @@ const StyledFlatCarousel = styled(FlatCarousel)`
 const StyledFlexRow = styled(FlexRow)`
   position: relative;
   overflow-x: hidden;
+  aspect-ratio: 16 / 9;
 `;
 
 const Arrow = styled.div<{ $right: boolean }>`
