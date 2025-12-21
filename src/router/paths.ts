@@ -287,5 +287,6 @@ export const paths = {
   achievements: "/achievements",
   projects: "/projects",
   career: "/career",
+  admin: "/admin",
   public: pub,
 };

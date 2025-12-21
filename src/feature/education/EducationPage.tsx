@@ -7,7 +7,7 @@ import {
 } from "@src/common/animation";
 import { FlexColumn } from "@src/common/layout/flex";
 
-import { ExpendablePanel } from "./ExpendablePanel";
+import { ExpendablePanel } from "@src/common/component/ExpendablePanel";
 import { PSLEOpencert } from "./opencerts/PSLEOpencert";
 import { OLevelOpencert } from "./opencerts/OLevelOpencert";
 import { ALevelOpencert } from "./opencerts/ALevelOpencert";

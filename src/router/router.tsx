@@ -12,7 +12,8 @@ const EducationPage = lazy(
   () => import("@src/feature/education/EducationPage")
 );
 const PostsPage = lazy(() => import("@src/feature/post/PostsPage"));
-const TestPage = lazy(() => import("@src/feature/test/TestPage"));
+// const TestPage = lazy(() => import("@src/feature/test/TestPage"));
+const AdminPage = lazy(() => import("@src/feature/admin/AdminPage.tsx"));
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
             referenceButtonName={RelatedPostsButtonName.CAREER}
           />
         ),
+      },
+      {
+        path: paths.admin,
+        element: <AdminPage />,
       },
       // { path: "/test", element: <TestPage /> },
     ],

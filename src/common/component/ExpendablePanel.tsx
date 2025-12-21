@@ -30,13 +30,7 @@ const HeaderContainer = styled(H2)<HeaderContainerProps>`
   padding: 30px;
 `;
 
-interface ContentProps {
-  open: boolean;
-}
-
-const Content = styled.div<ContentProps>`
-  display: ${(props) => (props.open ? "block" : "none")};
-
+const Content = styled.div`
   > * {
     border-top: 1px solid ${({ theme }) => theme.colors.softerBlack};
     padding: 10px;
@@ -58,7 +52,7 @@ export const ExpendablePanel = ({
       <HeaderContainer onClick={() => setOpen(!open)} open={open}>
         {headerString}
       </HeaderContainer>
-      <Content open={open}>{children}</Content>
+      {open && <Content>{children}</Content>}
     </Container>
   );
 };

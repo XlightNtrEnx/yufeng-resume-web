@@ -64,7 +64,7 @@ export abstract class AbstractService<
     this.baseURL = baseURL;
   }
 
-  public async findAllModelsAndSyncToLocalStorage() {
+  public async findAllModelsByPartition() {
     const dbModels = await this.find({ filter: {} });
     dbModels.sort((a, b) => {
       return a.created_at.getTime() - b.created_at.getTime();
@@ -79,6 +79,11 @@ export abstract class AbstractService<
       partitionedDbModels.push(dbModel);
       modelsByPartition[partitionPath] = partitionedDbModels;
     }
+    return modelsByPartition;
+  }
+
+  public async findAllModelsAndSyncToLocalStorage() {
+    const modelsByPartition = this.findAllModelsByPartition();
     for (const [partitionPath, models] of Object.entries(modelsByPartition)) {
       this.overwriteDbModelsToLocalStoragePartition({
         partitionPath,

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import {
   fadeInFromBottom,
@@ -8,11 +8,9 @@ import {
 } from "@src/common/animation";
 import { Grid } from "@src/common/layout/grid/Grid";
 
-interface ContainerProps {
+const StyledGrid = styled(Grid)<{
   $fadeFromBottomElement: number;
-}
-
-const StyledGrid = styled(Grid)<ContainerProps>`
+}>`
   width: 100%;
   grid-template-columns: repeat(auto-fill, 12.5em);
   gap: 3.125em;
@@ -42,10 +40,13 @@ export interface GridLayoutProps {
 }
 
 export const ColumnGrid = ({ children, ...rest }: GridLayoutProps) => {
-  const childCount = React.Children.count(children);
-  let fadeFromBottomElement = 0;
-  if (childCount > 3)
-    fadeFromBottomElement = childCount - ((childCount + 2) % 3);
+  const [fadeFromBottomElement, setFadeFromBottomElement] = useState<number>(0);
+
+  useEffect(() => {
+    const childCount = React.Children.count(children);
+    if (childCount > 3)
+      setFadeFromBottomElement(childCount - ((childCount + 2) % 3));
+  }, [children]);
 
   return (
     <StyledGrid $fadeFromBottomElement={fadeFromBottomElement} {...rest}>
