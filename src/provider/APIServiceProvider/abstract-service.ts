@@ -83,7 +83,7 @@ export abstract class AbstractService<
   }
 
   public async findAllModelsAndSyncToLocalStorage() {
-    const modelsByPartition = this.findAllModelsByPartition();
+    const modelsByPartition = await this.findAllModelsByPartition();
     for (const [partitionPath, models] of Object.entries(modelsByPartition)) {
       this.overwriteDbModelsToLocalStoragePartition({
         partitionPath,
