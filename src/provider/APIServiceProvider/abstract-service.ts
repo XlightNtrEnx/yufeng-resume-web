@@ -85,7 +85,8 @@ export abstract class AbstractService<
   public async findAllModelsAndSyncToLocalStorage() {
     const modelsByPartition = await this.findAllModelsByPartition();
     for (const [partitionPath, models] of Object.entries(modelsByPartition)) {
-      this.overwriteDbModelsToLocalStoragePartition({
+      this.deleteLocalStoragePartition(partitionPath);
+      this.writeDbModelsToLocalStoragePartition({
         partitionPath,
         models,
         from: 0,
@@ -319,7 +320,7 @@ export abstract class AbstractService<
     return models;
   }
 
-  private overwriteDbModelsToLocalStoragePartition({
+  private writeDbModelsToLocalStoragePartition({
     partitionPath,
     models,
     from,
@@ -380,7 +381,7 @@ export abstract class AbstractService<
           },
           sort: { created_at: 1 },
         });
-        this.overwriteDbModelsToLocalStoragePartition({
+        this.writeDbModelsToLocalStoragePartition({
           partitionPath,
           models: laterDbModels,
           from: results.metadata.latest + 1,
@@ -394,7 +395,7 @@ export abstract class AbstractService<
           filter: partitionFilter,
           sort: { created_at: 1 },
         });
-        this.overwriteDbModelsToLocalStoragePartition({
+        this.writeDbModelsToLocalStoragePartition({
           partitionPath,
           models: dbModels,
           from: 0,
