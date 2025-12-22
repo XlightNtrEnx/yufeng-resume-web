@@ -4,6 +4,7 @@ import { LRUCache } from "@src/common/util/lru-cache";
 import { OptionalKeys } from "@src/types";
 import { v4 as uuidv4 } from "uuid";
 import { AbstractModel } from "./abstract-model";
+import { LocalService } from "./local-service";
 
 type NewModel<M extends AbstractModel> = OptionalKeys<
   M,
@@ -46,22 +47,36 @@ type BodyOptions = {
 };
 
 export abstract class AbstractService<
-  M extends AbstractModel,
+  M extends AbstractModel = AbstractModel,
   N extends NewModel<M> = NewModel<M>
 > {
-  public abstract collectionName: string;
-  public abstract partitionColumns: (keyof M)[];
-  public localStorageKeyPrefix: string = LocalStoragePrefix.CassandraModels;
+  public collectionName: string;
+  public partitionColumns: (keyof M)[];
+  public localStorageKeyPrefix: string = LocalStoragePrefix.Models;
   public keyspace: string = "default_keyspace";
   public baseURL: string;
+  public token?: string;
 
   private latest_models_cache = new LRUCache<string, M[]>({
     capacity: 10,
     ttlMS: 28800000, // 8 hours
   });
 
-  constructor({ baseURL }: { baseURL: string }) {
+  constructor({
+    baseURL,
+    token,
+    collectionName,
+    partitionColumns,
+  }: {
+    baseURL: string;
+    token?: string;
+    collectionName: string;
+    partitionColumns: (keyof M)[];
+  }) {
     this.baseURL = baseURL;
+    this.token = token;
+    this.collectionName = collectionName;
+    this.partitionColumns = partitionColumns;
   }
 
   public async findAllModelsByPartition() {
@@ -415,11 +430,13 @@ export abstract class AbstractService<
         ? options.url
         : `${this.baseURL}/api/json/v1/${this.keyspace}/${this.collectionName}`;
     const stringifiedBody = JSON.stringify(body);
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+    };
+    if (this.token) headers["Token"] = this.token;
     const response = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: stringifiedBody,
     });
 

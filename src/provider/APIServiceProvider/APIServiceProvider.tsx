@@ -12,7 +12,7 @@ class APIServices {
   public postService: PostService;
   public previewService: PreviewService;
 
-  constructor(initializeValues: { baseURL: string }) {
+  constructor(initializeValues: { baseURL: string; token?: string }) {
     this.postService = new PostService(initializeValues);
     this.previewService = new PreviewService(initializeValues);
   }
@@ -30,6 +30,7 @@ export const APIServiceProvider = ({
   const config = useContext(ConfigContext);
   const initializeValues = {
     baseURL: config.api,
+    token: config.apiToken,
   };
 
   const services = new APIServices(initializeValues);

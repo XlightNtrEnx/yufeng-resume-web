@@ -1,29 +1,16 @@
 import React, { createContext } from "react";
 
-interface Config {
-  api: string;
-  cassandra: {
-    cache_ttl_ms: number;
-    ls_expire_in_ms: number;
-  };
+class Config {
+  api: string = "";
+  apiToken: string = "";
 }
 
-export const ConfigContext = createContext<Config>({
-  api: "",
-  cassandra: {
-    cache_ttl_ms: 28800000, // 8 hours
-    ls_expire_in_ms: 28800000,
-  },
-});
+export const ConfigContext = createContext<Config>(new Config());
 
 export const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
-  const config: Config = {
-    api: import.meta.env["VITE_ASTRA_API"],
-    cassandra: {
-      cache_ttl_ms: 28800000,
-      ls_expire_in_ms: 28800000,
-    },
-  };
+  const config = new Config();
+  config.api = import.meta.env["VITE_ASTRA_API"] || "";
+  config.apiToken = import.meta.env["VITE_ASTRA_API_TOKEN"] || "";
 
   return (
     <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>

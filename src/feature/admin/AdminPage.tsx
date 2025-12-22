@@ -3,13 +3,19 @@ import { FlexColumn } from "@src/common/layout/flex";
 import { APIServiceContext } from "@src/provider/APIServiceProvider";
 import { useContext } from "react";
 import styled from "styled-components";
+import { ServiceEditor } from "./ServiceEditor";
 
 const StyledFlexColumn = styled(FlexColumn)`
   align-items: center;
+
+  & > :not(:first-child) {
+    align-self: stretch;
+  }
 `;
 
 export const AdminPage = () => {
   const { previewService, postService } = useContext(APIServiceContext);
+  const services = [previewService, postService];
   return (
     <StyledFlexColumn>
       <Button
@@ -45,6 +51,10 @@ export const AdminPage = () => {
       >
         Backup cassandra models
       </Button>
+
+      {services.map((value, idx) => {
+        return <ServiceEditor key={idx} service={value} />;
+      })}
     </StyledFlexColumn>
   );
 };

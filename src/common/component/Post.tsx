@@ -214,7 +214,7 @@ export const Post = (props: PostProps) => {
           $maxWidth="1080px"
           closer={() => setZoomIn(false)}
         >
-          <Post {...props} />
+          <Post {...props} disableZoom />
         </Modal>
       )}
     </>
