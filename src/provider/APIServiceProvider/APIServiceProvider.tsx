@@ -8,6 +8,10 @@ const defaultInitializeValues = {
   baseURL: "",
 };
 
+export type AllAPIServicesUnion = InstanceType<
+  typeof APIServices
+>[keyof InstanceType<typeof APIServices>];
+
 class APIServices {
   public postService: PostService;
   public previewService: PreviewService;

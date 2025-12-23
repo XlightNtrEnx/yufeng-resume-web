@@ -6,7 +6,6 @@ import { paths } from "@src/router/paths";
 import { PreviewType } from "@src/provider/APIServiceProvider/preview/preview-model";
 import { RelatedPostsButtonName } from "@src/common/component/Post";
 
-// Lazy-loaded pages
 const LandingPage = lazy(() => import("@src/feature/landing/LandingPage"));
 const EducationPage = lazy(
   () => import("@src/feature/education/EducationPage")

@@ -77,7 +77,7 @@ export const EducationPage = () => {
   return (
     <StyledFlexColumn>
       {headers.map((header, index) => (
-        <ExpendablePanel key={index} headerString={header}>
+        <ExpendablePanel key={index} header={header}>
           {results[index]}
           {opencerts[index]}
           {transcripts[index]}

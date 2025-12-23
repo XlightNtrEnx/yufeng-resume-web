@@ -4,7 +4,6 @@ import { LRUCache } from "@src/common/util/lru-cache";
 import { OptionalKeys } from "@src/types";
 import { v4 as uuidv4 } from "uuid";
 import { AbstractModel } from "./abstract-model";
-import { LocalService } from "./local-service";
 
 type NewModel<M extends AbstractModel> = OptionalKeys<
   M,
@@ -30,7 +29,7 @@ type UpdateOne<M extends AbstractModel> = {
   update: { $set?: Partial<M>; $unset?: { [K in keyof M]?: "" } };
 };
 type Find<M extends AbstractModel> = {
-  filter: Filter<M>;
+  filter?: Filter<M>;
   sort?: Sort<M>;
   options?: { pageState?: string };
 };
@@ -57,7 +56,7 @@ export abstract class AbstractService<
   public baseURL: string;
   public token?: string;
 
-  private latest_models_cache = new LRUCache<string, M[]>({
+  private getPartitionCache = new LRUCache<string, M[]>({
     capacity: 10,
     ttlMS: 28800000, // 8 hours
   });
@@ -113,7 +112,7 @@ export abstract class AbstractService<
     const partitionPath = this.getPartitionPath(partitions);
 
     // Check cache
-    const cacheModels = this.latest_models_cache.get(partitionPath);
+    const cacheModels = this.getPartitionCache.get(partitionPath);
     if (cacheModels !== null) return cacheModels;
 
     // Check localStorage
@@ -157,6 +156,7 @@ export abstract class AbstractService<
   }
 
   public async findOne(findOne: Find<M>, options?: BodyOptions) {
+    if (!findOne.filter) findOne.filter = {};
     const responseJSON = await this.fetchAPI({
       body: { findOne, options },
     });
@@ -169,6 +169,7 @@ export abstract class AbstractService<
   }
 
   public async find(find: Find<M>, options?: BodyOptions) {
+    if (!find.filter) find.filter = {};
     const responseJSON = await this.fetchAPI({
       body: { find, options },
     });
@@ -380,7 +381,7 @@ export abstract class AbstractService<
     if (!latestDbModel) {
       // Purge partition from localStorage
       this.deleteLocalStoragePartition(partitionPath);
-      this.latest_models_cache.delete(partitionPath);
+      this.getPartitionCache.delete(partitionPath);
       return [];
     } else {
       // Start syncing db to localStorage and cache
@@ -402,7 +403,7 @@ export abstract class AbstractService<
           from: results.metadata.latest + 1,
         });
         for (const laterDbModel of laterDbModels) lsModels.push(laterDbModel);
-        this.latest_models_cache.put(partitionPath, lsModels);
+        this.getPartitionCache.put(partitionPath, lsModels);
         return lsModels;
       } else {
         // localStorage not present so just write everything
@@ -415,7 +416,7 @@ export abstract class AbstractService<
           models: dbModels,
           from: 0,
         });
-        this.latest_models_cache.put(partitionPath, dbModels);
+        this.getPartitionCache.put(partitionPath, dbModels);
         return dbModels;
       }
     }

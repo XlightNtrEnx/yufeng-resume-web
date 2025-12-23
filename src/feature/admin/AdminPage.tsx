@@ -1,6 +1,8 @@
 import { Button } from "@src/common/element/Button";
 import { FlexColumn } from "@src/common/layout/flex";
 import { APIServiceContext } from "@src/provider/APIServiceProvider";
+import { AbstractModel } from "@src/provider/APIServiceProvider/abstract-model";
+import { AbstractService } from "@src/provider/APIServiceProvider/abstract-service";
 import { useContext } from "react";
 import styled from "styled-components";
 import { ServiceEditor } from "./ServiceEditor";
@@ -51,9 +53,13 @@ export const AdminPage = () => {
       >
         Backup cassandra models
       </Button>
-
       {services.map((value, idx) => {
-        return <ServiceEditor key={idx} service={value} />;
+        return (
+          <ServiceEditor
+            key={idx}
+            service={value as AbstractService<AbstractModel>}
+          />
+        );
       })}
     </StyledFlexColumn>
   );

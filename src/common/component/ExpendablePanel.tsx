@@ -38,19 +38,31 @@ const Content = styled.div`
 `;
 
 interface ExpendablePanelProps {
-  headerString?: string;
+  header?: React.ReactNode;
   children?: React.ReactNode;
+  onOpen?: () => void;
 }
 
 export const ExpendablePanel = ({
-  headerString,
+  header,
   children,
+  onOpen,
 }: ExpendablePanelProps) => {
   const [open, setOpen] = useState(false);
   return (
     <Container tabIndex={0}>
-      <HeaderContainer onClick={() => setOpen(!open)} open={open}>
-        {headerString}
+      <HeaderContainer
+        onClick={() => {
+          if (!open) {
+            setOpen(!open);
+            if (onOpen) onOpen();
+          } else {
+            setOpen(!open);
+          }
+        }}
+        open={open}
+      >
+        {header}
       </HeaderContainer>
       {open && <Content>{children}</Content>}
     </Container>

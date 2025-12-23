@@ -61,6 +61,10 @@ const pub = {
         img_3: "/achievement/database/mongo/3.webp",
         img_4: "/achievement/database/mongo/4.webp",
       },
+      resumeDir: {
+        img_1: "/achievement/database/resume/1.png",
+        img_2: "/achievement/database/resume/2.png",
+      },
       preview: "/achievement/database/preview.jpg",
     },
     dataScienceDir: {
