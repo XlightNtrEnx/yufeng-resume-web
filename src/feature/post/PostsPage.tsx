@@ -72,6 +72,7 @@ export const PostsPage = ({
           preview_id: activePreview.id,
         })
         .then((values) => {
+          values.reverse();
           setActivePostModels(values);
         })
         .finally(() => {
