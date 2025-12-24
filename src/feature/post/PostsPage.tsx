@@ -72,7 +72,6 @@ export const PostsPage = ({
           preview_id: activePreview.id,
         })
         .then((values) => {
-          values.reverse();
           setActivePostModels(values);
         })
         .finally(() => {
@@ -119,7 +118,8 @@ export const PostsPage = ({
           ) : (
             <StyledFlexColumn>
               <>
-                {activePostModels.map((postModel, idx) => {
+                {activePostModels.map((_, idx, arr) => {
+                  const postModel = arr[arr.length - 1 - idx]; // pick from the end
                   return (
                     <PostComponent
                       key={postModel.id}

@@ -42,8 +42,10 @@ const pub = {
       preview: "/achievement/cloud/preview.jpg",
       term4InfosysCloudDir: {
         path: "/achievement/cloud/term4-infosys-cloud",
+        img_1: "/achievement/cloud/resume/1.png",
+      },
+      resume: {
         img_1: "/achievement/cloud/term4-infosys-cloud/1.webp",
-        img_2: "/achievement/cloud/term4-infosys-cloud/2.webp",
       },
     },
     databaseDir: {
