@@ -1,12 +1,13 @@
 import { ConfigContext } from "@src/provider/ConfigProvider";
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
+import { IDBContext } from "../IDBProvider/IDBProvider";
 import { PostService } from "./post/post-service";
 import { PreviewService } from "./preview/preview-service";
-
-const defaultInitializeValues = {
-  baseURL: "",
-};
+import { PostIDBService } from "../IDBProvider/post-idb-service";
+import { PreviewIDBService } from "../IDBProvider/preview-idb-service";
+import { LoadingSpinner } from "@src/common/component/LoadingSpinner";
+import { AbstractService } from "./abstract-service/abstract-service";
 
 export type AllAPIServicesUnion = InstanceType<
   typeof APIServices
@@ -15,37 +16,43 @@ export type AllAPIServicesUnion = InstanceType<
 class APIServices {
   public postService: PostService;
   public previewService: PreviewService;
-
-  constructor(initializeValues: { baseURL: string; token?: string }) {
-    this.postService = new PostService(initializeValues);
-    this.previewService = new PreviewService(initializeValues);
-  }
 }
 
-export const APIServiceContext = createContext<APIServices>(
-  new APIServices(defaultInitializeValues)
-);
-
+export const APIServiceContext = createContext<APIServices>(new APIServices());
 export const APIServiceProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
+  const idbContext = useContext(IDBContext);
   const config = useContext(ConfigContext);
-  const initializeValues = {
-    baseURL: config.api,
-    token: config.apiToken,
-  };
-
-  const services = new APIServices(initializeValues);
+  const [services, setServices] = useState<null | APIServices>(null);
 
   useEffect(() => {
+    const db = idbContext.db;
+    const services = new APIServices();
+    const initializeValues = {
+      baseURL: config.api,
+      token: config.apiToken,
+    };
+    services.postService = new PostService({
+      ...initializeValues,
+      idbService: new PostIDBService({ db }),
+    });
+    services.previewService = new PreviewService({
+      ...initializeValues,
+      idbService: new PreviewIDBService({ db }),
+    });
     for (const service of Object.values(services)) {
-      service.findAllModelsAndSyncToLocalStorage();
+      (service as AbstractService<any, any>).syncIDB();
     }
-
+    setServices(services);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (services === null) {
+    return <LoadingSpinner />;
+  }
   return (
     <APIServiceContext.Provider value={services}>
       {children}

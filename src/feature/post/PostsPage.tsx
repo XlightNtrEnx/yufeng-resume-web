@@ -55,7 +55,7 @@ export const PostsPage = ({
   const [activePreviewIdx, setActivePreviewIdx] = useState<number | null>(null);
   useEffect(() => {
     setActivePreviewIdx(
-      previewNameToIdx.get(searchParams.get(previewParam) || "") ?? null
+      previewNameToIdx.get(searchParams.get(previewParam) || "") ?? null,
     );
   }, [previewNameToIdx, searchParams, previewParam]);
 

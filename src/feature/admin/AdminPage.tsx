@@ -1,11 +1,9 @@
 import { Button } from "@src/common/element/Button";
 import { FlexColumn } from "@src/common/layout/flex";
-import { APIServiceContext } from "@src/provider/APIServiceProvider";
-import { AbstractModel } from "@src/provider/APIServiceProvider/abstract-model";
-import { AbstractService } from "@src/provider/APIServiceProvider/abstract-service";
-import { useContext } from "react";
 import styled from "styled-components";
 import { ServiceEditor } from "./ServiceEditor";
+import { useContext } from "react";
+import { APIServiceContext } from "@src/provider/APIServiceProvider";
 
 const StyledFlexColumn = styled(FlexColumn)`
   align-items: center;
@@ -17,7 +15,6 @@ const StyledFlexColumn = styled(FlexColumn)`
 
 export const AdminPage = () => {
   const { previewService, postService } = useContext(APIServiceContext);
-  const services = [previewService, postService];
   return (
     <StyledFlexColumn>
       <Button
@@ -29,8 +26,8 @@ export const AdminPage = () => {
           const results = await Promise.all(
             services.map(async (service) => [
               service.collectionName,
-              await service.findAllModelsByPartition(),
-            ])
+              await service.find({}),
+            ]),
           );
           const jsonData = Object.fromEntries(results);
 
@@ -38,7 +35,7 @@ export const AdminPage = () => {
           const url = URL.createObjectURL(
             new Blob([JSON.stringify(jsonData, null, 2)], {
               type: "application/json",
-            })
+            }),
           );
           const link = document.createElement("a");
           link.href = url;
@@ -53,14 +50,7 @@ export const AdminPage = () => {
       >
         Backup cassandra models
       </Button>
-      {services.map((value, idx) => {
-        return (
-          <ServiceEditor
-            key={idx}
-            service={value as AbstractService<AbstractModel>}
-          />
-        );
-      })}
+      <ServiceEditor />
     </StyledFlexColumn>
   );
 };
