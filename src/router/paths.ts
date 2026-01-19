@@ -226,7 +226,7 @@ const pub = {
     path: "/me",
     me: "/me/me810.jpg",
     mask: "/me/mask200.png",
-    resume: "/me/resume.pdf",
+    resume: "/me/yufeng_resume.pdf",
   },
   imagesDir: {
     path: "/images",
