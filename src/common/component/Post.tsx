@@ -39,6 +39,7 @@ const innerButtonName: Record<RelatedPostsButtonName, RelatedPostsButtonName> =
 export interface PostProps extends PostModel {
   disableZoom?: boolean;
   buttonName?: RelatedPostsButtonName;
+  skip?: number;
 }
 
 const StyledFlexColumn = styled(FlexColumn).attrs({ as: "article" })`
@@ -139,14 +140,18 @@ const RelatedPostsButton = ({
 
 export const Post = (props: PostProps) => {
   const {
+    // Model props
     body,
     name,
     medias,
-    disableZoom,
     urls,
     related_post_ids,
     related_post_preview_ids,
+
+    // Own props
+    disableZoom,
     buttonName,
+    skip: skipProp,
   } = props;
 
   // Register fragment in URL
@@ -160,7 +165,8 @@ export const Post = (props: PostProps) => {
   const [zoomIn, setZoomIn] = useState<boolean>(false);
 
   // Skip MediaScroller functionality
-  const [skip, setSkip] = useState<number[]>([0]);
+  const initialSkip = skipProp ?? 0;
+  const [skip, setSkip] = useState<number[]>([initialSkip]);
 
   // Plugin for MarkDown
   const components: Components = {};
@@ -214,7 +220,7 @@ export const Post = (props: PostProps) => {
           $maxWidth="1080px"
           closer={() => setZoomIn(false)}
         >
-          <Post {...props} disableZoom />
+          <Post {...props} disableZoom skip={skip[0]} />
         </Modal>
       )}
     </>
