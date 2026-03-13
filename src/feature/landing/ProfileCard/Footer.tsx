@@ -20,7 +20,7 @@ export const Footer = () => {
         <Span>View CV</Span>{" "}
         <OpenInNewTabSVGIcon width="0.8em" height="0.8em" />
       </NewTabLink>
-      <NewTabLink href="mailto:xyf.oco@gmail.com">
+      <NewTabLink href="mailto:x.yufng@gmail.com">
         <Span>Contact me</Span> <Email width="0.75em" height="0.75em" />
       </NewTabLink>
     </StyledFooter>

@@ -17,10 +17,10 @@ const StyledFlexRow = styled(FlexRow)`
 export const Socials = () => {
   return (
     <StyledFlexRow>
-      <NewTabLink href="https://github.com/XlightNtrEnx">
+      <NewTabLink href="https://github.com/x-yufeng">
         <GitHubSVGIcon />
       </NewTabLink>
-      <NewTabLink href="https://www.linkedin.com/in/xue-yufeng-596a10297/">
+      <NewTabLink href="https://www.linkedin.com/in/x-yufeng/">
         <LinkedIn />
       </NewTabLink>
       <NewTabLink href="https://leetcode.com/u/XU3mCuw2Sb/">
