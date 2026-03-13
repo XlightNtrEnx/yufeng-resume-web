@@ -48,7 +48,7 @@ const calculateAge = (birthday: Date = new Date(2002, 6, 26)) => {
 };
 
 const data = [
-  ["Age", calculateAge() + 1],
+  ["Age", calculateAge() + 3],
   ["Residence", "Central East, SG"],
   ["Email", "x.yufng@gmail.com"],
 ];
