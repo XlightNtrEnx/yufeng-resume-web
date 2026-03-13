@@ -23,4 +23,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_XUE_YUFENG }}
           channelId: live
-          projectId: yufeng-resume
+          projectId: portfolio-xue-yufeng
