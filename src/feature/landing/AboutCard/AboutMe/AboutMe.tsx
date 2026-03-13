@@ -23,8 +23,8 @@ export const AboutMe = () => {
     <StyledGrid>
       <PartialColorH2>About me</PartialColorH2>
       <P>
-        Hello! I am Yufeng. I am excited to further my knowledge in computer
-        science.
+        Hello! I am Yufeng, and I welcome the opportunity to further hone my
+        skills and knowledge in both software and hardware development.
       </P>
       <Stats />
     </StyledGrid>

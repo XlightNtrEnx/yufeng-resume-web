@@ -230,7 +230,7 @@ const pub = {
   },
   imagesDir: {
     path: "/images",
-    background: "/images/starry-sky.jpg",
+    background: "/images/360_F_580255510_wtk8h1ajvuDHTDmuA7kySPpuxagf1N6J.jpg",
   },
   projectDir: {
     path: "/project",

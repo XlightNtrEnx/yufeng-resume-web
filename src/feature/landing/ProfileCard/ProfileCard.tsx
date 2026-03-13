@@ -22,11 +22,8 @@ const StyledGrid = styled(Grid)`
 `;
 
 const StyledIcon = styled(ImgIcon)`
-  -webkit-mask-image: url(${paths.public.meDir.mask});
-  mask-image: url(${paths.public.meDir.mask});
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  object-fit: cover;
+  object-fit: contain;
+  padding-top: 1em;
   height: 100%;
   min-height: 0;
   max-height: 100%;
@@ -43,7 +40,7 @@ export const ProfileCard = () => {
     <StyledGrid>
       <StyledIcon src={paths.public.meDir.me} alt="Photo of me" />
       <H1>Xue Yufeng</H1>
-      <StyledSpan>Music theory enthusiast</StyledSpan>
+      <StyledSpan>Hello! 😄</StyledSpan>
       <Socials />
       <Footer />
     </StyledGrid>

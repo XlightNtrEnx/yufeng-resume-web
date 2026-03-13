@@ -18,10 +18,10 @@ const colors = {
       right: "#4fed9f",
     },
     complementary: {
-      primary: "#453de1",
-      softPrimary: "#665fe6",
-      softerPrimary: "#a09cf0",
-      complementary: "#d9e13d",
+      primary: "#488B49",
+      softPrimary: "#518a52",
+      softerPrimary: "#588459",
+      complementary: "#8B488A",
     },
   },
 };

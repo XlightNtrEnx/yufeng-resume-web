@@ -16,7 +16,13 @@ const StyledSpan = styled(Span)`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-const Stat = ({ category, data }: { category: string; data: string }) => {
+const Stat = ({
+  category,
+  data,
+}: {
+  category: React.ReactNode;
+  data: React.ReactNode;
+}) => {
   return (
     <StatContainer>
       <StyledSpan>{category}: </StyledSpan>
@@ -37,15 +43,14 @@ const calculateAge = (birthday: Date = new Date(2002, 6, 26)) => {
     monthDifference < 0 ||
     (monthDifference === 0 && today.getDate() < birthday.getDate())
   )
-    return (age - 1).toString();
-  return age.toString();
+    return age - 1;
+  return age;
 };
 
 const data = [
-  ["Age", calculateAge()],
-  ["Residence", "Boon Keng, SG"],
-  ["Hireable", "Yes"],
-  ["Email", "xyf.oco@gmail.com"],
+  ["Age", calculateAge() + 1],
+  ["Residence", "Central East, SG"],
+  ["Email", "x.yufng@gmail.com"],
 ];
 
 export const Stats = () => {
