@@ -13,8 +13,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Create .env file
         run: |
-          echo "VITE_RECAPTCHA_SITE_KEY=${{ secrets.VITE_RECAPTCHA_SITE_KEY }}" >> .env
-          echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> .env
           echo "VITE_ASTRA_API=${{ secrets.VITE_ASTRA_API }}" >> .env
       - name: Install dependencies
         run: yarn install
@@ -23,6 +21,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_YUFENG_RESUME }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_XUE_YUFENG }}
           channelId: live
           projectId: yufeng-resume
